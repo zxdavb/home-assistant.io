@@ -77,7 +77,7 @@
   <p>Keeps track which remotes are in your environment, their state and allows you to control them.</p>
 <ul>
   <li>Maintains a state per remote and a combined state <code class="highlighter-rouge">all_remotes</code>.</li>
-  <li>Registers services <code class="highlighter-rouge">remote/turn_on</code>, <code class="highlighter-rouge">remote/turn_off</code>, <code class="highlighter-rouge">remote/toggle</code>, <code class="highlighter-rouge">remote/sync</code>, and <code class="highlighter-rouge">remote/send_command</code> to control remotes.</li>
+  <li>Registers services <code class="highlighter-rouge">remote/turn_on</code>, <code class="highlighter-rouge">remote/turn_off</code>, <code class="highlighter-rouge">remote/toggle</code>, and <code class="highlighter-rouge">remote/send_command</code> to control remotes.</li>
 </ul>
 <h3><a class="title-link" name="use-the-services" href="#use-the-services"></a> Use the services</h3>
 <p>Go to the <strong>Developer Tools</strong>, then to <strong>Call Service</strong> in the frontend, and choose <code class="highlighter-rouge">remote/turn_on</code>, <code class="highlighter-rouge">remote/turn_off</code>, or <code class="highlighter-rouge">remote/toggle</code> from the list of available services (<strong>Available services:</strong> on the left). Enter something like the sample below into the <strong>Service Data</strong> field and hit <strong>Call Service</strong>.</p>
@@ -96,10 +96,11 @@
     <tr>
       <td><code class="highlighter-rouge">entity_id</code></td>
       <td>yes</td>
-      <td>Only act on specific remote. Else targets all.</td>
+      <td>Only act on a specific remote, else target all.</td>
     </tr>
   </tbody>
 </table>
+<p>See the platform documentation for each type of remote for more detailed examples.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
