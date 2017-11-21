@@ -123,6 +123,7 @@ Not all existing platforms follow the requirements in this checklist. This canno
   <li>Extend entity from component, e.g. <code class="highlighter-rouge">class HueLight(Light)</code></li>
   <li>Do not call <code class="highlighter-rouge">update()</code> in constructor, use <code class="highlighter-rouge">add_devices(devices, True)</code> instead.</li>
   <li>Do not do any I/O inside properties. Cache values inside <code class="highlighter-rouge">update()</code> instead.</li>
+  <li>The state and/or attributes should not contain relative time since something happened. Instead it should store UTC timestamps.</li>
 </ol>
 <h3><a class="title-link" name="6-communication-with-devicesservices" href="#6-communication-with-devicesservices"></a> 6. Communication with devices/services</h3>
 <ol>
