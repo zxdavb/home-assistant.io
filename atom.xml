@@ -4,7 +4,7 @@
   <title><![CDATA[Home Assistant]]></title>
   <link href="https://home-assistant.io/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2017-11-20T19:30:20+00:00</updated>
+  <updated>2017-11-21T05:48:25+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -69,6 +69,16 @@ For Custom UI users: your custom UI will need to be updated before it can work w
   <li>Support presence detection using Hitron Coda router (<a href="https://github.com/arilotter">@arilotter</a> - <a href="https://github.com/home-assistant/home-assistant/pull/9682">#9682</a>) (<a href="https://home-assistant.io/components/device_tracker.hitron_coda/">device_tracker.hitron_coda docs</a>) (new-platform)</li>
   <li>Add basic backend support for a system log (<a href="https://github.com/postlund">@postlund</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10492">#10492</a>) (<a href="https://home-assistant.io/components/system_log/">system_log docs</a>) (new-platform)</li>
   <li>New sensor viaggiatreno. (<a href="https://github.com/fabfurnari">@fabfurnari</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10522">#10522</a>) (<a href="https://home-assistant.io/components/sensor.viaggiatreno/">sensor.viaggiatreno docs</a>) (new-platform)</li>
+</ul>
+
+<h2><a class="title-link" name="release-0581---november-21" href="#release-0581---november-21"></a> Release 0.58.1 - November 21</h2>
+
+<ul>
+  <li>Fix yweather (<a href="https://github.com/tinloaf">@tinloaf</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10661">#10661</a>) (<a href="https://home-assistant.io/components/weather.yweather/">weather.yweather docs</a>)</li>
+  <li>Properly initialize Harmony remote (<a href="https://github.com/amelchio">@amelchio</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10665">#10665</a>) (<a href="https://home-assistant.io/components/remote.harmony/">remote.harmony docs</a>)</li>
+  <li>Handle the new version of HydroQuebec website (<a href="https://github.com/titilambert">@titilambert</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10682">#10682</a>) (<a href="https://home-assistant.io/components/sensor.hydroquebec/">sensor.hydroquebec docs</a>)</li>
+  <li>Fix for time_date sensor (<a href="https://github.com/etsinko">@etsinko</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10694">#10694</a>) (<a href="https://home-assistant.io/components/sensor.time_date/">sensor.time_date docs</a>)</li>
+  <li>Frontend fixes (<a href="https://github.com/armills">@andrey-git</a> <a href="https://github.com/balloob">@balloob</a>)</li>
 </ul>
 
 <h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>
