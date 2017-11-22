@@ -134,9 +134,7 @@ Notice in the example below that in order to refer to the group â€œLiving Roomâ€
     <span class="s">entities</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">light.light_family_1</span>
       <span class="pi">-</span> <span class="s">binary_sensor.motion_living</span>
-
   <span class="s">Bedroom</span><span class="pi">:</span> <span class="s">light.light_bedroom, switch.sleeping</span>
-
   <span class="s">Rooms</span><span class="pi">:</span>
     <span class="s">view</span><span class="pi">:</span> <span class="s">yes</span>
     <span class="s">name</span><span class="pi">:</span> <span class="s">Rooms</span>
@@ -157,13 +155,11 @@ Notice in the example below that in order to refer to the group â€œLiving Roomâ€
 <p>You can see list of these groups in  <strong>State</strong> <img src="/images/screenshots/developer-tool-states-icon.png" class="no-shadow" height="38" /> page of the <strong>Developer Tools</strong>.</p>
 <p>Default groups appear in the HOME tab, if not overridden by user views and groups. Default groups are hidden by default, so you must <a href="/docs/configuration/customizing-devices/">customize</a> them to be visible in your custom groups and views.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml to include default groups in custom view</span>
-
 <span class="s">customize</span><span class="pi">:</span>
   <span class="s">group.all_automations</span><span class="pi">:</span>
     <span class="s">hidden</span><span class="pi">:</span> <span class="s">false</span>
   <span class="s">group.all_scripts</span><span class="pi">:</span>
     <span class="s">hidden</span><span class="pi">:</span> <span class="s">false</span>
-
 <span class="s">group</span><span class="pi">:</span>
   <span class="s">automation_view</span><span class="pi">:</span>
     <span class="s">name</span><span class="pi">:</span> <span class="s">Automation</span>
@@ -175,6 +171,23 @@ Notice in the example below that in order to refer to the group â€œLiving Roomâ€
 </div>
 <h2><a class="title-link" name="group-behaviour" href="#group-behaviour"></a> Group behaviour</h2>
 <p>When any member of a group is <code class="highlighter-rouge">on</code> then the group will also be <code class="highlighter-rouge">on</code>. Similarly with a device tracker, when any member of the group is <code class="highlighter-rouge">home</code> then the group is <code class="highlighter-rouge">home</code>.</p>
+<h2><a class="title-link" name="customize-group-order" href="#customize-group-order"></a> Customize group order</h2>
+<p>You can also order your groups using <a href="/docs/configuration/customizing-devices/">customize</a> with <code class="highlighter-rouge">order: </code> if they donâ€™t show up in the order you want them in.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml to order groups with order:</span>
+<span class="s">customize</span><span class="pi">:</span>
+  <span class="s">group.all_automations</span><span class="pi">:</span>
+    <span class="s">order</span><span class="pi">:</span> <span class="s">1</span>
+  <span class="s">group.all_scripts</span><span class="pi">:</span>
+    <span class="s">order</span><span class="pi">:</span> <span class="s">2</span>
+<span class="s">group</span><span class="pi">:</span>
+  <span class="s">automation_view</span><span class="pi">:</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">Automation</span>
+    <span class="s">view</span><span class="pi">:</span> <span class="s">yes</span>
+    <span class="s">entities</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">group.all_automations</span>
+      <span class="pi">-</span> <span class="s">group.all_scripts</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
