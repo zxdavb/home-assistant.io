@@ -82,12 +82,20 @@
   <span class="s">subscribe_topic</span><span class="pi">:</span> <span class="s">OtherHaServerName</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>publish_topic</strong> (<em>Optional</em>): Topic for publishing local events</li>
-  <li><strong>subscribe_topic</strong> (<em>Optional</em>): Topic to receive events from the remote server.</li>
-</ul>
-<h2>Multiple Instances</h2>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="publish_topic" href="#publish_topic"></a> publish_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Topic for publishing local events.</span></p>
+    </dd>
+    <dt><a class="title-link" name="subscribe_topic" href="#subscribe_topic"></a> subscribe_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Topic to receive events from the remote server.</span></p>
+    </dd>
+  </dl>
+</div>
+<h2><a class="title-link" name="multiple-instances" href="#multiple-instances"></a> Multiple Instances</h2>
 <p>Events from multiple instances can be aggregated to a single master instance by subscribing to a wildcard topic from the master instance.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example master instance configuration.yaml entry</span>
 <span class="s">mqtt_eventstream</span><span class="pi">:</span>
