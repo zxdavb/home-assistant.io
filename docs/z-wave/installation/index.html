@@ -209,6 +209,12 @@ The device type is <code class="highlighter-rouge">c</code> (character special) 
 </code></pre>
 </div>
 <p>After that, you need to change <code class="highlighter-rouge">usb_path</code> to <code class="highlighter-rouge">/dev/ttyAMA0</code>.</p>
+<h3><a class="title-link" name="rancheros" href="#rancheros"></a> RancherOS</h3>
+<p>If you’re using RancherOS for containers, you’ll need to ensure you enable the kernel-extras service so that the <code class="highlighter-rouge">USB_ACM</code> module (also known as <code class="highlighter-rouge">cdc_acm</code>) is loaded:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo ros service <span class="nb">enable </span>kernel-extras
+<span class="gp">$ </span>sudo ros service up kernel-extras
+</code></pre>
+</div>
 <h3><a class="title-link" name="network-key" href="#network-key"></a> Network Key</h3>
 <p>Security Z-Wave devices require a network key before being added to the network using the Add Secure Node button in the Z-Wave Network Management card. You must set the <em>network_key</em> configuration variable to use a network key before adding these devices.</p>
 <p>An easy script to generate a random key:</p>

@@ -104,7 +104,7 @@ These devices will either show as a binary sensor or a sensor called <code class
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo systemctl disable hciuart
 </code></pre>
 </div>
-<p>Finally, reboot to make those changes active.</p>
+<p>Finally, reboot to make those changes active. It’s been reported that this is also required on the Pi2.</p>
 <h3><a class="title-link" name="aeon-minimote" href="#aeon-minimote"></a> Aeon Minimote</h3>
 <p>Here’s a handy configuration for the Aeon Labs Minimote that defines all possible button presses. Put it into <code class="highlighter-rouge">automation.yaml</code>.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code>  <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s">mini_1_pressed</span>
