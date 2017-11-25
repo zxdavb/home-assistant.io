@@ -221,7 +221,7 @@ mode with <code class="highlighter-rouge">remote_control_start</code>.</p>
 </table>
 <h2><a class="title-link" name="attributes" href="#attributes"></a> Attributes</h2>
 <p>In addition to <a href="https://home-assistant.io/components/vacuum/#attributes">all of the attributes provided by the <code class="highlighter-rouge">vacuum</code> component</a>,
-(<code class="highlighter-rouge">battery_icon</code>, <code class="highlighter-rouge">cleaned_area</code>, <code class="highlighter-rouge">fan_speed</code>, <code class="highlighter-rouge">fan_speed_list</code>, <code class="highlighter-rouge">status</code>, and 
+(<code class="highlighter-rouge">battery_icon</code>, <code class="highlighter-rouge">cleaned_area</code>, <code class="highlighter-rouge">fan_speed</code>, <code class="highlighter-rouge">fan_speed_list</code>, <code class="highlighter-rouge">status</code>, and
 <code class="highlighter-rouge">params</code>), the <code class="highlighter-rouge">xiaomi</code> platform introduces specific attributes. These are:</p>
 <ul>
   <li><code class="highlighter-rouge">cleaning_time</code></li>
@@ -307,6 +307,29 @@ easily via a hidden menu item at the Mi-Home app.
   <li>Click “Extract Token”</li>
   <li>On the phone, you must confirm the backup. DO NOT enter any password and press the button to make the backup.</li>
   <li>Once you have confirmed the backup the token extraction will begin, it should appear in the MiToolKit shortly.</li>
+</ol>
+<h4><a class="title-link" name="linux-and-android-not-rooted" href="#linux-and-android-not-rooted"></a> Linux and Android (not rooted)</h4>
+<p>Follow the pairing process using your phone and Mi-Home app. You will be able to retrieve the token from a SQLite file inside your phone.</p>
+<p>Before you begin you need to install <code class="highlighter-rouge">libffi-dev</code> and <code class="highlighter-rouge">libssl-dev</code> by running the command below. This is needed for <code class="highlighter-rouge">python-mirobo</code> to be installed correctly.</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install libffi-dev libssl-dev
+</code></pre>
+</div>
+<p>If your Home Assistant installation is running in a <a href="/docs/installation/virtualenv/#upgrading-home-assistant">Virtualenv</a>, make sure you activate it by running the commands below.</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo su -s /bin/bash homeassistant
+<span class="gp">$ </span><span class="nb">source</span> /srv/homeassistant/bin/activate
+</code></pre>
+</div>
+<p>To fetch the token follow these instructions depending on your mobile phone platform.</p>
+<ol>
+  <li>Configure the robot with the Mi-Home app.</li>
+  <li>Enable developer mode, USB debugging and plug the Android phone into the computer.</li>
+  <li>Get ADB e.g. <code class="highlighter-rouge">apt-get install android-tools-adb</code> or <code class="highlighter-rouge">apt-get install adb</code></li>
+  <li><code class="highlighter-rouge">adb devices</code> should list your device. Consult ADB manual if necessary.</li>
+  <li>Issue a backup command via adb: <code class="highlighter-rouge">adb backup -noapk com.xiaomi.smarthome -f backup.ab</code> (set a password if prompted on your phone)</li>
+  <li>Download the ‘ADB Backup Extractor’ from <a href="https://sourceforge.net/projects/adbextractor/files/latest/download">here</a></li>
+  <li>Extract the data from the backup: <code class="highlighter-rouge">java -jar Android\ Backup\ Utilities/Android\ Backup\ Extractor/android-backup-extractor-20171005-bin/abe.jar unpack backup.ab unpacked.tar</code> (enter the password, if prompted)</li>
+  <li>Untar the unpacked data: <code class="highlighter-rouge">tar -xvf unpacked.tar</code></li>
+  <li><code class="highlighter-rouge">sqlite3 apps/com.xiaomi.smarthome/db/miio2.db 'select token from devicerecord where name = "Mi Robot Vacuum";'</code> returns the token for your Xiaomi vacuum bot.</li>
 </ol>
 <h4><a class="title-link" name="linux-and-android-rooted" href="#linux-and-android-rooted"></a> Linux and Android (rooted!)</h4>
 <p>Follow the pairing process using your phone and Mi-Home app. You will be able to retrieve the token from a SQLite file inside your phone.</p>
