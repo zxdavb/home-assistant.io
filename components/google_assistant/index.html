@@ -177,7 +177,7 @@ Note: This must be an HTTPS URL to work.</li>
   <li>The final item on that page <code class="highlighter-rouge">Account linking</code> is required for your app to interact with Home Assistant.
     <ol>
       <li>Grant type: <code class="highlighter-rouge">Implicit</code></li>
-      <li>Client ID: Should be the same as <code class="highlighter-rouge">client_id</code> from your hass config above</li>
+      <li>Client ID: The <code class="highlighter-rouge">client_id</code> from your Home Assistant configuration above</li>
       <li>Authorization URL (replace with your actual URL): <code class="highlighter-rouge">https://[YOUR HOME ASSISTANT URL]/api/google_assistant/auth</code></li>
       <li>Configure your client. Add scopes for <code class="highlighter-rouge">email</code> and <code class="highlighter-rouge">name</code></li>
       <li>Testing instructions: doesn’t matter since you won’t submit this app</li>
@@ -194,7 +194,7 @@ Note: This must be an HTTPS URL to work.</li>
       <li>Have the new user go to <a href="https://console.actions.google.com/">developer console</a> and repeat steps starting from point 7.</li>
     </ol>
   </li>
-  <li>If you want to use the request_sync service in Home Assistant, then Enable Homegraph API for your project:
+  <li>If you want to use the <code class="highlighter-rouge">google_assistant.request_sync</code> service in Home Assistant, then enable Homegraph API for your project:
     <ol>
       <li>Go to https://console.cloud.google.com/apis/api/homegraph.googleapis.com/overview</li>
       <li>Select your project and click Enable Homegraph API</li>

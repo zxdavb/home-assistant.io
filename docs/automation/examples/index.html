@@ -127,6 +127,21 @@
       <span class="s">service</span><span class="pi">:</span> <span class="s">notify.notify</span>
       <span class="s">data</span><span class="pi">:</span>
         <span class="s">message</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Paulus</span><span class="nv"> </span><span class="s">left</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">house'</span>
+
+<span class="c1"># Send a notification via Pushover with the event of a Xiaomi cube. Custom event from the Xiaomi component.</span>
+  <span class="pi">-</span> <span class="s">alias</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Xiaomi</span><span class="nv"> </span><span class="s">Cube</span><span class="nv"> </span><span class="s">Action'</span>
+    <span class="s">hide_entity</span><span class="pi">:</span> <span class="s">false</span>
+    <span class="s">initial_state</span><span class="pi">:</span> <span class="s">false</span>
+    <span class="s">trigger</span><span class="pi">:</span>
+      <span class="s">platform</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="s">event_type</span><span class="pi">:</span> <span class="s">cube_action</span>
+      <span class="s">event_data</span><span class="pi">:</span>
+        <span class="s">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.cube_158d000103a3de</span>
+    <span class="s">action</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">service_template</span><span class="pi">:</span> <span class="s">notify.pushover</span>
+        <span class="s">data_template</span><span class="pi">:</span> 
+          <span class="s">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Cube</span><span class="nv"> </span><span class="s">event</span><span class="nv"> </span><span class="s">detected"</span>
+          <span class="s">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Cube</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">triggered</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">event:</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.event</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre>
 </div>
 </article>
