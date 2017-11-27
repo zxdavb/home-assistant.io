@@ -194,7 +194,7 @@
 <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">universal</span>
   <span class="s">name</span><span class="pi">:</span> <span class="s">Kodi TV</span>
   <span class="s">state_template</span><span class="pi">:</span> <span class="pi">&gt;</span>
-    <span class="no">{% if (is_state('media_player.kodi', 'idle') and (is_state('input_boolean.kodi_tv_state', 'off') %}</span>
+    <span class="no">{% if is_state('media_player.kodi', 'idle') and is_state('input_boolean.kodi_tv_state', 'off') %}</span>
     <span class="no">off</span>
     <span class="no">{% else %}</span>
     <span class="no">{{ states('media_player.kodi') }}</span>
