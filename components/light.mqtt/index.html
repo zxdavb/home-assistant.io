@@ -110,7 +110,7 @@
   <li><strong>rgb_state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive RGB state updates.</li>
   <li><strong>rgb_value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the RGB value.</li>
   <li><strong>state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive state updates.</li>
-  <li><strong>state_value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the state value.</li>
+  <li><strong>state_value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the state value. The template should match the payload “on” and “off” values, so if your light uses “power on” to turn on, your <code class="highlighter-rouge">state_value_template</code> string should return “power on” when the switch is on. For example if the message is just “on”, your <code class="highlighter-rouge">state_value_template</code> should be <code class="highlighter-rouge">power </code>.</li>
   <li><strong>white_value_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the light’s white value.</li>
   <li><strong>white_value_state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive white value updates.</li>
   <li><strong>white_value_value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the white value.</li>
