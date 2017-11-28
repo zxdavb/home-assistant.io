@@ -182,17 +182,17 @@ This is a work in progress, based upon reports in the forum, the author’s own 
     </ul>
   </li>
 </ul>
-<p>If your device has an <code class="highlighter-rouge">access_control</code> entity, but not a <code class="highlighter-rouge">binary_sensor</code> equivalent, you can use a <a href="omponents/binary_sensor.template/">template binary sensor</a> to create one:</p>
+<p>If your device has an <code class="highlighter-rouge">access_control</code> entity, but not a <code class="highlighter-rouge">binary_sensor</code> equivalent, you can use a <a href="/components/binary_sensor.template/">template binary sensor</a> to create one:</p>
 <div class="highlighter-rouge"><pre class="highlight"><code>binary_sensor:
   - platform: template
     sensors: 
       YOUR_SENSOR:
         friendly_name: "Friendly name here"
         value_template: &gt;- 
-          {%- if is_state('sensor.YOUR_SENSOR_access_control', '22') -%}
-          on
+          {%- if is_state('sensor.YOUR_ORIGINAL_SENSOR_access_control', '22') -%}
+          true
           {%- else -%}
-          off
+          false
           {%- endif -%}
 </code></pre>
 </div>
@@ -211,7 +211,7 @@ This is a work in progress, based upon reports in the forum, the author’s own 
     </ul>
   </li>
 </ul>
-<p>If your device has an <code class="highlighter-rouge">burglar</code> entity, but not a <code class="highlighter-rouge">binary_sensor</code> equivalent, you can use a <a href="omponents/binary_sensor.template/">template binary sensor</a> to create one:</p>
+<p>If your device has an <code class="highlighter-rouge">burglar</code> entity, but not a <code class="highlighter-rouge">binary_sensor</code> equivalent, you can use a <a href="/components/binary_sensor.template/">template binary sensor</a> to create one:</p>
 <div class="highlighter-rouge"><pre class="highlight"><code>binary_sensor:
   - platform: template
     sensors: 
