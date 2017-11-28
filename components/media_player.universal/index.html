@@ -75,7 +75,7 @@
   </header>
   <hr class="divider">
   <p>Universal Media Players combine multiple existing entities in Home Assistant into one media player entity. This is used for creating a single entity that controls an entire media center.</p>
-<p>Multiple Media Player entities can be controlled from a Universal Media Player. Additionally, the Universal Media Player allows volume and power commands to be re-routed to other entities in Home Assistant. This allows the power and volume to control external devices like a television or audio receiver.</p>
+<p>Multiple media player entities can be controlled from an universal media player. Additionally, the universal media player allows volume and power commands to be re-routed to other entities in Home Assistant. This allows the power and volume to control external devices like a television or audio receiver.</p>
 <p>A Universal Media Player is created in <code class="highlighter-rouge">configuration.yaml</code> as follows.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">media_player</span><span class="pi">:</span>
@@ -105,22 +105,39 @@
       <span class="s">state</span><span class="pi">:</span> <span class="s">ENTITY_ID|ATTRIBUTE</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>name</strong> (<em>Required</em>): The name to assign the player</li>
-  <li><strong>children</strong> (<em>Required</em>): Ordered list of child media players this entity will control</li>
-  <li><strong>state_template</strong> (<em>Optional</em>): A <a href="/topics/templating/">template</a> can be specified to render the state of the media player. This way, the state could depend on entities different from media players, like Switches or Input Booleans.</li>
-  <li><strong>commands</strong> (<em>Optional</em>): Commands to be overwritten. Possible entries are <em>turn_on</em>, <em>turn_off</em>, <em>select_source</em>, <em>volume_set</em>, <em>volume_up</em>, <em>volume_down</em>, and <em>volume_mute</em>.</li>
-  <li><strong>attributes</strong> (<em>Optional</em>): Attributes that can be overwritten. Possible entries are <em>is_volume_muted</em>, <em>state</em>, <em>source</em>, <em>source_list, and *volume_level</em>. The values should be an entity id and state attribute separated by a bar (|). If the entity id’s state should be used, then only the entity id should be provided.</li>
-</ul>
-<p>The Universal Media Player will primarily imitate one of its <em>children</em>. The Universal Media Player will control the first child on the list that is active (not idle/off). The Universal Media Player will also inherit its state from the first active child if a <code class="highlighter-rouge">state_template</code> is not provided. Entities in the <em>children</em> list must be media players, but the state template can contain any entity.</p>
-<p>It is recommended that the command <em>turn_on</em>, the command <em>turn_off</em>, and the attribute <em>state</em> all be provided together. The <em>state</em> attribute indicates if the Media Player is on or off. If <em>state</em> indicates the media player is off, this status will take precedence over the states of the children. If all the children are idle/off and <em>state</em> is on, the Universal Media Player’s state will be on.</p>
-<p>It is also recommended that the command <em>volume_up</em>, the command <em>volume_down</em>, the command <em>volume_mute</em>, and the attribute <em>is_volume_muted</em> all be provided together. The attribute <em>is_volume_muted</em> should return either True or the on state when the volume is muted. The <em>volume_mute</em> service should toggle the mute setting.</p>
-<p>When providing <em>select_source</em> as a command, it is recommended to also provide the attributes <em>source</em>, and <em>source_list</em>. The <em>source</em> attribute is the currently select source, while the <em>source_list</em> attribute is a list of all available sources.</p>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The name to assign the player.</span></p>
+    </dd>
+    <dt><a class="title-link" name="children" href="#children"></a> children</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="list">list</span>)</span><span class="required">(Required)</span><span class="description">Ordered list of child media players this entity will control.</span></p>
+    </dd>
+    <dt><a class="title-link" name="state_template" href="#state_template"></a> state_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Optional)</span><span class="description">A <a href="/topics/templating/">template</a> can be specified to render the state of the media player. This way, the state could depend on entities different from media players, like switches or input booleans.</span></p>
+    </dd>
+    <dt><a class="title-link" name="commands" href="#commands"></a> commands</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Commands to be overwritten. Possible entries are <code class="highlighter-rouge">turn_on</code>, <code class="highlighter-rouge">turn_off</code>, <code class="highlighter-rouge">select_source</code>, <code class="highlighter-rouge">volume_set</code>, <code class="highlighter-rouge">volume_up</code>, <code class="highlighter-rouge">volume_down</code> and <code class="highlighter-rouge">volume_mute</code>.</span></p>
+    </dd>
+    <dt><a class="title-link" name="attributes" href="#attributes"></a> attributes</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Attributes that can be overwritten. Possible entries are <code class="highlighter-rouge">is_volume_muted</code>, <code class="highlighter-rouge">state</code>, <code class="highlighter-rouge">source</code>, <code class="highlighter-rouge">source_list</code> and <code class="highlighter-rouge">volume_level</code>. The values should be an entity ID and state attribute separated by a pipe character (|). If the entity ID’s state should be used, then only the entity id should be provided.</span></p>
+    </dd>
+  </dl>
+</div>
+<p>The Universal Media Player will primarily imitate one of its <code class="highlighter-rouge">children</code>. The Universal Media Player will control the first child on the list that is active (not idle/off). The Universal Media Player will also inherit its state from the first active child if a <code class="highlighter-rouge">state_template</code> is not provided. Entities in the <code class="highlighter-rouge">children:</code> list must be media players, but the state template can contain any entity.</p>
+<p>It is recommended that the command <code class="highlighter-rouge">turn_on</code>, the command <code class="highlighter-rouge">turn_off</code>, and the attribute <code class="highlighter-rouge">state</code> all be provided together. The <code class="highlighter-rouge">state</code> attribute indicates if the media player is on or off. If <code class="highlighter-rouge">state</code> indicates the media player is off, this status will take precedence over the states of the children. If all the children are idle/off and <code class="highlighter-rouge">state</code> is on, the Universal Media Player’s state will be on.</p>
+<p>It is also recommended that the command <code class="highlighter-rouge">volume_up</code>, the command <code class="highlighter-rouge">volume_down</code>, the command <code class="highlighter-rouge">volume_mute</code>, and the attribute <code class="highlighter-rouge">is_volume_muted</code> all be provided together. The attribute <code class="highlighter-rouge">is_volume_muted</code> should return either True or the on state when the volume is muted. The <code class="highlighter-rouge">volume_mute</code> service should toggle the mute setting.</p>
+<p>When providing <code class="highlighter-rouge">select_source</code> as a command, it is recommended to also provide the attributes <code class="highlighter-rouge">source</code>, and <code class="highlighter-rouge">source_list</code>. The <code class="highlighter-rouge">source</code> attribute is the currently select source, while the <code class="highlighter-rouge">source_list</code> attribute is a list of all available sources.</p>
 <h2><a class="title-link" name="usage-examples" href="#usage-examples"></a> Usage examples</h2>
 <h4><a class="title-link" name="chromecast--kodi-control-with-switches" href="#chromecast--kodi-control-with-switches"></a> Chromecast &amp; Kodi control with switches</h4>
-<p>In this example, a switch is available to control the power of the television. Switches are also available to turn the volume up, turn the volume down, and mute the audio. These could be command line switches or any other entity in Home Assistant. The <em>turn_on</em> and <em>turn_off</em> commands will be redirected to the television, and the volume commands will be redirected to an audio receiver. The <em>select_source</em> command will be passed directly to an A/V receiver.</p>
-<p>The children are a Chromecast and a Kodi player. If the Chromecast is playing, the Universal Media Player will reflect its status. If the Chromecast is idle and Kodi is playing, the Universal Media player will change to reflect its status.</p>
+<p>In this example, a switch is available to control the power of the television. Switches are also available to turn the volume up, turn the volume down, and mute the audio. These could be command line switches or any other entity in Home Assistant. The <code class="highlighter-rouge">turn_on</code> and <code class="highlighter-rouge">turn_off</code> commands will be redirected to the television, and the volume commands will be redirected to an audio receiver. The <code class="highlighter-rouge">select_source</code> command will be passed directly to an A/V receiver.</p>
+<p>The children are a Chromecast and a Kodi player. If the Chromecast is playing, the Universal Media Player will reflect its status. If the Chromecast is idle and Kodi is playing, the universal media player will change to reflect its status.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">media_player</span><span class="pi">:</span>
   <span class="s">platform</span><span class="pi">:</span> <span class="s">universal</span>
   <span class="s">name</span><span class="pi">:</span> <span class="s">Test Universal</span>
@@ -165,15 +182,14 @@
     <span class="s">volume_level</span><span class="pi">:</span> <span class="s">media_player.receiver|volume_level</span>
     <span class="s">source</span><span class="pi">:</span> <span class="s">media_player.receiver|source</span>
     <span class="s">source_list</span><span class="pi">:</span> <span class="s">media_player.receiver|source_list</span>
-
 </code></pre>
 </div>
 <h4><a class="title-link" name="kodi-cec-tv-control" href="#kodi-cec-tv-control"></a> Kodi CEC-TV control</h4>
 <p>In this example, a <a href="/components/media_player.kodi/">Kodi Media Player</a> runs in a CEC capable device (OSMC/OpenElec running in a Raspberry Pi 24/7, for example), and, with the JSON-CEC Kodi addon installed, it can turn on and off the attached TV.</p>
-<p>We store the state of the attached TV in a hidden <a href="/components/input_boolean/">Input Boolean</a>, so we can differentiate the TV being on or off, while Kodi is always ‘idle’, and use the Universal Media Player to render its state with a template. We can hide the Kodi Media Player too, and only show the universal one, which now can differentiate between the ‘idle’ and the ‘off’ state (being the second when it is idle and the TV is off).</p>
-<p>Because the Input Boolean used to store the TV state is only changing when using the Home Assistant <code class="highlighter-rouge">turn_on</code> and <code class="highlighter-rouge">turn_off</code> actions, and Kodi could be controlled by so many ways, we also define some automations to update this Input Boolean when needed.</p>
-<p>In an Apple HomeKit scene, we can now expose this Universal Media Player as an on/off switch in Homebridge, and, that way, use Siri to turn on and off the TV.</p>
-<p>The complete yaml config is:</p>
+<p>We store the state of the attached TV in a hidden <a href="/components/input_boolean/">input boolean</a>, so we can differentiate the TV being on or off, while Kodi is always ‘idle’, and use the universal media player to render its state with a template. We can hide the Kodi Media Player too, and only show the universal one, which now can differentiate between the ‘idle’ and the ‘off’ state (being the second when it is idle and the TV is off).</p>
+<p>Because the input boolean used to store the TV state is only changing when using the Home Assistant <code class="highlighter-rouge">turn_on</code> and <code class="highlighter-rouge">turn_off</code> actions, and Kodi could be controlled by so many ways, we also define some automations to update this Input Boolean when needed.</p>
+<p>In an Apple HomeKit scene, we can now expose this universal media player as an on/off switch in Homebridge, and, that way, use Siri to turn on and off the TV.</p>
+<p>The complete configuration is:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">homeassistant</span><span class="pi">:</span>
   <span class="s">customize</span><span class="pi">:</span>
     <span class="s">input_boolean.kodi_tv_state</span><span class="pi">:</span>
