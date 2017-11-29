@@ -4,7 +4,7 @@
   <title><![CDATA[Category: How-To | Home Assistant]]></title>
   <link href="https://home-assistant.io/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2017-11-29T08:10:50+00:00</updated>
+  <updated>2017-11-29T17:07:57+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -12,6 +12,153 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Set up Hass.io on top of a virtual machine]]></title>
+    <link href="https://home-assistant.io/blog/2017/11/29/hassio-virtual-machine/"/>
+    <updated>2017-11-29T06:00:00+00:00</updated>
+    <id>https://home-assistant.io/blog/2017/11/29/hassio-virtual-machine</id>
+    <content type="html"><![CDATA[The images for the Raspberry Pi family and the Intel NUC are an easy way to get started with [Hass.io](/hassio/). For a test or if you have a system which is already hosting virtual machines then the [**Hass.io installer**](/hassio/installation/#alternative-install-on-generic-linux-server) is an option to use Hass.io in a virtualized environment. In this guide the host is a Fedora 27 system with [libvirt](https://libvirt.org/) support and the guest will be running Debian 9. Hass.io will be installed on the guest.
+
+<!--more-->
+
+Assuming that you already have setup `libvirtd`. You might need to install `virt-builder` and `virt-viewer` additionally.
+
+```bash
+$ sudo dnf -y install libguestfs-tools-c virt-install virt-viewer
+```
+
+We will create a virtual machine with Debian 9 and a 10 GB disk image in the QCOW format. Use `$ virt-builder --list` to get an overview about what's operating systems are available if you prefer to use a different system.
+
+```bash
+$ sudo virt-builder debian-9 \
+    --output /var/lib/libvirt/images/hassio.img \
+    --format qcow2 \
+    --size 10G \
+    --root-password password:test123 \
+    --hostname hassio \
+    --firstboot-command "dpkg-reconfigure openssh-server"
+[...]
+[ 147.6] Finishing off
+                   Output file: /var/lib/libvirt/images/hassio.img
+                   Output size: 10.0G
+                 Output format: qcow2
+            Total usable space: 9.3G
+                    Free space: 8.1G (87%)
+```
+
+Now, we are making our new virtual machine available for `libvirtd`. If you get an error that the OS is unknown, use `$ osinfo-query os` to get the name to use with `--os-variant`. To access the virtual machine is connected to the bridge `bridge0`.
+
+```bash
+$ sudo virt-install --name hassio --import --ram 1024 \
+     --os-variant debian9 -w bridge=bridge0 \
+     --autostart --disk /var/lib/libvirt/images/hassio.img
+```
+
+<p class='img'>
+  <img src='/images/blog/2017-11-hassio-virtual/virtual-machine-manager.png' />
+  Hass.io virtual machine in Virtual Machine Manager
+</p>
+
+Depending on your preferences you can use the Virtual Machine Manager (`virt-manager`) or `virsh` to manage the created virtual machine. Log in and create an user with `# useradd ha` and set a password with `# passwd ha`. We will need that user to make a SSH connection to the virtual machine.
+
+Log in as `ha` with the given password. If your are using the default network of `libvirtd` then the DHCP range is defined in `/var/lib/libvirt/dnsmasq/default.conf`. In this guide the virtual machine is present at 192.168.0.109.
+
+```bash
+$ ssh ha@192.168.0.109
+ha@192.168.0.109's password: 
+Linux hassio 4.9.0-3-amd64 #1 SMP Debian 4.9.30-2+deb9u3 (2017-08-06) x86_64
+[...]
+$ 
+```
+
+Install the requirements after you switch the user to `root`.
+
+```bash
+$ su
+Password: 
+root@hassio:/home/ha# 
+root@hassio:/home/ha# apt-get update
+root@hassio:/home/ha# apt-get install bash socat jq curl avahi-daemon \
+    apt-transport-https ca-certificates
+```
+
+We want the latest Docker release. This requires additional steps to set it up as unlike other distributions Debian is lacking behind with current packages.
+
+```bash
+root@hassio:/home/ha# wget https://download.docker.com/linux/debian/gpg 
+root@hassio:/home/ha# apt-key add gpg
+OK
+root@hassio:/home/ha# echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee -a /etc/apt/sources.list.d/docker.list
+root@hassio:/home/ha# apt-get update
+```
+
+Now, it's possible to install a current release of [Docker](https://www.docker.com/).
+
+```bash
+root@hassio:/home/ha# apt-get -y install docker-ce
+```
+
+Start `docker` and enable it.
+
+```bash
+root@hassio:/home/ha# systemctl start docker && systemctl enable docker
+```
+
+An [installation script](https://github.com/home-assistant/hassio-build/tree/master/install#install-hassio) will take care about the setup of all moving parts.
+
+```bash
+root@hassio:/home/ha# curl -sL https://raw.githubusercontent.com/home-assistant/hassio-build/master/install/hassio_install | bash -
+[INFO] Install supervisor docker
+[INFO] Install generic HostControl
+[INFO] Install startup scripts
+[INFO] Init systemd
+Created symlink /etc/systemd/system/multi-user.target.wants/hassio-supervisor.service → /etc/systemd/system/hassio-supervisor.service.
+[INFO] Start services
+```
+
+If it's done, then there will be two new containers.
+
+```bash
+root@hassio:/home/ha# docker ps
+CONTAINER ID        IMAGE                                    COMMAND                  CREATED             STATUS              PORTS               NAMES
+ada5bbfc74f0        homeassistant/qemux86-64-homeassistant   "/usr/bin/entry.sh..."   4 minutes ago       Up 4 minutes                            homeassistant
+5954ac452ffc        homeassistant/amd64-hassio-supervisor    "/usr/bin/entry.sh..."   7 minutes ago       Up 7 minutes                            hassio_supervisor
+```
+
+After a connection to the container which is containing Home Assistant is made, you will see the log output.
+
+```bash
+root@hassio:/home/ha# docker attach --sig-proxy=false ada5bbfc74f0
+2017-11-28 19:24:30 INFO (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sun.sun, old_state=<state sun.sun=below_horizon; next_dawn=2017-11-29T06:17:58+00:00,...
+```
+
+For further details about the container, `inspect` can help.
+
+```bash
+root@hassio:/home/ha# docker inspect bb32b525d1ad
+[...]
+            "OnBuild": null,
+            "Labels": {
+                "io.hass.arch": "amd64",
+                "io.hass.machine": "qemux86-64",
+                "io.hass.type": "homeassistant",
+                "io.hass.version": "0.58.1"
+            }
+[...]
+```
+
+Hass.io is now ready. The frontend is available at [http://192.168.0.109:8123](http://192.168.0.109:8123). Yes, the IP address is the one of the guest.
+
+<p class='img'>
+  <img src='/images/blog/2017-11-hassio-virtual/hassio.png' />
+  Hass.io overview
+</p>
+
+Keep in mind that there are limitations with this approach. Not all [add-ons](/addons/) will work and some don't make sense to use as the hardware is not present. E.g., use the [SSH community add-on](https://github.com/hassio-addons/addon-ssh) instead of the default [SSH add-on](/addons/ssh/).
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Secure remote access to Home Assistant using Tor]]></title>
@@ -464,94 +611,6 @@ Demo is running... -> CTRL + C to shutdown
 It will create sensors, a light, and a switch and update the states as long the script is running. It possible to stop and restart script without losing the entities.
 
 Some users share their slides and other documents in [our assets repository](https://github.com/home-assistant/home-assistant-assets). Also, take a look at that repository if you need a logo for your slides.
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Serial analog sensor]]></title>
-    <link href="https://home-assistant.io/blog/2017/10/23/simple-analog-sensor/"/>
-    <updated>2017-10-23T06:00:00+00:00</updated>
-    <id>https://home-assistant.io/blog/2017/10/23/simple-analog-sensor</id>
-    <content type="html"><![CDATA[This blog post is about building a super simple analog sensor for Home Assistant. The physical sensor will send the data over its virtual serial port as it will be connected over USB. The concept is similar to the [TEMPer USB](/components/sensor.temper/) devices. The attatched sensor type to the microcontroller can be any kind of sensor which gives you an analog signal from brightness over soil moisture to temperature.
-
-The microcontroller will only transfer the voltage of an analog input pin which will be between 0 and 1024. Home Assistant will use the new [`serial`](/components/sensor.serial/) sensor platform to read the data and perform actions to convert the raw reading into a real measurement. This means that you don't have to adjust the code of your microcontroller if you change the attached sensor type.
-
-<p class='img'>
-  <img src='/images/blog/2017-10-analog-sensor/analog-sensor.png' />
-  The assembled sensor
-</p>
-
-<!--more-->
-
-All parts needed in this how-to can be bought for less than 2 Euro or 2 USD from China. I'm going to use the following items which were already available in my craft crate:
-
-- [Digispark USB Development Board](http://digistump.com/category/1)
-- Temperature sensor [TMP36](http://www.analog.com/media/en/technical-documentation/data-sheets/TMP35_36_37.pdf) (or any other sensor that gives you an analog signal)
-- Cables (if you don't want to connect the sensor directly to the board)
-
-The cabling is easy.
-
-| Sensor | Digispark |
-|--------|-----------|
-| GND    | GND       |
-| VCC    | 5V        |
-| VOUT   | P4        |
-
-There are other boards with the same size available. Like those with the far more powerful Mega32U4 chip. However, it would work with boards from the Arduino family as well if you adjust the code provided below.
-
-The sketch is pretty simple. We are going to send the readings to a virtual [serial output](https://digistump.com/wiki/digispark/tutorials/digicdc) every 5 seconds. No logic needed. A little plus is that the onboard LED is blinking as an indicator that the board is working. [Upload](https://digistump.com/wiki/digispark) the code to your Digispark board. Keep in mind that the upload process is different than with Arduino or ESP8266 boards.
-
-```cpp
-#include <DigiCDC.h>
-
-#define LED_PIN 1
-#define INPUT_PIN 2  // Physical pin P4 is analog input 2
-
-void setup() {
-  SerialUSB.begin();
-  pinMode(LED_PIN, OUTPUT);
-}
-
-void loop() {
-  if (SerialUSB.available()) {
-    digitalWrite(LED_PIN, HIGH);
-    SerialUSB.delay(250);
-
-    int reading = analogRead(INPUT_PIN);
-    SerialUSB.println(reading);
-
-    digitalWrite(LED_PIN, LOW);
-    SerialUSB.delay(5000);
-  }
-}
-```
-
-To make it work with other boards simply use [`Serial.begin(115200);`](https://www.arduino.cc/en/Reference/Serial) and [`Serial.println(reading);`](https://www.arduino.cc/en/Serial/Println).
-
-If you connect with a tool like `minicom` to your system's serial port `/dev/ttyACM0`, then you will get the data. To use the sensor with Home Assistant the [`serial`](/components/sensor.serial/) sensor platform needs to be set up. 
-
-```yaml
-sensor:
-  - platform: serial
-    port: /dev/ttyACM0
-```
-
-The physical sensor reads the current voltage of the pin. A [template sensor](/components/sensor.template/) takes the reading and converts it into a measurement. The data sheet of the sensor unit usually contains details about the involved calculations. 
-
-
-```yaml
-  - platform: template
-    sensors:
-      temperature:
-        friendly_name: Temperature
-        unit_of_measurement: "°C"
-        value_template: "{{ (((states('sensor.serial_sensor') | float * 5 / 1024 ) - 0.5) * 100) | round(1) }}"
-```
-
-
-Hide the serial sensor if you don't want to see the raw data in the frontend and you are done. The whole setup with a Digispark is not very reliable because there is no hardware USB support. As a showcase and if you don't build your automation rules around it does the sensor what it should for a very small price. 
-
 
 ]]></content>
   </entry>

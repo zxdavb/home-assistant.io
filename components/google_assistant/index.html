@@ -102,7 +102,7 @@ To use Google Assistant your Home Assistant configuration has to be externally a
   <li><em>client_id</em> (Required): A long random URL safe string (no spaces or special characters) that will be used for Implicit OAuth.</li>
   <li><em>access_token</em> (Required): Another different long random URL safe string.</li>
   <li><em>agent_user_id</em> (Optional): A string to identify the user, e.g., email address. If not provided, the component will generate one.</li>
-  <li><em>api_key</em> (Optional): An API Key generated for the project from Google Console which allows you to update devices without unlinking and relinking an account (see setup below). If not provided then the request_sync service is not exposed.</li>
+  <li><em>api_key</em> (Optional): An API Key generated for the project from <a href="https://console.cloud.google.com/apis/api/homegraph.googleapis.com/overview">Google Console</a> which allows you to update devices without unlinking and relinking an account (see setup below). If not provided then the request_sync service is not exposed.</li>
   <li><em>exposed_domains</em> (Optional): An array of Home Assistant domains to expose to Google Assistant. Options include:
     <ul>
       <li><code class="highlighter-rouge">switch</code></li>
@@ -196,7 +196,7 @@ Note: This must be an HTTPS URL to work.</li>
   </li>
   <li>If you want to use the <code class="highlighter-rouge">google_assistant.request_sync</code> service in Home Assistant, then enable Homegraph API for your project:
     <ol>
-      <li>Go to https://console.cloud.google.com/apis/api/homegraph.googleapis.com/overview</li>
+      <li>Go to the <a href="https://console.cloud.google.com/apis/api/homegraph.googleapis.com/overview">cloud console</a></li>
       <li>Select your project and click Enable Homegraph API</li>
       <li>Go to Credentials and select API Key from Create Credentials</li>
       <li>Note down the generated API Key and use this in the configuration</li>
