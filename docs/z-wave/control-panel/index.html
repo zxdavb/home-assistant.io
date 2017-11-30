@@ -119,7 +119,8 @@ Battery powered devices need to be awake before you can use the Z-Wave control p
   <li><strong>Refresh Entity</strong> to refresh just that entity’s values</li>
   <li><strong>Entity Attributes</strong> to display the attributes of that entity (eg it’s friendly name, the ID of the node, etc)</li>
 </ul>
-<p>Here you can mark a device as requiring polling (before 0.55 this was displayed at the top), so the controller is aware of changes because the device doesn’t send updates itself. Do see the information on <a href="/docs/z-wave/polling/">polling here</a>, since excessive polling can break your Z-Wave network.</p>
+<p>Here you can mark a device as requiring polling so the controller is aware of changes because the device doesn’t send updates itself. Do see the information on <a href="/docs/z-wave/devices/#polling">polling here</a>, since excessive polling can break your Z-Wave network.</p>
+<p>The <strong>Polling intensity</strong> says how many poll intervals does is this device polled on. For example, if you set 2 then it’s polled on every second interval.</p>
 <p>You can also exclude a Z-Wave devices from Home Assistant. You can do that if you have a device that you need to have on the Z-Wave network, but you don’t want it to appear in Home Assistant, or if you’ve got a device that’s failed and you’re unable to exclude it.</p>
 <h3><a class="title-link" name="node-information" href="#node-information"></a> Node Information</h3>
 <p>This will display the Z-Wave related information about the node:</p>
