@@ -80,14 +80,14 @@
 <span class="s">notify</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s">NOTIFIER_NAME</span>
     <span class="s">platform</span><span class="pi">:</span> <span class="s">html5</span>
-    <span class="s">gcm_api_key</span><span class="pi">:</span> <span class="s1">'</span><span class="s">gcm-sender-key'</span>
+    <span class="s">gcm_api_key</span><span class="pi">:</span> <span class="s1">'</span><span class="s">gcm-server-key'</span>
     <span class="s">gcm_sender_id</span><span class="pi">:</span> <span class="s1">'</span><span class="s">gcm-sender-id'</span>
 </code></pre>
 </div>
 <p>Configuration variables:</p>
 <ul>
   <li><strong>name</strong> (<em>Optional</em>): Setting the optional parameter <code class="highlighter-rouge">name</code> allows multiple notifiers to be created. The default value is <code class="highlighter-rouge">notify</code>. The notifier will bind to the service <code class="highlighter-rouge">notify.NOTIFIER_NAME</code>.</li>
-  <li><strong>gcm_api_key</strong> (<em>Required if pushing to Chrome</em>): The API key provided to you by Google for Google Cloud Messaging (GCM). Required to push to Chrome.</li>
+  <li><strong>gcm_api_key</strong> (<em>Required if pushing to Chrome</em>): The API Server key provided to you by Google for Google Cloud Messaging (GCM). Required to push to Chrome.</li>
   <li><strong>gcm_sender_id</strong> (<em>Required if pushing to Chrome</em>): The sender ID provided to you by Google for Google Cloud Messaging (GCM). Required to push to Chrome.</li>
 </ul>
 <h3><a class="title-link" name="getting-ready-for-chrome" href="#getting-ready-for-chrome"></a> Getting ready for Chrome</h3>
@@ -101,7 +101,7 @@
 <h4><a class="title-link" name="verify-your-domain-with-hassio" href="#verify-your-domain-with-hassio"></a> Verify your domain with Hass.io</h4>
 <ol>
   <li>For verifying your domain you need to download a file in step 2.</li>
-  <li>Create a dictionary named “www” in you Hass.io configuration dictionary.</li>
+  <li>Create a dictionary named “www” in you Hass.io configuration directory.</li>
   <li>Place the file (something like this: google*.html) in the “www” directory.</li>
   <li>You can open it by going to <strong>https://yourdomain/local/exact_file_name.html</strong></li>
   <li>Proceed with step 3.</li>
