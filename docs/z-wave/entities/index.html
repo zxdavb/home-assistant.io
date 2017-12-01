@@ -219,9 +219,9 @@ This is a work in progress, based upon reports in the forum, the author’s own 
         friendly_name: "Friendly name here"
         value_template: &gt;-
           {%- if is_state('sensor.YOUR_SENSOR_burglar', '8') -%}
-          on
+          true
           {%- else -%}
-          off
+          false
           {%- endif -%}
 </code></pre>
 </div>

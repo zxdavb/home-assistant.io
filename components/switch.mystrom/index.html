@@ -108,6 +108,18 @@
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl -G -X GET http://IP_ADDRESS/relay -d <span class="s1">'state=1'</span>
 </code></pre>
 </div>
+<h3><a class="title-link" name="get-the-current-power-consumption" href="#get-the-current-power-consumption"></a> Get the current power consumption</h3>
+<p>The switch is measuring the current power consumption. To expose this as a sensor use a <a href="/components/sensor.template/"><code class="highlighter-rouge">template</code> sensor</a>.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="s">sensor</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">template</span>
+    <span class="s">sensors</span><span class="pi">:</span>
+      <span class="s">power</span><span class="pi">:</span>
+        <span class="s">friendly_name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Current</span><span class="nv"> </span><span class="s">Power"</span>
+        <span class="s">unit_of_measurement</span><span class="pi">:</span> <span class="s2">"</span><span class="s">W"</span>
+        <span class="s">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">states.switch.office.attributes.current_power_w</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
