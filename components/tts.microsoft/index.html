@@ -86,18 +86,26 @@ You will need an API key, which is free. You can use your <a href="https://azure
 <p>Configuration variables:</p>
 <ul>
   <li><strong>api_key</strong> (<em>Required</em>): Your API key.</li>
-  <li><strong>language</strong> (<em>Optional</em>): The language to use. Defaults to <code class="highlighter-rouge">en-us</code>. Accepted values are listed in the documentation mentioned below.</li>
+  <li><strong>language</strong> (<em>Optional</em>): The language to use. Defaults to <code class="highlighter-rouge">en-us</code>. Accepted values are listed in the documentation mentioned below. Note that if you set the language to anything other than the default of <code class="highlighter-rouge">en-us</code>, you will need to specify a matching voice type as well.</li>
   <li><strong>gender</strong> (<em>Optional</em>): The gender you would like to use for the voice. Accepted values are <code class="highlighter-rouge">Female</code> and <code class="highlighter-rouge">Male</code>. Defaults to <code class="highlighter-rouge">Female</code></li>
   <li><strong>type</strong> (<em>Optional</em>): The voice type you want to use. Accepted values are listed in the service name mapping <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/Speech/api-reference-rest/bingvoiceoutput">in the documentation</a>. Defaults to <code class="highlighter-rouge">ZiraRUS</code></li>
+  <li><strong>rate</strong> (<em>Optional</em>): Change the rate of speaking. Example values: <code class="highlighter-rouge">-25%</code>, <code class="highlighter-rouge">+50%</code>. Defaults to <code class="highlighter-rouge">+0%</code> (no change)</li>
+  <li><strong>volume</strong> (<em>Optional</em>): Change the volume of the output. Example values: <code class="highlighter-rouge">-20%</code>, <code class="highlighter-rouge">+70%</code>. Defaults to <code class="highlighter-rouge">+0%</code> (no change)</li>
+  <li><strong>pitch</strong> (<em>Optional</em>): Change the pitch of the output. Example values: <code class="highlighter-rouge">high</code>. Defaults to <code class="highlighter-rouge">default</code> (no change)</li>
+  <li><strong>contour</strong> (<em>Optional</em>): Change the contour of the output. This overrides the pitch setting. See the <a href="http://www.w3.org/TR/speech-synthesis/#pitch_contour">W3 SSML specification</a> for what it does. Example value: <code class="highlighter-rouge">(0%,+0%) (100%,+100%)</code></li>
 </ul>
 <p>A full configuration sample including optional configuration variables:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">tts</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">microsoft</span>
     <span class="s">api_key</span><span class="pi">:</span> <span class="s">XXXXXXXXX</span>
-    <span class="s">language</span><span class="pi">:</span> <span class="s">en-us</span>
-    <span class="s">gender</span><span class="pi">:</span> <span class="s">male</span>
-    <span class="s">type</span><span class="pi">:</span> <span class="s">BenjaminRUS</span>
+    <span class="s">language</span><span class="pi">:</span> <span class="s">en-gb</span>
+    <span class="s">gender</span><span class="pi">:</span> <span class="s">Male</span>
+    <span class="s">type</span><span class="pi">:</span> <span class="s">George, Apollo</span>
+    <span class="s">rate</span><span class="pi">:</span> <span class="s">+20%</span>
+    <span class="s">volume</span><span class="pi">:</span> <span class="s">-50%</span>
+    <span class="s">pitch</span><span class="pi">:</span> <span class="s">high</span>
+    <span class="s">contour</span><span class="pi">:</span> <span class="s">(0%, +0%) (100%, +100%)</span>
 </code></pre>
 </div>
 </article>
