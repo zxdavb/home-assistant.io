@@ -74,24 +74,18 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">tellduslive</code> component let you connect to <a href="https://live.telldus.com">Telldus Live</a>. It’s cloud platform that connects to your Tellstick connected gear at home.</p>
-<p>To get started using Telldus Live, you will have to obtain developer keys from the <a href="https://api.telldus.com/keys/index">developer page</a>.</p>
-<p>To integrate your Telldus Live with Home Assistant, add the following section to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
+  <p>The <code class="highlighter-rouge">tellduslive</code> component let you connect to <a href="https://live.telldus.com">Telldus Live</a>. It’s cloud platform that connects to your Tellstick Net or Tellstick ZNet connected gear at home.</p>
+<p>Home Assistant will automatically discover the presence of a Tellstick Net or Tellstick ZNet on your local network if the <a href="/components/discovery/">discovery</a> component is enabled. To manually integrate your Telldus Live with Home Assistant, e.g. if your device is on another network or in another location, add the following section to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">tellduslive</span><span class="pi">:</span>
-  <span class="s">public_key</span><span class="pi">:</span> <span class="s">ABCDEFGHJKLMNOPQRSTUVXYZ</span>
-  <span class="s">private_key</span><span class="pi">:</span> <span class="s">ABCDEFGHJKLMNOPQRSTUVXYZ</span>
-  <span class="s">token</span><span class="pi">:</span> <span class="s">ABCDEFGHJKLMNOPQRSTUVXYZ</span>
-  <span class="s">token_secret</span><span class="pi">:</span> <span class="s">ABCDEFGHJKLMNOPQRSTUVXYZ</span>
 </code></pre>
 </div>
 <p>Configuration variables:</p>
 <ul>
-  <li><strong>public_key</strong> (<em>Required</em>): The public key for the Telldus Live service.</li>
-  <li><strong>private_key</strong> (<em>Required</em>): The private key for the Telldus Live service.</li>
-  <li><strong>token</strong> (<em>Required</em>): The token for the Telldus Live service.</li>
-  <li><strong>token_secret</strong> (<em>Required</em>): The token secret for the Telldus Live service.</li>
+  <li><strong>host</strong> (<em>Optional</em>): Host address to Tellstick Net or Tellstick ZNet for Local API, only useful when automatic discovery is not enabled.</li>
+  <li><strong>update_interval</strong> (<em>Optional</em>): Interval (in seconds) for polling the Telldus Live server (or the local server).</li>
 </ul>
+<p>The component will offer configuration through the Home Assistant user interface where it will let you associate it with your Telldus Live account.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
