@@ -74,21 +74,30 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>Any component has the possibility to add a panel to the frontend. Panels will be rendered full screen and have real-time access to the Home Assistant object via JavaScript. Examples of this in the app are map, logbook and history.</p>
+  <p>Panels are pages within Home Assistant that show information within Home Assistant and can allow controlling it. Panels are linked from the sidebar and rendered full screen. The have have real-time access to the Home Assistant object via JavaScript. Examples of panels in the app are map, logbook and history.</p>
+<p>Besides components registering panels, users can also register panels using the <code class="highlighter-rouge">panel_custom</code> component. This allows users to quickly build their own custom interfaces for Home Assistant.</p>
+<h3><a class="title-link" name="before-you-get-started" href="#before-you-get-started"></a> Before you get started</h3>
+<p>The Home Assistant user interface is currently served to browsers in modern JavaScript and older JavaScript (ES5). The older version has a wider browser support but that comes at a cost of size, performance and more difficult to get started building panels for authors.</p>
+<p>We therefore advice to set up the frontend to serve the modern version of the frontend so that you won’t need any build tools while developing. If you realize that your audience requires both, you can add a transpilation step in the future. To set up your frontend to always serve the latest version, add this to your config:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>frontend:
+  javascript_version: latest
+</code></pre>
+</div>
+<h3><a class="title-link" name="building-your-first-panel" href="#building-your-first-panel"></a> Building your first panel</h3>
 <p>Create a file called <code class="highlighter-rouge">hello.html</code> in your <config dir="">/panels/.</config></p>
 <p>The <code class="highlighter-rouge">hello.html</code> contains the needed building blocks to create the elements inside the view.</p>
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">dom</span><span class="o">-</span><span class="nx">module</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'ha-panel-hello'</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">style</span><span class="o">&gt;</span>
-      <span class="nx">p</span> <span class="p">{</span>
-        <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="err">:</span> <span class="nx">bold</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;dom-module</span> <span class="na">id=</span><span class="s">'ha-panel-hello'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;template&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+      <span class="nt">p</span> <span class="p">{</span>
+        <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
       <span class="p">}</span>
-    <span class="o">&lt;</span><span class="sr">/style</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="p">{{</span><span class="nx">who</span><span class="p">}}.</span> <span class="nx">Greetings</span> <span class="nx">from</span> <span class="nx">Home</span> <span class="nx">Assistant</span><span class="p">.</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="sr">/template</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/dom-module</span><span class="err">&gt;
-</span>
-<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Hello {{who}}. Greetings from Home Assistant.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/template&gt;</span>
+<span class="nt">&lt;/dom-module&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
 <span class="kr">class</span> <span class="nx">HaPanelHello</span> <span class="kr">extends</span> <span class="nx">Polymer</span><span class="p">.</span><span class="nx">Element</span> <span class="p">{</span>
   <span class="kr">static</span> <span class="nx">get</span> <span class="nx">is</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'ha-panel-hello'</span><span class="p">;</span> <span class="p">}</span>
   
@@ -121,8 +130,8 @@
   <span class="p">}</span>
 <span class="p">}</span>
 <span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="nx">HaPanelHello</span><span class="p">.</span><span class="nx">is</span><span class="p">,</span> <span class="nx">HaPanelHello</span><span class="p">);</span>
-<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span></code></pre>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre>
 </div>
 <p>Create an entry for the new panel in your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">panel_custom</span><span class="pi">:</span>
