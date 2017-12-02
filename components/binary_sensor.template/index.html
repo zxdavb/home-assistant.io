@@ -202,7 +202,7 @@ sensor far more efficient.</p>
 <p>This example creates a washing machine “load running” sensor by monitoring an
 energy meter connected to the washer. During the washer’s operation, the energy
 meter will fluctuate wildly, hitting zero frequently even before the load is
-finished. By utilizing <code class="highlighter-rouge">off_delay</code>, we can have this sensor only turn off if
+finished. By utilizing <code class="highlighter-rouge">delay_off</code>, we can have this sensor only turn off if
 there has been no washer activity for 5 minutes.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Determine when the washing machine has a load running.</span>
 <span class="s">binary_sensor</span><span class="pi">:</span>
