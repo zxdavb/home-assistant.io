@@ -105,6 +105,9 @@ These devices will either show as a binary sensor or a sensor called <code class
 </code></pre>
 </div>
 <p>Finally, reboot to make those changes active. It’s been reported that this is also required on the Pi2.</p>
+<p class="note">
+  If you’ve installed the Z-Way software, you’ll need to ensure you disable it before you install Home Assistant or you won’t be able to access the board. Do this with <code class="highlighter-rouge">sudo /etc/init.d/z-way-server stop; sudo update-rc.d z-way-server disable</code>.
+</p>
 <h3><a class="title-link" name="aeon-minimote" href="#aeon-minimote"></a> Aeon Minimote</h3>
 <p>Here’s a handy configuration for the Aeon Labs Minimote that defines all possible button presses. Put it into <code class="highlighter-rouge">automation.yaml</code>.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code>  <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s">mini_1_pressed</span>
@@ -115,7 +118,6 @@ These devices will either show as a binary sensor or a sensor called <code class
         <span class="s">event_data</span><span class="pi">:</span>
           <span class="s">entity_id</span><span class="pi">:</span> <span class="s">zwave.aeon_labs_minimote_1</span>
           <span class="s">scene_id</span><span class="pi">:</span> <span class="s">1</span>
-
   <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s">mini_1_held</span>
     <span class="s">alias</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Minimote</span><span class="nv"> </span><span class="s">Button</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">Held'</span>
     <span class="s">trigger</span><span class="pi">:</span>
@@ -124,7 +126,6 @@ These devices will either show as a binary sensor or a sensor called <code class
         <span class="s">event_data</span><span class="pi">:</span>
           <span class="s">entity_id</span><span class="pi">:</span> <span class="s">zwave.aeon_labs_minimote_1</span>
           <span class="s">scene_id</span><span class="pi">:</span> <span class="s">2</span>
-
   <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s">mini_2_pressed</span>
     <span class="s">alias</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Minimote</span><span class="nv"> </span><span class="s">Button</span><span class="nv"> </span><span class="s">2</span><span class="nv"> </span><span class="s">Pressed'</span>
     <span class="s">trigger</span><span class="pi">:</span>
@@ -133,7 +134,6 @@ These devices will either show as a binary sensor or a sensor called <code class
         <span class="s">event_data</span><span class="pi">:</span>
           <span class="s">entity_id</span><span class="pi">:</span> <span class="s">zwave.aeon_labs_minimote_1</span>
           <span class="s">scene_id</span><span class="pi">:</span> <span class="s">3</span>
-
   <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s">mini_2_held</span>
     <span class="s">alias</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Minimote</span><span class="nv"> </span><span class="s">Button</span><span class="nv"> </span><span class="s">2</span><span class="nv"> </span><span class="s">Held'</span>
     <span class="s">trigger</span><span class="pi">:</span>
@@ -142,7 +142,6 @@ These devices will either show as a binary sensor or a sensor called <code class
         <span class="s">event_data</span><span class="pi">:</span>
           <span class="s">entity_id</span><span class="pi">:</span> <span class="s">zwave.aeon_labs_minimote_1</span>
           <span class="s">scene_id</span><span class="pi">:</span> <span class="s">4</span>
-
   <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s">mini_3_pressed</span>
     <span class="s">alias</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Minimote</span><span class="nv"> </span><span class="s">Button</span><span class="nv"> </span><span class="s">3</span><span class="nv"> </span><span class="s">Pressed'</span>
     <span class="s">trigger</span><span class="pi">:</span>
@@ -151,7 +150,6 @@ These devices will either show as a binary sensor or a sensor called <code class
         <span class="s">event_data</span><span class="pi">:</span>
           <span class="s">entity_id</span><span class="pi">:</span> <span class="s">zwave.aeon_labs_minimote_1</span>
           <span class="s">scene_id</span><span class="pi">:</span> <span class="s">5</span>
-
   <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s">mini_3_held</span>
     <span class="s">alias</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Minimote</span><span class="nv"> </span><span class="s">Button</span><span class="nv"> </span><span class="s">3</span><span class="nv"> </span><span class="s">Held'</span>
     <span class="s">trigger</span><span class="pi">:</span>
@@ -160,7 +158,6 @@ These devices will either show as a binary sensor or a sensor called <code class
         <span class="s">event_data</span><span class="pi">:</span>
           <span class="s">entity_id</span><span class="pi">:</span> <span class="s">zwave.aeon_labs_minimote_1</span>
           <span class="s">scene_id</span><span class="pi">:</span> <span class="s">6</span>
-
   <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s">mini_4_pressed</span>
     <span class="s">alias</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Minimote</span><span class="nv"> </span><span class="s">Button</span><span class="nv"> </span><span class="s">4</span><span class="nv"> </span><span class="s">Pressed'</span>
     <span class="s">trigger</span><span class="pi">:</span>
@@ -169,7 +166,6 @@ These devices will either show as a binary sensor or a sensor called <code class
         <span class="s">event_data</span><span class="pi">:</span>
           <span class="s">entity_id</span><span class="pi">:</span> <span class="s">zwave.aeon_labs_minimote_1</span>
           <span class="s">scene_id</span><span class="pi">:</span> <span class="s">7</span>
-
   <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s">mini_4_held</span>
     <span class="s">alias</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Minimote</span><span class="nv"> </span><span class="s">Button</span><span class="nv"> </span><span class="s">4</span><span class="nv"> </span><span class="s">Held'</span>
     <span class="s">trigger</span><span class="pi">:</span>
