@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Release-Notes | Home Assistant]]></title>
   <link href="https://home-assistant.io/blog/categories/release-notes/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2017-12-03T19:29:19+00:00</updated>
+  <updated>2017-12-03T20:07:36+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -34,7 +34,7 @@ With the Dominos Pizza integration made by [@wardcraigj] your home is now taking
 </p>
 
 ## <a class='title-link' name='shopping-list-tweaks' href='#shopping-list-tweaks'></a> Shopping list tweaks 
-New items for the [`shopping_list`][shopping_list docs] can now be created with HTTP requests.  [@balloob] extented the component with this feature. 
+[@balloob] has refreshed the shopping list UI to make it more usable. It's now possible to add items by typing, instead of just voice. Also editting has been made easier.
 
 ## <a class='title-link' name='entity-picker' href='#entity-picker'></a> Entity picker 
 [@balloob] improved the way if you want to pick an entity. In the automation editor, the script editor and the service section of the Developer Tools it's much easier to identify the right one! The automation editor will only suggest relevant entities.
