@@ -101,8 +101,14 @@ Please remember to ensure you’re using an <a href="https://www.raspberrypi.org
 If you copy over your existing Home Assistant configuration, make sure to enable the Hass.io panel by adding either <code class="highlighter-rouge">discovery:</code> or <code class="highlighter-rouge">hassio:</code> to your configuration.
 </p>
 <h2><a class="title-link" name="alternative-install-on-generic-linux-server" href="#alternative-install-on-generic-linux-server"></a> Alternative: install on generic Linux server</h2>
-<p>For advanced users, it is also possible to try Hass.io on your Linux server or inside a VM. To do so, <a href="https://github.com/home-assistant/hassio-build/tree/master/install#install-hassio">follow these instructions</a>.</p>
-<p class="note">When you use this installation method, some add-ons will not be available and the documentation might not work for your installation.</p>
+<p>For advanced users, it is also possible to try Hass.io on your <a href="https://github.com/home-assistant/hassio-build/tree/master/install#install-hassio">Linux server or inside a virtual machine</a>. To do so, run the following command as root:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>curl -sL https://raw.githubusercontent.com/home-assistant/hassio-build/master/install/hassio_install | bash -s
+</code></pre>
+</div>
+<p class="note">
+When you use this installation method, some add-ons will not be available and the documentation might not work for your installation.
+</p>
+<p>A detailed guide about running Hass.io as a virtual machine is available in the <a href="/blog/2017/11/29/hassio-virtual-machine/">blog</a>.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
