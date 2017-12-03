@@ -93,6 +93,7 @@
     <span class="pi">-</span> <span class="s1">'</span><span class="s">queue_remaining'</span>
     <span class="pi">-</span> <span class="s1">'</span><span class="s">disk_size'</span>
     <span class="pi">-</span> <span class="s1">'</span><span class="s">disk_free'</span>
+    <span class="pi">-</span> <span class="s1">'</span><span class="s">queue_count'</span>
 </code></pre>
 </div>
 <p>Configuration variables:</p>
@@ -110,6 +111,7 @@
       <li><strong>queue_remaining</strong>: Remaining elements in the queue</li>
       <li><strong>disk_size</strong>: Disk size of the storage location</li>
       <li><strong>disk_free</strong>: Free disk space at the storage location</li>
+      <li><strong>queue_count</strong>: Number of items in the queue</li>
     </ul>
   </li>
 </ul>
@@ -120,6 +122,7 @@
  - sensor.sabnzbd_left
  - sensor.sabnzbd_disk
  - sensor.sabnzbd_disk_free
+ - sensor.sabnzdb_queue_count
 </code></pre>
 </div>
 <p>As always, you can determine the names of sensors by looking at the dev-state page <code class="highlighter-rouge">&lt; &gt;</code> in the web interface.</p>

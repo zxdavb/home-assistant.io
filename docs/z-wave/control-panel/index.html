@@ -164,6 +164,22 @@ Battery powered devices need to be awake before you can use the Z-Wave control p
 <h3><a class="title-link" name="node-config-options" href="#node-config-options"></a> Node config options</h3>
 <p>You can set the <em>wakeup</em> interval (in seconds) of the device, this is shown for all devices that can be battery powered, even if they are currently mains powered. The wakeup interval only applies when those devices are battery powered.</p>
 <p>Underneath that you can select any supported configuration parameter to see the current setting. You can then change this and select <strong>Set Config Parameter</strong> to updated it. Battery powered devices will be updated the next time they wake.</p>
+<h2><a class="title-link" name="node-user-codes" href="#node-user-codes"></a> Node user codes</h2>
+<p>If your node has user codes, you can set and delete them. The format is raw hex Ascii code. Bellow the input you will see your actual code. For normal nodes this is as follows:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">\x30 = 0</span>
+<span class="s">\x31 = 1</span>
+<span class="s">\x32 = 2</span>
+<span class="s">\x33 = 3</span>
+<span class="s">\x34 = 4</span>
+<span class="s">\x35 = 5</span>
+<span class="s">\x36 = 6</span>
+<span class="s">\x37 = 7</span>
+<span class="s">\x38 = 8</span>
+<span class="s">\x39 = 9</span>
+</code></pre>
+</div>
+<p>Some non compliant device like tag readers, have implemented to use raw hex code.
+Please refer to a hex ascii table to set your code. Example: http://www.asciitable.com/</p>
 <h2><a class="title-link" name="ozw-log" href="#ozw-log"></a> OZW Log</h2>
 <p>If you want to only retrieve some lines at the end of the log, you can specify that with the selection field. Max is the last 1000 lines and minimum is 0 which equals the whole log. If this is not specified, you will retrieve the whole log.
 Select <strong>Refresh</strong> to display the log if you need it to check activities.</p>

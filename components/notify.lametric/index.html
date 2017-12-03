@@ -74,20 +74,67 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>This component allows to send notification to a LaMetric device. It need the LaMetric platform to be configured first.</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">notify</span><span class="pi">:</span>
-  <span class="s">name</span><span class="pi">:</span> <span class="s">lametric1</span>
+  <p>The <code class="highlighter-rouge">lametric</code> notification platform allows to send notification to a LaMetric device. It needs the LaMetric platform to be configured first.</p>
+<p>To enable LaMetric notifications in your installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="s">notify</span><span class="pi">:</span>
+  <span class="s">name</span><span class="pi">:</span> <span class="s">NOTIFIER_NAME</span>
   <span class="s">platform</span><span class="pi">:</span> <span class="s">lametric</span>
-  <span class="s">display_time</span><span class="pi">:</span> <span class="s">20</span>
-  <span class="s">icon</span><span class="pi">:</span> <span class="s">i555</span>
 </code></pre>
 </div>
-<ul>
-  <li><strong>name</strong> (<em>Optional</em>): The name of the LaMetric device. Usually it is “My Lametric”</li>
-  <li><strong>display_time</strong> (<em>Optional</em>): Defines how long the message should be displayed (in seconds).</li>
-  <li><strong>icon</strong> (<em>Optional</em>): An icon or animation. Check out the list of all icons her: https://developer.lametric.com/icons 
-Note that icons always begin with “i” while animations begin with “a”. This is part of the name, you can’t just use the number.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The optional parameter <code class="highlighter-rouge">name</code> allows multiple notifiers to be created. The notifier will bind to the service <code class="highlighter-rouge">notify.NOTIFIER_NAME</code>.</span></p>
+      <p class="default">Default value: notify</p>
+    </dd>
+    <dt><a class="title-link" name="lifetime" href="#lifetime"></a> lifetime</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">Defines how long the message remains in LaMetric notification queue (in seconds).</span></p>
+      <p class="default">Default value: 10</p>
+    </dd>
+    <dt><a class="title-link" name="icon" href="#icon"></a> icon</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">An icon or animation.</span></p>
+    </dd>
+    <dt><a class="title-link" name="cycles" href="#cycles"></a> cycles</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">Defines how often the notification is displayed.</span></p>
+      <p class="default">Default value: 1</p>
+    </dd>
+  </dl>
+</div>
+<p>Check out the list of all icons at <a href="https://developer.lametric.com/icons">https://developer.lametric.com/icons</a>. Note that icons always begin with “i” while animations begin with “a”. This is part of the name, you can’t just use the number!</p>
+<h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>
+<h3><a class="title-link" name="full-configuration-example" href="#full-configuration-example"></a> Full configuration example</h3>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="s">notify</span><span class="pi">:</span>
+  <span class="s">name</span><span class="pi">:</span> <span class="s">NOTIFIER_NAME</span>
+  <span class="s">platform</span><span class="pi">:</span> <span class="s">lametric</span>
+  <span class="s">lifetime</span><span class="pi">:</span> <span class="s">20</span>
+  <span class="s">icon</span><span class="pi">:</span> <span class="s">a7956</span>
+  <span class="s">cycles</span><span class="pi">:</span> <span class="s">3</span>
+</code></pre>
+</div>
+<h3><a class="title-link" name="changing-sounds-and-icons" href="#changing-sounds-and-icons"></a> Changing sounds and icons</h3>
+<p>To add a notification sound or an icon override, it has to be done via service data.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Send</span><span class="nv"> </span><span class="s">notification</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">arrival</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">school"</span>
+  <span class="s">trigger</span><span class="pi">:</span>
+    <span class="s">platform</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="s">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.son_mobile</span>
+    <span class="s">from</span><span class="pi">:</span> <span class="s1">'</span><span class="s">not_home'</span>
+    <span class="s">to</span><span class="pi">:</span> <span class="s1">'</span><span class="s">school'</span>
+  <span class="s">action</span><span class="pi">:</span>
+    <span class="s">service</span><span class="pi">:</span> <span class="s">notify.lametric</span>
+    <span class="s">data</span><span class="pi">:</span>
+      <span class="s">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Son</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">arrived</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">school!"</span>
+      <span class="s">data</span><span class="pi">:</span>
+        <span class="s">sound</span><span class="pi">:</span> <span class="s1">'</span><span class="s">notification'</span>
+        <span class="s">icon</span><span class="pi">:</span> <span class="s1">'</span><span class="s">i51'</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

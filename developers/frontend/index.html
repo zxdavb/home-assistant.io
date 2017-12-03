@@ -85,7 +85,7 @@ All commands below need to be run from inside the home-assistant-polymer reposit
 <p>Home Assistant will by default serve the compiled version of the frontend from the hass_frontend Python package. For development you want to work with the unbundled source files which are in the home-assistant-polymer repository.</p>
 <p>First step is to configure Home Assistant to use the development mode for the frontend. Do this by updating the frontend config in your <code class="highlighter-rouge">configuration.yaml</code> and set the path to the polymer repo:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">frontend</span><span class="pi">:</span>
-  <span class="s">development_repo</span><span class="pi">:</span> <span class="s">../home-assistant-polymer</span>
+  <span class="s">development_repo</span><span class="pi">:</span> <span class="s">&lt;absolute path to home-assistant-polymer&gt;</span>
 </code></pre>
 </div>
 <p>Next step is to git clone the <a href="https://github.com/home-assistant/home-assistant-polymer">home-assistant-polymer repository</a>. You can place the repository anywhere on your system but to keep these instructions simple we’re cloning the home-assistant-polymer repository as a sibling to the Home Assistant repo.</p>

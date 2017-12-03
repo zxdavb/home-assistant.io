@@ -78,6 +78,7 @@
 <p>The way these sensors are displayed in the frontend can be modified in the <a href="/getting-started/customizing-devices/">customize section</a>. The following device classes are supported for binary sensors:</p>
 <ul>
   <li><strong>None</strong>: Generic on/off. This is the default and doesn’t need to be set.</li>
+  <li><strong>battery</strong>: <code class="highlighter-rouge">On</code> means low, <code class="highlighter-rouge">Off</code> means normal</li>
   <li><strong>cold</strong>: <code class="highlighter-rouge">On</code> means cold</li>
   <li><strong>connectivity</strong>: <code class="highlighter-rouge">On</code> means connection present, <code class="highlighter-rouge">Off</code> means no connection</li>
   <li><strong>gas</strong>: <code class="highlighter-rouge">On</code> means gas detected</li>
@@ -90,6 +91,7 @@
   <li><strong>opening</strong>: <code class="highlighter-rouge">On</code> means open, <code class="highlighter-rouge">Off</code> means closed</li>
   <li><strong>plug</strong>: <code class="highlighter-rouge">On</code> means device is plugged in, <code class="highlighter-rouge">Off</code> means device is unplugged</li>
   <li><strong>power</strong>: Power, over-current, etc.</li>
+  <li><strong>presence</strong>: <code class="highlighter-rouge">On</code> means Home, <code class="highlighter-rouge">Off</code> means Away</li>
   <li><strong>safety</strong>: <code class="highlighter-rouge">On</code> means unsafe, <code class="highlighter-rouge">Off</code> means safe</li>
   <li><strong>smoke</strong>: <code class="highlighter-rouge">On</code> means smoke detected</li>
   <li><strong>sound</strong>: <code class="highlighter-rouge">On</code> means sound detected, <code class="highlighter-rouge">Off</code> means no sound</li>
@@ -174,6 +176,9 @@
           </a></li>
           <li><a href='/components/binary_sensor.hikvision/'>
             Hikvision Binary Sensor
+          </a></li>
+          <li><a href='/components/binary_sensor.hive/'>
+            Hive Sensor
           </a></li>
           <li><a href='/components/binary_sensor.homematic/'>
             Homematic Binary Sensor

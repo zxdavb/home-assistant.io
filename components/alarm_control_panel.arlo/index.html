@@ -74,7 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">arlo</code> control panel platform allows you to control your <a href="https://arlo.netgear.com/">Arlo</a> base stations.</p>
+  <p>The <code class="highlighter-rouge">arlo</code> alarm control panel allows you to control your <a href="https://arlo.netgear.com/">Arlo</a> base stations. You can use it to switch modes and trigger alarms from Home Assistant.</p>
 <p>To get your <a href="https://arlo.netgear.com/">Arlo</a> base stations working within Home Assistant, please follow the instructions for the general <a href="/components/arlo">Arlo component</a>.</p>
 <p>Once you have enabled the <a href="/components/arlo">Arlo component</a>, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
@@ -82,10 +82,50 @@
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">arlo</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>home_mode_name</strong>: (<em>Optional</em>): Arlo base station does not have a built-in home mode. You can map one of your custom modes to home assistant’s home mode by setting the name of the custom mode in this configuration variable. The name of the custom mode should match exactly as you set it up in the Arlo app.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="home_mode_name" href="#home_mode_name"></a> home_mode_name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Arlo base station does not have a built-in home mode. You can map one of your custom modes to home assistant’s home mode by setting the name of the custom mode in this configuration variable. The name of the custom mode should match exactly as you set it up in the Arlo app.</span></p>
+    </dd>
+    <dt><a class="title-link" name="away_mode_name" href="#away_mode_name"></a> away_mode_name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Arlo base station does not have a built-in away mode. You can map one of your custom modes to home assistant’s away mode by setting the name of the custom mode in this configuration variable. The name of the custom mode should match eactly as you set it up in the Arlo app.</span></p>
+      <p class="default">Default value: <code class="highlighter-rouge">Armed</code> mode in Arlo</p>
+    </dd>
+  </dl>
+</div>
+<h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>
+<p>These examples are based on an Arlo base station named <code class="highlighter-rouge">my_arlo_base_station</code>. Replace this with the name of your base station’s <code class="highlighter-rouge">entity_id</code>.</p>
+<p>Arming the Arlo Base Station when leaving.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s">arm_arlo_when_leaving</span>
+  <span class="s">alias</span><span class="pi">:</span> <span class="s">Arm Arlo cameras when leaving</span>
+  <span class="s">trigger</span><span class="pi">:</span>
+    <span class="s">platform</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="s">entity_id</span><span class="pi">:</span> <span class="s">group.family</span>
+    <span class="s">from</span><span class="pi">:</span> <span class="s">home</span>
+    <span class="s">to</span><span class="pi">:</span> <span class="s">not_home</span>
+  <span class="s">action</span><span class="pi">:</span>
+    <span class="s">service</span><span class="pi">:</span> <span class="s">alarm_control_panel.alarm_arm_away</span>
+    <span class="s">entity_id</span><span class="pi">:</span> <span class="s">alarm_control_panel.my_arlo_base_station</span>
+</code></pre>
+</div>
+<p>Setting Arlo to a custom mode (mapped to <code class="highlighter-rouge">home_mode_name</code> in <code class="highlighter-rouge">configuration.yaml</code>) when arriving.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s">disarm_arlo_when_arriving</span>
+  <span class="s">alias</span><span class="pi">:</span> <span class="s">Set Arlo cameras to Home mode when arriving</span>
+  <span class="s">trigger</span><span class="pi">:</span>
+    <span class="s">platform</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="s">entity_id</span><span class="pi">:</span> <span class="s">group.family</span>
+    <span class="s">from</span><span class="pi">:</span> <span class="s">not_home</span>
+    <span class="s">to</span><span class="pi">:</span> <span class="s">home</span>
+  <span class="s">action</span><span class="pi">:</span>
+    <span class="s">service</span><span class="pi">:</span> <span class="s">alarm_control_panel.alarm_arm_home</span>
+    <span class="s">entity_id</span><span class="pi">:</span> <span class="s">alarm_control_panel.my_arlo_base_station</span>
+</code></pre>
+</div>
+<p>You can also completely disarm the Arlo base station by calling the <code class="highlighter-rouge">alarm_control_panel.alarm_disarm</code> service, and trigger the alarm by calling the <code class="highlighter-rouge">alarm_control_panel.alarm_trigger</code> service.</p>
+<p>More examples and configuration options can be found on the <a href="/components/alarm_control_panel.manual/#examples">Manual Alarm Control page</a>.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
