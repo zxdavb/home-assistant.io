@@ -4,7 +4,7 @@
   <title><![CDATA[Home Assistant]]></title>
   <link href="https://home-assistant.io/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2017-12-04T00:16:53+00:00</updated>
+  <updated>2017-12-04T04:48:54+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -26,7 +26,7 @@
 <p>With the Dominos Pizza integration made by <a href="https://github.com/wardcraigj">@wardcraigj</a> your home is now taking care that you don’t  starve. In combination with a <a href="/components/skybell/">Skybell</a> or a <a href="/components/doorbird/">DoorBird</a> you will know exactly when the pizza is in front of your door.</p>
 
 <h2><a class="title-link" name="color-picker" href="#color-picker"></a> Color picker</h2>
-<p>@NovapaX created a new color picker. While dragging the color badge with your finger, a badge will appear above your finger so you can see the current color.</p>
+<p><a href="https://github.com/NovapaX">@NovapaX</a> created a new color picker. While dragging the color badge with your finger, a badge will appear above your finger so you can see the current color.</p>
 
 <p class="img">
     <img src="/images/blog/2017-12-0.59/color-wheel.png" alt="Screenshot of the color wheel." />
@@ -62,6 +62,15 @@
   <li>Add Dominos Pizza platform (<a href="https://github.com/wardcraigj">@wardcraigj</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10379">#10379</a>) (<a href="https://home-assistant.io/components/dominos/">dominos docs</a>) (new-platform)</li>
   <li>Add tts.baidu platform (<a href="https://github.com/zhujisheng">@zhujisheng</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10724">#10724</a>) (<a href="https://home-assistant.io/components/tts.baidu/">tts.baidu docs</a>) (new-platform)</li>
   <li>Create ecobee weather platform (<a href="https://github.com/PhracturedBlue">@PhracturedBlue</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10869">#10869</a>) (<a href="https://home-assistant.io/components/ecobee/">ecobee docs</a>) (<a href="https://home-assistant.io/components/weather.ecobee/">weather.ecobee docs</a>) (new-platform)</li>
+</ul>
+
+<h2><a class="title-link" name="release-0591---december-4" href="#release-0591---december-4"></a> Release 0.59.1 - December 4</h2>
+
+<ul>
+  <li>Fix Notifications for Android TV (<a href="https://github.com/danielperna84">@danielperna84</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10798">#10798</a>) (<a href="https://home-assistant.io/components/notify.nfandroidtv/">notify.nfandroidtv docs</a>)</li>
+  <li>fix iOS component config generation (<a href="https://github.com/wrboyce">@wrboyce</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10923">#10923</a>)</li>
+  <li>Fix color wheel in group more info dialogs (<a href="https://github.com/NovapaX">@NovapaX</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10934">#10934</a>)</li>
+  <li>Dominos no order fix (<a href="https://github.com/wardcraigj">@wardcraigj</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10935">#10935</a>) (<a href="https://home-assistant.io/components/dominos/">dominos docs</a>)</li>
 </ul>
 
 <h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>
