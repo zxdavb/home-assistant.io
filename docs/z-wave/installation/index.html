@@ -221,6 +221,11 @@ The device type is <code class="highlighter-rouge">c</code> (character special) 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>cat /dev/urandom | tr -dc <span class="s1">'0-9A-F'</span> | fold -w 32 | head -n 1 | sed -e <span class="s1">'s/\(..\)/0x\1, /g'</span> -e <span class="s1">'s/, $//'</span>
 </code></pre>
 </div>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry for network_key</span>
+<span class="s">zwave</span><span class="pi">:</span>
+  <span class="s">network_key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">0x2e,</span><span class="nv"> </span><span class="s">0xcc,</span><span class="nv"> </span><span class="s">0xab,</span><span class="nv"> </span><span class="s">0x1c,</span><span class="nv"> </span><span class="s">0xa3,</span><span class="nv"> </span><span class="s">0x7f,</span><span class="nv"> </span><span class="s">0x0e,</span><span class="nv"> </span><span class="s">0xb5,</span><span class="nv"> </span><span class="s">0x70,</span><span class="nv"> </span><span class="s">0x71,</span><span class="nv"> </span><span class="s">0x2d,</span><span class="nv"> </span><span class="s">0x98,</span><span class="nv"> </span><span class="s">0x25,</span><span class="nv"> </span><span class="s">0x43,</span><span class="nv"> </span><span class="s">0xee,</span><span class="nv"> </span><span class="s">0x0c"</span>
+</code></pre>
+</div>
 <p>Ensure you keep a backup of this key. If you have to rebuild your system and don’t have a backup of this key, you won’t be able to reconnect to any security devices. This may mean you have to do a factory reset on those devices, and your controller, before rebuilding your Z-Wave network.</p>
 <h2><a class="title-link" name="first-run" href="#first-run"></a> First Run</h2>
 <p>The (compilation and) installation of python-openzwave happens when you first enable the Z-Wave component, and can take half an hour or more on a Raspbery Pi. When you upgrade Home Assistant and python-openzwave is also upgraded, this will also result in a delay while the new version is compiled and installed.</p>

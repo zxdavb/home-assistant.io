@@ -104,6 +104,7 @@
   <li><strong>username</strong> (<em>Optional</em>): The username for accessing the REST endpoint.</li>
   <li><strong>password</strong> (<em>Optional</em>): The password for accessing the REST endpoint.</li>
   <li><strong>headers</strong> (<em>Optional</em>): The headers for the requests.</li>
+  <li><strong>json_attributes</strong> (<em>Optional</em>): A list of keys to extract values from a JSON dictionary result and then set as sensor attributes. Default is an empty list.</li>
 </ul>
 <p class="note warning">
 Make sure that the URL exactly matches your endpoint or resource.
@@ -116,8 +117,7 @@ Make sure that the URL exactly matches your endpoint or resource.
 <h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>
 <p>In this section you find some real life examples of how to use this sensor.</p>
 <h3><a class="title-link" name="external-ip-address" href="#external-ip-address"></a> External IP address</h3>
-<p>You can find your external IP address using the service <a href="http://www.jsontest.com">JSON Test</a> at their http://ip.jsontest.com/ endpoint.</p>
-<p>To display the IP address, the entry for a sensor in the <code class="highlighter-rouge">configuration.yaml</code> file will look like this.</p>
+<p>You can find your external IP address using the service <a href="http://www.jsontest.com">JSON Test</a> at their <a href="http://ip.jsontest.com/">http://ip.jsontest.com/</a> URL.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">rest</span>
     <span class="s">resource</span><span class="pi">:</span> <span class="s">http://ip.jsontest.com</span>
@@ -127,7 +127,6 @@ Make sure that the URL exactly matches your endpoint or resource.
 </div>
 <h3><a class="title-link" name="single-value-from-a-local-glances-instance" href="#single-value-from-a-local-glances-instance"></a> Single value from a local Glances instance</h3>
 <p>The <a href="/components/sensor.glances/">glances</a> sensor is doing the exact same thing for all exposed values.</p>
-<p>Add something similar to the entry below to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">rest</span>
     <span class="s">resource</span><span class="pi">:</span> <span class="s">http://IP_ADRRESS:61208/api/2/mem/used</span>
@@ -182,6 +181,58 @@ User-Agent: Home Assistant
       <span class="s">Accept</span><span class="pi">:</span> <span class="s">application/vnd.github.v3+json</span>
       <span class="s">Content-Type</span><span class="pi">:</span> <span class="s">application/json</span>
       <span class="s">User-Agent</span><span class="pi">:</span> <span class="s">Home Assistant REST sensor</span>
+</code></pre>
+</div>
+<h3><a class="title-link" name="fetch-multiple-json-values-and-present-them-as-attibutes" href="#fetch-multiple-json-values-and-present-them-as-attibutes"></a> Fetch multiple JSON values and present them as attibutes</h3>
+<p><a href="http://www.jsontest.com">JSON Test</a> returns the current time, date and milliseconds since epoch from <a href="http://date.jsontest.com/">http://date.jsontest.com/</a>.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sensor</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">rest</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">JSON time</span>
+    <span class="s">json_attributes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">date</span>
+      <span class="pi">-</span> <span class="s">milliseconds_since_epoch</span>
+    <span class="s">resource</span><span class="pi">:</span> <span class="s">http://date.jsontest.com/</span>
+    <span class="s">value_template</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">value_json.time</span><span class="nv"> </span><span class="s">}}'</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">template</span>
+    <span class="s">sensors</span><span class="pi">:</span>
+      <span class="s">date</span><span class="pi">:</span>
+        <span class="s">friendly_name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Date'</span>
+        <span class="s">value_template</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">states.sensor.json_time.attributes["date"]</span><span class="nv"> </span><span class="s">}}'</span>
+      <span class="s">milliseconds</span><span class="pi">:</span>
+        <span class="s">friendly_name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">milliseconds'</span>
+        <span class="s">value_template</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">states.sensor.json_time.attributes["milliseconds_since_epoch"]</span><span class="nv"> </span><span class="s">}}'</span>
+</code></pre>
+</div>
+<p>This sample fetches a weather report from <a href="http://openweathermap.org/">OpenWeatherMap</a>, maps the resulting data into attributes of the RESTful sensor and then creates a set of <a href="/components/sensor.template/">template</a> sensors that monitor the attributes and present the values in a usable form.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sensor</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">rest</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">OWM_report</span>
+    <span class="s">json_attributes</span><span class="pi">:</span> 
+      <span class="pi">-</span> <span class="s">main</span>
+      <span class="pi">-</span> <span class="s">weather</span>
+    <span class="s">value_template</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">value_json["weather"][0]["description"].title()</span><span class="nv"> </span><span class="s">}}'</span>
+    <span class="s">resource</span><span class="pi">:</span> <span class="s">http://api.openweathermap.org/data/2.5/weather?zip=80302,us&amp;APPID=VERYSECRETAPIKEY</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">template</span>
+    <span class="s">sensors</span><span class="pi">:</span>
+      <span class="s">owm_weather</span><span class="pi">:</span>
+        <span class="s">value_template</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">states.sensor.owm_report.attributes.weather[0]["description"].title()</span><span class="nv"> </span><span class="s">}}'</span>
+        <span class="s">icon_template</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">"http://openweathermap.org/img/w/"+states.sensor.owm_report.attributes.weather[0]["icon"]+".png"</span><span class="nv"> </span><span class="s">}}'</span>
+        <span class="s">entity_id</span><span class="pi">:</span> <span class="s">sensor.owm_report</span>
+      <span class="s">owm_temp</span><span class="pi">:</span>
+        <span class="s">friendly_name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Outside</span><span class="nv"> </span><span class="s">temp'</span>
+        <span class="s">value_template</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">states.sensor.owm_report.attributes.main["temp"]-273.15</span><span class="nv"> </span><span class="s">}}'</span>
+        <span class="s">unit_of_measurement</span><span class="pi">:</span> <span class="s2">"</span><span class="s">°C"</span>
+        <span class="s">entity_id</span><span class="pi">:</span> <span class="s">sensor.owm_report</span>
+      <span class="s">owm_pressure</span><span class="pi">:</span>
+        <span class="s">friendly_name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Outside</span><span class="nv"> </span><span class="s">pressure'</span>
+        <span class="s">value_template</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">states.sensor.owm_report.attributes.main["pressure"]</span><span class="nv"> </span><span class="s">}}'</span>
+        <span class="s">unit_of_measurement</span><span class="pi">:</span> <span class="s2">"</span><span class="s">hP"</span>
+        <span class="s">entity_id</span><span class="pi">:</span> <span class="s">sensor.owm_report</span>
+      <span class="s">owm_humidity</span><span class="pi">:</span>
+        <span class="s">friendly_name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Outside</span><span class="nv"> </span><span class="s">humidity'</span>
+        <span class="s">value_template</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">states.sensor.owm_report.attributes.main["humidity"]</span><span class="nv"> </span><span class="s">}}'</span>
+        <span class="s">unit_of_measurement</span><span class="pi">:</span> <span class="s2">"</span><span class="s">%"</span>
+        <span class="s">entity_id</span><span class="pi">:</span> <span class="s">sensor.owm_report</span>
 </code></pre>
 </div>
 </article>
