@@ -82,22 +82,35 @@ This option is only available for built-in components.
 <p>Device discovery  for Home Assistant has been extracted into an external library called <a href="https://github.com/home-assistant/netdisco">NetDisco</a>. This library is integrated using <a href="https://github.com/home-assistant/home-assistant/blob/dev/homeassistant/components/discovery.py">the <code class="highlighter-rouge">discovery</code> component</a> and scans the network in intervals for uPnP and zeroconf/mDNS services.</p>
 <p>To have your device be discovered, you will have to extend the NetDisco library to be able to find your device. This is done by adding a new discoverable. <a href="https://github.com/home-assistant/netdisco/tree/master/netdisco/discoverables">See the repository for examples of existing discoverable.</a></p>
 <h3><a class="title-link" name="listening-to-service_discovered-events" href="#listening-to-service_discovered-events"></a> Listening to <code class="highlighter-rouge">SERVICE_DISCOVERED</code> events</h3>
-<p>From your component, you will have to set up the listening for specific services. Given below is an example how one would listen for discovered Chromecasts:</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">homeassistant.loader</span> <span class="kn">import</span> <span class="n">get_component</span>
+<p>From your component, you will have to set up the listening for specific services. Given below is an example how one would listen for a discovered AwesomeDevice:</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">homeassistant.components.discovery</span> <span class="kn">import</span> <span class="n">SERVICE_AWESOMEDEVICE</span>
+<span class="kn">from</span> <span class="nn">homeassistant.helpers</span> <span class="kn">import</span> <span class="n">discovery</span>
+
+<span class="n">DOMAIN</span> <span class="o">=</span> <span class="s">'awesomedevice'</span>
+
+<span class="n">DEPENDENCIES</span> <span class="o">=</span> <span class="p">[</span><span class="s">'http'</span><span class="p">]</span>
 
 <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">hass</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
-    <span class="n">discovery</span> <span class="o">=</span> <span class="n">get_component</span><span class="p">(</span><span class="s">'discovery'</span><span class="p">)</span>
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">DOMAIN</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">chromecast_discovered</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">info</span><span class="p">):</span>
-        <span class="s">""" Called when a Chromecast has been discovered. """</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Discovered a new Chromecast: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">device_discovered</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">info</span><span class="p">):</span>
+        <span class="s">""" Called when a Awesome device has been discovered. """</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Discovered a new Awesome device: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info</span><span class="p">))</span>
 
     <span class="n">discovery</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span>
-        <span class="n">hass</span><span class="p">,</span> <span class="n">discovery</span><span class="o">.</span><span class="n">services</span><span class="o">.</span><span class="n">GOOGLE_CAST</span><span class="p">,</span> <span class="n">chromecast_discovered</span><span class="p">)</span>
+        <span class="n">hass</span><span class="p">,</span> <span class="n">SERVICE_AWESOMEDEVICE</span><span class="p">,</span> <span class="n">device_discovered</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">True</span>
 </code></pre>
 </div>
 <h3><a class="title-link" name="auto-loading-your-component-upon-discovery" href="#auto-loading-your-component-upon-discovery"></a> Auto-loading your component upon discovery</h3>
-<p>The Discovery component is capable of setting up your components before firing the <code class="highlighter-rouge">SERVICE_DISCOVERD</code> event. To do this you will have to update the <a href="https://github.com/home-assistant/home-assistant/blob/dev/homeassistant/components/discovery.py#L29"><code class="highlighter-rouge">SERVICE_HANDLERS</code></a> constant in <a href="https://github.com/home-assistant/home-assistant/blob/dev/homeassistant/components/discovery.py">the <code class="highlighter-rouge">discovery</code> component</a>.</p>
+<p>The <code class="highlighter-rouge">discovery</code> component is capable of setting up your components before firing the <code class="highlighter-rouge">EVENT_PLATFORM_DISCOVERED</code> event. To do this you will have to update the <a href="https://github.com/home-assistant/home-assistant/blob/dev/homeassistant/components/discovery.py#L40"><code class="highlighter-rouge">SERVICE_HANDLERS</code></a> constant in <a href="https://github.com/home-assistant/home-assistant/blob/dev/homeassistant/components/discovery.py">the <code class="highlighter-rouge">discovery</code> component</a>:</p>
+<p>```python
+SERVICE_AWESOMEDEVICE = ‘awesomedevice’</p>
+<p>SERVICE_HANDLERS = {
+    …
+    SERVICE_AWESOMEDEVICE: (‘awesomedevice’, None),
+}</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
