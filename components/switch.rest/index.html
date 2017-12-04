@@ -82,17 +82,53 @@
     <span class="s">resource</span><span class="pi">:</span> <span class="s">http://IP_ADDRESS/ENDPOINT</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>resource</strong> (<em>Required</em>): The resource or endpoint that contains the value.</li>
-  <li><strong>name</strong> (<em>Optional</em>): Name of the REST switch.</li>
-  <li><strong>method</strong> (<em>Optional</em>): HTTP method to use (<code class="highlighter-rouge">post</code> or <code class="highlighter-rouge">put</code>). Defaults to <code class="highlighter-rouge">post</code>.</li>
-  <li><strong>username</strong> (<em>Optional</em>): The username for accessing the REST endpoint.</li>
-  <li><strong>password</strong> (<em>Optional</em>): The password for accessing the REST endpoint.</li>
-  <li><strong>body_on</strong> (<em>Optional</em>): The body of the POST request that commands the switch to become enabled. Default is “ON”. This value can be a <a href="/topics/templating/">template</a>.</li>
-  <li><strong>body_off</strong> (<em>Optional</em>): The body of the POST request that commands the switch to become disabled. Default is “OFF”. This value can also be a <a href="/topics/templating/">template</a>.</li>
-  <li><strong>is_on_template</strong> (<em>Optional</em>): A <a href="/docs/configuration/templating/#processing-incoming-data">template</a> that determines the state of the switch from the value returned by the GET request on the resource URL. This template should compute to a boolean (True or False). If the value is valid JSON, it will be available in the template as the variable <code class="highlighter-rouge">value_json</code>. Default is equivalent to <code class="highlighter-rouge">'{{ value_json == body_on }}'</code>. This means that by default, the state of the switch is on if and only if the response to the GET request matches .</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="resource" href="#resource"></a> resource</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The resource or endpoint that contains the value.</span></p>
+      <p class="default">Default value: string</p>
+    </dd>
+    <dt><a class="title-link" name="method" href="#method"></a> method</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The method of the request. Supported <code class="highlighter-rouge">post</code> or <code class="highlighter-rouge">put</code>.</span></p>
+      <p class="default">Default value: POST</p>
+    </dd>
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Name of the REST Switch.</span></p>
+      <p class="default">Default value: REST Binary Switch</p>
+    </dd>
+    <dt><a class="title-link" name="timeout" href="#timeout"></a> timeout</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">Timeout for the request.</span></p>
+      <p class="default">Default value: 10</p>
+    </dd>
+    <dt><a class="title-link" name="body_on" href="#body_on"></a> body_on</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The body of the POST request that commands the switch to become enabled. This value can be a <a href="/topics/templating/">template</a>.</span></p>
+      <p class="default">Default value: true</p>
+    </dd>
+    <dt><a class="title-link" name="body_off" href="#body_off"></a> body_off</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The body of the POST request that commands the switch to become disabled. This value can also be a <a href="/topics/templating/">template</a>.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="is_on_template" href="#is_on_template"></a> is_on_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">A <a href="/docs/configuration/templating/#processing-incoming-data">template</a> that determines the state of the switch from the value returned by the GET request on the resource URL. This template should compute to a boolean (True or False). If the value is valid JSON, it will be available in the template as the variable <code class="highlighter-rouge">value_json</code>. Default is equivalent to <code class="highlighter-rouge">'{{ value_json == body_on }}'</code>. This means that by default, the state of the switch is on if and only if the response to the GET request matches.</span></p>
+    </dd>
+    <dt><a class="title-link" name="username" href="#username"></a> username</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The username for accessing the REST endpoint.</span></p>
+    </dd>
+    <dt><a class="title-link" name="password" href="#password"></a> password</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The password for accessing the REST endpoint.</span></p>
+    </dd>
+  </dl>
+</div>
 <p class="note warning">
 Make sure that the URL matches exactly your endpoint or resource.
 </p>

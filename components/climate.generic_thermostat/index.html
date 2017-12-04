@@ -90,7 +90,7 @@
   <li><strong>target_sensor</strong> (<em>Required</em>): <code class="highlighter-rouge">entity_id</code> for a temperature sensor, target_sensor.state must be temperature.</li>
   <li><strong>min_temp</strong> (<em>Optional</em>): Set minimum set point available (default: 7)</li>
   <li><strong>max_temp</strong> (<em>Optional</em>): Set maximum set point available (default: 35)</li>
-  <li><strong>target_temp</strong> (<em>Optional</em>): Set initial target temperature. Failure to set this variable will result in target temperature being set to null on startup.</li>
+  <li><strong>target_temp</strong> (<em>Optional</em>): Set initial target temperature. Failure to set this variable will result in target temperature being set to null on startup. As of version 0.59 it will retain the target temperature set before restart if this variable is not configured.</li>
   <li><strong>ac_mode</strong> (<em>Optional</em>): Set the switch specified in the <em>heater</em> option to be treated as a cooling device instead of a heating device.</li>
   <li><strong>min_cycle_duration</strong> (<em>Optional</em>): Set a minimum amount of time that the switch specified in the <em>heater</em> option must be in it’s current state prior to being switched either off or on.</li>
   <li><strong>cold_tolerance</strong> (<em>Optional</em>): Set a minimum amount of difference between the temperature read by the sensor specified in the <em>target_sensor</em> option and the target temperature that must change prior to being switched on. For example, if the target temperature is 25 and the tolerance is 0.5 the heater will start when the sensor equals or goes below 24.5.</li>

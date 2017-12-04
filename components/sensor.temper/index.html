@@ -81,16 +81,30 @@
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">temper</span>
 </code></pre>
 </div>
-<p>Configuration option:</p>
-<ul>
-  <li><strong>name</strong> (<em>Optional</em>): The name you would like to give the sensor in Home Assistant.</li>
-  <li><strong>scale</strong> (<em>Optional</em>): The scale for the sensor.</li>
-  <li><strong>offset</strong> (<em>Optional</em>): The offset to fix reported vales.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="offset" href="#offset"></a> offset</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">The offset to fix reported vales.</span></p>
+      <p class="default">Default value: o</p>
+    </dd>
+    <dt><a class="title-link" name="scale" href="#scale"></a> scale</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">The scale for the sensor.</span></p>
+      <p class="default">Default value: 1</p>
+    </dd>
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name to use when displaying this switch.</span></p>
+      <p class="default">Default value: myStrom Switch</p>
+    </dd>
+  </dl>
+</div>
 <p>Since some of these sensors consistently show higher temperatures the scale and offset values can be used to fine-tune your sensor.
 The calculation follows the formula <code class="highlighter-rouge">scale * sensor value + offset</code>.</p>
 <p>The TEMPer sensors can only be accessed as root by default. To fix the USB permissions on your system create the file <code class="highlighter-rouge">/etc/udev/rules.d/99-tempsensor.rules</code> and add the following line to it:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>SUBSYSTEMS=="usb", ACTION=="add", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="7401", MODE="666"
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>SUBSYSTEMS=="usb", ACTION=="add", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="7401", MODE="666"
 </code></pre>
 </div>
 <p>After that re-plug the device and restart Home Assistant.</p>

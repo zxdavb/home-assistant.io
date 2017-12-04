@@ -91,21 +91,63 @@
     <span class="s">payload</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{</span><span class="nv"> </span><span class="s">"device"</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">"heater"</span><span class="nv"> </span><span class="s">}'</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>resource</strong> (<em>Required</em>): The resource or endpoint that contains the value.</li>
-  <li><strong>method</strong> (<em>Optional</em>): The method of the request. Default is <code class="highlighter-rouge">GET</code>.</li>
-  <li><strong>value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the value.</li>
-  <li><strong>payload</strong> (<em>Optional</em>): The payload to send with a POST request. Depends on the service, but usually formed as JSON.</li>
-  <li><strong>name</strong> (<em>Optional</em>): Name of the REST sensor.</li>
-  <li><strong>unit_of_measurement</strong> (<em>Optional</em>): Defines the unit of measurement of the sensor, if any.</li>
-  <li><strong>verify_ssl</strong> (<em>Optional</em>): Verify the certification of the endpoint. Default to <code class="highlighter-rouge">True</code>.</li>
-  <li><strong>authentication</strong> (<em>Optional</em>): Type of the HTTP authentication. <code class="highlighter-rouge">basic</code> or <code class="highlighter-rouge">digest</code>.</li>
-  <li><strong>username</strong> (<em>Optional</em>): The username for accessing the REST endpoint.</li>
-  <li><strong>password</strong> (<em>Optional</em>): The password for accessing the REST endpoint.</li>
-  <li><strong>headers</strong> (<em>Optional</em>): The headers for the requests.</li>
-  <li><strong>json_attributes</strong> (<em>Optional</em>): A list of keys to extract values from a JSON dictionary result and then set as sensor attributes. Default is an empty list.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="resource" href="#resource"></a> resource</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The resource or endpoint that contains the value.</span></p>
+      <p class="default">Default value: string</p>
+    </dd>
+    <dt><a class="title-link" name="method" href="#method"></a> method</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The method of the request.</span></p>
+      <p class="default">Default value: GET</p>
+    </dd>
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Name of the REST sensor.</span></p>
+      <p class="default">Default value: REST Sensor</p>
+    </dd>
+    <dt><a class="title-link" name="value_template" href="#value_template"></a> value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload" href="#payload"></a> payload</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload to send with a POST request. Depends on the service, but usually formed as JSON.</span></p>
+    </dd>
+    <dt><a class="title-link" name="verify_ssl" href="#verify_ssl"></a> verify_ssl</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Verify the certification of the endpoint.</span></p>
+      <p class="default">Default value: true</p>
+    </dd>
+    <dt><a class="title-link" name="unit_of_measurement" href="#unit_of_measurement"></a> unit_of_measurement</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines the units of measurement of the sensor, if any.</span></p>
+    </dd>
+    <dt><a class="title-link" name="authentication" href="#authentication"></a> authentication</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Type of the HTTP authentication. <code class="highlighter-rouge">basic</code> or <code class="highlighter-rouge">digest</code>.</span></p>
+    </dd>
+    <dt><a class="title-link" name="username" href="#username"></a> username</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The username for accessing the REST endpoint.</span></p>
+    </dd>
+    <dt><a class="title-link" name="password" href="#password"></a> password</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The password for accessing the REST endpoint.</span></p>
+    </dd>
+    <dt><a class="title-link" name="headers" href="#headers"></a> headers</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="list, string">list | string</span>)</span><span class="required">(Optional)</span><span class="description">The headers for the requests.</span></p>
+    </dd>
+    <dt><a class="title-link" name="json_attributes" href="#json_attributes"></a> json_attributes</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="list, string">list | string</span>)</span><span class="description">A list of keys to extract values from a JSON dictionary result and then set as sensor attributes.</span></p>
+    </dd>
+  </dl>
+</div>
 <p class="note warning">
 Make sure that the URL exactly matches your endpoint or resource.
 </p>
