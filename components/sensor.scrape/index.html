@@ -150,6 +150,18 @@
     <span class="s">attribute</span><span class="pi">:</span> <span class="s">url</span>
 </code></pre>
 </div>
+<h3><a class="title-link" name="energy-price" href="#energy-price"></a> Energy price</h3>
+<p>This example tries to retrieve the price for electricity.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="s">sensor</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">scrape</span>
+    <span class="s">resource</span><span class="pi">:</span> <span class="s">https://elen.nu/timpriser-pa-el-for-elomrade-se3-stockholm/</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">Electricity price</span>
+    <span class="s">select</span><span class="pi">:</span> <span class="s2">"</span><span class="s">.elspot-content"</span>
+    <span class="s">value_template</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">value.split("</span><span class="nv"> </span><span class="s">")[0]</span><span class="nv"> </span><span class="s">}}'</span>
+    <span class="s">unit_of_measurement</span><span class="pi">:</span> <span class="s2">"</span><span class="s">öre/kWh"</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
