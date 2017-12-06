@@ -74,18 +74,17 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The Join platform exposes services from <a href="http://joaoapps.com/join">Join</a>. In Home Assistant, the Join features are divided up in two locations, the Join component, and the Join notify platform. The notify platform allows us to send messages to Join devices, the component allows us to access the other special features that Join offers.</p>
+  <p>The <code class="highlighter-rouge">joaoapps_join</code> component exposes services from <a href="http://joaoapps.com/join">Join</a>. In Home Assistant, the Join features are divided up in two locations, the Join component, and the Join notify platform. The notify platform allows us to send messages to Join devices, the component allows us to access the other special features that Join offers.</p>
 <p>In the <code class="highlighter-rouge">configuration.yaml</code> file you need to provide the api key and device id or name of the target device.  You can find your device id and api key <a href="https://joinjoaomgcd.appspot.com/">here</a>.</p>
 <p>To set it up, add the following information to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">notify</span><span class="pi">:</span>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="s">notify</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">joaoapps_join</span>
     <span class="s">api_key</span><span class="pi">:</span> <span class="s">asd97823jb628a34fwsdfwefd5384345tf2d</span>
-    <span class="s">device_id</span><span class="pi">:</span> <span class="s">d5asdfasdf54645h45h368761dfe5gt8a   *optional</span>
-    <span class="s">device_ids</span><span class="pi">:</span> <span class="s">d5asdfasdf54645h45h368761dfe5gt8a, a4asdfasdf54645h45h368761dfe5gt3b  *optional</span>
-    <span class="s">device_names</span><span class="pi">:</span> <span class="s">Pixel, iPhone       *optional</span>
-    <span class="s">name</span><span class="pi">:</span> <span class="s">Phones                      *optional</span>
-
-
+    <span class="s">device_id</span><span class="pi">:</span> <span class="s">d5asdfasdf54645h45h368761dfe5gt8a</span>
+    <span class="s">device_ids</span><span class="pi">:</span> <span class="s">d5asdfasdf54645h45h368761dfe5gt8a, a4asdfasdf54645h45h368761dfe5gt3b</span>
+    <span class="s">device_names</span><span class="pi">:</span> <span class="s">Pixel, iPhone</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">Phones</span>
 <span class="s">joaoapps_join</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s">android</span>
     <span class="s">device_id</span><span class="pi">:</span> <span class="s">group.android</span>
@@ -99,11 +98,11 @@
   <li><strong>device_ids</strong> (<em>Optional</em>): Comma separated list of device ids.</li>
   <li><strong>device_names</strong> (<em>Optional</em>): Comma separated list of device names.</li>
 </ul>
-<p>The notify service has two optional parameters: <code class="highlighter-rouge">icon</code> and <code class="highlighter-rouge">vibration</code>.  You can use them like so:</p>
+<p>The notify service has two optional parameters: <code class="highlighter-rouge">icon</code> and <code class="highlighter-rouge">vibration</code>. You can use them like so:</p>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Hello from Home Assistant!"</span><span class="p">,</span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Home Assistant"</span><span class="p">,</span><span class="nt">"data"</span><span class="p">:{</span><span class="nt">"icon"</span><span class="p">:</span><span class="s2">"https://goo.gl/xeetdy"</span><span class="p">,</span><span class="w"> </span><span class="nt">"vibration"</span><span class="p">:</span><span class="s2">"0,65,706,86,657,95,668,100"</span><span class="p">}}</span><span class="w">
 </span></code></pre>
 </div>
-<p>The services exposed in the joaoapps_join component can be used with the service data described below:</p>
+<p>The services exposed in the <code class="highlighter-rouge">joaoapps_join</code> component can be used with the service data described below:</p>
 <table>
   <thead>
     <tr>
@@ -118,23 +117,23 @@
     </tr>
     <tr>
       <td>joaoapps_join/send_sms</td>
-      <td>{“number”:”5553334444”, “message”:”Hello!”}</td>
+      <td><code class="highlighter-rouge"><span class="p">{</span><span class="nt">"number"</span><span class="p">:</span><span class="s2">"5553334444"</span><span class="p">,</span><span class="w"> </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Hello!"</span><span class="p">}</span></code></td>
     </tr>
     <tr>
       <td>joaoapps_join/send_tasker</td>
-      <td>{“command”:”test”}</td>
+      <td><code class="highlighter-rouge"><span class="p">{</span><span class="nt">"command"</span><span class="p">:</span><span class="s2">"test"</span><span class="p">}</span></code></td>
     </tr>
     <tr>
       <td>joaoapps_join/send_url</td>
-      <td>{“url”:”http://google.com”}</td>
+      <td><code class="highlighter-rouge"><span class="p">{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"http://google.com"</span><span class="p">}</span></code></td>
     </tr>
     <tr>
       <td>joaoapps_join/send_wallpaper</td>
-      <td>{“url”:”http://www.planwallpaper.com/static/images/ZhGEqAP.jpg”}</td>
+      <td><code class="highlighter-rouge"><span class="p">{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"http://www.planwallpaper.com/static/images/ZhGEqAP.jpg"</span><span class="p">}</span></code></td>
     </tr>
     <tr>
       <td>joaoapps_join/send_file</td>
-      <td>{“url”:”http://download.thinkbroadband.com/5MB.zip”}</td>
+      <td><code class="highlighter-rouge"><span class="p">{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"http://download.thinkbroadband.com/5MB.zip"</span><span class="p">}</span></code></td>
     </tr>
   </tbody>
 </table>
