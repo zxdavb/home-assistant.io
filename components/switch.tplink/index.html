@@ -89,11 +89,25 @@
     <span class="s">host</span><span class="pi">:</span> <span class="s">IP_ADDRESS</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>host</strong> (<em>Required</em>): The IP address of your TP-Link switch, eg. <code class="highlighter-rouge">192.168.1.32</code>.</li>
-  <li><strong>name</strong> (<em>Optional</em>): The name to use when displaying this switch.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name to use when displaying this switch.</span></p>
+      <p class="default">Default value: Random Sensor</p>
+    </dd>
+    <dt><a class="title-link" name="host" href="#host"></a> host</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The IP address of your TP-Link switch, eg. <code class="highlighter-rouge">192.168.1.32</code>.</span></p>
+    </dd>
+    <dt><a class="title-link" name="enable_leds" href="#enable_leds"></a> enable_leds</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">If the LEDs on the switch (WiFi and power) should be lit.</span></p>
+      <p class="default">Default value: true</p>
+    </dd>
+  </dl>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
