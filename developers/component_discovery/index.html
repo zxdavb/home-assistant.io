@@ -105,12 +105,14 @@ This option is only available for built-in components.
 </div>
 <h3><a class="title-link" name="auto-loading-your-component-upon-discovery" href="#auto-loading-your-component-upon-discovery"></a> Auto-loading your component upon discovery</h3>
 <p>The <code class="highlighter-rouge">discovery</code> component is capable of setting up your components before firing the <code class="highlighter-rouge">EVENT_PLATFORM_DISCOVERED</code> event. To do this you will have to update the <a href="https://github.com/home-assistant/home-assistant/blob/dev/homeassistant/components/discovery.py#L40"><code class="highlighter-rouge">SERVICE_HANDLERS</code></a> constant in <a href="https://github.com/home-assistant/home-assistant/blob/dev/homeassistant/components/discovery.py">the <code class="highlighter-rouge">discovery</code> component</a>:</p>
-<p>```python
-SERVICE_AWESOMEDEVICE = ‘awesomedevice’</p>
-<p>SERVICE_HANDLERS = {
-    …
-    SERVICE_AWESOMEDEVICE: (‘awesomedevice’, None),
-}</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">SERVICE_AWESOMEDEVICE</span> <span class="o">=</span> <span class="s">'awesomedevice'</span>
+
+<span class="n">SERVICE_HANDLERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="n">SERVICE_AWESOMEDEVICE</span><span class="p">:</span> <span class="p">(</span><span class="s">'awesomedevice'</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
