@@ -188,6 +188,95 @@ case "</span><span class="nv">$1</span><span class="s2">" in
 esac
 </span></code></pre>
 </div>
+<h3><a class="title-link" name="python-virtual-environment" href="#python-virtual-environment"></a> Python virtual environment</h3>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<span class="c">### BEGIN INIT INFO</span>
+<span class="c"># Provides:          hass</span>
+<span class="c"># Required-Start:    $local_fs $network $named $time $syslog</span>
+<span class="c"># Required-Stop:     $local_fs $network $named $time $syslog</span>
+<span class="c"># Default-Start:     2 3 4 5</span>
+<span class="c"># Default-Stop:      0 1 6</span>
+<span class="c"># Description:       Home\ Assistant</span>
+<span class="c">### END INIT INFO</span>
+
+<span class="c"># /etc/init.d Service Script for Home Assistant</span>
+<span class="c"># Created with: https://gist.github.com/naholyr/4275302#file-new-service-sh</span>
+<span class="nv">PRE_EXEC</span><span class="o">=</span><span class="s2">"cd /srv/homeassistant &amp;&amp; python3 -m venv . &amp;&amp; source bin/activate &amp;&amp;"</span>
+<span class="c"># Typically /usr/bin/hass</span>
+<span class="nv">HASS_BIN</span><span class="o">=</span><span class="s2">"hass"</span>
+<span class="nv">RUN_AS</span><span class="o">=</span><span class="s2">"USER"</span>
+<span class="nv">PID_FILE</span><span class="o">=</span><span class="s2">"/var/run/hass.pid"</span>
+<span class="nv">CONFIG_DIR</span><span class="o">=</span><span class="s2">"/home/USER/.homeassistant"</span>
+<span class="nv">FLAGS</span><span class="o">=</span><span class="s2">"-v --config </span><span class="nv">$CONFIG_DIR</span><span class="s2"> --pid-file </span><span class="nv">$PID_FILE</span><span class="s2"> --daemon"</span>
+<span class="gp">REDIRECT="&gt; </span><span class="nv">$CONFIG_DIR</span>/home-assistant.log 2&gt;&amp;1<span class="s2">"
+
+start() {
+  if [ -f </span><span class="nv">$PID_FILE</span><span class="s2"> ] &amp;&amp; kill -0 </span><span class="k">$(</span>cat <span class="nv">$PID_FILE</span><span class="k">)</span><span class="s2"> 2&gt; /dev/null; then
+    echo 'Service already running' &gt;&amp;2
+    return 1
+  fi
+  echo 'Starting service…' &gt;&amp;2
+  local CMD="</span><span class="nv">$PRE_EXEC</span> <span class="nv">$HASS_BIN</span> <span class="nv">$FLAGS</span> <span class="nv">$REDIRECT</span>;<span class="s2">"
+  su -s /bin/bash -c "</span><span class="nv">$CMD</span><span class="s2">" </span><span class="nv">$RUN_AS</span><span class="s2">
+  echo 'Service started' &gt;&amp;2
+}
+
+stop() {
+    if [ ! -f "</span><span class="nv">$PID_FILE</span><span class="s2">" ] || ! kill -0 </span><span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span><span class="s2"> 2&gt; /dev/null; then
+    echo 'Service not running' &gt;&amp;2
+    return 1
+  fi
+  echo 'Stopping service…' &gt;&amp;2
+  kill </span><span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span><span class="s2">
+  while ps -p </span><span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span><span class="s2"> &gt; /dev/null 2&gt;&amp;1; do sleep 1;done;
+  echo 'Service stopped' &gt;&amp;2
+}
+
+install() {
+    echo "</span>Installing Home Assistant Daemon <span class="o">(</span>hass-daemon<span class="o">)</span><span class="s2">"
+    echo "</span>999999<span class="s2">" &gt; </span><span class="nv">$PID_FILE</span><span class="s2">
+    chown </span><span class="nv">$RUN_AS</span><span class="s2"> </span><span class="nv">$PID_FILE</span><span class="s2">
+    mkdir -p </span><span class="nv">$CONFIG_DIR</span><span class="s2">
+    chown </span><span class="nv">$RUN_AS</span><span class="s2"> </span><span class="nv">$CONFIG_DIR</span><span class="s2">
+}
+
+uninstall() {
+  echo -n "</span>Are you really sure you want to uninstall this service? That cannot be undone. <span class="o">[</span>yes|No] <span class="s2">"
+  local SURE
+  read SURE
+  if [ "</span><span class="nv">$SURE</span><span class="s2">" = "</span>yes<span class="s2">" ]; then
+    stop
+    rm -fv "</span><span class="nv">$PID_FILE</span><span class="s2">"
+    echo "</span>Notice: The config directory has not been removed<span class="s2">"
+    echo </span><span class="nv">$CONFIG_DIR</span><span class="s2">
+    update-rc.d -f hass-daemon remove
+    rm -fv "</span><span class="nv">$0</span><span class="s2">"
+    echo "</span>Home Assistant Daemon has been removed. Home Assistant is still installed.<span class="s2">"
+  fi
+}
+
+case "</span><span class="nv">$1</span><span class="s2">" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  install)
+    install
+    ;;
+  uninstall)
+    uninstall
+    ;;
+  restart)
+    stop
+    start
+    ;;
+  *)
+    echo "</span>Usage: <span class="nv">$0</span> <span class="o">{</span>start|stop|restart|install|uninstall<span class="o">}</span><span class="s2">"
+esac
+</span></code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
