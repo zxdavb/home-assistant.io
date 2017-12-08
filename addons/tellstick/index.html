@@ -125,15 +125,36 @@ After installation you are presented with a default and example configuration, t
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>
+<h2>Service calls</h2>
 <p>If you wish to teach a selflearning device in your TellStick configuration:</p>
-<p>Go to Home Assistant <a href="http//hassio.local:8123/dev-service">service call</a> in Developer tools
-Select</p>
+<p>Go to Home Assistant <a href="http//hassio.local:8123/dev-service">service call</a> in Developer tools and select</p>
 <ul>
-  <li>Domain <code class="highlighter-rouge">hassio</code></li>
-  <li>Service: <code class="highlighter-rouge">addon_stdin</code></li>
-  <li>Service Data: <code class="highlighter-rouge"><span class="p">{</span><span class="nt">"addon"</span><span class="p">:</span><span class="s2">"core_tellstick"</span><span class="p">,</span><span class="nt">"input"</span><span class="p">:</span><span class="s2">"learn 1"</span><span class="p">}</span></code></li>
+  <li>Service <code class="highlighter-rouge">hassio.addon_stdin</code></li>
+  <li>Service Data: <code class="highlighter-rouge"><span class="p">{</span><span class="nt">"addon"</span><span class="p">:</span><span class="s2">"core_tellstick"</span><span class="p">,</span><span class="nt">"input"</span><span class="p">:{</span><span class="nt">"function"</span><span class="p">:</span><span class="s2">"learn"</span><span class="p">,</span><span class="nt">"device"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">}}</span></code></li>
 </ul>
 <p>Replace <code class="highlighter-rouge">1</code> with the corresponding ID of the device in your TellStick configuration.</p>
+<p>You can also use this to list devices or sensors and read the output in the add-on log:
+<code class="highlighter-rouge"><span class="p">{</span><span class="nt">"addon"</span><span class="p">:</span><span class="s2">"core_tellstick"</span><span class="p">,</span><span class="nt">"input"</span><span class="p">:{</span><span class="nt">"function"</span><span class="p">:</span><span class="s2">"list-sensors"</span><span class="p">}}</span></code></p>
+<h4>Supported service commands</h4>
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">"function":"list"</code>: List currently configured devices with name and device id and all discovered sensors.</p>
+  </li>
+  <li><code class="highlighter-rouge">"function":"list-sensors"</code></li>
+  <li>
+    <p><code class="highlighter-rouge">"function":"list-devices"</code>: Alternative devices/sensors listing: Shows devices and/or sensors using key=value format (with tabs as separators, one device/sensor per line, no header lines.)</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">"function":"on":"device":"x"</code>: Turns on device. ’x’ could either be an integer of the device-id, or the name of the device.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">"function":"off":"device":"x"</code>: Turns off device. ’x’ could either be an integer of the device-id, or the name of the device.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">"function":"bell":"device":"x"</code>: Sends bell command to devices supporting this. ’x’ could either be an integer of the device-id, or the name of the device.</p>
+  </li>
+  <li><code class="highlighter-rouge">"function":"learn":"device":"x"</code>: Sends a special learn command to devices supporting this. This is normaly devices of ’selflearning’ type. ’x’ could either be an integer of the device-id, or the name of the device.</li>
+</ul>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
