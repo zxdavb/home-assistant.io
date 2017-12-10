@@ -95,6 +95,7 @@ To use Google Assistant your Home Assistant configuration has to be externally a
 </div>
 <p><em>Note:</em> It’s very important that you use very long strings for <code class="highlighter-rouge">client_id</code> and <code class="highlighter-rouge">access_token</code>. Those are essentially the credentials to your Home Assistant instance. You can generate them with the following command:</p>
 <p><code class="highlighter-rouge">cat /dev/urandom|fold -w 120|head -n 1|base64 -w 0|tr -dc '0-9A-Za-z'|cut -c -80</code></p>
+<p>If you’re not using Linux, you can use sites such as <a href="https://www.browserling.com/tools/random-string">this one</a> to generate a random string (containing mixed case letters and numbers) of up to 80 characters.</p>
 <p><em>Configuration Variables:</em></p>
 <ul>
   <li><em>expose_by_default</em> (Optional): Expose devices in all supported domains by default.</li>
@@ -173,7 +174,7 @@ Note: This must be an HTTPS URL to work.</li>
  <code class="highlighter-rouge">gactions update --action_package PACKAGE_NAME --project doctest-2d0b8</code></li>
     </ol>
   </li>
-  <li>Replace <code class="highlighter-rouge">PACKAGE_NAME</code> with <code class="highlighter-rouge">project.json</code> and run that command from the same directory you saved <code class="highlighter-rouge">project.json</code> in (you’ll need to put <code class="highlighter-rouge">./</code> before <code class="highlighter-rouge">gactions</code> so that it reads <code class="highlighter-rouge">./gactions</code>). It should output a URL like <code class="highlighter-rouge">https://console.actions.google.com/project/doctest-2d0b8/overview</code> - go there.</li>
+  <li>Replace <code class="highlighter-rouge">PACKAGE_NAME</code> with <code class="highlighter-rouge">project.json</code> and run that command from the same directory you saved <code class="highlighter-rouge">project.json</code> in (you’ll need to put <code class="highlighter-rouge">./</code> before <code class="highlighter-rouge">gactions</code> so that it reads <code class="highlighter-rouge">./gactions</code> if you’re running on Linux). It should output a URL like <code class="highlighter-rouge">https://console.actions.google.com/project/doctest-2d0b8/overview</code> - go there.</li>
   <li>You’ll need to fill out most of the information on that page, but none of it really matters since you won’t be addressing the App directly, only through the Smart Home functionality built into Google Assistant.</li>
   <li>The final item on that page <code class="highlighter-rouge">Account linking</code> is required for your app to interact with Home Assistant.
     <ol>
