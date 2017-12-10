@@ -75,6 +75,7 @@
   </header>
   <hr class="divider">
   <p>This page documents a couple of points for maintaining the Home Assistant code. Most of the tasks don’t need to be performed on a regular base thus the steps, used tools, or details are preserved here.</p>
+<h2><a class="title-link" name="source-code" href="#source-code"></a> Source code</h2>
 <h3><a class="title-link" name="line-separator" href="#line-separator"></a> Line separator</h3>
 <p>People are using various operating systems to develop components and platforms for Home Assistant. This could lead to different line endings on file. We prefer <code class="highlighter-rouge">LN</code>. Especially Microsoft Windows tools tend to use <code class="highlighter-rouge">CRLF</code>.</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>find homeassistant -name <span class="s2">"*.py"</span> -exec file <span class="o">{}</span> <span class="se">\;</span> | grep BOM
@@ -92,6 +93,11 @@
 </code></pre>
 </div>
 <p>Start a test run of Home Assistant. If that was successful, include all files in a Pull Request. Add a short summary of the changes, a sample configuration entry, details about the tests you performed to ensure the update works, and other useful information to the description.</p>
+<h2><a class="title-link" name="documentation" href="#documentation"></a> Documentation</h2>
+<ul>
+  <li>Merge <code class="highlighter-rouge">current</code> into <code class="highlighter-rouge">next</code> on a regular base.</li>
+  <li>Optimize the images.</li>
+</ul>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
