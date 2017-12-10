@@ -206,6 +206,12 @@ Note: This must be an HTTPS URL to work.</li>
   </li>
 </ol>
 <p><em>Note:</em> The request_sync service requires that the initial sync from Google includes the agent_user_id. If not, the service will log an error that reads something like “Request contains an invalid argument”. If this happens, then <a href="https://support.google.com/googlehome/answer/7506443?hl=en-GB">unlink the account</a> from Home Control and relink.</p>
+<p><em>Note:</em> The request_sync service may fail with a 404 if the project_id of the Homegraph API differs from the project_id of the Actions SDK found in the preferences of your project on <a href="https://console.actions.google.com">developer console</a>. Resolve this by:
+	1. Removing your project on the <a href="https://console.actions.google.com">developer console</a>.
+	2. Add a new project in the <a href="https://console.cloud.google.com">cloud console</a>. Here you get a new project_id.
+	3. Enable Homegraph API to the new project.
+	4. Generete a new API key.
+	5. Again create a new project in the <a href="https://console.actions.google.com/">developer console</a>. Described above. But at the step ‘Build under the Actions SDK box’ choose your newly created project. By this they share the same project_id.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
