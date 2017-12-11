@@ -170,7 +170,7 @@ WantedBy=multi-user.target
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo journalctl -f -u home-assistant@[your user] | grep -i <span class="s1">'error'</span>
 </code></pre>
 </div>
-<p>When working on Home Assitant, you can easily restart the system and then watch the log output by combining the above commands using <code class="highlighter-rouge">&amp;&amp;</code></p>
+<p>When working on Home Assistant, you can easily restart the system and then watch the log output by combining the above commands using <code class="highlighter-rouge">&amp;&amp;</code></p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo systemctl restart home-assistant@[your user] <span class="o">&amp;&amp;</span> sudo journalctl -f -u home-assistant@[your user]
 </code></pre>
 </div>
