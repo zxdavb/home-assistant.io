@@ -230,9 +230,24 @@ CMD [ "/run.sh" ]
       <td>If that is True, the add-on run on host network.</td>
     </tr>
     <tr>
+      <td>host_ipc</td>
+      <td>no</td>
+      <td>Default False. Allow to share the IPC namespace with others.</td>
+    </tr>
+    <tr>
+      <td>host_dbus</td>
+      <td>no</td>
+      <td>Default False. Map Host dbus service into add-on.</td>
+    </tr>
+    <tr>
       <td>devices</td>
       <td>no</td>
       <td>Device list to map into the add-on. Format is: <code class="highlighter-rouge">&lt;path_on_host&gt;:&lt;path_in_container&gt;:&lt;cgroup_permissions&gt;</code>. i.e. <code class="highlighter-rouge">/dev/ttyAMA0:/dev/ttyAMA0:rwm</code></td>
+    </tr>
+    <tr>
+      <td>auto_uart</td>
+      <td>no</td>
+      <td>Default False. Auto mapping all UART/Serial device from host into add-on.</td>
     </tr>
     <tr>
       <td>hassio_api</td>
