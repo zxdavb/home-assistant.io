@@ -124,19 +124,19 @@ Once forked, setup your local copy of the source using the commands:</p>
 </code></pre>
 </div>
 <h3><a class="title-link" name="setting-up-virtual-environment" href="#setting-up-virtual-environment"></a> Setting up virtual environment</h3>
-<p>If you plan on providing isolation to your environment using <a href="https://docs.python.org/3.4/library/venv.html"><code class="highlighter-rouge">venv</code></a>. Within the <code class="highlighter-rouge">home-assistant</code> directory, create and activate your virtual environment.</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>python3 -m venv venv
-<span class="gp">$ </span><span class="nb">source </span>venv/bin/activate
+<p>To isolate your environment from the rest of the system, set up a <a href="https://docs.python.org/3.4/library/venv.html"><code class="highlighter-rouge">venv</code></a>. Within the <code class="highlighter-rouge">home-assistant</code> directory, create and activate your virtual environment.</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>python3 -m venv .
+<span class="gp">$ </span><span class="nb">source </span>bin/activate
 </code></pre>
 </div>
-<h3><a class="title-link" name="setup-and-run" href="#setup-and-run"></a> Setup and Run</h3>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd </span>home-assistant
-<span class="gp">$ </span>script/setup
+<p>Install the requirements with a provided script named <code class="highlighter-rouge">setup</code>.</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>script/setup
 </code></pre>
 </div>
-<ul>
-  <li>Run <code class="highlighter-rouge">hass</code> to invoke your local installation.</li>
-</ul>
+<p>Invoke your installation.</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>hass
+</code></pre>
+</div>
 <h3><a class="title-link" name="logging" href="#logging"></a> Logging</h3>
 <p>By default logging in home-assistant is tuned for operating in production (set to INFO by default, with some modules set to even less verbose logging levels).</p>
 <p>You can use the <a href="/components/logger/">logger</a> component to adjust logging to DEBUG to see even more details about what is going on.</p>
