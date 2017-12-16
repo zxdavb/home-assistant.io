@@ -82,15 +82,43 @@
     <span class="s">state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home/bedroom/temperature"</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>state_topic</strong> (<em>Required</em>): The MQTT topic subscribed to receive sensor values.</li>
-  <li><strong>name</strong> (<em>Optional</em>): The name of the sensor. Default is ‘MQTT Sensor’.</li>
-  <li><strong>qos</strong> (<em>Optional</em>): The maximum QoS level of the state topic. Default is 0.</li>
-  <li><strong>unit_of_measurement</strong> (<em>Optional</em>): Defines the units of measurement of the sensor, if any.</li>
-  <li><strong>expire_after</strong> (<em>Optional</em>): Defines the number of seconds after the value expires if it’s not updated. Default is 0 (=never expire).</li>
-  <li><strong>value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract a value from the payload.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="state_topic" href="#state_topic"></a> state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The MQTT topic subscribed to receive sensor values.</span></p>
+    </dd>
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Name of the MQTT sensor.</span></p>
+      <p class="default">Default value: MQTT Sensor</p>
+    </dd>
+    <dt><a class="title-link" name="qos" href="#qos"></a> qos</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">The maximum QoS level of the state topic.</span></p>
+      <p class="default">Default value: 0</p>
+    </dd>
+    <dt><a class="title-link" name="unit_of_measurement" href="#unit_of_measurement"></a> unit_of_measurement</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines the units of measurement of the sensor, if any.</span></p>
+    </dd>
+    <dt><a class="title-link" name="expire_after" href="#expire_after"></a> expire_after</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">Defines the number of seconds after the value expires if it’s not updated.</span></p>
+      <p class="default">Default value: 0</p>
+    </dd>
+    <dt><a class="title-link" name="value_template" href="#value_template"></a> value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="force_update" href="#force_update"></a> force_update</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="description">Sends update events even if the value hasn’t changed. Useful if you want to have meaningful value graphs in history.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+  </dl>
+</div>
 <h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>
 <p>In this section you find some real life examples of how to use this sensor.</p>
 <h3><a class="title-link" name="get-battery-level" href="#get-battery-level"></a> Get battery level</h3>
