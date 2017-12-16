@@ -74,15 +74,43 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>When launched for the first time, Home Assistant will write a default configuration file, called <code class="highlighter-rouge">configuration.yaml</code>, enabling the web interface and <a href="/components/discovery/">device discovery</a>. It can take up to a minute for your devices to be discovered and appear in the user interface.</p>
-<p>The <code class="highlighter-rouge">configuration.yaml</code> is written in <a href="/docs/configuration/yaml/">YAML</a>, stored in <a href="/docs/configuration/"><code class="highlighter-rouge">.homeassistant</code></a>, and can be modified with a text editor.</p>
-<p>See the <a href="/components/">components overview page</a> to find sample entries for your devices and services. For a sensor that is showing <a href="/components/sensor.random/">random values</a>, the entry would look like the sample below:</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sensor</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">random</span>
+  <p>If you made it here, awesome! That means that you got Home Assistant up and running. It might have already found some of your networked devices. This is going to be fun!</p>
+<p>Home Assistant stores its configuration in a file called <code class="highlighter-rouge">configuration.yaml</code>. A default one is created when Home Assistant is started for the first time. Some of the things in the configuration file can be edited via the user interface, other parts require you to edit the configuration file directly.</p>
+<p>There are two common approaches to edit your configuration: via Samba/Windows Networking and via the HASS Configurator. Both of these are <a href="/addons/">official add-ons for Hass.io</a>.</p>
+<h2><a class="title-link" name="installing-hassio-add-ons" href="#installing-hassio-add-ons"></a> Installing Hass.io add-ons</h2>
+<p>Hass.io add-ons are installed from the add-on store embedded in the Hass.io panel:</p>
+<ul>
+  <li>Open Home Assistant by navigating to <a href="http://hassio.local:8123">http://hassio.local:8123</a>.</li>
+  <li>Click on the menu icon in the top left and select Hass.io in the sidebar.</li>
+  <li>The Hass.io panel opens, now open the add-on store by clicking the shopping bag.</li>
+</ul>
+<p class="img">
+<img src="/images/hassio/screenshots/main_panel_store_icon.png" />
+From the Hass.io main panel open the add-on store.
+</p>
+<h3><a class="title-link" name="editing-config-via-hass-configurator" href="#editing-config-via-hass-configurator"></a> Editing config via HASS Configurator</h3>
+<p>The first add-on we should install is the HASS Configurator. With the HASS Configurator you’ll be able to edit your Home Assistant configuration from the web interface.</p>
+<p>Go to the add-on store (see previous step), click on Configurator and click on INSTALL. When installation is complete the UI will go to the add-on details page for the configurator. Here you will be able to change settings, start and stop the add-on.</p>
+<ul>
+  <li>Change the settings to set a password and click on save</li>
+  <li>Start the add-on</li>
+  <li>You will be able to click the “WEB UI” link to open the Web UI</li>
+</ul>
+<p>Time for the first practice with the configurator. Add the following to <code class="highlighter-rouge">configuration.yaml</code> file to add a link to the Configurator in the sidebar:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">panel_iframe</span><span class="pi">:</span>
+  <span class="s">configurator</span><span class="pi">:</span>
+    <span class="s">title</span><span class="pi">:</span> <span class="s">Configurator</span>
+    <span class="s">icon</span><span class="pi">:</span> <span class="s">mdi:wrench</span>
+    <span class="s">url</span><span class="pi">:</span> <span class="s">http://hassio.local:3218</span>
 </code></pre>
 </div>
-<p>The <a href="/docs/configuration/devices/">Setting up devices part</a> contains the additional documentation details about adding devices and services and <a href="/docs/configuration/customizing-devices/">customization</a>.</p>
-<p>For further details about configuration, please take a look at the <a href="/docs/configuration/">configuration documentation</a>.</p>
+<p>Now restart Home Assistant for the changes to the configuration to take effect. You can do this by going to the config panel (Configuration in the sidebar) -&gt; General -&gt; Restart Home Assistant.</p>
+<h3><a class="title-link" name="editing-config-via-sambawindows-networking" href="#editing-config-via-sambawindows-networking"></a> Editing config via Samba/Windows Networking</h3>
+<p>Maybe you are not a big fan of our web editor and want to use a text editor on your computer instead. This is possible by sharing the configuration over the network using the Samba add-on, which can be installed from the Hass.io add-on store.</p>
+<p>After you have installed it, click on START. Hass.io should now be available in the networking tab on your computer. Use a text editor like the free <a href="https://code.visualstudio.com/">Visual Studio Code</a> to edit <code class="highlighter-rouge">configuration.yaml</code>.</p>
+<h2><a class="title-link" name="configuring-integrations" href="#configuring-integrations"></a> Configuring integrations</h2>
+<p>Now that you are able to edit the configuration, it’s time to set up some of your devices and services. Each service and device will have its own instructions on how to be integrated. Find  your devices and services on the <a href="/components/">components overview page</a>.</p>
+<p class="note">YAML can be a little daunting at first. A lot is possible! <a href="/docs/configuration/devices/">Here is some more info.</a></p>
 <h3><a href="/getting-started/automation/">Next step: Automate Home Assistant »</a></h3>
 </article>
         </div>

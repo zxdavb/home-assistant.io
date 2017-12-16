@@ -74,27 +74,33 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>First you will need to install Home Assistant before we can get started:</p>
-<p>We have developed <strong>Hass.io</strong> to turn your device into a dedicated Home Assistant hub controlled by a nice webinterface.
-For Raspberry Pi and Intel NUC we offer configured images. Flash the image, setup WiFi (if required) and everything else can be done inside the Hass.io webinterface. Great, isn’t it?</p>
-<p>Also Home Assistant runs on any other device that supports <strong>Python 3</strong>.</p>
-<div class="text-center hass-option-cards">
-  <a class="option-card" href="/hassio/installation/">
-    <div class="img-container">
-      <img src="/images/supported_brands/home-assistant.png" />
-    </div>
-    <div class="title">Install Home Assistant using Hass.io</div>
-  </a>
-  <a class="option-card" href="/docs/installation/virtualenv/">
-    <div class="img-container">
-      <img src="/images/supported_brands/python.svg" />
-    </div>
-    <div class="title">Install Home Assistant on your computer</div>
-  </a>
-</div>
-<p><br /></p>
-<p>For alternative installation methods, please take a look at the <a href="/docs/installation/">installation documentation</a>.</p>
-<p>If you run into any issues, please see <a href="/docs/installation/troubleshooting/">the troubleshooting page</a> or <a href="/help/">communication channels</a>. It contains solutions to many commonly encountered issues.</p>
+  <p>The goal of this getting started guide is to install Hass.io on a Raspberry Pi 3. Hass.io is our own all in one solution that turns your Raspberry PI into the utlimate home automation hub.</p>
+<p>Follow this guide if you want to easily get started with Home Assistant or if you have none or little Linux experience. For advanced users, check our <a href="/docs/installation/">alternative installation methods</a>.</p>
+<h3><a class="title-link" name="hardware-requirements" href="#hardware-requirements"></a> Hardware requirements</h3>
+<p>We will need a few things to get started with installing Home Assistant. Links below are linking to Amazon US. If you’re not in the US, you should be able to find these items in web stores in your country.</p>
+<ul>
+  <li><a href="http://a.co/gEfMqL4">Raspberry Pi 3 model B</a> + <a href="http://a.co/cgKUgkt">Power Supply</a> (atleast 2.5A)</li>
+  <li><a href="http://a.co/gslOydD">Micro SD Card</a>. Get one that is Class 10 as they are more reliable. Size 32GB or bigger recommended.</li>
+  <li>SD Card reader. Part of most laptops. Also available as <a href="http://a.co/5FCyb0N">standalone USB sticks</a> (brand doesn’t matter, just pick cheapest)</li>
+  <li>Ethernet cable (optional, Hass.io can work with WiFi too)</li>
+</ul>
+<h3><a class="title-link" name="software-requirements" href="#software-requirements"></a> Software requirements</h3>
+<ul>
+  <li>Download <a href="https://github.com/home-assistant/hassio-build/releases/download/1.1/resinos-hassio-1.1-raspberrypi3.img.bz2">Hass.io image for Raspberry Pi 3</a></li>
+  <li>Download <a href="https://etcher.io/">Etcher</a> to write the image to an SD card</li>
+  <li>Text Editor like <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+</ul>
+<h3>Installing Hass.io</h3>
+<ol>
+  <li>Put the SD card in your SD card reader,</li>
+  <li>Open Etcher, select the Hass.io image and flash it to the SD card.</li>
+  <li>WiFi setup only: open the file <code class="highlighter-rouge">system-connections/resin-sample</code> with a text editor. Change <code class="highlighter-rouge">ssid</code> to be your network name and <code class="highlighter-rouge">psk</code> to be your password.</li>
+  <li>Unmount the SD card and remove it from your SD card reader.</li>
+  <li>Insert the SD card into your Raspberry Pi 3. If you are going to use an Ethernet cable to supply Internet, connect that too.</li>
+  <li>Connect your Raspberry Pi to the power supply so it turns on.</li>
+  <li>The Raspberry Pi will now boot up, connect to the Internet and download the latest version of Home Assistant. This will take about 20 minutes.</li>
+  <li>Home Assistant will be available at <a href="http://hassio.local:8123">http://hassio.local:8123</a>.</li>
+</ol>
 <h3><a href="/getting-started/configuration/">Next step: Configuring Home Assistant »</a></h3>
 </article>
         </div>
