@@ -90,6 +90,7 @@ Different distributions have different package installation mechanisms and somet
 </p>
 <p>Additional dependencies exist if you plan to perform Frontend Development, please read the <a href="https://home-assistant.io/developers/frontend/">Frontend</a> section to learn more.</p>
 <h4><a class="title-link" name="developing-on-windows" href="#developing-on-windows"></a> Developing on Windows</h4>
+<p>If you are using Windows as a development platform, make sure that you have the correct Microsoft <a href="http://landinghub.visualstudio.com/visual-cpp-build-tools">Visual C++ build tools</a> installed. The installation of the most requirements and validation using <code class="highlighter-rouge">tox</code> will fail if this is not done correctly. Check the <a href="https://wiki.python.org/moin/WindowsCompilers">Windows Compilers</a> section on the <a href="https://www.python.org/">Python website</a> for details.</p>
 <p>Due to Home Assistant is mainly designed and developed on Linux distributions it is not recommended to develop on Windows machines. However on Windows 10 machines you should decide to set up a <a href="https://docs.microsoft.com/de-de/windows/wsl/install-win10">Linux subsystem</a>.</p>
 <p>Setup Linux subsystem.</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>apt-get update
@@ -98,14 +99,13 @@ Different distributions have different package installation mechanisms and somet
 <span class="gp">$ </span>sudo apt-get install xubuntu-desktop -y
 </code></pre>
 </div>
-<p>Download and start PyCharm.</p>
+<p>It is recommended using <a href="https://www.jetbrains.com/pycharm/download/">PyCharm</a> as debugger. Download and start PyCharm.</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>wget https://download.jetbrains.com/python/pycharm-community-20XX.X.tar.gz
 <span class="gp">$ </span>tar -xzf pycharm-community-20XX.X
 <span class="gp">$ </span>./pycharm.sh
 </code></pre>
 </div>
 <p>In order to display the PyCharm GUI on Windows you need to run a X-Server like <a href="https://sourceforge.net/projects/vcxsrv/">VcXserv</a>.</p>
-<p>If you decide using Windows as a development platform, make sure that you have the correct Microsoft Visual C++ build tools installed. Check the <a href="https://wiki.python.org/moin/WindowsCompilers">Windows Compilers</a> section on the <a href="https://www.python.org/">Python website</a> for details. Validation using <code class="highlighter-rouge">tox</code> will fail if this is not done correctly.</p>
 <p>Also, make sure to install or upgrade the <code class="highlighter-rouge">setuptools</code> Python package. It contains compatibility improvements and adds automatic use of compilers:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pip install --upgrade setuptools
 </code></pre>

@@ -158,6 +158,17 @@
       <span class="pi">-</span> <span class="s">sensor.garage_door_wifi_signal_strength</span>
 </code></pre>
 </div>
+<p>As of firmware release 1.17 the garadget device has native support for MQTT. The options allow the end-user to configure the device in the following ways ‘cloud only’, ‘cloud and MQTT’ or ‘MQTT only’.</p>
+<p>For configuration of the garadget as a MQTT cover:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">cover</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">mqtt</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Garage</span><span class="nv"> </span><span class="s">Door"</span>
+    <span class="s">command_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">garadget/device_name/command"</span>
+    <span class="s">state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">garadget/device_name/status"</span>
+    <span class="s">payload_open</span><span class="pi">:</span> <span class="s2">"</span><span class="s">open"</span>
+    <span class="s">payload_close</span><span class="pi">:</span> <span class="s2">"</span><span class="s">close"</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -237,6 +248,9 @@
         </li>
         <li>
             <a href='/components/sensor.tahoma/'>Tahoma Sensor</a>
+        </li>
+        <li>
+            <a href='/components/cover.tellstick/'>TellStick Cover</a>
         </li>
         <li>
             <a href='/components/cover.template/'>Template Cover</a>

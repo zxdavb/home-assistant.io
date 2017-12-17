@@ -84,27 +84,75 @@
 <ul>
   <li><strong>name</strong> (<em>Optional</em>): The name of the alarm. Default is “HA Alarm”.</li>
   <li><strong>code</strong> (<em>Optional</em>): If defined, specifies a code to enable or disable the alarm in the frontend.</li>
-  <li><strong>pending_time</strong> (<em>Optional</em>): The time in seconds of the pending time before arming the alarm. Default is 60 seconds.</li>
+  <li><strong>code_template</strong> (<em>Optional</em>): If defined, returns a code to enable or disable the alarm in the frontend; an empty string disables checking the code.  Inside the template, the variables <strong>from_state</strong> and <strong>to_state</strong> identify the current and desired state.  Only one of <strong>code</strong> and <strong>code_template</strong> can be specified.</li>
+  <li><strong>delay_time</strong> (<em>Optional</em>): The time in seconds of the pending time before triggering the alarm. Default is 0 seconds.</li>
+  <li><strong>pending_time</strong> (<em>Optional</em>): The time in seconds of the pending time before effecting a state change. Default is 60 seconds.</li>
   <li><strong>trigger_time</strong> (<em>Optional</em>): The time in seconds of the trigger time in which the alarm is firing. Default is 120 seconds.</li>
   <li><strong>disarm_after_trigger</strong> (<em>Optional</em>): If true, the alarm will automatically disarm after it has been triggered instead of returning to the previous state.</li>
-  <li><strong>armed_home/armed_away/armed_night/triggered</strong> (<em>Optional</em>): State specific settings
+  <li><strong>armed_custom_bypass/armed_home/armed_away/armed_night/disarmed/triggered</strong> (<em>Optional</em>): State specific settings
     <ul>
-      <li><strong>pending_time</strong>: State specific pending time override.</li>
+      <li><strong>delay_time</strong> (<em>Optional</em>): State specific setting for <strong>delay_time</strong> (all states except <strong>triggered</strong>)</li>
+      <li><strong>pending_time</strong> (<em>Optional</em>): State specific setting for <strong>pending_time</strong> (all states except <strong>disarmed</strong>)</li>
+      <li><strong>trigger_time</strong> (<em>Optional</em>): State specific setting for <strong>trigger_time</strong> (all states except <strong>triggered</strong>)</li>
     </ul>
   </li>
 </ul>
-<p>In the config example below, armed_home state will have no pending time and triggered state will have pending time of 20 second whereas armed_away state will have a default pending time of 30 seconds.</p>
+<h2><a class="title-link" name="state-machine" href="#state-machine"></a> State machine</h2>
+<p>The state machine of the manual alarm component is complex but powerful.  The
+transitions are timed according to three values, <strong>delay_time</strong>, <strong>pending_time</strong>
+and <strong>trigger_time</strong>.  The values in turn can come from the default configuration
+variable or from a state-specific override.</p>
+<p>When the alarm is armed, its state first goes to <strong>pending</strong> for a number
+of seconds equal to the destination state’s <strong>pending_time</strong>, and then
+transitions to one of the “armed” states.  Note that <strong>code_template</strong>
+never receives “pending” in the <strong>to_state</strong> variable; instead,
+<strong>to_state</strong> contains the state which the user has requested.  However,
+<strong>from_state</strong> <em>can</em> contain “pending”.</p>
+<p>When the alarm is triggered, its state goes to <strong>pending</strong> for a number of
+seconds equal to the previous state’s <strong>delay_time</strong> plus the triggered
+state’s <strong>pending_time</strong>.  Then the alarm transitions to the “triggered”
+states.  The code is never checked when triggering the alarm, so the
+<strong>to_state</strong> variable of <strong>code_template</strong> cannot ever contain “triggered”
+either; again, <strong>from_state</strong> <em>can</em> contain “triggered”.</p>
+<p>The alarm remains in the “triggered” state for a number of seconds equal to the
+previous state’s <strong>trigger_time</strong>.  Then, depending on <strong>disarm_after_trigger</strong>,
+it goes back to either the previous state or <strong>disarmed</strong>.  If the previous
+state’s <strong>trigger_time</strong> is zero, the transition to “triggered” is entirely
+blocked and the alarm remains in the armed state.</p>
+<p>Each of the settings is useful in different scenarios.  <strong>pending_time</strong> gives
+you some time to leave the building (for “armed” states) or to disarm the alarm
+(for the “triggered” state).</p>
+<p><strong>delay_time</strong> can also be used to allow some time to disarm the alarm, but with
+more flexibility.  For example, you could specify a delay time for the
+“armed away” state, in order to avoid triggering the alarm while the
+garage door opens, but not for the “armed home” state.</p>
+<p><strong>trigger_time</strong> is useful to disable the alarm when disarmed, but it can also
+be used for example to sound the siren for a shorter time during the night.</p>
+<p>In the config example below:</p>
+<ul>
+  <li>
+    <p>the disarmed state never triggers the alarm;</p>
+  </li>
+  <li>
+    <p>the armed_home state will leave no time to leave the building or disarm the alarm;</p>
+  </li>
+  <li>
+    <p>while other states state will give 30 seconds to leave the building before triggering the alarm, and 20 seconds to disarm the alarm when coming back.</p>
+  </li>
+</ul>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">alarm_control_panel</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">manual</span>
     <span class="s">name</span><span class="pi">:</span> <span class="s">Home Alarm</span>
     <span class="s">code</span><span class="pi">:</span> <span class="s">1234</span>
     <span class="s">pending_time</span><span class="pi">:</span> <span class="s">30</span>
+    <span class="s">delay_time</span><span class="pi">:</span> <span class="s">20</span>
+    <span class="s">trigger_time</span><span class="pi">:</span> <span class="s">4</span>
+    <span class="s">disarmed</span><span class="pi">:</span>
+      <span class="s">trigger_time</span><span class="pi">:</span> <span class="s">0</span>
     <span class="s">armed_home</span><span class="pi">:</span>
       <span class="s">pending_time</span><span class="pi">:</span> <span class="s">0</span>
-    <span class="s">triggered</span><span class="pi">:</span>
-      <span class="s">pending_time</span><span class="pi">:</span> <span class="s">20</span>
-    <span class="s">trigger_time</span><span class="pi">:</span> <span class="s">4</span> 
+      <span class="s">delay_time</span><span class="pi">:</span> <span class="s">0</span>
 </code></pre>
 </div>
 <h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>
@@ -194,7 +242,13 @@
             <a href='/components/alarm_control_panel.alarmdecoder/'>AlarmDecoder Alarm Control Panel</a>
         </li>
         <li>
+            <a href='/components/alarm_control_panel.ialarm/'>Antifurto365 iAlarm Control Panel</a>
+        </li>
+        <li>
             <a href='/components/alarm_control_panel.arlo/'>Arlo Control Panel</a>
+        </li>
+        <li>
+            <a href='/components/alarm_control_panel.canary/'>Canary Alarm Control Panel</a>
         </li>
         <li>
             <a href='/components/alarm_control_panel.concord232/'>Concord232 Alarm Control Panel</a>

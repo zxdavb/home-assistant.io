@@ -91,11 +91,44 @@ The ISY994 controller is manufactured by <a href="https://www.universal-devices.
   <li><strong>host</strong> (<em>Required</em>): The host entry should be in full URL format, eg. http://192.168.10.100:80</li>
   <li><strong>username</strong> (<em>Required</em>): The username that used to access the ISY interface.</li>
   <li><strong>password</strong> (<em>Required</em>): The password that used to access the ISY interface.</li>
-  <li><strong>sensor_string</strong> (<em>Optional</em>): This is the string that is used to identify which devices are to be assumed to be sensors instead of lights of switches. By default, this string is ‘sensor’. If this string is found in the device name or folder, Home Assistant will assume it is as a sensor or binary sensor (if the device has on/off or true/false states).</li>
+  <li><strong>sensor_string</strong> (<em>Optional</em>): This is the string that is used to identify which devices are to be assumed to be sensors instead of lights of switches. By default, this string is ‘sensor’. If this string is found in the device name or folder, Home Assistant will assume it is as a sensor or binary sensor (if the device has on/off or true/false states). This is only necessary for nodes that are not automatically detected as sensors by Home Assistant. Insteon door, window, motion and leak sensors should all be detected automatically.</li>
   <li><strong>hidden_string</strong> (<em>Optional</em>): The HIDDEN_STRING is a string that is used to identify which devices are to be hidden on Home Assistant’s front page. This string will be stripped from the device’s name before being used. By default, this value is ‘{HIDE ME}’.</li>
   <li><strong>tls</strong> (<em>Optional</em>): This entry should reflect the version of TLS that the ISY controller is using for HTTPS encryption. This value can be either 1.1 or 1.2. If this value is not set, it is assumed to be version 1.1. This is the default for most users. ISY994 Pro users may likely be using 1.2. When using HTTPS in the host entry, it is best practice to set this value.</li>
 </ul>
 <p>Once the ISY controller is configured, it will automatically import any binary sensors, covers, fans, lights, locks, sensors and switches it can locate.</p>
+<h3><a class="title-link" name="sensors" href="#sensors"></a> Sensors</h3>
+<p>An Insteon door/window sensor will show up as a single Binary Sensor rather than two discrete devices like it does in the ISY994 admin panel. Note that when in “Two Nodes” mode, the sensor will have an UNKNOWN state until the sensor changes for the first time since the last Home Assistant reboot. If you do not use Insteon scenes that are controlled directly from the door sensor, you may prefer to set the sensor to “One Node” mode using the ISY Admin Panel.</p>
+<p>Each Insteon leak sensor will also show up as a single Binary Sensor as opposed to the two nodes seen in the ISY994. The name of the device will be based on what the parent node is named in the ISY994, which is typically the one with “-Dry” at the end of the name. This may be confusing, because “On” means wet in Home Assistant. You can rename this node either in the ISY994 Admin Panel (which will change the entity_id in Home Assistant) or assign a <code class="highlighter-rouge">friendly_name</code> in the <a href="https://home-assistant.io/docs/configuration/customizing-devices/">Customization section</a> of your configuration.</p>
+<p>If your leak or door/window sensor supports heartbeats, a new binary_sensor device will be added to Home Assistant to represent the battery state. The sensor will stay “Off” so long as the daily heartbeats occur. If a heartbeat is missed, the sensor will flip to “On”. The name of this device will be based on the heartbeat node in the ISY.</p>
+<h3><a class="title-link" name="handling-insteon-control-events" href="#handling-insteon-control-events"></a> Handling Insteon Control Events</h3>
+<p>A Home Assistant <code class="highlighter-rouge">isy994_control</code> event is emitted for every “control” event in the Insteon network. This allows you to write automations that trigger based on Insteon button presses. You can also trigger off of the unique Insteon events, such as double-presses, long-holds etc.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">alias</span><span class="pi">:</span> <span class="s">turn off living room on double tap lightswitch</span>
+    <span class="s">trigger</span><span class="pi">:</span>
+      <span class="s">platform</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="s">event_type</span><span class="pi">:</span> <span class="s">isy994_control</span>
+      <span class="s">event_data</span><span class="pi">:</span>
+        <span class="s">entity_id</span><span class="pi">:</span> <span class="s">light.lr_track_lights_front</span>
+        <span class="s">control</span><span class="pi">:</span> <span class="s1">'</span><span class="s">DFOF'</span>
+    <span class="s">action</span><span class="pi">:</span>
+      <span class="s">service</span><span class="pi">:</span> <span class="s">light.turn_off</span>
+      <span class="s">entity_id</span><span class="pi">:</span> <span class="s">light.lr_track_lights_rear</span>
+</code></pre>
+</div>
+<p>All <code class="highlighter-rouge">isy994_control</code> events will have an <code class="highlighter-rouge">entity_id</code> and <code class="highlighter-rouge">control</code> parameter in its <code class="highlighter-rouge">event_data</code>. You’ll need to refer to ISY994 documentation for the list of every possible control type, but the common ones are:</p>
+<ul>
+  <li><code class="highlighter-rouge">DON</code>: On button</li>
+  <li><code class="highlighter-rouge">DOF</code>: Off button</li>
+  <li><code class="highlighter-rouge">DFON</code>: “Fast On”, usually from double-tapping an On button</li>
+  <li><code class="highlighter-rouge">DFOF</code>: “Fast Off”, usually from double-tapping an Off button</li>
+  <li><code class="highlighter-rouge">FDUP</code>: “Fade Up”, usually while holding down an On button</li>
+  <li><code class="highlighter-rouge">FDDOWN</code>: “Fade Down”, usually while holding down an Off button</li>
+  <li><code class="highlighter-rouge">FDSTOP</code>: “Fade Stop”, when releasing a long-held button</li>
+  <li><code class="highlighter-rouge">BRT</code>: “Brighten”, from controllers that issue a single command to slightly brighten a light</li>
+  <li><code class="highlighter-rouge">DIM</code>: “Dim”, from controllers that issue a single command to slightly dim a light</li>
+</ul>
+<h3><a class="title-link" name="insteon-scenes" href="#insteon-scenes"></a> Insteon Scenes</h3>
+<p>All Insteon scenes configured in the ISY994 will show up as switches in Home Assistant.</p>
 <h3><a class="title-link" name="creating-custom-devices" href="#creating-custom-devices"></a> Creating Custom Devices</h3>
 <p>Using the Programs tab in the controller’s Administrative Console, custom devices can be created that will appear natively inside of Home Assistant. Home Assistant will scan the following folders and build the device to the associated domains:</p>
 <div class="highlighter-rouge"><pre class="highlight"><code>My Programs
@@ -213,6 +246,9 @@ The ISY994 controller is manufactured by <a href="https://www.universal-devices.
     <h1 class="title delta">Category Hub</h1>
     <ul class='divided'>
         <li>
+            <a href='/components/ads/'>ADS</a>
+        </li>
+        <li>
             <a href='/components/apcupsd/'>APCUPSd</a>
         </li>
         <li>
@@ -244,6 +280,9 @@ The ISY994 controller is manufactured by <a href="https://www.universal-devices.
         </li>
         <li>
             <a href='/components/bloomsky/'>BloomSky</a>
+        </li>
+        <li>
+            <a href='/components/canary/'>Canary</a>
         </li>
         <li>
             <a href='/components/digital_ocean/'>Digital Ocean</a>
@@ -346,6 +385,9 @@ The ISY994 controller is manufactured by <a href="https://www.universal-devices.
         </li>
         <li>
             <a href='/components/octoprint/'>OctoPrint</a>
+        </li>
+        <li>
+            <a href='/components/hue/'>Philips Hue</a>
         </li>
         <li>
             <a href='/components/pilight/'>Pilight</a>

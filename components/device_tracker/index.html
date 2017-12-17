@@ -85,6 +85,10 @@
     <span class="s">host</span><span class="pi">:</span> <span class="s">192.168.1.1</span>
     <span class="s">username</span><span class="pi">:</span> <span class="s">admin</span>
     <span class="s">password</span><span class="pi">:</span> <span class="s">YOUR_PASSWORD</span>
+    <span class="s">new_device_defaults</span><span class="pi">:</span>
+      <span class="s">track_new_devices</span><span class="pi">:</span> <span class="s">True</span>
+      <span class="s">hide_if_away</span><span class="pi">:</span> <span class="s">False</span>
+
 </code></pre>
 </div>
 <p>The following optional parameters can be used with any platform. However device tracker will only look for global settings under the configuration of the first configured platform:</p>
@@ -98,11 +102,6 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">track_new_devices</code></td>
-      <td>True</td>
-      <td>If new discovered devices are tracked by default</td>
-    </tr>
-    <tr>
       <td><code class="highlighter-rouge">interval_seconds</code></td>
       <td>12</td>
       <td>Seconds between each scan for new devices</td>
@@ -111,6 +110,11 @@
       <td><code class="highlighter-rouge">consider_home</code></td>
       <td>180</td>
       <td>Seconds to wait till marking someone as not home after not being seen. This parameter is most useful for households with Apple iOS devices that go into sleep mode while still at home to conserve battery life. iPhones will occasionally drop off the network and then re-appear. <code class="highlighter-rouge">consider_home</code> helps prevent false alarms in presence detection when using IP scanners such as Nmap. <code class="highlighter-rouge">consider_home</code> accepts various time representations, (E.g. the following all represents 3 minutes: <code class="highlighter-rouge">180</code>, <code class="highlighter-rouge">0:03</code>, <code class="highlighter-rouge">0:03:00</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">new_device_defaults</code></td>
+      <td> </td>
+      <td>Default values for new discovered devices. Available options <code class="highlighter-rouge">track_new_devices</code> (default: <code class="highlighter-rouge">True</code>), <code class="highlighter-rouge">hide_if_away</code> (default: <code class="highlighter-rouge">False</code>)</td>
     </tr>
   </tbody>
 </table>
@@ -260,6 +264,9 @@
           </a></li>
           <li><a href='/components/device_tracker.mqtt/'>
             MQTT Device Tracker
+          </a></li>
+          <li><a href='/components/device_tracker.meraki/'>
+            Meraki
           </a></li>
           <li><a href='/components/device_tracker.mikrotik/'>
             Mikrotik

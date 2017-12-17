@@ -106,16 +106,6 @@
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Name of the sensor to use in the frontend.</span></p>
       <p class="default">Default value: Luftdaten Sensor</p>
     </dd>
-    <dt><a class="title-link" name="resource" href="#resource"></a> resource</dt>
-    <dd>
-      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The URL of the API endpoint. Usually this has not to be changed.</span></p>
-      <p class="default">Default value: https://api.luftdaten.info/v1/sensor/</p>
-    </dd>
-    <dt><a class="title-link" name="verify_ssl" href="#verify_ssl"></a> verify_ssl</dt>
-    <dd>
-      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Verify SSL connection.</span></p>
-      <p class="default">Default value: true</p>
-    </dd>
     <dt><a class="title-link" name="monitored_conditions" href="#monitored_conditions"></a> monitored_conditions</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="list">list</span>)</span><span class="required">(Required)</span><span class="description">A list of conditions you want to monitor.</span></p>
@@ -132,15 +122,23 @@
         </dd>
         <dt><a class="title-link" name="temperature" href="#temperature"></a> temperature</dt>
         <dd>
-          <p class="desc"><span class="description">Display the temperature from a weather sensor.</span></p>
+          <p class="desc"><span class="description">Display the temperature from the sensor.</span></p>
         </dd>
         <dt><a class="title-link" name="humidity" href="#humidity"></a> humidity</dt>
         <dd>
-          <p class="desc"><span class="description">Display the humidity from a weather sensor.</span></p>
+          <p class="desc"><span class="description">Display the humidity from the sensor.</span></p>
+        </dd>
+        <dt><a class="title-link" name="pressure" href="#pressure"></a> pressure</dt>
+        <dd>
+          <p class="desc"><span class="description">Display the pressure from the sensor.</span></p>
         </dd>
       </dl>
     </dd>
   </dl>
+</div>
+<p>Not all sensors provide all conditions. Also, it’s possible that the sensor values are not available all the time. To check what a sensor is publishing use <code class="highlighter-rouge">curl</code>:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl https://api.luftdaten.info/v1/sensor/[sensorid]/
+</code></pre>
 </div>
 </article>
         </div>

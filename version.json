@@ -1,15 +1,15 @@
 {
-  "current_version": "0.59.2",
-  "release_date": "2017-12-06T00:00:00+00:00",
-  "release_notes": "https://home-assistant.io/blog/2017/12/03/release-59/",
-  "release_notes_path": "/blog/2017/12/03/release-59/",
-  "release_title": "0.59: Order pizza, Entity Picker, Color Wheel",
-  "release_description": "If you don't want to create items on our shopping list with HTTP requests, just order pizza!",
-  "patch_version_notes": "#release-0592---december-6",
+  "current_version": "0.60.0",
+  "release_date": "2017-12-17T00:00:00+00:00",
+  "release_notes": "https://home-assistant.io/blog/2017/12/17/release-60/",
+  "release_notes_path": "/blog/2017/12/17/release-60/",
+  "release_title": "0.60: Beckhoff/TwinCAT, WebDav, Gearbest, iAlarm",
+  "release_description": "Use Home Assistant for your production line or track prices and the stock market.",
+  "patch_version_notes": "#",
   "root_url": "https://home-assistant.io",
   "semantic_version": {
     "major": 0,
-    "minor": 59,
-    "patch": 2
+    "minor": 60,
+    "patch": 0
   }
 }
