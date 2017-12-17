@@ -4,7 +4,7 @@
   <title><![CDATA[Home Assistant]]></title>
   <link href="https://home-assistant.io/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2017-12-17T18:08:13+00:00</updated>
+  <updated>2017-12-17T18:46:14+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -71,6 +71,14 @@
   <li>IFTTT integration</li>
   <li>Alexa shopping list integration</li>
 </ul>
+
+<p><strong>What countries are supported?</strong></p>
+
+<p>Only US is currently supported. Expect more countries to be supported soon.</p>
+
+<p><strong>How is the connection made to the cloud?</strong></p>
+
+<p>The connection is made using a WebSocket connection over HTTPS. <a href="https://github.com/home-assistant/home-assistant/blob/dev/homeassistant/components/cloud/iot.py">See the source here</a>.</p>
 ]]></content>
   </entry>
   
