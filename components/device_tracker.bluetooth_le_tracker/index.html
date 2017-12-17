@@ -97,6 +97,9 @@ We have received <a href="https://github.com/home-assistant/home-assistant/issue
 <p>Configuration variables:</p>
 <ul>
   <li><strong>device_id</strong> (<em>Optional</em>): The device ID for the Bluetooth device to be used for tracking. Defaults to <code class="highlighter-rouge">hci0</code>.</li>
+  <li><strong>track_new_devices</strong> (<em>Optional</em>): If new discovered devices are tracked by default. Defaults to <code class="highlighter-rouge">True</code>.</li>
+  <li><strong>scan_duration</strong> (<em>Optional</em>): How long should the scanner be looking for BLE devices. Defaults to <code class="highlighter-rouge">10</code> seconds.</li>
+  <li><strong>interval_seconds</strong> (<em>Optional</em>): Seconds between each scan for new devices. Defaults to <code class="highlighter-rouge">12</code> seconds.</li>
 </ul>
 <p>As some BT LE devices change their MAC address regularly, a new device is only discovered when it has been seen 5 times.
 Some BTLE devices (e.g. fitness trackers) are only visible to the devices that they are paired with. In this case, the BTLE tracker won’t see this device.</p>
