@@ -4,7 +4,7 @@
   <title><![CDATA[Home Assistant]]></title>
   <link href="https://home-assistant.io/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2017-12-17T18:46:14+00:00</updated>
+  <updated>2017-12-17T19:06:46+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -74,7 +74,7 @@
 
 <p><strong>What countries are supported?</strong></p>
 
-<p>Only US is currently supported. Expect more countries to be supported soon.</p>
+<p>Only US is currently supported. Expect more countries to be supported soon. The reason there is a country limitation is that we need to do extra steps and certifications for each country’s Alexa skill.</p>
 
 <p><strong>How is the connection made to the cloud?</strong></p>
 
