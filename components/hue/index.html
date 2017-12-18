@@ -136,13 +136,13 @@
 <p>More information can be found on the <a href="https://www.developers.meethue.com/documentation/groups-api#22_create_group">Philips Hue API documentation</a> website.</p>
 <h3><a class="title-link" name="using-hue-scenes-in-home-assistant" href="#using-hue-scenes-in-home-assistant"></a> Using Hue Scenes in Home Assistant</h3>
 <p>The Hue platform has it’s own concept of scenes for setting the colors of a group of lights at once. Hue Scenes are very cheap, get created by all kinds of apps (as it is the only way to have 2 or more lights change at the same time), and are rarely deleted. A typical Hue hub might have hundreds of scenes stored in them, many that you’ve never used, almost all very poorly named.</p>
-<p>To avoid user interface overload we don’t expose scenes directly. Instead there is a <a href="/components/light/#service-lighthue_activate_scene">light.hue_activate_scene</a> service which can be used by <code class="highlighter-rouge">automation</code> or <code class="highlighter-rouge">script</code> components.
+<p>To avoid user interface overload we don’t expose scenes directly. Instead there is a hue.hue_activate_scene service which can be used by <code class="highlighter-rouge">automation</code> or <code class="highlighter-rouge">script</code> components.
 This will have all the bulbs transitioned at once, instead of one at a time using standard scenes in Home Assistant.</p>
 <p>For instance:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">script</span><span class="pi">:</span>
   <span class="s">porch_on</span><span class="pi">:</span>
     <span class="s">sequence</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">light.hue_activate_scene</span>
+      <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">hue.hue_activate_scene</span>
         <span class="s">data</span><span class="pi">:</span>
           <span class="s">group_name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Porch"</span>
           <span class="s">scene_name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Porch</span><span class="nv"> </span><span class="s">Orange"</span>
