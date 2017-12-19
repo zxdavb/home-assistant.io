@@ -76,6 +76,13 @@
   <hr class="divider">
   <p>Z-Wave garage doors, blinds, and roller shutters are supported as cover in Home Assistant.</p>
 <p>To get your Z-Wave covers working with Home Assistant, follow the instructions for the general <a href="/components/zwave/">Z-Wave component</a>.</p>
+<p>If you discover that you need to [invert the operation]](/docs/z-wave/installation/#invert_openclose_buttons) of open/close for a particular device, you may change this behavior in your Z-Wave section of your <code class="highlighter-rouge">configuration.yaml</code> file as follows:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">zwave</span><span class="pi">:</span>
+  <span class="s">device_config</span><span class="pi">:</span>
+    <span class="s">cover.my_cover</span><span class="pi">:</span>
+      <span class="s">invert_openclose_buttons</span><span class="pi">:</span> <span class="s">true</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
