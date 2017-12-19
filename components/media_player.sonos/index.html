@@ -234,7 +234,7 @@
   </tbody>
 </table>
 <h3><a class="title-link" name="service-sonos_update_alarm" href="#service-sonos_update_alarm"></a> Service <code class="highlighter-rouge">sonos_update_alarm</code></h3>
-<p>Update an existing sonos alarm.</p>
+<p>Update an existing Sonos alarm.</p>
 <table>
   <thead>
     <tr>
@@ -273,6 +273,35 @@
       <td><code class="highlighter-rouge">include_linked_zones</code></td>
       <td>yes</td>
       <td>Boolean that defines if the alarm also plays on grouped players.</td>
+    </tr>
+  </tbody>
+</table>
+<h3><a class="title-link" name="service-sonos_set_option" href="#service-sonos_set_option"></a> Service <code class="highlighter-rouge">sonos_set_option</code></h3>
+<p>Set Sonos speaker options.</p>
+<p>Night Sound and Speech Enhancement modes are only supported on Sonos PLAYBAR and PLAYBASE speakers when playing from the TV source. Other speaker types will ignore these options.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">entity_id</code></td>
+      <td>no</td>
+      <td>String or list of <code class="highlighter-rouge">entity_id</code>s that will have their options set.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">night_sound</code></td>
+      <td>yes</td>
+      <td>Boolean to control Night Sound mode.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">speech_enhance</code></td>
+      <td>yes</td>
+      <td>Boolean to control Speech Enhancement mode.</td>
     </tr>
   </tbody>
 </table>
