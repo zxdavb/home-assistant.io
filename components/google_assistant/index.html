@@ -74,15 +74,12 @@
     </h1>
   </header>
   <hr class="divider">
-  <p class="note">
-This is to provide you with voice control via Google Assistant (on your mobile or tablet) or a Google Home device.
-</p>
-<h1>Google Assistant Docs</h1>
+  <p>The <code class="highlighter-rouge">google_assistant</code> component allows you to control things via Google Assistant (on your mobile or tablet) or a Google Home device.</p>
 <p>The Google Assistant component requires a bit more setup than most due to the way Google requires Assistant Apps to be set up.</p>
 <p class="note">
 To use Google Assistant your Home Assistant configuration has to be externally accessible, with a hostname and SSL certificate. If you haven’t already configured that you should do so before continuing.
 </p>
-<h3><a class="title-link" name="configuration" href="#configuration"></a> Configuration</h3>
+<p>To enable this, add the following lines to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">google_assistant</span><span class="pi">:</span>
   <span class="s">project_id</span><span class="pi">:</span> <span class="s">someproject-2d0b8</span>
@@ -96,18 +93,15 @@ To use Google Assistant your Home Assistant configuration has to be externally a
     <span class="pi">-</span> <span class="s">group</span>
 </code></pre>
 </div>
-<p><em>Note:</em> It’s very important that you use very long strings for <code class="highlighter-rouge">client_id</code> and <code class="highlighter-rouge">access_token</code>. Those are essentially the credentials to your Home Assistant instance. You can generate them with the following command:</p>
-<p><code class="highlighter-rouge">cat /dev/urandom|fold -w 120|head -n 1|base64 -w 0|tr -dc '0-9A-Za-z'|cut -c -80</code></p>
-<p>If you’re not using Linux, you can use sites such as <a href="https://www.browserling.com/tools/random-string">this one</a> to generate a random string (containing mixed case letters and numbers) of up to 80 characters.</p>
-<p><em>Configuration Variables:</em></p>
+<p>Configuration variables:</p>
 <ul>
-  <li><em>expose_by_default</em> (Optional): Expose devices in all supported domains by default.</li>
-  <li><em>project_id</em> (Required): Project ID from the Google Developer console (looks like <code class="highlighter-rouge">words-2ab12</code>)</li>
-  <li><em>client_id</em> (Required): A long random URL safe string (no spaces or special characters) that will be used for Implicit OAuth.</li>
-  <li><em>access_token</em> (Required): Another different long random URL safe string.</li>
-  <li><em>agent_user_id</em> (Optional): A string to identify the user, e.g., email address. If not provided, the component will generate one.</li>
-  <li><em>api_key</em> (Optional): An API Key generated for the project from <a href="https://console.cloud.google.com/apis/api/homegraph.googleapis.com/overview">Google Console</a> which allows you to update devices without unlinking and relinking an account (see setup below). If not provided then the request_sync service is not exposed.</li>
-  <li><em>exposed_domains</em> (Optional): An array of Home Assistant domains to expose to Google Assistant. Options include:
+  <li><strong>expose_by_default</strong> (<em>Optional</em>): Expose devices in all supported domains by default.</li>
+  <li><strong>project_id</strong> (<em>Required</em>): Project ID from the Google Developer console (looks like <code class="highlighter-rouge">words-2ab12</code>)</li>
+  <li><strong>client_id</strong> (<em>Required</em>): A long random URL safe string (no spaces or special characters) that will be used for Implicit OAuth.</li>
+  <li><strong>access_token</strong> (<em>Required</em>): Another different long random URL safe string.</li>
+  <li><strong>agent_user_id</strong> (<em>Optional</em>): A string to identify the user, e.g., email address. If not provided, the component will generate one.</li>
+  <li><strong>api_key</strong> (<em>Optional</em>): An API Key generated for the project from <a href="https://console.cloud.google.com/apis/api/homegraph.googleapis.com/overview">Google Console</a> which allows you to update devices without unlinking and relinking an account (see setup below). If not provided then the request_sync service is not exposed.</li>
+  <li><strong>exposed_domains</strong> (<em>Optional</em>): An array of Home Assistant domains to expose to Google Assistant. Options include:
     <ul>
       <li><code class="highlighter-rouge">switch</code></li>
       <li><code class="highlighter-rouge">light</code></li>
@@ -121,6 +115,11 @@ To use Google Assistant your Home Assistant configuration has to be externally a
     </ul>
   </li>
 </ul>
+<p>It’s very important that you use very long strings for <code class="highlighter-rouge">client_id</code> and <code class="highlighter-rouge">access_token</code>. Those are essentially the credentials to your Home Assistant instance. You can generate them with the following command:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cat /dev/urandom | fold -w 120 | head -n 1 | base64 -w 0 | tr -dc <span class="s1">'0-9A-Za-z'</span> | cut -c -80<span class="sb">`</span>
+</code></pre>
+</div>
+<p>If you’re not using Linux, you can use sites such as <a href="https://www.browserling.com/tools/random-string">this one</a> to generate a random string (containing mixed case letters and numbers) of up to 80 characters.</p>
 <p>You can also customize your devices similar to other components by adding keys to entities:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">homeassistant</span><span class="pi">:</span>
   <span class="s">customize</span><span class="pi">:</span>
@@ -136,12 +135,12 @@ To use Google Assistant your Home Assistant configuration has to be externally a
       <span class="s">google_assistant_type</span><span class="pi">:</span> <span class="s">light</span>
 </code></pre>
 </div>
-<p><em>Entity Customization Keys:</em></p>
+<p>Entity Customization Keys:</p>
 <ul>
-  <li><em>google_assistant</em>: True exposes entity, false will hide it</li>
-  <li><em>google_assistant_name</em>: Can be used to override the primary name of an entity. By default the <code class="highlighter-rouge">friendly_name</code> of an entity is used.</li>
-  <li><em>google_assistant_type</em>: Can be used to override the domain/type of an entity. For example a switch can be treated as a light</li>
-  <li><em>aliases</em>: Provides “nicknames” to Google Assistant. These function as alternate names for an entity that Assistant will understand when spoken.</li>
+  <li><strong>google_assistant</strong>: True exposes entity, false will hide it.</li>
+  <li><strong>google_assistant_name</strong>: Can be used to override the primary name of an entity. By default the <code class="highlighter-rouge">friendly_name</code> of an entity is used.</li>
+  <li><strong>google_assistant_type</strong>: Can be used to override the domain/type of an entity. For example a switch can be treated as a light</li>
+  <li><strong>aliases</strong>: Provides “nicknames” to Google Assistant. These function as alternate names for an entity that Assistant will understand when spoken.</li>
 </ul>
 <h3><a class="title-link" name="setup" href="#setup"></a> Setup</h3>
 <ol>
