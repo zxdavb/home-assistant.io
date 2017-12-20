@@ -132,12 +132,49 @@ netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=8123 conne
 If you want to use a USB Bluetooth adapter or Z-Wave USB Stick with Home Assistant on Synology Docker these instructions do not correctly configure the container to access the USB devices. To configure these devices on your Synology Docker Home Assistant you can follow the instructions provided <a href="https://philhawthorne.com/installing-home-assistant-io-on-a-synology-diskstation-nas/">here</a> by Phil Hawthorne. 
 </p>
 <h3><a class="title-link" name="restart" href="#restart"></a> Restart</h3>
-<p>This will launch Home Assistant and serve the web interface from port 8123 on your Docker host.</p>
 <p>If you change the configuration you have to restart the server. To do that you have 2 options.</p>
 <ol>
   <li>You can go to the <img src="/images/screenshots/developer-tool-services-icon.png" alt="service developer tool icon" class="no-shadow" height="38" /> service developer tools, select the service <code class="highlighter-rouge">homeassistant/restart</code> and click “Call Service”.</li>
   <li>Or you can restart it from a terminal by running <code class="highlighter-rouge">docker restart home-assistant</code></li>
 </ol>
+<h3><a class="title-link" name="docker-compose" href="#docker-compose"></a> Docker Compose</h3>
+<p>As the docker command becomes more complex, switching to <code class="highlighter-rouge">docker-compose</code> can be preferable and support automatically restarting on failure or system restart. Create a <code class="highlighter-rouge">docker-compose.yml</code> file:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code>  <span class="s">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
+  <span class="s">services</span><span class="pi">:</span>
+    <span class="s">web</span><span class="pi">:</span>
+      <span class="s">image</span><span class="pi">:</span> <span class="s">homeassistant/home-assistant</span>
+      <span class="s">volumes</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">/path/to/your/config:/config</span>
+        <span class="pi">-</span> <span class="s">/etc/localtime:/etc/localtime:ro</span>
+      <span class="s">restart</span><span class="pi">:</span> <span class="s">always</span>
+      <span class="s">network_mode</span><span class="pi">:</span> <span class="s">host</span>
+</code></pre>
+</div>
+<p>Then start the container with:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>docker-compose up -d
+</code></pre>
+</div>
+<h3><a class="title-link" name="exposing-devices" href="#exposing-devices"></a> Exposing Devices</h3>
+<p>In order to use z-wave, zigbee or other components that require access to devices, you need to map the appropriate device into the container. Ensure the user that is running the container has the correct privileges to access the <code class="highlighter-rouge">/dev/tty*</code> file, then add the device mapping to your docker command:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>docker run -d --name<span class="o">=</span><span class="s2">"home-assistant"</span> -v /path/to/your/config:/config -v /etc/localtime:/etc/localtime:ro --device /dev/ttyUSB0:/dev/ttyUSB0 --net<span class="o">=</span>host homeassistant/home-assistant
+</code></pre>
+</div>
+<p>or in a <code class="highlighter-rouge">docker-compose.yml</code> file:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code>  <span class="s">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
+  <span class="s">services</span><span class="pi">:</span>
+    <span class="s">web</span><span class="pi">:</span>
+      <span class="s">image</span><span class="pi">:</span> <span class="s">homeassistant/home-assistant</span>
+      <span class="s">volumes</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">/path/to/your/config:/config</span>
+        <span class="pi">-</span> <span class="s">/etc/localtime:/etc/localtime:ro</span>
+      <span class="s">devices</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">/dev/ttyUSB0:/dev/ttyUSB0</span>
+        <span class="pi">-</span> <span class="s">/dev/ttyUSB1:/dev/ttyUSB1</span>
+        <span class="pi">-</span> <span class="s">/dev/ttyACM0:/dev/ttyACM0</span>
+      <span class="s">restart</span><span class="pi">:</span> <span class="s">always</span>
+      <span class="s">network_mode</span><span class="pi">:</span> <span class="s">host</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
