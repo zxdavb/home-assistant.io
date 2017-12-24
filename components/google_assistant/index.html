@@ -116,7 +116,7 @@ To use Google Assistant your Home Assistant configuration has to be externally a
   </li>
 </ul>
 <p>It’s very important that you use very long strings for <code class="highlighter-rouge">client_id</code> and <code class="highlighter-rouge">access_token</code>. Those are essentially the credentials to your Home Assistant instance. You can generate them with the following command:</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cat /dev/urandom | fold -w 120 | head -n 1 | base64 -w 0 | tr -dc <span class="s1">'0-9A-Za-z'</span> | cut -c -80<span class="sb">`</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cat /dev/urandom | fold -w 120 | head -n 1 | base64 -w 0 | tr -dc <span class="s1">'0-9A-Za-z'</span> | cut -c -80
 </code></pre>
 </div>
 <p>If you’re not using Linux, you can use sites such as <a href="https://www.browserling.com/tools/random-string">this one</a> to generate a random string (containing mixed case letters and numbers) of up to 80 characters.</p>
