@@ -106,14 +106,20 @@
 <p>Once you’re done, ask Alexa to discover devices (“Alexa, discover devices”) and you are all set to control them: “Alexa, turn on &lt;device name&gt;”.</p>
 <p>See the <a href="/components/cloud/">Cloud component configuration</a> to learn how to filter which devices get exposed to Alexa.</p>
 <h2><a class="title-link" name="faq" href="#faq"></a> FAQ</h2>
-<p><em>Last updated: December 23, 2017</em></p>
+<p><em>Last updated: December 26, 2017</em></p>
 <h4><a class="title-link" name="i-thought-the-home-assistant-crew-didnt-like-the-cloud" href="#i-thought-the-home-assistant-crew-didnt-like-the-cloud"></a> I thought the Home Assistant crew didn’t like the cloud?</h4>
 <p>You are right, <a href="https://home-assistant.io/blog/2016/01/19/perfect-home-automation/#your-system-should-run-at-home-not-in-the-cloud">we don’t</a>! The Home Assistant Cloud is not an alternative to running your local Home Assistant instance. All control and automations are still running locally.</p>
 <p>Instead, the Home Assistant Cloud is an extension of your local instance. It allows to communicate with companies that force us to communicate via a public available cloud endpoint like Amazon Alexa and Google Assistant.</p>
-<p>Home Assistant Cloud is only used to route the messages to your Home Assistant instance. All messages are processed locally.</p>
+<p>Home Assistant Cloud is only used to route the messages to your local Home Assistant instance. All messages are processed locally.</p>
 <p><em>(Some people have suggested we rename to Home Assistant Bridge to avoid this confusion)</em></p>
 <h4><a class="title-link" name="will-home-assistant-and-hassio-remain-open-source" href="#will-home-assistant-and-hassio-remain-open-source"></a> Will Home Assistant and Hass.io remain open source?</h4>
 <p>Yes. Yes. Yes! Home Assistant is the work of hundreds of developers all working together in creating something amazing. The only thing that will require a subscription is the optional cloud functionality.</p>
+<h4><a class="title-link" name="where-is-the-source-code-for-the-alexa-skill" href="#where-is-the-source-code-for-the-alexa-skill"></a> Where is the source code for the Alexa skill?</h4>
+<p>All messages are processed locally and so the Alexa skill code is part of the Home Assistant code. The Home Assistant Cloud only routes the messages to your local Home Assistant instance. This means that you can audit the source code to check all the things that the cloud can do:</p>
+<ul>
+  <li><a href="https://github.com/home-assistant/home-assistant/blob/dev/homeassistant/components/cloud/iot.py">Module that processes incoming cloud messages</a></li>
+  <li><a href="https://github.com/home-assistant/home-assistant/blob/dev/homeassistant/components/alexa/smart_home.py">Alexa Smart Home v3 skill</a></li>
+</ul>
 <h4><a class="title-link" name="what-other-features-will-come-to-the-cloud" href="#what-other-features-will-come-to-the-cloud"></a> What other features will come to the cloud?</h4>
 <p>We have a lot of ideas! We are not going to make any promises but here are some things that we’re looking into:</p>
 <ul>
