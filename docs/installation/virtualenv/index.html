@@ -76,42 +76,66 @@
   </header>
   <hr class="divider">
   <p>If you already have Python 3.5 or later installed, you can easily give Home Assistant a spin.</p>
-<p>It’s recommended when installing Python packages that you use a virtual environment. This will make sure that your Python installation and Home Assistant installation won’t impact one another.</p>
+<p>It’s recommended when installing Python packages that you use a <a href="https://docs.python.org/3.5/library/venv.html#module-venv">virtual environment</a>. This will make sure that your Python installation and Home Assistant installation won’t impact one another. The following steps will work on most unix like systems.</p>
 <p><em>(If you’re on a Debian based system, you will need to install Python virtual environment support using <code class="highlighter-rouge">apt-get install python3-pip python3-venv</code>.)</em></p>
+<h3><a class="title-link" name="install" href="#install"></a> Install</h3>
 <ol>
-  <li>Create a virtual environment:
+  <li>Create a virtual environment in your current directory:
     <div class="highlighter-rouge"><pre class="highlight"><code>$ python3 -m venv homeassistant
 </code></pre>
     </div>
   </li>
-  <li>Open virtual environment:
+  <li>Open the virtual environment:
     <div class="highlighter-rouge"><pre class="highlight"><code>$ cd homeassistant
 </code></pre>
     </div>
   </li>
-  <li>Activate virtual environment:
+  <li>Activate the virtual environment:
     <div class="highlighter-rouge"><pre class="highlight"><code>$ source bin/activate
 </code></pre>
     </div>
   </li>
   <li>Install Home Assistant:
-    <div class="highlighter-rouge"><pre class="highlight"><code>$ python3 -m pip install --upgrade homeassistant
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ python3 -m pip install homeassistant
 </code></pre>
     </div>
   </li>
-  <li>Run Home Assistant:
+  <li>Configure it to <a href="docs/autostart/">autostart</a></li>
+  <li>Or run Home Assistant manually:
     <div class="highlighter-rouge"><pre class="highlight"><code>$ hass --open-ui
 </code></pre>
     </div>
   </li>
 </ol>
+<h3><a class="title-link" name="upgrade" href="#upgrade"></a> Upgrade</h3>
+<ol>
+  <li>
+    <p>Stop Home Assistant</p>
+  </li>
+  <li>Open the directory where the virtual environment is located:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ cd homeassistant
+</code></pre>
+    </div>
+  </li>
+  <li>Activate the virtual environment:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ source bin/activate
+</code></pre>
+    </div>
+  </li>
+  <li>Upgrade Home Assistant:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ python3 -m pip install --upgrade homeassistant
+</code></pre>
+    </div>
+  </li>
+  <li>Start Home Assistant</li>
+</ol>
 <h3><a class="title-link" name="notes" href="#notes"></a> Notes</h3>
 <ul>
-  <li>In the future, if you want to start Home Assistant again, follow step 2, 3 and 5.</li>
-  <li>If you want to upgrade Home Assistant, follow step 2, 3 and 4.</li>
+  <li>In the future, if you want to start Home Assistant manually again, follow step 2, 3 and 5.</li>
+  <li>It’s recommanded to run Home Assistant as a dedicated user.</li>
 </ul>
 <p class="info">
-Looking for more advanced guides? Check our <a href="/docs/installation/raspberry-pi/">Rasbian guide</a> or the [available installation guides](/docs/installation/]. For details about autostarting, refer to the <a href="/docs/autostart/">autostart section</a> in the documentation.
+Looking for more advanced guides? Check our <a href="/docs/installation/raspberry-pi/">Rasbian guide</a> or the [other installation guides](/docs/installation/].
 </p>
 </article>
         </div>
