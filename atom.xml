@@ -4,7 +4,7 @@
   <title><![CDATA[Home Assistant]]></title>
   <link href="https://home-assistant.io/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2017-12-28T20:20:53+00:00</updated>
+  <updated>2017-12-29T08:15:55+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Thank You]]></title>
+    <link href="https://home-assistant.io/blog/2017/12/28/thank-you/"/>
+    <updated>2017-12-28T22:00:00+00:00</updated>
+    <id>https://home-assistant.io/blog/2017/12/28/thank-you</id>
+    <content type="html"><![CDATA[<p>2017 is almost over and this means it’s time to do a little recap of our 2017. This was a great year for Home Assistant. Again, we were able to stick to our bi-weekly release cycle. There were 25 releases over the year and each release included the work of around 60 contributors.</p>
+
+<p>We got 10.000 stars on <a href="https://GitHub.com">GitHub</a>, reached 10.000 commits in the main repo (over 4300 were made in 2017), got a <a href="/blog/2017/04/01/thomas-krenn-award/">Thomas-Krenn award</a>, participated in <a href="/blog/2017/11/04/release-57/#hacktoberfest">Hacktoberfest</a>, we have now almost 1000 integrations (the exact number is 938), we <a href="/blog/2017/07/03/home-assistant-is-moving-to-discord/">moved to Discord</a> and we are up to over 2 million pageviews per month on our forum. Beside that we announced the <a href="/blog/2017/12/17/introducing-home-assistant-cloud/">Home Assistant cloud</a> and have regular <a href="https://hasspodcast.io/">Home Assistant Podcasts</a>.</p>
+
+<p>We also do not want to forget to mention <a href="https://home-assistant.io/hassio/">Hass.io</a> and all the great Hass.io add-ons.</p>
+
+<p>Uff, what a year…Thank you, dear community for being so helpful, supportive and awesome 🙇.</p>
+
+<p>A very big thanks goes out to the developers of the Python language and all the open source libraries and tools that Home Assistant depends on. You are the foundation for our success and all of you can be proud of yourself.</p>
+
+<p>We would also like to thanks all the companies that offer their services for free to open source projects. Without these we would not be able to operate at our speed or scale. Thank you <a href="https://GitHub.com">GitHub</a>, <a href="https://Travis-ci.org">TravisCI</a>, <a href="https://CloudFlare.com">CloudFlare</a>, [Disord] and <a href="https://Discourse.com">Discourse</a>!</p>
+
+<p>Some of us are taking a break and spending some quality time with family and loved ones.</p>
+
+<p>Stay tuned for more Home Assistant awesomeness in 2018. We will keep the pace but first: Happy New Year!</p>
+
+<p>– Home Assistant Organization</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Introducing Home Assistant Cloud]]></title>
@@ -2221,50 +2247,6 @@ Demo is running... -&gt; CTRL + C to shutdown
 <p>Our participation for <a href="https://home-assistant.io/blog/2016/11/05/hacktoberfest-influxdb-weather/#hacktoberfest">Hacktoberfest 2016</a> was a huge success. Join us to repeat it this year.</p>
 
 <p><a href="https://hacktoberfest.digitalocean.com/"><img src="/images/blog/2016-10-hacktoberfest/hacktoberfest.png" alt="Hacktober fest logo" /></a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Effortless encryption with Let's Encrypt and DuckDNS]]></title>
-    <link href="https://home-assistant.io/blog/2017/09/27/effortless-encryption-with-lets-encrypt-and-duckdns/"/>
-    <updated>2017-09-27T00:05:00+00:00</updated>
-    <id>https://home-assistant.io/blog/2017/09/27/effortless-encryption-with-lets-encrypt-and-duckdns</id>
-    <content type="html"><![CDATA[<p>When Let’s Encrypt launched we were estatic: finally an easy and free way for our users to securely access their homes remotely. Let’s Encrypt signifianctly lowered the bar to get and renew SSL certificates. However, this process could still be quite an obstacle for our users. It required opening ports on the router and remembering to renew the certificate every so often.</p>
-
-<p>Thanks to a <a href="https://www.splitbrain.org/blog/2017-08/10-homeassistant_duckdns_letsencrypt">blog post</a> by Andreas Gohr I realized that DuckDNS supports setting TXT records, making it compatible with the DNS-01 challenge of Let’s Encrypt. The DNS-01 challenge is using the DNS record of the domain instead of interacting with the server. This means that it’s not needed for the user to open any ports!</p>
-
-<p>I have worked together with <a href="https://github.com/pvizeli">Pascal Vizeli</a> on updating the DuckDNS add-on for Hass.io and today we’re proud to announce it now includes automatic generation and updating of Let’s Encrypt certificates for your DuckDNS domain. The only thing that you have to add to your DuckDNS configuration is that you accept the Let’s Encrypt <a href="https://letsencrypt.org/repository/">terms of service</a> and point Home Assistant at the generated certificates and you’re good to go. No other work is required.</p>
-
-<p>To get started today, start with making sure that you have <a href="/hassio/">Hass.io installed</a>. After that, go to the Hass.io panel in Home Assistant, open the add-on store, scroll down to DuckDNS and install it. In the DuckDNS settings change “accept_terms” to true and start it.</p>
-
-<p>Next up is to configure Home Assistant with the config below and restart it. You’re now good to go! Make sure to use the right protocol when browsing to your instance: <code class="highlighter-rouge">https://&lt;your_domain&gt;.duckdns.org</code>. Happy secure controlling your house!</p>
-
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry for the HTTP component</span>
-<span class="s">http</span><span class="pi">:</span>
-  <span class="s">ssl_certificate</span><span class="pi">:</span> <span class="s">/ssl/fullchain.pem</span>
-  <span class="s">ssl_key</span><span class="pi">:</span> <span class="s">/ssl/privkey.pem</span>
-</code></pre>
-</div>
-
-<p>If you’re not using Hass.io, check out the <a href="https://www.splitbrain.org/blog/2017-08/10-homeassistant_duckdns_letsencrypt">blog post</a> by Andreas for instructions.</p>
-
-<p>If you enjoy the free service provided by DuckDNS and Let’s Encrypt, consider donating to their cause:</p>
-
-<ul>
-  <li><a href="https://www.patreon.com/user?u=3209735">Become a Patreon of DuckDNS</a></li>
-  <li><a href="https://letsencrypt.org/donate/">Donate to Let’s Encrypt</a></li>
-</ul>
-
-<p>More information:</p>
-
-<ul>
-  <li><a href="/hassio/">Hass.io</a></li>
-  <li><a href="/hassio/installation/">Installing Hass.io</a></li>
-  <li><a href="/addons/duckdns/">DuckDNS add-on</a></li>
-  <li><a href="http://www.duckdns.org/">DuckDNS</a></li>
-  <li><a href="https://letsencrypt.org/">Let’s Encrypt</a></li>
-</ul>
 
 ]]></content>
   </entry>
