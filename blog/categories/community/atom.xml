@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Community | Home Assistant]]></title>
   <link href="https://home-assistant.io/blog/categories/community/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2017-12-29T20:47:00+00:00</updated>
+  <updated>2017-12-29T20:56:40+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -28,7 +28,7 @@ Uff, what a year...Thank you, dear community for being so helpful, supportive an
 
 A very big thanks goes out to the developers of the Python language and all the open source libraries and tools that Home Assistant depends on. You are the foundation for our success and all of you can be proud of yourself.
 
-We would also like to thanks all the companies that offer their services for free to open source projects. Without these we would not be able to operate at our speed or scale. Thank you [GitHub], [TravisCI], [CloudFlare], [Disord] and [Discourse]!
+We would also like to thanks all the companies that offer their services for free to open source projects. Without these we would not be able to operate at our speed or scale. Thank you [GitHub], [TravisCI], [CloudFlare], [Discord] and [Discourse]!
 
 Some of us are taking a break and spending some quality time with family and loved ones.
 
