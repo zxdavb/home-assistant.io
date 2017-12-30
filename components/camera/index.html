@@ -138,6 +138,14 @@
   </tbody>
 </table>
 <p>The path part of <code class="highlighter-rouge">filename</code> must be an entry in the <code class="highlighter-rouge">whitelist_external_dirs</code> in your <a href="/docs/configuration/basic/"><code class="highlighter-rouge">homeassistant:</code></a> section of your <code class="highlighter-rouge">configuration.yaml</code> file.</p>
+<p>For example, the following action in an automation would take a snapshot from “yourcamera” and save it to /tmp with a timestamped filename.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">action</span><span class="pi">:</span>
+  <span class="s">service</span><span class="pi">:</span> <span class="s">camera.snapshot</span>
+  <span class="s">data</span><span class="pi">:</span>
+    <span class="s">entity_id</span><span class="pi">:</span> <span class="s">camera.yourcamera</span>
+    <span class="s">filename</span><span class="pi">:</span> <span class="s1">'</span><span class="s">/tmp/yourcamera_.jpg'</span>
+</code></pre>
+</div>
 <h3><a class="title-link" name="test-if-it-works" href="#test-if-it-works"></a> Test if it works</h3>
 <p>A simple way to test if you have set up your <code class="highlighter-rouge">camera</code> platform correctly, is to use <img src="/images/screenshots/developer-tool-services-icon.png" alt="service developer tool icon" class="no-shadow" height="38" /> <strong>Services</strong> from the <strong>Developer Tools</strong>. Choose your service from the dropdown menu <strong>Service</strong>, enter something like the sample below into the <strong>Service Data</strong> field, and hit <strong>CALL SERVICE</strong>.</p>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
