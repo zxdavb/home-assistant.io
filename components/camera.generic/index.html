@@ -109,6 +109,14 @@
     <span class="s">content_type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">image/svg+xml'</span>
 </code></pre>
 </div>
+<h3><a class="title-link" name="local-image-with-hassio" href="#local-image-with-hassio"></a> Local image with Hass.io</h3>
+<p>You can show an static image with this platform. Just place the image here: <code class="highlighter-rouge">/config/www/your_image.png</code></p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">camera</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">generic</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">Some Image</span>
+    <span class="s">still_image_url</span><span class="pi">:</span> <span class="s">https://127.0.0.1:8123/local/your_image.png</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
