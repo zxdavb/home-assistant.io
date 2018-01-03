@@ -171,7 +171,6 @@
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">command_line</span>
     <span class="s">name</span><span class="pi">:</span> <span class="s">Brightness</span>
     <span class="s">command</span><span class="pi">:</span> <span class="s2">"</span><span class="s">python3</span><span class="nv"> </span><span class="s">/path/to/script/arest-value.py"</span>
-    <span class="s">unit_of_measurement</span><span class="pi">:</span> <span class="s2">"</span><span class="s">°C"</span>
 </code></pre>
 </div>
 <h3><a class="title-link" name="usage-of-templating-in-command" href="#usage-of-templating-in-command"></a> Usage of templating in <code class="highlighter-rouge">command:</code></h3>
@@ -180,7 +179,7 @@
 <span class="s">sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">command_line</span>
     <span class="s">name</span><span class="pi">:</span> <span class="s">wind direction</span>
-    <span class="s">command</span><span class="pi">:</span> <span class="s1">'</span><span class="s">sh</span><span class="nv"> </span><span class="s">/home/pi/.homeassistant/scripts/wind_direction.sh</span><span class="nv"> </span><span class="s">'</span>
+    <span class="s">command</span><span class="pi">:</span> <span class="s1">'</span><span class="s">sh</span><span class="nv"> </span><span class="s">/home/pi/.homeassistant/scripts/wind_direction.sh</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">states.sensor.wind_direction.state</span><span class="nv"> </span><span class="s">}}'</span>
     <span class="s">unit_of_measurement</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Direction"</span>
 </code></pre>
 </div>

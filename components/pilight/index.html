@@ -74,8 +74,8 @@
     </h1>
   </header>
   <hr class="divider">
-  <p><a href="https://www.pilight.org/">Pilight</a> is a modular and open source solution to communicate with 433 MHz devices and runs on various small form factor computers. A lot of common <a href="https://wiki.pilight.org/doku.php/protocols">protocols</a> are already available.</p>
-<p>This pilight hub connects to the <a href="https://wiki.pilight.org/doku.php/pdaemon">pilight-daemon</a> via a socket connection to receive and send codes. Thus Home Assistant does not have to run on the computer in charge of the RF communication.</p>
+  <p><a href="https://www.pilight.org/">Pilight</a> is a modular and open source solution to communicate with 433 MHz devices and runs on various small form factor computers. A lot of common <a href="https://manual.pilight.org/protocols/index.html">protocols</a> are already available.</p>
+<p>This pilight hub connects to the <a href="https://manual.pilight.org/programs/daemon.html">pilight-daemon</a> via a socket connection to receive and send codes. Thus Home Assistant does not have to run on the computer in charge of the RF communication.</p>
 <p>The received and supported RF codes are put on the event bus of Home Assistant and are therefore directly usable by other components (e.g. automation). Additionally a send service is provided to send RF codes.</p>
 <p>To integrate pilight into Home Assistant, add the following section to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
@@ -87,11 +87,11 @@
 <p>Configuration variables:</p>
 <ul>
   <li><strong>host</strong> (<em>Required</em>): The IP address of the computer running the pilight-daemon, e.g. 192.168.1.32.</li>
-  <li><strong>port</strong> (<em>Required</em>): The network port to connect to. The usual port is <a href="https://www.pilight.org/development/api/">5000</a>.</li>
+  <li><strong>port</strong> (<em>Required</em>): The network port to connect to. The usual port is <a href="https://manual.pilight.org/development/api.html">5000</a>.</li>
   <li><strong>send_delay</strong> (<em>Optional</em>): You can define a send delay as a fraction of seconds if you experience transmission problems when you try to switch multiple switches at once. This can happen when you use a <a href="https://github.com/pilight/pilight-usb-nano">pilight USB Nano</a> as hardware and switches a whole group of multiple switches on or off. Tested values are between 0.3 and 0.8 seconds depending on the hardware.</li>
   <li><strong>whitelist</strong> (<em>Optional</em>): You can define a whitelist to prevent that too many unwanted RF codes (e.g. the neighbours weather station) are put on your HA event bus. All defined subsections have to be matched. A subsection is matched if one of the items are true.</li>
 </ul>
-<p>In this example only received RF codes using a daycom or Intertechno protocol are put on the event bus and only when the device id is 42. For more possible settings please look at the receiver section of the pilight <a href="https://www.pilight.org/development/api/">API</a>.</p>
+<p>In this example only received RF codes using a daycom or Intertechno protocol are put on the event bus and only when the device id is 42. For more possible settings please look at the receiver section of the pilight <a href="https://manual.pilight.org/development/api.html">API</a>.</p>
 <p>A full configuration sample could look like the sample below:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">pilight</span><span class="pi">:</span>
@@ -108,11 +108,11 @@
 </div>
 <h2><a class="title-link" name="troubleshooting" href="#troubleshooting"></a> Troubleshooting</h2>
 <ul>
-  <li>A list of tested RF transceiver hardware is available <a href="https://wiki.pilight.org/doku.php/electronics">here</a>. This might be useful before buying.</li>
+  <li>A list of tested RF transceiver hardware is available <a href="https://manual.pilight.org/electronics/index.html">here</a>. This might be useful before buying.</li>
   <li>Sending commands is simple when the protocol is known by pilight, but receiving commands can be rather difficult. It can happen that the code is not correctly recognized due to different timings in the sending hardware or the RF receiver. If this happens follow these steps:</li>
 </ul>
 <ol>
-  <li><a href="https://www.pilight.org/get-started/installation/">Install</a> pilight from source (do not worry that is very easy) and only activate the protocols you are expecting in the pop up menu. This reduces false positives.</li>
+  <li><a href="https://manual.pilight.org/installation.html">Install</a> pilight from source (do not worry that is very easy) and only activate the protocols you are expecting in the pop up menu. This reduces false positives.</li>
   <li>Check the real timings of your device + RF receiver by running <code class="highlighter-rouge">pilight-debug</code>. Remember the <code class="highlighter-rouge">pulslen</code> parameter.</li>
   <li>Go to the <code class="highlighter-rouge">libs/pilight/protocols/433.92</code> subfolder of the pilight source code and open the .c file of your protocol. Search for <code class="highlighter-rouge">MIN_PULSE_LENGTH</code>, <code class="highlighter-rouge">MAX_PULSE_LENGTH </code> and <code class="highlighter-rouge">AVG_PULSE_LENGTH</code>. Change the pulse lengths to match your measured one. Recompile and install pilight by re-running <code class="highlighter-rouge">$ sudo ./setup.sh</code>.</li>
 </ol>
