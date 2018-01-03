@@ -86,7 +86,7 @@ We have received <a href="https://github.com/home-assistant/home-assistant/issue
 <p>Before you get started with this platform, please note that:</p>
 <ul>
   <li>This platform is incompatible with Windows</li>
-  <li>This platform requires root privileges</li>
+  <li>This platform requires access to the bluetooth stack, see <a href="#rootless-setup">Rootless Setup section</a> for further infomation</li>
 </ul>
 <p>To use the Bluetooth tracker in your installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
@@ -103,7 +103,8 @@ We have received <a href="https://github.com/home-assistant/home-assistant/issue
 </ul>
 <p>As some BT LE devices change their MAC address regularly, a new device is only discovered when it has been seen 5 times.
 Some BTLE devices (e.g. fitness trackers) are only visible to the devices that they are paired with. In this case, the BTLE tracker won’t see this device.</p>
-<p>For running Home Assistant as non root user we can give python3 the missing capabilities to access the Bluetooth stack. Quite like setting the setuid bit (see <a href="http://unix.stackexchange.com/questions/96106/bluetooth-le-scan-as-non-root">Stack Exchange</a> for more information).</p>
+<h2><a class="title-link" name="rootless-setup" href="#rootless-setup"></a> Rootless Setup</h2>
+<p>Normaly accessing the Bluetooth stack is reserved for root, but running programs that are networked as root is a bad security wise. To allow non-root access to the Bluetooth stack we can give Python 3 the missing capabilities to access the Bluetooth stack. Quite like setting the setuid bit (see <a href="http://unix.stackexchange.com/questions/96106/bluetooth-le-scan-as-non-root">Stack Exchange</a> for more information).</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install libcap2-bin
 <span class="gp">$ </span>sudo setcap <span class="s1">'cap_net_raw,cap_net_admin+eip'</span> <span class="sb">`</span>readlink -f <span class="se">\`</span>which python3<span class="se">\`</span><span class="sb">`</span>
 </code></pre>
