@@ -144,7 +144,7 @@ To use Google Assistant your Home Assistant configuration has to be externally a
 </ul>
 <h3><a class="title-link" name="setup" href="#setup"></a> Setup</h3>
 <ol>
-  <li>Install the <a href="https://developers.google.com/actions/tools/gactions-cli">gactions CLI</a> (you’ll use this later) - you can download this anywhere, just remember where you put it for later (and don’t forget to run <code class="highlighter-rouge">chmod +x gactions</code>)</li>
+  <li>Download the <a href="https://developers.google.com/actions/tools/gactions-cli">gactions CLI</a> (you’ll use this later) - you can download and run this anywhere and on any machine, just remember where you put it for later (and don’t forget to run <code class="highlighter-rouge">chmod +x gactions</code>to make it executable on mac or linux)</li>
   <li>Create a new file named <code class="highlighter-rouge">project.json</code> (in the same directory you downloaded <code class="highlighter-rouge">gactions</code> to) and replace the <code class="highlighter-rouge">[YOUR HOME ASSISTANT URL]</code> below with the URL you use to access Home Assistant.
 Note: This must be an HTTPS URL to work.</li>
 </ol>
@@ -176,7 +176,7 @@ Note: This must be an HTTPS URL to work.</li>
  <code class="highlighter-rouge">gactions update --action_package PACKAGE_NAME --project doctest-2d0b8</code></li>
     </ol>
   </li>
-  <li>Replace <code class="highlighter-rouge">PACKAGE_NAME</code> with <code class="highlighter-rouge">project.json</code> and run that command from the same directory you saved <code class="highlighter-rouge">project.json</code> in (you’ll need to put <code class="highlighter-rouge">./</code> before <code class="highlighter-rouge">gactions</code> so that it reads <code class="highlighter-rouge">./gactions</code> if you’re running on Linux). It should output a URL like <code class="highlighter-rouge">https://console.actions.google.com/project/doctest-2d0b8/overview</code> - go there.</li>
+  <li>Replace <code class="highlighter-rouge">PACKAGE_NAME</code> with <code class="highlighter-rouge">project.json</code> and run that command in a console from the same directory you saved <code class="highlighter-rouge">project.json</code> in (you’ll need to put <code class="highlighter-rouge">./</code> before <code class="highlighter-rouge">gactions</code> so that it reads <code class="highlighter-rouge">./gactions</code> if you’re running it on Linux or Windows). It should output a URL like <code class="highlighter-rouge">https://console.actions.google.com/project/doctest-2d0b8/overview</code> - go there.</li>
   <li>You’ll need to fill out most of the information on that page, but none of it really matters since you won’t be addressing the App directly, only through the Smart Home functionality built into Google Assistant.</li>
   <li>The final item on that page <code class="highlighter-rouge">Account linking</code> is required for your app to interact with Home Assistant.
     <ol>
@@ -184,11 +184,11 @@ Note: This must be an HTTPS URL to work.</li>
       <li>Client ID: The <code class="highlighter-rouge">client_id</code> from your Home Assistant configuration above</li>
       <li>Authorization URL (replace with your actual URL): <code class="highlighter-rouge">https://[YOUR HOME ASSISTANT URL]/api/google_assistant/auth</code></li>
       <li>Configure your client. Add scopes for <code class="highlighter-rouge">email</code> and <code class="highlighter-rouge">name</code></li>
-      <li>Testing instructions: doesn’t matter since you won’t submit this app</li>
+      <li>Testing instructions: Enter anything. It doesn’t matter since you won’t submit this app.</li>
     </ol>
   </li>
-  <li>Back on the main app draft page. Click <code class="highlighter-rouge">Test Draft</code>. That will take you to the simulator (which won’t work) so just close that window.</li>
-  <li>If you haven’t already added the configuration to <code class="highlighter-rouge">configuration.yaml</code> and restarted Home Assistant, you’ll be unable to continue until you have.</li>
+  <li>Back on the main app draft page. Click <code class="highlighter-rouge">Test Draft</code>. That will take you to the simulator (which won’t work so just close that window).</li>
+  <li>If you haven’t already added the component configuration to <code class="highlighter-rouge">configuration.yaml</code> and restarted Home Assistant, you’ll be unable to continue until you have.</li>
   <li>Open the Google Assistant app and go into <code class="highlighter-rouge">Settings &gt; Home Control</code></li>
   <li>Click the <code class="highlighter-rouge">+</code> sign, and near the bottom, you should have <code class="highlighter-rouge">[test] your app name</code>. Selecting that should lead to you the screen where you can set rooms for your devices or nicknames for your devices.</li>
   <li>If you want to allow other houshold users to control the devices:
