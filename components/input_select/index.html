@@ -92,28 +92,85 @@
       <span class="pi">-</span> <span class="s">Home Alone</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>[alias]</strong> array (<em>Required</em>): Alias for the input. Multiple entries are allowed..
-    <ul>
-      <li><strong>name</strong> (<em>Optional</em>): Friendly name of the input.</li>
-      <li><strong>options</strong> array (<em>Required</em>): List of options to choose from.</li>
-      <li><strong>initial</strong> (<em>Optional</em>): Initial value when Home Assistant starts.</li>
-      <li><strong>icon</strong> (<em>Optional</em>): Icon for entry.</li>
-    </ul>
-  </li>
-</ul>
-<p>Pick an icon that you can find on <a href="https://materialdesignicons.com/">materialdesignicons.com</a> to use for your input and prefix the name with <code class="highlighter-rouge">mdi:</code>. For example <code class="highlighter-rouge">mdi:car</code>, <code class="highlighter-rouge">mdi:ambulance</code>, or  <code class="highlighter-rouge">mdi:motorbike</code>.</p>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="input_select" href="#input_select"></a> input_select</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Required)</span><span class="description">Alias for the input. Multiple entries are allowed.</span></p>
+    </dd>
+    <dd>
+      <dl class="nested">
+        <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string">String</span>)</span><span class="required">(Optional)</span><span class="description">Friendly name of the input.</span></p>
+        </dd>
+        <dt><a class="title-link" name="options" href="#options"></a> options</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="array">Array</span>)</span><span class="required">(Required)</span><span class="description">List of options to choose from.</span></p>
+        </dd>
+        <dt><a class="title-link" name="initial" href="#initial"></a> initial</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="element of options">Element of options</span>)</span><span class="required">(Optional)</span><span class="description">Initial value when Home Assistant starts.</span></p>
+          <p class="default">Default value: First element of options</p>
+        </dd>
+        <dt><a class="title-link" name="icon" href="#icon"></a> icon</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="icon">icon</span>)</span><span class="required">(Optional)</span><span class="description">Icon to display for the component. Refer to the <a href="/docs/configuration/customizing-devices/#possible-values">Customizing devices</a> page for possible values.</span></p>
+        </dd>
+      </dl>
+    </dd>
+  </dl>
+</div>
 <p class="note">
 Because YAML defines <a href="http://yaml.org/type/bool.html">booleans</a> as equivalent, any variations of ‘On’, ‘Yes’, ‘Y’, ‘Off’, ‘No’, or ‘N’  (regardless of case) used as option names will be replaced by True and False unless they are defined in quotation marks.
 </p>
+<h3><a class="title-link" name="restore-state" href="#restore-state"></a> Restore State</h3>
+<p>This component supports the <code class="highlighter-rouge">restore_state</code> function which restores the state after Home Assistant has started to the value it has been before Home Assistant stopped. To use this feature please make sure that the <a href="/components/recorder/"><code class="highlighter-rouge">recorder</code></a> component is enabled and your entity does not have a value set for <code class="highlighter-rouge">initial</code>. Additional information can be found in the <a href="/components/recorder/#restore-state">Restore state</a> section of the <a href="/components/recorder/"><code class="highlighter-rouge">recorder</code></a> component documentation.</p>
 <h3><a class="title-link" name="services" href="#services"></a> Services</h3>
-<p>This components provide three services to modify the state of the <code class="highlighter-rouge">input_select</code>:</p>
-<ul>
-  <li><code class="highlighter-rouge">input_select.select_option</code>: This can be used to select a specific option. The option is passed as <code class="highlighter-rouge">option</code> attribute in the service data.</li>
-  <li><code class="highlighter-rouge">input_select.select_previous</code>: Select the previous option.</li>
-  <li><code class="highlighter-rouge">input_select.select_next</code>: Select the next option.</li>
-</ul>
+<p>This components provide three services to modify the state of the <code class="highlighter-rouge">input_select</code>.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Data</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">select_option</code></td>
+      <td><code class="highlighter-rouge">option</code></td>
+      <td>This can be used to select a specific option.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">set_options</code></td>
+      <td><code class="highlighter-rouge">options</code><br /><code class="highlighter-rouge">entity_id(s)</code></td>
+      <td>Set the options for specific <code class="highlighter-rouge">input_select</code> entities.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">select_previous</code></td>
+      <td> </td>
+      <td>Select the previous option.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">select_next</code></td>
+      <td> </td>
+      <td>Select the next option.</td>
+    </tr>
+  </tbody>
+</table>
+<h3><a class="title-link" name="scenes" href="#scenes"></a> Scenes</h3>
+<p>To specify a target option in a <a href="/components/scene/">Scene</a> you have to specify the target as <code class="highlighter-rouge">option</code> attribute:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="s">scene</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s">Example1</span>
+    <span class="s">entities</span><span class="pi">:</span>
+      <span class="s">input_select.who_cooks</span><span class="pi">:</span>
+        <span class="s">option</span><span class="pi">:</span> <span class="s">Paulus</span>
+</code></pre>
+</div>
+<h2><a class="title-link" name="automation-examples" href="#automation-examples"></a> Automation Examples</h2>
 <p>The following example shows the usage of the <code class="highlighter-rouge">input_select.select_option</code> service in an automation:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">automation</span><span class="pi">:</span>
@@ -142,19 +199,8 @@ Because YAML defines <a href="http://yaml.org/type/bool.html">booleans</a> as eq
           <span class="s">options</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">Item</span><span class="nv"> </span><span class="s">A"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">Item</span><span class="nv"> </span><span class="s">B"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">Item</span><span class="nv"> </span><span class="s">C"</span><span class="pi">]</span>
 </code></pre>
 </div>
-<h3><a class="title-link" name="scenes" href="#scenes"></a> Scenes</h3>
-<p>To specify a target option in a <a href="/components/scene/">Scene</a> you have to specify the target as <code class="highlighter-rouge">option</code> attribute:</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
-<span class="s">scene</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s">Example1</span>
-    <span class="s">entities</span><span class="pi">:</span>
-      <span class="s">input_select.who_cooks</span><span class="pi">:</span>
-        <span class="s">option</span><span class="pi">:</span> <span class="s">Paulus</span>
-</code></pre>
-</div>
 <p>Example of <code class="highlighter-rouge">input_select</code> being used in a bidirectional manner, both being set by and controlled by an MQTT action in an automation.</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code>
-<span class="c1"># Example configuration.yaml entry using 'input_select' in an action in an automation</span>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry using 'input_select' in an action in an automation</span>
    
 <span class="c1"># Define input_select</span>
 <span class="s">input_select</span><span class="pi">:</span>
@@ -179,7 +225,7 @@ Because YAML defines <a href="http://yaml.org/type/bool.html">booleans</a> as eq
      <span class="s">service</span><span class="pi">:</span> <span class="s">input_select.select_option</span>
      <span class="s">data_template</span><span class="pi">:</span>
       <span class="s">entity_id</span><span class="pi">:</span> <span class="s">input_select.thermostat_mode</span>
-      <span class="s">option</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.payload</span><span class="nv"> </span><span class="s">}}'</span>
+      <span class="s">option</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.payload</span><span class="nv"> </span><span class="s">}}"</span>
 
  <span class="c1"># This automation script runs when the thermostat mode selector is changed.</span>
  <span class="c1"># It publishes its value to the same MQTT topic it is also subscribed to.</span>
@@ -192,8 +238,7 @@ Because YAML defines <a href="http://yaml.org/type/bool.html">booleans</a> as eq
     <span class="s">data_template</span><span class="pi">:</span>
       <span class="s">topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">thermostatMode"</span>
       <span class="s">retain</span><span class="pi">:</span> <span class="s">true</span>
-      <span class="s">payload</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">states.input_select.thermostat_mode.state</span><span class="nv"> </span><span class="s">}}'</span>
-
+      <span class="s">payload</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">states('input_select.thermostat_mode')</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre>
 </div>
 </article>

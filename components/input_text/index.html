@@ -89,15 +89,45 @@
     <span class="s">pattern</span><span class="pi">:</span> <span class="s1">'</span><span class="s">[a-fA-F0-9]*'</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>[alias]</strong> (<em>Required</em>): Alias for the text input.</li>
-  <li><strong>min</strong> (<em>Optional</em>): Minimum length for the text value. Default is <code class="highlighter-rouge">0</code>.</li>
-  <li><strong>max</strong> (<em>Optional</em>): Maximum length for the text value. Default is <code class="highlighter-rouge">100</code>.</li>
-  <li><strong>name</strong> (<em>Optional</em>): Friendly name of the text input.</li>
-  <li><strong>initial</strong> (<em>Optional</em>): Initial value when Home Assistant starts. Default is empty string.</li>
-  <li><strong>pattern</strong> (<em>Optional</em>): Regex pattern for client side validation. Default is empty string, which is treated same as <code class="highlighter-rouge">.*</code>.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="input_text" href="#input_text"></a> input_text</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Required)</span><span class="description">Alias for the input. Multiple entries are allowed.</span></p>
+    </dd>
+    <dd>
+      <dl class="nested">
+        <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string">String</span>)</span><span class="required">(Optional)</span><span class="description">Friendly name of the text input.</span></p>
+        </dd>
+        <dt><a class="title-link" name="min" href="#min"></a> min</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">Minimum length for the text value.</span></p>
+          <p class="default">Default value: 0</p>
+        </dd>
+        <dt><a class="title-link" name="max" href="#max"></a> max</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">Maximum length for the text value.</span></p>
+          <p class="default">Default value: 100</p>
+        </dd>
+        <dt><a class="title-link" name="initial" href="#initial"></a> initial</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string">String</span>)</span><span class="required">(Optional)</span><span class="description">Initial value when Home Assistant starts.</span></p>
+          <p class="default">Default value: empty</p>
+        </dd>
+        <dt><a class="title-link" name="pattern" href="#pattern"></a> pattern</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string">String</span>)</span><span class="required">(Optional)</span><span class="description">Regex pattern for client side validation.</span></p>
+          <p class="default">Default value: empty</p>
+        </dd>
+      </dl>
+    </dd>
+  </dl>
+</div>
+<h3><a class="title-link" name="restore-state" href="#restore-state"></a> Restore State</h3>
+<p>This component supports the <code class="highlighter-rouge">restore_state</code> function which restores the state after Home Assistant has started to the value it has been before Home Assistant stopped. To use this feature please make sure that the <a href="/components/recorder/"><code class="highlighter-rouge">recorder</code></a> component is enabled and your entity does not have a value set for <code class="highlighter-rouge">initial</code>. Additional information can be found in the <a href="/components/recorder/#restore-state">Restore state</a> section of the <a href="/components/recorder/"><code class="highlighter-rouge">recorder</code></a> component documentation.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

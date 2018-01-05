@@ -138,12 +138,14 @@ Before version 0.55 this component was known as <code class="highlighter-rouge">
         </dd>
         <dt><a class="title-link" name="icon" href="#icon"></a> icon</dt>
         <dd>
-          <p class="desc"><span class="type">(<span class="icon">icon</span>)</span><span class="required">(Optional)</span><span class="description">Icon to display in front of the box/slider in the frontend. Refer to the <a href="https://home-assistant.io/docs/configuration/customizing-devices/#possible-values">Customizing devices</a> page for possible values.</span></p>
+          <p class="desc"><span class="type">(<span class="icon">icon</span>)</span><span class="required">(Optional)</span><span class="description">Icon to display in front of the box/slider in the frontend. Refer to the <a href="/docs/configuration/customizing-devices/#possible-values">Customizing devices</a> page for possible values.</span></p>
         </dd>
       </dl>
     </dd>
   </dl>
 </div>
+<h3><a class="title-link" name="restore-state" href="#restore-state"></a> Restore State</h3>
+<p>This component supports the <code class="highlighter-rouge">restore_state</code> function which restores the state after Home Assistant has started to the value it has been before Home Assistant stopped. To use this feature please make sure that the <a href="/components/recorder/"><code class="highlighter-rouge">recorder</code></a> component is enabled and your entity does not have a value set for <code class="highlighter-rouge">initial</code>. Additional information can be found in the <a href="/components/recorder/#restore-state">Restore state</a> section of the <a href="/components/recorder/"><code class="highlighter-rouge">recorder</code></a> component documentation.</p>
 <h2><a class="title-link" name="automation-examples" href="#automation-examples"></a> Automation Examples</h2>
 <p>Here’s an example of <code class="highlighter-rouge">input_number</code> being used as a trigger in an automation.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry using 'input_number' as a trigger in an automation</span>

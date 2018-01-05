@@ -84,18 +84,36 @@
     <span class="s">icon</span><span class="pi">:</span> <span class="s">mdi:car</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>[alias]</strong> (<em>Required</em>): Alias for the input.
-    <ul>
-      <li><strong>name</strong> (<em>Optional</em>): Friendly name of the input.</li>
-      <li><strong>initial</strong> (<em>Optional</em>): Initial value when Home Assistant starts. Defaults to <code class="highlighter-rouge">False</code>.</li>
-      <li><strong>icon</strong> (<em>Optional</em>): Icon for entry.</li>
-    </ul>
-  </li>
-</ul>
-<p>Pick an icon that you can find on <a href="https://materialdesignicons.com/">materialdesignicons.com</a> to use for your input and prefix the name with <code class="highlighter-rouge">mdi:</code>. For example <code class="highlighter-rouge">mdi:car</code>, <code class="highlighter-rouge">mdi:ambulance</code>, or  <code class="highlighter-rouge">mdi:motorbike</code>.</p>
-<p>Here’s an example of an automation using the above input_boolean. This action will only occur if the switch is on.</p>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="input_boolean" href="#input_boolean"></a> input_boolean</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Required)</span><span class="description">Alias for the input. Multiple entries are allowed.</span></p>
+    </dd>
+    <dd>
+      <dl class="nested">
+        <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string">String</span>)</span><span class="required">(Optional)</span><span class="description">Friendly name of the input.</span></p>
+        </dd>
+        <dt><a class="title-link" name="initial" href="#initial"></a> initial</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Initial value when Home Assistant starts.</span></p>
+          <p class="default">Default value: false</p>
+        </dd>
+        <dt><a class="title-link" name="icon" href="#icon"></a> icon</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="icon">icon</span>)</span><span class="required">(Optional)</span><span class="description">Icon to display for the component. Refer to the <a href="/docs/configuration/customizing-devices/#possible-values">Customizing devices</a> page for possible values.</span></p>
+        </dd>
+      </dl>
+    </dd>
+  </dl>
+</div>
+<h3><a class="title-link" name="restore-state" href="#restore-state"></a> Restore State</h3>
+<p>This component supports the <code class="highlighter-rouge">restore_state</code> function which restores the state after Home Assistant has started to the value it has been before Home Assistant stopped. To use this feature please make sure that the <a href="/components/recorder/"><code class="highlighter-rouge">recorder</code></a> component is enabled and your entity does not have a value set for <code class="highlighter-rouge">initial</code>. Additional information can be found in the <a href="/components/recorder/#restore-state">Restore state</a> section of the <a href="/components/recorder/"><code class="highlighter-rouge">recorder</code></a> component documentation.</p>
+<h2><a class="title-link" name="automation-examples" href="#automation-examples"></a> Automation Examples</h2>
+<p>Here’s an example of an automation using the above <code class="highlighter-rouge">input_boolean</code>. This action will only occur if the switch is on.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">automation</span><span class="pi">:</span>
   <span class="s">alias</span><span class="pi">:</span> <span class="s">Arriving home</span>
   <span class="s">trigger</span><span class="pi">:</span>

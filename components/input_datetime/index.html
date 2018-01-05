@@ -92,25 +92,72 @@
     <span class="s">has_time</span><span class="pi">:</span> <span class="s">true</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>[alias]</strong> (<em>Required</em>): Alias for the datetime input. Multiple entries are allowed.
-    <ul>
-      <li><strong>name</strong> (<em>Optional</em>): Friendly name of the datetime input.</li>
-      <li><strong>has_time</strong> (<em>Optional</em>): Set to <code class="highlighter-rouge">true</code> if this input should have time. Defaults to <code class="highlighter-rouge">false</code>.</li>
-      <li><strong>has_date</strong> (<em>Optional</em>): Set to <code class="highlighter-rouge">true</code> if this input should have a date. Defaults to <code class="highlighter-rouge">false</code>.</li>
-      <li><strong>initial</strong> (<em>Optional</em>): Set the initial value of this input. Defaults to ‘1970-01-01 00:00’. If has_time is <code class="highlighter-rouge">false</code> this must be just a date (e.g.: ‘1970-01-01’). If has_date is <code class="highlighter-rouge">false</code> this must be just a time (e.g.: ‘15:16’).</li>
-    </ul>
-  </li>
-</ul>
-<p>A datetime input entity’s state exports several attributes that can be useful in automations and templates:</p>
-<ul>
-  <li><strong>has_time</strong>: <code class="highlighter-rouge">true</code> if this entity has time.</li>
-  <li><strong>has_date</strong>: <code class="highlighter-rouge">true</code> if this entity has a date.</li>
-  <li><strong>year</strong>, <strong>month</strong>, <strong>day</strong> (Only available if <em>has_date</em> is true): The year, month and day of the date.</li>
-  <li><strong>hour</strong>, <strong>minute</strong>, <strong>second</strong> (Only available if <em>has_time</em> is true): The hour, minute and second of the time.</li>
-  <li><strong>timestamp</strong>: A timestamp representing the time held in the input. If <em>has_date</em> is true, this is the UNIX timestamp of the date / time held by the input. Otherwise (i.e., if only <em>has_time</em> is true) the number of seconds since midnight representing the time held by the input.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="input_datetime" href="#input_datetime"></a> input_datetime</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Required)</span><span class="description">Alias for the datetime input. Multiple entries are allowed.</span></p>
+    </dd>
+    <dd>
+      <dl class="nested">
+        <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string">String</span>)</span><span class="required">(Optional)</span><span class="description">Friendly name of the datetime input.</span></p>
+        </dd>
+        <dt><a class="title-link" name="has_time" href="#has_time"></a> has_time</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="boolean">Boolean</span>)</span><span class="required">(Optional)</span><span class="description">Set to <code class="highlighter-rouge">true</code> if the input should have a time. At least one <code class="highlighter-rouge">has_time</code> or <code class="highlighter-rouge">has_date</code> must be defined.</span></p>
+          <p class="default">Default value: false</p>
+        </dd>
+        <dt><a class="title-link" name="has_date" href="#has_date"></a> has_date</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="boolean">Boolean</span>)</span><span class="required">(Optional)</span><span class="description">Set to <code class="highlighter-rouge">true</code> if the input should have a date. At least one <code class="highlighter-rouge">has_time</code> or <code class="highlighter-rouge">has_date</code> must be defined.</span></p>
+          <p class="default">Default value: false</p>
+        </dd>
+        <dt><a class="title-link" name="initial" href="#initial"></a> initial</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="datetime | time | date">datetime | time | date</span>)</span><span class="required">(Optional)</span><span class="description">Set the initial value of this input, depending on <code class="highlighter-rouge">has_time</code> and <code class="highlighter-rouge">has_date</code>.</span></p>
+          <p class="default">Default value: 1970-01-01 00:00 | 1970-01-01 | 00:00</p>
+        </dd>
+      </dl>
+    </dd>
+  </dl>
+</div>
+<h3><a class="title-link" name="attributes" href="#attributes"></a> Attributes</h3>
+<p>A datetime input entity’s state exports several attributes that can be useful in automations and templates.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">has_time</code></td>
+      <td><code class="highlighter-rouge">true</code> if this entity has a time.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">has_date</code></td>
+      <td><code class="highlighter-rouge">true</code> if this entity has a date.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">year</code><br /><code class="highlighter-rouge">month</code><br /><code class="highlighter-rouge">day</code></td>
+      <td>The year, month and day of the date.<br />(only availabel if <code class="highlighter-rouge">has_date: true</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">hour</code><br /><code class="highlighter-rouge">minute</code><br /><code class="highlighter-rouge">second</code></td>
+      <td>The hour, minute and second of the time.<br />(only available if <code class="highlighter-rouge">has_time: true</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">timestamp</code></td>
+      <td>A timestamp representing the time held in the input.<br />If <code class="highlighter-rouge">has_date: true</code>, this is the UNIX timestamp of the date / time held by the input. Otherwise if only <code class="highlighter-rouge">has_time: true</code>, this is the number of seconds since midnight representing the time held by the input.</td>
+    </tr>
+  </tbody>
+</table>
+<h3><a class="title-link" name="restore-state" href="#restore-state"></a> Restore State</h3>
+<p>This component supports the <code class="highlighter-rouge">restore_state</code> function which restores the state after Home Assistant has started to the value it has been before Home Assistant stopped. To use this feature please make sure that the <a href="/components/recorder/"><code class="highlighter-rouge">recorder</code></a> component is enabled and your entity does not have a value set for <code class="highlighter-rouge">initial</code>. Additional information can be found in the <a href="/components/recorder/#restore-state">Restore state</a> section of the <a href="/components/recorder/"><code class="highlighter-rouge">recorder</code></a> component documentation.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
