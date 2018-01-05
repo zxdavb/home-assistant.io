@@ -85,10 +85,6 @@
 <div class="highlighter-rouge"><pre class="highlight"><code>dtoverlay=pi3-miniuart-bt
 </code></pre>
 </div>
-<p>For some devices the <code class="highlighter-rouge">/dev/ttyAMA0</code> device is not detected by udev and is therefore not mapped by Docker. To explicitly set this device for mapping to Home-Assistant, execute the following command using the ssh add-on:</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl -d <span class="s1">'{"devices": ["ttyAMA0"]}'</span> http://hassio/homeassistant/options
-</code></pre>
-</div>
 <p>After that, you need to change <code class="highlighter-rouge">usb_path</code> to <code class="highlighter-rouge">/dev/ttyAMA0</code> in your <code class="highlighter-rouge">configuration.yaml</code>.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">zwave</span><span class="pi">:</span>
   <span class="s">usb_path</span><span class="pi">:</span> <span class="s">/dev/ttyAMA0</span>
