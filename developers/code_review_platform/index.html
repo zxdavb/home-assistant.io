@@ -90,12 +90,11 @@ Not all existing platforms follow the requirements in this checklist. This canno
 </ol>
 <h3><a class="title-link" name="3-configuration" href="#3-configuration"></a> 3. Configuration</h3>
 <ol>
-  <li>Volutpuous schema present for config validation</li>
+  <li>Voluptuous schema present for config validation</li>
   <li>Voluptuous schema extends schema from component<br />(e.g. <code class="highlighter-rouge">light.hue.PLATFORM_SCHEMA</code> extends <code class="highlighter-rouge">light.PLATFORM_SCHEMA</code>)</li>
   <li>Default parameters specified in voluptuous schema, not in <code class="highlighter-rouge">setup_platform(…)</code></li>
-  <li>Schema using as many generic config keys as possible from <code class="highlighter-rouge">homeassistant.const</code></li>
-</ol>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">voluptuous</span> <span class="kn">as</span> <span class="nn">vol</span>
+  <li>Your <code class="highlighter-rouge">PLATFORM_SCHEMA</code> should use as many generic config keys as possible from <code class="highlighter-rouge">homeassistant.const</code>
+    <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">voluptuous</span> <span class="kn">as</span> <span class="nn">vol</span>
 
 <span class="kn">from</span> <span class="nn">homeassistant.const</span> <span class="kn">import</span> <span class="n">CONF_FILENAME</span><span class="p">,</span> <span class="n">CONF_HOST</span>
 <span class="kn">from</span> <span class="nn">homeassistant.components.light</span> <span class="kn">import</span> <span class="n">PLATFORM_SCHEMA</span>
@@ -107,11 +106,14 @@ Not all existing platforms follow the requirements in this checklist. This canno
 <span class="n">PLATFORM_SCHEMA</span> <span class="o">=</span> <span class="n">PLATFORM_SCHEMA</span><span class="o">.</span><span class="n">extend</span><span class="p">({</span>
     <span class="n">vol</span><span class="o">.</span><span class="n">Required</span><span class="p">(</span><span class="n">CONF_HOST</span><span class="p">):</span> <span class="n">cv</span><span class="o">.</span><span class="n">string</span><span class="p">,</span>
     <span class="n">vol</span><span class="o">.</span><span class="n">Optional</span><span class="p">(</span><span class="n">CONF_ALLOW_UNREACHABLE</span><span class="p">,</span>
-                 <span class="n">default</span><span class="o">=</span><span class="n">DEFAULT_UNREACHABLE</span><span class="p">):</span> <span class="n">cv</span><span class="o">.</span><span class="n">boolean</span><span class="p">,</span>
+                <span class="n">default</span><span class="o">=</span><span class="n">DEFAULT_UNREACHABLE</span><span class="p">):</span> <span class="n">cv</span><span class="o">.</span><span class="n">boolean</span><span class="p">,</span>
     <span class="n">vol</span><span class="o">.</span><span class="n">Optional</span><span class="p">(</span><span class="n">CONF_FILENAME</span><span class="p">):</span> <span class="n">cv</span><span class="o">.</span><span class="n">string</span><span class="p">,</span>
 <span class="p">})</span>
 </code></pre>
-</div>
+    </div>
+  </li>
+  <li>Never depend on users adding things to <code class="highlighter-rouge">customize</code> to configure behavior inside your platform.</li>
+</ol>
 <h3><a class="title-link" name="4-setup-platform" href="#4-setup-platform"></a> 4. Setup Platform</h3>
 <ol>
   <li>Test if passed in info (user/pass/host etc.) works.</li>
