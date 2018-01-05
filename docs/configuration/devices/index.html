@@ -114,10 +114,12 @@
 Each group consists of a name and a list of entity IDs. Entity IDs can be retrieved from the web interface by using the Set State page in the Developer Tools (<img src="/images/screenshots/developer-tool-states-icon.png" alt="service developer tool icon" class="no-shadow" height="38" />).</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry showing two styles</span>
 <span class="s">group</span><span class="pi">:</span>
-  <span class="s">living_room</span><span class="pi">:</span> <span class="s">light.table_lamp, switch.ac</span>
+  <span class="s">living_room</span><span class="pi">:</span>
+    <span class="s">entities</span><span class="pi">:</span> <span class="s">light.table_lamp, switch.ac</span>
   <span class="s">bedroom</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">light.bedroom</span>
-    <span class="pi">-</span> <span class="s">media_player.nexus_player</span>
+    <span class="s">entities</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">light.bedroom</span>
+      <span class="pi">-</span> <span class="s">media_player.nexus_player</span>
 </code></pre>
 </div>
 <p>For more details please check the <a href="/components/group/">Group</a> page.</p>
