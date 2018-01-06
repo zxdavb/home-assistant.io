@@ -84,7 +84,7 @@
 <p>To successfully implement this platform, the Home Assistant host should be capable of multiple simultaneous reads. For every concurrent Home Assistant user, a connection will be made to the camera every 10 seconds. This should normally not be a problem.</p>
 <h2><a class="title-link" name="preparing-the-device" href="#preparing-the-device"></a> Preparing the Device</h2>
 <h3><a class="title-link" name="installing-alternative-firmware" href="#installing-alternative-firmware"></a> Installing Alternative Firmware</h3>
-<p>In order to integrate the camera with Home Assitant, it is necessary to install a custom firmware on the device. Instructions for doing so can be found via the <a href="https://github.com/shadow-1/yi-hack-v3">yi-hack-v3 GitHub project</a>.</p>
+<p>In order to integrate the camera with Home Assistant, it is necessary to install a custom firmware on the device. Instructions for doing so can be found via the <a href="https://github.com/shadow-1/yi-hack-v3">yi-hack-v3 GitHub project</a>.</p>
 <p>Once installed, please ensure that you have enabled FTP and Telnet on your device.</p>
 <p class="note warning">
 Some alternative Yi firmwares enable an experimental RTSP server, which will allow you to connect to your camera via other Home Assistant camera platforms. However, this RTSP server disables the ability to use the supremely-useful Yi Home app. In order to maintain both Home Assistant compatibility <em>and</em> the native app, this platform retrieves videos via FTP.
