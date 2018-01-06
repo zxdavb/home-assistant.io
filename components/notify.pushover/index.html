@@ -93,13 +93,16 @@
 </ul>
 <p>Example Automation:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">notify.entity_id</span>
-      <span class="s">data</span><span class="pi">:</span> 
+      <span class="s">data</span><span class="pi">:</span>
         <span class="s">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">message"</span>
         <span class="s">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Title</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">message"</span>
-        <span class="s">sound</span><span class="pi">:</span> <span class="s">pianobar</span>
-        <span class="s">priority</span><span class="pi">:</span> <span class="s">0</span>
+        <span class="s">data</span><span class="pi">:</span>
+          <span class="s">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://home-assistant.io/"</span>
+          <span class="s">sound</span><span class="pi">:</span> <span class="s">pianobar</span>
+          <span class="s">priority</span><span class="pi">:</span> <span class="s">0</span>
 </code></pre>
 </div>
+<p>Component specific values in the nested <code class="highlighter-rouge">data</code> section are optional.</p>
 <p>This is a quote from the Pushover website regarding free/open source apps:</p>
 <blockquote>
   <p>If you are creating a client-side library, application, or open source project that will be redistributed and installed by end-users, you may want to require each of your users to register their own application rather than including your own API token with the software.</p>
@@ -116,8 +119,9 @@
         <span class="s">service</span><span class="pi">:</span> <span class="s">notify.notify</span>
         <span class="s">data_template</span><span class="pi">:</span>
           <span class="s">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">The</span><span class="nv"> </span><span class="s">location</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">User</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">queried</span><span class="nv"> </span><span class="s">via</span><span class="nv"> </span><span class="s">Alexa."</span>
+        <span class="s">data</span><span class="pi">:</span>
+          <span class="s">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Home</span><span class="nv"> </span><span class="s">Assistant"</span>
           <span class="s">data</span><span class="pi">:</span>
-            <span class="s">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Home</span><span class="nv"> </span><span class="s">Assistant"</span>
             <span class="s">sound</span><span class="pi">:</span> <span class="s">falling</span>
             <span class="s">device</span><span class="pi">:</span> <span class="s">pixel</span>
             <span class="s">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://home-assistant.io/"</span>
