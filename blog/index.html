@@ -187,7 +187,7 @@
   <div class="meta clearfix">
     <time datetime="2017-12-17T02:00:00+00:00" pubdate data-updated="true"><i class="icon-calendar"></i> December 17, 2017</time>
     <span class="byline author vcard"><i class='icon-user'></i> Fabian Affolter</span>
-    <span><i class='icon-time'></i> nine minutes reading time</span>
+    <span><i class='icon-time'></i> 10 minutes reading time</span>
     <span>
     <i class="icon-tags"></i>
     <ul class="tags unstyled">
@@ -225,6 +225,23 @@
   <li>Added support for cover in tellstick (<a href="https://github.com/perfalk">@perfalk</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10858">#10858</a>) (<a href="https://home-assistant.io/components/tellstick/">tellstick docs</a>) (<a href="https://home-assistant.io/components/cover.tellstick/">cover.tellstick docs</a>) (new-platform)</li>
   <li>Add a caldav calendar component (<a href="https://github.com/maxlaverse">@maxlaverse</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10842">#10842</a>) (<a href="https://home-assistant.io/components/calendar.caldav/">calendar.caldav docs</a>) (new-platform)</li>
   <li>Refactor hue to split bridge support from light platform (<a href="https://github.com/andreacampi">@andreacampi</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10691">#10691</a>) (<a href="https://home-assistant.io/components/hue/">hue docs</a>) (<a href="https://home-assistant.io/components/light.hue/">light.hue docs</a>) (breaking change) (new-platform)</li>
+</ul>
+<h2><a class="title-link" name="relase-0601---january-6" href="#relase-0601---january-6"></a> Relase 0.60.1 - January 6</h2>
+<ul>
+  <li>Fix async IO in Sesame lock component. (<a href="https://github.com/veleek">@veleek</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11054">#11054</a>) (<a href="https://home-assistant.io/components/lock.sesame/">lock.sesame docs</a>)</li>
+  <li>Fix webdav calendar schema (<a href="https://github.com/maxlaverse">@maxlaverse</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11185">#11185</a>) (<a href="https://home-assistant.io/components/calendar.caldav/">calendar.caldav docs</a>)</li>
+  <li>homematic: add username and password to interface config schema (<a href="https://github.com/jannau">@jannau</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11214">#11214</a>) (<a href="https://home-assistant.io/components/homematic/">homematic docs</a>)</li>
+  <li>Fix webostv select source (<a href="https://github.com/OddBloke">@OddBloke</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11227">#11227</a>) (<a href="https://home-assistant.io/components/media_player.webostv/">media_player.webostv docs</a>)</li>
+  <li>Fix detection of if a negative node is in use (<a href="https://github.com/OverloadUT">@OverloadUT</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11255">#11255</a>) (<a href="https://home-assistant.io/components/binary_sensor.isy994/">binary_sensor.isy994 docs</a>)</li>
+  <li>Bugfix homematic available modus (<a href="https://github.com/pvizeli">@pvizeli</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11256">#11256</a>) (<a href="https://home-assistant.io/components/homematic/">homematic docs</a>)</li>
+  <li>Support multiple Hue bridges with lights of the same id (<a href="https://github.com/andreacampi">@andreacampi</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11259">#11259</a>) (<a href="https://home-assistant.io/components/light.hue/">light.hue docs</a>)</li>
+  <li>Fix inverted sensors on the concord232 binary sensor component (<a href="https://github.com/CTLS">@CTLS</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11261">#11261</a>) (<a href="https://home-assistant.io/components/binary_sensor.concord232/">binary_sensor.concord232 docs</a>)</li>
+  <li>Fix handling zero values for state_on/state_off (<a href="https://github.com/ziotibia81">@ziotibia81</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11264">#11264</a>) (<a href="https://home-assistant.io/components/switch.modbus/">switch.modbus docs</a>)</li>
+  <li>Fix allday events in custom_calendars (<a href="https://github.com/maxlaverse">@maxlaverse</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11272">#11272</a>) (<a href="https://home-assistant.io/components/calendar.caldav/">calendar.caldav docs</a>)</li>
+  <li>Fix unpredictable entity names in concord232 binary_sensor (<a href="https://github.com/rwa">@rwa</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11292">#11292</a>) (<a href="https://home-assistant.io/components/binary_sensor.concord232/">binary_sensor.concord232 docs</a>)</li>
+  <li>Fix leak sensors always showing Unknown until Wet (<a href="https://github.com/OverloadUT">@OverloadUT</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11313">#11313</a>) (<a href="https://home-assistant.io/components/binary_sensor.isy994/">binary_sensor.isy994 docs</a>)</li>
+  <li>Don’t block on sevice call for alexa (<a href="https://github.com/pvizeli">@pvizeli</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11358">#11358</a>) (<a href="https://home-assistant.io/components/alexa.smart_home/">alexa.smart_home docs</a>)</li>
+  <li>iOS 10 should be served javascript_version:es5 (<a href="https://github.com/mnoorenberghe">@mnoorenberghe</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11387">#11387</a>)</li>
 </ul>
 <h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>
 <p>…don’t hesitate to use our very active <a href="https://community.home-assistant.io/">forums</a> or join us for a little <a href="https://discord.gg/c5DvZ4e">chat</a>. The release notes have comments enabled but it’s preferred if you use the former communication channels. Thanks.</p>
