@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Release-Notes | Home Assistant]]></title>
   <link href="https://home-assistant.io/blog/categories/release-notes/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-01-07T13:11:21+00:00</updated>
+  <updated>2018-01-07T13:34:32+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -51,7 +51,7 @@ Yahoo! has discontinued their financial service. To fill this gap we have now th
 - Add a caldav calendar component ([@maxlaverse] - [#10842]) ([calendar.caldav docs]) (new-platform)
 - Refactor hue to split bridge support from light platform ([@andreacampi] - [#10691]) ([hue docs]) ([light.hue docs]) (breaking change) (new-platform)
 
-## <a class='title-link' name='relase-0601---january-6' href='#relase-0601---january-6'></a> Relase 0.60.1 - January 6 
+## <a class='title-link' name='release-0601---january-6' href='#release-0601---january-6'></a> Release 0.60.1 - January 6 
 
 - Fix async IO in Sesame lock component. ([@veleek] - [#11054]) ([lock.sesame docs])
 - Fix webdav calendar schema ([@maxlaverse] - [#11185]) ([calendar.caldav docs])

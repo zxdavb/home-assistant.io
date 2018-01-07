@@ -92,6 +92,7 @@
   <li>‘pending’</li>
   <li>‘triggered’</li>
 </ul>
+<p>To use your panel in your installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">alarm_control_panel</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">manual_mqtt</span>
@@ -117,7 +118,7 @@
     </ul>
   </li>
 </ul>
-<p>See the documentation for the <a href="../alarm_control_panel.manual/">manual alarm platform</a> for a description.</p>
+<p>See the documentation for the <a href="/component/alarm_control_panel.manual/">manual alarm platform</a> for a description.</p>
 <p>Additionally, the following MQTT configuration variables are also available:</p>
 <ul>
   <li><strong>state_topic</strong> (<em>Required</em>): The MQTT topic HA will publish state updates to.</li>
@@ -128,17 +129,11 @@
   <li><strong>payload_arm_away</strong> (<em>Optional</em>): The payload to set armed-away mode on this Alarm Panel. Default is “ARM_AWAY”.</li>
   <li><strong>payload_arm_night</strong> (<em>Optional</em>): The payload to set armed-night mode on this Alarm Panel. Default is “ARM_NIGHT”.</li>
 </ul>
-<p>In the config example below:</p>
+<p>In the configuration example below:</p>
 <ul>
-  <li>
-    <p>the disarmed state never triggers the alarm;</p>
-  </li>
-  <li>
-    <p>the armed_home state will leave no time to leave the building or disarm the alarm;</p>
-  </li>
-  <li>
-    <p>while other states state will give 30 seconds to leave the building before triggering the alarm, and 20 seconds to disarm the alarm when coming back.</p>
-  </li>
+  <li>The disarmed state never triggers the alarm.</li>
+  <li>The armed_home state will leave no time to leave the building or disarm the alarm.</li>
+  <li>While other states state will give 30 seconds to leave the building before triggering the alarm, and 20 seconds to disarm the alarm when coming back.</li>
 </ul>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">alarm_control_panel</span><span class="pi">:</span>

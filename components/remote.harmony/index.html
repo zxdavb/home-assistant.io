@@ -83,30 +83,27 @@
   <li>Harmony Elite</li>
 </ul>
 <p>The preferred way to setup the Harmony remote is by enabling the <a href="/components/discovery/">discovery component</a>.</p>
-<p>However, if you want to manually configure the device, you will need to add its settings to your <code class="highlighter-rouge">configuration.yaml</code>.</p>
+<p>However, if you want to manually configure the device, you will need to add its settings to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">remote</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">harmony</span>
     <span class="s">name</span><span class="pi">:</span> <span class="s">Bedroom</span>
-    <span class="s">host</span><span class="pi">:</span> <span class="s">10.168.1.13</span>   <span class="c1"># The IP of your hub</span>
+    <span class="s">host</span><span class="pi">:</span> <span class="s">10.168.1.13</span>
 </code></pre>
 </div>
-<p>You can override some default configuration values on a discovered hub (e.g. the <code class="highlighter-rouge">port</code> or <code class="highlighter-rouge">activity</code>) by adding
-a <code class="highlighter-rouge">configuration.yaml</code> setting. In this case leave the <code class="highlighter-rouge">host</code> setting empty so the platform will
-discover the host IP automatically, but set the <code class="highlighter-rouge">name</code> in the config to match exactly the name you have
-set for your Hub so the platform knows what Hub you are trying to configure.</p>
+<p>You can override some default configuration values on a discovered hub (e.g. the <code class="highlighter-rouge">port</code> or <code class="highlighter-rouge">activity</code>) by adding a <code class="highlighter-rouge">configuration.yaml</code> setting. In this case leave the <code class="highlighter-rouge">host</code> setting empty so the platform will discover the host IP automatically, but set the <code class="highlighter-rouge">name</code> in the config to match exactly the name you have set for your Hub so the platform knows what Hub you are trying to configure.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry with discovery</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">harmony</span>
-    <span class="s">name</span><span class="pi">:</span> <span class="s">Living Room</span>    <span class="c1"># This name must match the name you have set on the Hub</span>
-    <span class="s">activity</span><span class="pi">:</span> <span class="s">Watch TV</span>   <span class="c1"># Overriding the 'activity' setting for this discovered hub</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">Living Room</span> 
+    <span class="s">activity</span><span class="pi">:</span> <span class="s">Watch TV</span>
 </code></pre>
 </div>
 <p>Configuration variables:</p>
 <ul>
-  <li><strong>name</strong> (<em>Required</em>): The hub’s name to display in the frontend.</li>
+  <li><strong>name</strong> (<em>Required</em>): The hub’s name to display in the frontend. This name must match the name you have set on the Hub.</li>
   <li><strong>host</strong> (<em>Optional</em>): The Harmony device’s IP address. Leave empty for the IP to be discovered automatically.</li>
   <li><strong>port</strong> (<em>Optional</em>): The Harmony device’s port. Defaults to 5222.</li>
-  <li><strong>activity</strong> (<em>Optional</em>): Activity to use when <code class="highlighter-rouge">turn_on</code> service is called without any data.</li>
+  <li><strong>activity</strong> (<em>Optional</em>): Activity to use when <code class="highlighter-rouge">turn_on</code> service is called without any data. Overrides the <code class="highlighter-rouge">activity</code> setting for this discovered hub.</li>
   <li><strong>delay_secs</strong> (<em>Optional</em>): Default duration in seconds between sending commands to a device.</li>
 </ul>
 <p>Configuration file:</p>
@@ -238,7 +235,7 @@ set for your Hub so the platform knows what Hub you are trying to configure.</p>
         <span class="s">friendly_name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">bedroom'</span>
 </code></pre>
 </div>
-<p>The example below shows how to control an <code class="highlighter-rouge">input_boolean</code> switch using the Harmony remote’s current activity. The switch will turn on when the remote’s state changes and the Kodi activity is started and off when the remote’s state changes and the current activity is PowerOff.</p>
+<p>The example below shows how to control an <code class="highlighter-rouge">input_boolean</code> switch using the Harmony remote’s current activity. The switch will turn on when the remote’s state changes and the Kodi activity is started and off when the remote’s state changes and the current activity is “PowerOff”.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">automation</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Watch</span><span class="nv"> </span><span class="s">TV</span><span class="nv"> </span><span class="s">started</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">harmony</span><span class="nv"> </span><span class="s">hub"</span>
     <span class="s">trigger</span><span class="pi">:</span>
