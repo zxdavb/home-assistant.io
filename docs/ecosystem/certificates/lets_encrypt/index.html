@@ -246,7 +246,7 @@ $ sudo adduser hass sudo
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo su -s /bin/bash hass 
 </code></pre>
 </div>
-<p>Make sure you are in the home directory for the HA user:</p>
+<p>Make sure you are in the home directory for the Home Assistant user:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd</span>
 </code></pre>
 </div>
@@ -257,7 +257,12 @@ $ wget https://dl.eff.org/certbot-auto
 $ chmod a+x certbot-auto
 </code></pre>
 </div>
-<p>Now we will run the certbot program to get our ssl certificate. You will need to include your email address and your DuckDNS URL in the appropriate places:</p>
+<p>You might need to stop Home Assistant before continuing with the next step. You can do this via the Web-UI or use the following command if you are running on Hassbian:</p>
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>$ sudo systemctl stop home-assistant@homeassistant.service 
+</code></pre>
+</div>
+<p>You can restart Home Assistant after the next step using the same command and replacing <code class="highlighter-rouge">stop</code> with <code class="highlighter-rouge">start</code>.
+Now we will run the certbot program to get our SSL certificate. You will need to include your email address and your DuckDNS URL in the appropriate places:</p>
 <div class="language-text highlighter-rouge"><pre class="highlight"><code>$ ./certbot-auto certonly --standalone --preferred-challenges http-01 --email your@email.address -d examplehome.duckdns.org
 </code></pre>
 </div>
@@ -275,11 +280,11 @@ $ chmod a+x certbot-auto
 <p>Did all of that go without a hitch? Wahoo! Your Let’s Encrypt certificate is now ready to be used with Home Assistant. Move to step 5 to put it all together</p>
 <h3><a class="title-link" name="5---check-the-incoming-connection" href="#5---check-the-incoming-connection"></a> 5 - Check the incoming connection</h3>
 <p class="note">
-Following on from Step 4 your SSH will still be in the certbot folder. If you edit your configuration files over SSH you will need to change to your <code class="highlighter-rouge">homeassistant</code> folder:
+Following on from Step 4 your SSH will still be in the certbot folder. If you edit your configuration files over SSH you will need to change to our <code class="highlighter-rouge">homeassistant</code> folder:
 <code class="highlighter-rouge">
 $ cd ~/.homeassistant
 </code>
-If you use samba shares to edit your files you can exit your SSH now.
+If you use Samba shares to edit your files you can exit your SSH now.
 </p>
 <p>If during step 4 you had to use port 443 instead of port 80 to generate your certificate, you should delete that rule now.</p>
 <p>Go to your router’s configuration pages and set up a new port forwarding rule, thus:</p>
@@ -447,7 +452,7 @@ In cases where, for whatever reason, apt-get installing is not appropriate for y
 <ul>
   <li>If you are a ONE-RULE person, replace the <code class="highlighter-rouge">certbot-auto</code> command above with <code class="highlighter-rouge">~/certbot/certbot-auto renew --quiet --no-self-upgrade --standalone --preferred-challenges tls-sni-01 --tls-sni-01-port 8123 --pre-hook "sudo systemctl stop home-assistant@homeassistant.service" --post-hook "sudo systemctl start home-assistant@homeassistant.service"</code></li>
 </ul>
-<p>So, now were all set up. We have our secured, remotely accesible HA instance and we’re on track for keeping our certificates up to date.  But what if something goes wrong?  What if the automation didn’t fire?  What if the cron job forgot to run?  What if the dog ate my homework? Read on to set up an alert so you can be notified in plenty of time if you need to step in and sort out any failures.</p>
+<p>So, now were all set up. We have our secured, remotely accessible Home Assistant instance and we’re on track for keeping our certificates up to date. But what if something goes wrong?  What if the automation didn’t fire?  What if the cron job forgot to run?  What if the dog ate my homework? Read on to set up an alert so you can be notified in plenty of time if you need to step in and sort out any failures.</p>
 <h3><a class="title-link" name="9---set-up-an-alert-to-warn-us-if-something-went-wrong" href="#9---set-up-an-alert-to-warn-us-if-something-went-wrong"></a> 9 - Set up an alert to warn us if something went wrong.</h3>
 <p>We set up our automatic renewal of our certificates and whatever method we used the certificate should be renewed on or around 30 days before it expires. But what if a week later it still hasn’t been? This alert will go off if the expiry time on the certificate gets down to 21 days. This will give you 3 weeks to fix the problem, get your new certificate installed and get another 90 days of secure Home Assistant connections in play.</p>
 <p>In your <code class="highlighter-rouge">configuration.yaml</code> add the following automation, adding your preferred notification platform where appropriate:</p>
