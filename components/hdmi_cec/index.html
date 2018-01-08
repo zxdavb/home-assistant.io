@@ -179,7 +179,7 @@ language:      ???
 </div>
 <h2><a class="title-link" name="services" href="#services"></a> Services</h2>
 <h3><a class="title-link" name="select-device" href="#select-device"></a> Select Device</h3>
-<p>Call the <code class="highlighter-rouge">hdmi_cec/select_device</code> service with the name of the device from config or entity_id or physical address”to select it, for example:</p>
+<p>Call the <code class="highlighter-rouge">hdmi_cec.select_device</code> service with the name of the device from config or entity_id or physical address”to select it, for example:</p>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chromecast"</span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>
@@ -197,11 +197,21 @@ language:      ???
 </code></pre>
 </div>
 <h3><a class="title-link" name="power-on" href="#power-on"></a> Power On</h3>
-<p>Call the <code class="highlighter-rouge">hdmi_cec/power_on</code> service (no arguments) to power on any devices that support this function.</p>
+<p>Call the <code class="highlighter-rouge">hdmi_cec.power_on</code> service (no arguments) to power on any devices that support this function.</p>
+<p>An Automation action using the example above would look something like this.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">action</span><span class="pi">:</span>
+  <span class="s">service</span><span class="pi">:</span> <span class="s">hdmi_cec.power_on</span>
+</code></pre>
+</div>
 <h3><a class="title-link" name="standby" href="#standby"></a> Standby</h3>
-<p>Call the <code class="highlighter-rouge">hdmi_cec/standby</code> service (no arguments) to place in standby any devices that support this function.</p>
+<p>Call the <code class="highlighter-rouge">hdmi_cec.standby</code> service (no arguments) to place in standby any devices that support this function.</p>
+<p>An Automation action using the example above would look something like this.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">action</span><span class="pi">:</span>
+  <span class="s">service</span><span class="pi">:</span> <span class="s">hdmi_cec.standby</span>
+</code></pre>
+</div>
 <h3><a class="title-link" name="change-volume-level" href="#change-volume-level"></a> Change volume level</h3>
-<p>Call the <code class="highlighter-rouge">hdmi_cec/volume</code> service with one of following commands:</p>
+<p>Call the <code class="highlighter-rouge">hdmi_cec.volume</code> service with one of following commands:</p>
 <h4><a class="title-link" name="volume-up" href="#volume-up"></a> Volume up</h4>
 <p>Increase volume three times:</p>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="nt">"up"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span><span class="w">
