@@ -105,10 +105,6 @@ from other entities.</p>
         <dd>
           <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Name to use in the frontend.</span></p>
         </dd>
-        <dt><a class="title-link" name="entity_id" href="#entity_id"></a> entity_id</dt>
-        <dd>
-          <p class="desc"><span class="type">(<span class="string, list">string | list</span>)</span><span class="required">(Optional)</span><span class="description">Add a list of entity IDs so the sensor only reacts to state changes of these entities. This will reduce the number of times the sensor will try to update its state.</span></p>
-        </dd>
         <dt><a class="title-link" name="unit_of_measurement" href="#unit_of_measurement"></a> unit_of_measurement</dt>
         <dd>
           <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines the units of measurement of the sensor, if any.</span></p>
@@ -127,12 +123,11 @@ from other entities.</p>
 </div>
 <h2><a class="title-link" name="considerations" href="#considerations"></a> Considerations</h2>
 <p>If you are using the state of a platform that takes extra time to load, the
-Template Sensor may get an <code class="highlighter-rouge">unknown</code> state during startup. This results
-in error messages in your log file until that platform has completed loading.
-If you use <code class="highlighter-rouge">is_state()</code> function in your template, you can avoid this situation.
+Template Sensor may get an <code class="highlighter-rouge">unknown</code> state during startup. To avoid this (and the resulting
+error messages in your log file), you can use <code class="highlighter-rouge">is_state()</code> function in your template.
 For example, you would replace
 <code class="highlighter-rouge"><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="err">states.switch.source.state</span><span class="w"> </span><span class="err">==</span><span class="w"> </span><span class="err">'on'</span><span class="w"> </span><span class="p">}</span><span class="err">}</span></code>
-with this equivalent that returns <code class="highlighter-rouge">true</code>/<code class="highlighter-rouge">false</code> and never gives an unknown
+with this equivalent that returns <code class="highlighter-rouge">true</code>/<code class="highlighter-rouge">false</code> and never gives an <code class="highlighter-rouge">unknown</code>
 result:
 <code class="highlighter-rouge"><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="err">is_state('switch.source',</span><span class="w"> </span><span class="err">'on')</span><span class="w"> </span><span class="p">}</span><span class="err">}</span></code></p>
 <h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>

@@ -108,10 +108,6 @@ your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
             <dd>
               <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Name to use in the frontend.</span></p>
             </dd>
-            <dt><a class="title-link" name="entity_id" href="#entity_id"></a> entity_id</dt>
-            <dd>
-              <p class="desc"><span class="type">(<span class="string, list">string | list</span>)</span><span class="required">(Optional)</span><span class="description">Add a list of entity IDs so the sensor only reacts to state changes of these entities. This will reduce the number of times the sensor will try to update its state.</span></p>
-            </dd>
             <dt><a class="title-link" name="device_class" href="#device_class"></a> device_class</dt>
             <dd>
               <p class="desc"><span class="type">(<span class="device_class"><a href="/components/binary_sensor/#device_class">device_class</a></span>)</span><span class="required">(Optional)</span><span class="description">The type/class of the sensor to set the icon in the frontend.</span></p>
@@ -176,22 +172,16 @@ original switch can then be hidden by
         <span class="s">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state('switch.door',</span><span class="nv"> </span><span class="s">'on')</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre>
 </div>
-<h3><a class="title-link" name="combining-multiple-sensors-and-using-entity_id" href="#combining-multiple-sensors-and-using-entity_id"></a> Combining Multiple Sensors, and Using <code class="highlighter-rouge">entity_id</code></h3>
+<h3><a class="title-link" name="combining-multiple-sensors" href="#combining-multiple-sensors"></a> Combining Multiple Sensors</h3>
 <p>This example combines multiple CO sensors into a single overall
 status. When using templates with binary sensors, you need to return
-<code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code> explicitly. <code class="highlighter-rouge">entity_id</code> is used to limit which
-sensors are being monitored to update the state, making computing this
-sensor far more efficient.</p>
+<code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code> explicitly.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">binary_sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">template</span>
     <span class="s">sensors</span><span class="pi">:</span>
       <span class="s">co</span><span class="pi">:</span>
         <span class="s">friendly_name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">CO"</span>
         <span class="s">device_class</span><span class="pi">:</span> <span class="s">gas</span>
-        <span class="s">entity_id</span><span class="pi">:</span>
-          <span class="pi">-</span> <span class="s">sensor.bedroom_co_status</span>
-          <span class="pi">-</span> <span class="s">sensor.kitchen_co_status</span>
-          <span class="pi">-</span> <span class="s">sensor.wardrobe_co_status</span>
         <span class="s">value_template</span><span class="pi">:</span> <span class="pi">&gt;-</span>
           <span class="no">{{ is_state('sensor.bedroom_co_status', 'Ok')</span>
              <span class="no">and is_state('sensor.kitchen_co_status', 'Ok')</span>
@@ -226,14 +216,6 @@ device tracking and Z-Wave multisensor presence sensors.</p>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">template</span>
     <span class="s">sensors</span><span class="pi">:</span>
       <span class="s">people_home</span><span class="pi">:</span>
-        <span class="s">entity_id</span><span class="pi">:</span>
-          <span class="pi">-</span> <span class="s">device_tracker.sean</span>
-          <span class="pi">-</span> <span class="s">device_tracker.susan</span>
-          <span class="pi">-</span> <span class="s">binary_sensor.office_124</span>
-          <span class="pi">-</span> <span class="s">binary_sensor.hallway_134</span>
-          <span class="pi">-</span> <span class="s">binary_sensor.living_room_139</span>
-          <span class="pi">-</span> <span class="s">binary_sensor.porch_ms6_1_129</span>
-          <span class="pi">-</span> <span class="s">binary_sensor.family_room_144</span>
         <span class="s">value_template</span><span class="pi">:</span> <span class="pi">&gt;-</span>
           <span class="no">{{ is_state('device_tracker.sean', 'home')</span>
              <span class="no">or is_state('device_tracker.susan', 'home')</span>
