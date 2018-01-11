@@ -91,7 +91,7 @@
 <ul>
   <li><strong>name</strong> (<em>Optional</em>): Setting the optional parameter <code class="highlighter-rouge">name</code> allows multiple notifiers to be created. The default value is <code class="highlighter-rouge">notify</code>. The notifier will bind to the service <code class="highlighter-rouge">notify.NOTIFIER_NAME</code>.</li>
   <li><strong>api_key</strong> (<em>Required</em>): The Slack API token to use for sending Slack messages.</li>
-  <li><strong>default_channel</strong> (<em>Required</em>): The default channel to post to if no channel is explicitly specified when sending the notification message.</li>
+  <li><strong>default_channel</strong> (<em>Required</em>): The default channel to post to if no channel is explicitly specified when sending the notification message.  A channel can be specified adding a target attribute to the json at the same level as “message”</li>
   <li><strong>username</strong> (<em>Optional</em>): Setting username will allow Home Assistant to post to Slack using the username specified. By default not setting this will post to Slack using the user account or botname that you generated the api_key as.</li>
   <li><strong>icon</strong> (<em>Optional</em>): Use one of the Slack emojis as an Icon for the supplied username.  Slack uses the standard emoji sets used <a href="http://www.webpagefx.com/tools/emoji-cheat-sheet/">here</a>.</li>
 </ul>
@@ -147,6 +147,7 @@
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Message that will be added as a comment to the file."</span><span class="p">,</span><span class="w">
   </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Title of the file."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"#channelname"</span><span class="p">],</span><span class="w"> 
   </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
     </span><span class="nt">"file"</span><span class="p">:{</span><span class="w">
       </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"http://[url to file, photo, security camera etc]"</span><span class="p">,</span><span class="w">

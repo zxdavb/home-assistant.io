@@ -75,7 +75,7 @@
   </header>
   <hr class="divider">
   <p>Google Cast devices like Android TVs and Chromecasts will be automatically discovered if you enable <a href="/components/discovery/">the discovery component</a>. There is a issue where Chromecasts can only be discovered if your device is connected to the same subnet as your Chromecast.</p>
-<p>Chromecast platform can also be forced to load by adding the following lines to your <code class="highlighter-rouge">configuration.yaml</code>:</p>
+<p>The Chromecast platform can also be forced to load by adding the following lines to your <code class="highlighter-rouge">configuration.yaml</code>:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">media_player</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">cast</span>
@@ -84,8 +84,16 @@
 <p>Configuration variables:</p>
 <ul>
   <li><strong>host</strong> (<em>Optional</em>): Use only if you don’t want to scan for devices.</li>
-  <li><strong>ignore_cec</strong> (<em>Optional</em>) A list of chromecasts that should ignore CEC data for determining the active input. <a href="https://github.com/balloob/pychromecast#ignoring-cec-data">See the upstream documentation for more information.</a></li>
+  <li><strong>ignore_cec</strong> (<em>Optional</em>) A list of Chromecasts that should ignore CEC data for determining the active input. <a href="https://github.com/balloob/pychromecast#ignoring-cec-data">See the upstream documentation for more information.</a></li>
 </ul>
+<h2><a class="title-link" name="example" href="#example"></a> Example</h2>
+<p>By setting <code class="highlighter-rouge">host:</code> you can specify the Chromecast to use.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="s">media_player</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">cast</span>
+    <span class="s">host</span><span class="pi">:</span> <span class="s">192.168.1.10</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
