@@ -176,6 +176,10 @@ These devices will either show as a binary sensor or a sensor called <code class
           <span class="s">scene_id</span><span class="pi">:</span> <span class="s">8</span>
 </code></pre>
 </div>
+<h3><a class="title-link" name="zooz-toggle-switches" href="#zooz-toggle-switches"></a> Zooz Toggle Switches</h3>
+<p>Some models of the Zooz Toggle switches ship with an instruction manual with incorrect instruction for Z-Wave inclusion/exclusion. The instructions say that the switch should be quickly switched on-off-on for inclusion and off-on-off for exclusion. However, the correct method is on-on-on for inclusion and off-off-off for exclusion.</p>
+<h2><a class="title-link" name="central-scene-configuration" href="#central-scene-configuration"></a> Central Scene configuration</h2>
+<p>To provide Central Scene support you need to shut Home Assistant down and modify your <code class="highlighter-rouge">zwcfg_*.xml</code> file according to the following guides.</p>
 <h3><a class="title-link" name="homeseer-switches" href="#homeseer-switches"></a> HomeSeer Switches</h3>
 <p>For the HomeSeer devices specifically, you may need to update the <code class="highlighter-rouge">COMMAND_CLASS_CENTRAL_SCENE</code> for each node in your <code class="highlighter-rouge">zwcfg</code> file with the following:</p>
 <div class="language-xml highlighter-rouge"><pre class="highlight"><code>			<span class="nt">&lt;CommandClass</span> <span class="na">id=</span><span class="s">"91"</span> <span class="na">name=</span><span class="s">"COMMAND_CLASS_CENTRAL_SCENE"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">request_flags=</span><span class="s">"4"</span> <span class="na">innif=</span><span class="s">"true"</span> <span class="na">scenecount=</span><span class="s">"0"</span><span class="nt">&gt;</span>
@@ -362,8 +366,8 @@ These devices will either show as a binary sensor or a sensor called <code class
     </tr>
   </tbody>
 </table>
-<h3><a class="title-link" name="zooz-toggle-switches" href="#zooz-toggle-switches"></a> Zooz Toggle Switches</h3>
-<p>Some models of the Zooz Toggle switches ship with an instruction manual with incorrect instruction for Z-Wave inclusion/exclusion. The instructions say that the switch should be quickly switched on-off-on for inclusion and off-on-off for exclusion. However, the correct method is on-on-on for inclusion and off-off-off for exclusion.</p>
+<h3><a class="title-link" name="wallc-s-switch" href="#wallc-s-switch"></a> WallC-S Switch</h3>
+<p>Use the same configuration as for the Aeotec Wallmote.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
