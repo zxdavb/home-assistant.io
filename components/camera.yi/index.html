@@ -76,7 +76,7 @@
   <hr class="divider">
   <p>The <code class="highlighter-rouge">yi</code> camera platform allows you to utilize <a href="https://www.yitechnology.com/">Yi Home Cameras</a> within Home Assistant. Specifically, this platform supports the line of Yi Home Cameras that are based on the Hi3518e Chipset. This includes:</p>
 <ul>
-  <li>Yi Home 17CN</li>
+  <li>Yi Home 17CN / 27US / 47US</li>
   <li>Yi 1080p Home</li>
   <li>Yi Dome</li>
   <li>Yi 1080p Dome</li>
@@ -114,7 +114,7 @@ server. To do so:</p>
   <li><strong>host</strong> (<em>Required</em>): The IP address or hostname of the camera.</li>
   <li><strong>password</strong> (<em>Required</em>): The password to the FTP server on the camera (from above).</li>
   <li><strong>path</strong> (<em>Optional</em>): The path to the raw MP4 files. Defaults to <code class="highlighter-rouge">/tmp/sd/record</code>.</li>
-  <li><strong>username</strong> (<em>Optional</em>): The user that can access the FTP server. Ddefaults to <code class="highlighter-rouge">root</code>.</li>
+  <li><strong>username</strong> (<em>Optional</em>): The user that can access the FTP server. Defaults to <code class="highlighter-rouge">root</code>.</li>
   <li><strong>ffmpeg_arguments</strong> (<em>Optional</em>): Extra options to pass to <code class="highlighter-rouge">ffmpeg</code> (e.g. image quality or video filter options).</li>
 </ul>
 <h2><a class="title-link" name="image-quality" href="#image-quality"></a> Image quality</h2>
