@@ -84,7 +84,7 @@
 </div>
 <p>Configuration variables:</p>
 <ul>
-  <li><strong>api_key</strong> (<em>Required</em>): GitHub <a href="https://github.com/settings/applications">access token</a> with the following scopes: <em>read:org</em>, <em>user:email</em>, <em>repo_deployment</em>, <em>repo:status</em>, <em>write:repo_hook</em>.</li>
+  <li><strong>api_key</strong> (<em>Required</em>): GitHub <a href="https://github.com/settings/tokens">access token</a> with the following scopes: <em>read:org</em>, <em>user:email</em>, <em>repo_deployment</em>, <em>repo:status</em>, <em>write:repo_hook</em>.</li>
   <li><strong>branch</strong> (<em>Optional</em>): Determine which default branch should be used by the <strong>state</strong> condition. Defaults to <em>master</em>.</li>
   <li><strong>scan_interval</strong> (<em>Optional</em>): How frequently to query for new data. Defaults to 30 seconds.</li>
   <li><strong>monitored_conditions</strong> array (<em>Optional</em>): Conditions to display in the frontend. If not specified, all conditions below will be enabled by default. The following conditions can be monitored.
