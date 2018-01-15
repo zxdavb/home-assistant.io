@@ -83,9 +83,6 @@ the mobile device’s Bluetooth and GPS.</p>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">tile</span>
     <span class="s">username</span><span class="pi">:</span> <span class="s">email@address.com</span>
     <span class="s">password</span><span class="pi">:</span> <span class="s">MY_PASSWORD_123</span>
-    <span class="s">monitored_variables</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">TILE</span>
-      <span class="pi">-</span> <span class="s">PHONE</span>
 </code></pre>
 </div>
 <div class="config-vars">
@@ -102,6 +99,10 @@ the mobile device’s Bluetooth and GPS.</p>
     <dt><a class="title-link" name="monitored_variables" href="#monitored_variables"></a> monitored_variables</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="list">list</span>)</span><span class="required">(Optional)</span><span class="description">the Tile types to monitor; valid values are <code class="highlighter-rouge">TILE</code> and <code class="highlighter-rouge">PHONE</code> (default is for all types to be included)</span></p>
+    </dd>
+    <dt><a class="title-link" name="show_inactive" href="#show_inactive"></a> show_inactive</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">whether to show expired/disabled Tiles</span></p>
     </dd>
   </dl>
 </div>

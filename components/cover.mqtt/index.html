@@ -88,34 +88,128 @@
     <span class="s">command_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home-assistant/cover/set"</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>name</strong> (<em>Optional</em>): The name of the sensor. Default is <code class="highlighter-rouge">MQTT Cover</code>.</li>
-  <li><strong>command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to control the cover.</li>
-  <li><strong>payload_open</strong> (<em>Optional</em>): The payload that opens the cover. Default is <code class="highlighter-rouge">OPEN</code>.</li>
-  <li><strong>payload_close</strong> (<em>Optional</em>): The payload that closes the cover. Default is <code class="highlighter-rouge">CLOSE</code>.</li>
-  <li><strong>payload_stop</strong> (<em>Optional</em>):  The payload that stops the cover. default is <code class="highlighter-rouge">STOP</code>.</li>
-  <li><strong>state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive cover state messages.</li>
-  <li><strong>state_open</strong> (<em>Optional</em>): The payload that represents the open state. Default is <code class="highlighter-rouge">open</code>.</li>
-  <li><strong>state_closed</strong> (<em>Optional</em>): The payload that represents the closed state. Default is <code class="highlighter-rouge">closed</code>.</li>
-  <li><strong>availability_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to to receive birth and LWT messages from the MQTT cover device. If <code class="highlighter-rouge">availability_topic</code> is not defined, the cover availability state will always be “available”. If <code class="highlighter-rouge">availability_topic</code> is defined, the cover availability state will be “unavailable” by default.</li>
-  <li><strong>payload_available</strong> (<em>Optional</em>): The payload that represents the online state. Default is <code class="highlighter-rouge">online</code>.</li>
-  <li><strong>payload_not_available</strong> (<em>Optional</em>): The payload that represents the offline state. Default is <code class="highlighter-rouge">offline</code>.</li>
-  <li><strong>optimistic</strong> (<em>Optional</em>): Flag that defines if switch works in optimistic mode. Default is <code class="highlighter-rouge">true</code> if no state topic defined, else <code class="highlighter-rouge">false</code>.</li>
-  <li><strong>qos</strong> (<em>Optional</em>): The maximum QoS level to be used when receiving and publishing messages. Default is <code class="highlighter-rouge">0</code>.</li>
-  <li><strong>retain</strong> (<em>Optional</em>): Defines if published messages should have the retain flag set. Default is <code class="highlighter-rouge">false</code>.</li>
-  <li><strong>value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract a value from the payload.</li>
-  <li><strong>set_position_topic</strong> (<em>Optional</em>): The MQTT topic to publish position commands to.</li>
-  <li><strong>set_position_template</strong> (<em>Optional</em>): Defines a <a href="/topics/templating/">template</a> to define the position to be sent to the <code class="highlighter-rouge">set_position_topic</code> topic. Incoming position value is available for use in the template ``. If no template is defined, the numeric position (0-100) will be written directly to the topic.</li>
-  <li><strong>tilt_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to control the cover tilt.</li>
-  <li><strong>tilt_status_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive tilt status update values.</li>
-  <li><strong>tilt_min</strong> (<em>Optional</em>): The minimum tilt value. Default is <code class="highlighter-rouge">0</code></li>
-  <li><strong>tilt_max</strong> (<em>Optional</em>): The maximum tilt value. Default is <code class="highlighter-rouge">100</code></li>
-  <li><strong>tilt_closed_value</strong> (<em>Optional</em>): The value that will be sent on a <code class="highlighter-rouge">close_cover_tilt</code> command. Default is <code class="highlighter-rouge">0</code></li>
-  <li><strong>tilt_opened_value</strong> (<em>Optional</em>): The value that will be sent on an <code class="highlighter-rouge">open_cover_tilt</code> command. Default is <code class="highlighter-rouge">100</code></li>
-  <li><strong>tilt_status_optimistic</strong> (<em>Optional</em>): Flag that determines if tilt works in optimistic mode. Default is <code class="highlighter-rouge">true</code> if <code class="highlighter-rouge">tilt_status_topic</code> is not defined, else <code class="highlighter-rouge">false</code></li>
-  <li><strong>tilt_invert_state</strong> (<em>Optional</em>): Flag that determines if open/close are flipped; higher values toward closed and lower values toward open. Default is <code class="highlighter-rouge">False</code></li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of the cover.</span></p>
+      <p class="default">Default value: MQTT Cover</p>
+    </dd>
+    <dt><a class="title-link" name="command_topic" href="#command_topic"></a> command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to control the cover.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload_open" href="#payload_open"></a> payload_open</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The command payload that opens the cover.</span></p>
+      <p class="default">Default value: OPEN</p>
+    </dd>
+    <dt><a class="title-link" name="payload_close" href="#payload_close"></a> payload_close</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The command payload that closes the cover.</span></p>
+      <p class="default">Default value: CLOSE</p>
+    </dd>
+    <dt><a class="title-link" name="payload_stop" href="#payload_stop"></a> payload_stop</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The command payload that stops the cover.</span></p>
+      <p class="default">Default value: STOP</p>
+    </dd>
+    <dt><a class="title-link" name="state_topic" href="#state_topic"></a> state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive cover state messages.</span></p>
+    </dd>
+    <dt><a class="title-link" name="state_open" href="#state_open"></a> state_open</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the open state.</span></p>
+      <p class="default">Default value: open</p>
+    </dd>
+    <dt><a class="title-link" name="state_closed" href="#state_closed"></a> state_closed</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the closed state.</span></p>
+      <p class="default">Default value: closed</p>
+    </dd>
+    <dt><a class="title-link" name="availability_topic" href="#availability_topic"></a> availability_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to to receive birth and LWT messages from the MQTT cover device. If <code class="highlighter-rouge">availability_topic</code> is not defined, the cover availability state will always be <code class="highlighter-rouge">available</code>. If <code class="highlighter-rouge">availability_topic</code> is defined, the cover availability state will be <code class="highlighter-rouge">unavailable</code> by default.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload_available" href="#payload_available"></a> payload_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the online state.</span></p>
+      <p class="default">Default value: online</p>
+    </dd>
+    <dt><a class="title-link" name="payload_not_available" href="#payload_not_available"></a> payload_not_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the offline state.</span></p>
+      <p class="default">Default value: offline</p>
+    </dd>
+    <dt><a class="title-link" name="optimistic" href="#optimistic"></a> optimistic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Flag that defines if switch works in optimistic mode.</span></p>
+      <p class="default">Default value: <code class="highlighter-rouge">true</code> if no state topic defined, else <code class="highlighter-rouge">false</code>.</p>
+    </dd>
+    <dt><a class="title-link" name="qos" href="#qos"></a> qos</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The maximum QoS level to be used when receiving and publishing messages.</span></p>
+      <p class="default">Default value: 0</p>
+    </dd>
+    <dt><a class="title-link" name="retain" href="#retain"></a> retain</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Defines if published messages should have the retain flag set.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="value_template" href="#value_template"></a> value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract a value from the payload.</span></p>
+    </dd>
+    <dt><a class="title-link" name="set_position_topic" href="#set_position_topic"></a> set_position_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish position commands to.</span></p>
+    </dd>
+    <dt><a class="title-link" name="set_position_template" href="#set_position_template"></a> set_position_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description"> Defines a <a href="/topics/templating/">template</a> to define the position to be sent to the <code class="highlighter-rouge">set_position_topic</code> topic. Incoming position value is available for use in the template ``. If no template is defined, the numeric position (0-100) will be written directly to the topic.</span></p>
+    </dd>
+    <dt><a class="title-link" name="tilt_command_topic" href="#tilt_command_topic"></a> tilt_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to control the cover tilt.</span></p>
+    </dd>
+    <dt><a class="title-link" name="tilt_status_topic" href="#tilt_status_topic"></a> tilt_status_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive tilt status update values.</span></p>
+    </dd>
+    <dt><a class="title-link" name="tilt_min" href="#tilt_min"></a> tilt_min</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The minimum tilt value.</span></p>
+      <p class="default">Default value: 0</p>
+    </dd>
+    <dt><a class="title-link" name="tilt_max" href="#tilt_max"></a> tilt_max</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The maximum tilt value</span></p>
+      <p class="default">Default value: 100</p>
+    </dd>
+    <dt><a class="title-link" name="tilt_closed_value" href="#tilt_closed_value"></a> tilt_closed_value</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The value that will be sent on an <code class="highlighter-rouge">close_cover_tilt</code> command.</span></p>
+      <p class="default">Default value: 0</p>
+    </dd>
+    <dt><a class="title-link" name="tilt_opened_value" href="#tilt_opened_value"></a> tilt_opened_value</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The value that will be sent on an <code class="highlighter-rouge">open_cover_tilt</code> command.</span></p>
+      <p class="default">Default value: 0</p>
+    </dd>
+    <dt><a class="title-link" name="tilt_status_optimistic" href="#tilt_status_optimistic"></a> tilt_status_optimistic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Flag that determines if tilt works in optimistic mode.</span></p>
+      <p class="default">Default value: <code class="highlighter-rouge">true</code> if <code class="highlighter-rouge">tilt_status_topic</code> is not defined, else <code class="highlighter-rouge">false</code></p>
+    </dd>
+    <dt><a class="title-link" name="tilt_invert_state" href="#tilt_invert_state"></a> tilt_invert_state</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Flag that determines if open/close are flipped; higher values toward closed and lower values toward open.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+  </dl>
+</div>
 <h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>
 <p>In this section you will find some real life examples of how to use this platform.</p>
 <h3><a class="title-link" name="full-configuration-without-tilt" href="#full-configuration-without-tilt"></a> Full configuration without tilt</h3>
@@ -126,7 +220,7 @@
     <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">MQTT</span><span class="nv"> </span><span class="s">Cover"</span>
     <span class="s">command_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home-assistant/cover/set"</span>
     <span class="s">state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home-assistant/cover/state"</span>
-    <span class="s">availability_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home-assistant/cover/availability"</span>    
+    <span class="s">availability_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home-assistant/cover/availability"</span>
     <span class="s">qos</span><span class="pi">:</span> <span class="s">0</span>
     <span class="s">retain</span><span class="pi">:</span> <span class="s">true</span>
     <span class="s">payload_open</span><span class="pi">:</span> <span class="s2">"</span><span class="s">OPEN"</span>

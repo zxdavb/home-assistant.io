@@ -96,7 +96,9 @@
 default name (often model number) that is returned by the device.</li>
   <li><strong>host</strong> (<em>Optional</em>): IP address or hostname of the device</li>
   <li><strong>source_ignore</strong> (<em>Optional</em>): List of sources to hide in the front-end</li>
-  <li><strong>source_names</strong> (<em>Optional</em>): Mapping of internal AVR source names to custom ones, allowing to rename e.g. <code class="highlighter-rouge">HDMI1</code> to <code class="highlighter-rouge">ChromeCast</code></li>
+  <li><strong>source_names</strong> (<em>Optional</em>): Mapping of internal AVR source names to custom ones, allowing one to rename e.g. <code class="highlighter-rouge">HDMI1</code> to <code class="highlighter-rouge">ChromeCast</code></li>
+  <li><strong>zone_ignore</strong> (<em>Optional</em>): List of zones to hide in the front-end</li>
+  <li><strong>zone_names</strong> (<em>Optional</em>): Mapping of zone names to custom ones, allowing one to rename e.g. <code class="highlighter-rouge">Main_Zone</code> to <code class="highlighter-rouge">Family Room</code></li>
 </ul>
 <h3><a class="title-link" name="discovery-notes" href="#discovery-notes"></a> Discovery notes</h3>
 <ul>
@@ -134,6 +136,10 @@ the vtuner service. For instance <code class="highlighter-rouge">Bookmarks&gt;In
     <span class="s">source_names</span><span class="pi">:</span>
       <span class="s">HDMI1</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ChromeCast"</span>
       <span class="s">AV4</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Vinyl"</span>
+    <span class="s">zone_ignore</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Zone_2"</span>
+    <span class="s">zone_names</span><span class="pi">:</span>
+      <span class="s">Main_Zone</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Family</span><span class="nv"> </span><span class="s">Room"</span>
 </code></pre>
 </div>
 <h3><a class="title-link" name="example-play_media-script" href="#example-play_media-script"></a> Example <code class="highlighter-rouge">play_media</code> script</h3>

@@ -77,7 +77,7 @@
   <hr class="divider">
   <p>Load and update configuration files for Home Assistant from a GIT repository.</p>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/my_configs"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/my_configs.git"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"auto_restart"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nt">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -97,7 +97,7 @@
 </span></code></pre>
 </div>
 <ul>
-  <li><strong>repository</strong> (<em>Required</em>): GIT url to your repository.</li>
+  <li><strong>repository</strong> (<em>Required</em>): GIT url to your repository. You have to add .git to your GITHub-Repository-URL (see example Config)</li>
   <li><strong>auto_restart</strong> (<em>Optional</em>): Make a restart of Home-Assistant if the config have change and is valid.</li>
   <li><strong>repeat/active</strong> (<em>Optional</em>): Pull periodic for GIT updates.</li>
   <li><strong>repeat/interval</strong> (<em>Optional</em>): Pull all x seconds and look for changes.</li>

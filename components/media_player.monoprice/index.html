@@ -106,6 +106,49 @@
   <li><strong>zones</strong> (<em>Required</em>): This is the list of zones available. Valid zones are 11,12,13,14,15,16. In case multiple Monoprice devices are stacked together the list of valid zones is extended by 21,22,23,24,25,26 for the second device and 31,32,33,34,35,36 for the third device. Each zone must have a name assigned to it.</li>
   <li><strong>sources</strong> (<em>Required</em>): The list of sources available. Valid source numbers are 1,2,3,4,5,6. Each source number corresponds to the input number on the Monoprice amplifier. Similar to zones, each source must have a name assigned to it.</li>
 </ul>
+<h3><a class="title-link" name="service-snapshot" href="#service-snapshot"></a> Service <code class="highlighter-rouge">snapshot</code></h3>
+<p>Take a snapshot of one or more zones’ states. This service, and the following one are useful if you want to play a doorbell or notification sound and resume playback afterward. If no <code class="highlighter-rouge">entity_id</code> is provided, all zones are snapshotted.</p>
+<p>The following attributes are stored in a snapshot:</p>
+<ul>
+  <li>Power status (On/Off)</li>
+  <li>Mute status (On/Off)</li>
+  <li>Volume level</li>
+  <li>Source</li>
+</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">entity_id</code></td>
+      <td>yes</td>
+      <td>String or list of strings that point at <code class="highlighter-rouge">entity_id</code>s of zones.</td>
+    </tr>
+  </tbody>
+</table>
+<h3><a class="title-link" name="service-restore" href="#service-restore"></a> Service <code class="highlighter-rouge">restore</code></h3>
+<p>Restore a previously taken snapshot of one or more speakers. If no <code class="highlighter-rouge">entity_id</code> is provided, all zones are restored.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">entity_id</code></td>
+      <td>yes</td>
+      <td>String or list of strings that point at <code class="highlighter-rouge">entity_id</code>s of zones.</td>
+    </tr>
+  </tbody>
+</table>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

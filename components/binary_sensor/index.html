@@ -79,24 +79,27 @@
 <ul>
   <li><strong>None</strong>: Generic on/off. This is the default and doesn’t need to be set.</li>
   <li><strong>battery</strong>: <code class="highlighter-rouge">On</code> means low, <code class="highlighter-rouge">Off</code> means normal</li>
-  <li><strong>cold</strong>: <code class="highlighter-rouge">On</code> means cold</li>
-  <li><strong>connectivity</strong>: <code class="highlighter-rouge">On</code> means connection present, <code class="highlighter-rouge">Off</code> means no connection</li>
-  <li><strong>gas</strong>: <code class="highlighter-rouge">On</code> means gas detected</li>
-  <li><strong>heat</strong>: <code class="highlighter-rouge">On</code> means hot</li>
-  <li><strong>light</strong>: Lightness threshold</li>
-  <li><strong>moisture</strong>: <code class="highlighter-rouge">On</code> means wet</li>
-  <li><strong>motion</strong>: <code class="highlighter-rouge">On</code> means motion detected</li>
-  <li><strong>moving</strong>: <code class="highlighter-rouge">On</code> means moving, <code class="highlighter-rouge">Off</code> means stopped</li>
-  <li><strong>occupancy</strong>: <code class="highlighter-rouge">On</code> means occupied, <code class="highlighter-rouge">Off</code> means not occupied</li>
+  <li><strong>cold</strong>: <code class="highlighter-rouge">On</code> means cold, <code class="highlighter-rouge">Off</code> means normal</li>
+  <li><strong>connectivity</strong>: <code class="highlighter-rouge">On</code> means connected, <code class="highlighter-rouge">Off</code> means disconnected</li>
+  <li><strong>door</strong>: <code class="highlighter-rouge">On</code> means open, <code class="highlighter-rouge">Off</code> means closed</li>
+  <li><strong>garage_door</strong>: <code class="highlighter-rouge">On</code> means open, <code class="highlighter-rouge">Off</code> means closed</li>
+  <li><strong>gas</strong>: <code class="highlighter-rouge">On</code> means gas detected, <code class="highlighter-rouge">Off</code> means no gas (clear)</li>
+  <li><strong>heat</strong>: <code class="highlighter-rouge">On</code> means hot, <code class="highlighter-rouge">Off</code> means normal</li>
+  <li><strong>light</strong>: <code class="highlighter-rouge">On</code> means light detected, <code class="highlighter-rouge">Off</code> means no light</li>
+  <li><strong>moisture</strong>: <code class="highlighter-rouge">On</code> means moisture detected (wet), <code class="highlighter-rouge">Off</code> means no moisture (dry)</li>
+  <li><strong>motion</strong>: <code class="highlighter-rouge">On</code> means motion detected, <code class="highlighter-rouge">Off</code> means no motion (clear)</li>
+  <li><strong>moving</strong>: <code class="highlighter-rouge">On</code> means moving, <code class="highlighter-rouge">Off</code> means not moving (stopped)</li>
+  <li><strong>occupancy</strong>: <code class="highlighter-rouge">On</code> means occupied, <code class="highlighter-rouge">Off</code> means not occupied (clear)</li>
   <li><strong>opening</strong>: <code class="highlighter-rouge">On</code> means open, <code class="highlighter-rouge">Off</code> means closed</li>
   <li><strong>plug</strong>: <code class="highlighter-rouge">On</code> means device is plugged in, <code class="highlighter-rouge">Off</code> means device is unplugged</li>
-  <li><strong>power</strong>: Power, over-current, etc.</li>
-  <li><strong>presence</strong>: <code class="highlighter-rouge">On</code> means Home, <code class="highlighter-rouge">Off</code> means Away</li>
-  <li><strong>problem</strong>: <code class="highlighter-rouge">On</code> means a problem was detected, <code class="highlighter-rouge">Off</code> means the status is OK</li>
+  <li><strong>power</strong>: <code class="highlighter-rouge">On</code> means power detected, <code class="highlighter-rouge">Off</code> means no power</li>
+  <li><strong>presence</strong>: <code class="highlighter-rouge">On</code> means home, <code class="highlighter-rouge">Off</code> means away</li>
+  <li><strong>problem</strong>: <code class="highlighter-rouge">On</code> means problem detected, <code class="highlighter-rouge">Off</code> means no problem (OK)</li>
   <li><strong>safety</strong>: <code class="highlighter-rouge">On</code> means unsafe, <code class="highlighter-rouge">Off</code> means safe</li>
-  <li><strong>smoke</strong>: <code class="highlighter-rouge">On</code> means smoke detected</li>
-  <li><strong>sound</strong>: <code class="highlighter-rouge">On</code> means sound detected, <code class="highlighter-rouge">Off</code> means no sound</li>
-  <li><strong>vibration</strong>: <code class="highlighter-rouge">On</code> means vibration detected, <code class="highlighter-rouge">Off</code> means no vibration</li>
+  <li><strong>smoke</strong>: <code class="highlighter-rouge">On</code> means smoke detected, <code class="highlighter-rouge">Off</code> means no smoke (clear)</li>
+  <li><strong>sound</strong>: <code class="highlighter-rouge">On</code> means sound detected, <code class="highlighter-rouge">Off</code> means no sound (clear)</li>
+  <li><strong>vibration</strong>: <code class="highlighter-rouge">On</code> means vibration detected, <code class="highlighter-rouge">Off</code> means no vibration (clear)</li>
+  <li><strong>window</strong>: <code class="highlighter-rouge">On</code> means open, <code class="highlighter-rouge">Off</code> means closed</li>
 </ul>
 <p>For analog sensors please check the <a href="https://home-assistant.io/components/#sensor">component overview</a>.</p>
 </article>
@@ -151,9 +154,6 @@
           <li><a href='/components/binary_sensor.digital_ocean/'>
             Digital Ocean Binary Sensor
           </a></li>
-          <li><a href='/components/binary_sensor.doorbird/'>
-            DoorBird Binary Sensor
-          </a></li>
           <li><a href='/components/binary_sensor.ecobee/'>
             Ecobee Binary Sensor
           </a></li>
@@ -182,7 +182,7 @@
             Hikvision Binary Sensor
           </a></li>
           <li><a href='/components/binary_sensor.hive/'>
-            Hive Sensor
+            Hive Binary Sensor
           </a></li>
           <li><a href='/components/binary_sensor.homematic/'>
             Homematic Binary Sensor
@@ -318,6 +318,9 @@
           </a></li>
           <li><a href='/components/binary_sensor.arest/'>
             aREST Binary Sensor
+          </a></li>
+          <li><a href='/components/binary_sensor.deconz/'>
+            deCONZ Binary Sensor
           </a></li>
           <li><a href='/components/binary_sensor.maxcube/'>
             eQ-3 MAX! Cube binary sensors

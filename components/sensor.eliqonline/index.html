@@ -74,12 +74,13 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>Integrate your <a href="http://eliq.se">ELIQ Online</a> smart meter information into Home Assistant. To get an <a href="https://my.eliq.se/user/settings/api">access token</a> and the <a href="https://my.eliq.se/user/settings/data">Channel ID</a>, log in to your account.</p>
+  <p>Integrate your <a href="http://eliq.io">ELIQ Online</a> smart meter information into Home Assistant. To get an <a href="https://my.eliq.io/user/settings/api">access token</a> and the <a href="https://my.eliq.io/user/settings/locations">Channel ID</a>, log in to your account.</p>
 <p>To enable this sensor in your installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">eliqonline</span>
     <span class="s">access_token</span><span class="pi">:</span> <span class="s">ACCESS_TOKEN</span>
+    <span class="s">channel_id</span><span class="pi">:</span> <span class="s">CHANNEL_ID</span>
 </code></pre>
 </div>
 <p>Configuration variables:</p>
@@ -88,7 +89,7 @@
   <li><strong>channel_id</strong> (<em>Required</em>): Channel ID (as integer) of your device.</li>
   <li><strong>name</strong> (<em>Optional</em>): The name of the sensor, eg. the city.</li>
 </ul>
-<p>For details please check the <a href="https://my.eliq.se/knowledge/sv-SE/49-eliq-online/299-eliq-online-api">API documentation</a>.</p>
+<p>For details please check the <a href="https://eliq.zendesk.com/hc/en-us/articles/115002708449-API-Eliq-Online">API documentation</a>.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

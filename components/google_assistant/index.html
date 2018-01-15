@@ -77,7 +77,7 @@
   <p>The <code class="highlighter-rouge">google_assistant</code> component allows you to control things via Google Assistant (on your mobile or tablet) or a Google Home device.</p>
 <p>The Google Assistant component requires a bit more setup than most due to the way Google requires Assistant Apps to be set up.</p>
 <p class="note">
-To use Google Assistant your Home Assistant configuration has to be externally accessible, with a hostname and SSL certificate. If you haven’t already configured that you should do so before continuing.
+To use Google Assistant, your Home Assistant configuration has to be externally accessible, with a hostname and SSL certificate. If you haven’t already configured that you should do so before continuing.
 </p>
 <p>To enable this, add the following lines to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
@@ -86,62 +86,94 @@ To use Google Assistant your Home Assistant configuration has to be externally a
   <span class="s">client_id</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">long URL safe random string</span><span class="pi">]</span>
   <span class="s">access_token</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">a different long URL safe random string</span><span class="pi">]</span>
   <span class="s">agent_user_id</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">a string to identify user</span><span class="pi">]</span>
-  <span class="s">api_key</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">an API Key generated for the Google Actions project</span><span class="pi">]</span>
+  <span class="s">api_key</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">a Homegraph API Key generated for the Google Actions project</span><span class="pi">]</span>
   <span class="s">exposed_domains</span><span class="pi">:</span>
     <span class="pi">-</span> <span class="s">switch</span>
     <span class="pi">-</span> <span class="s">light</span>
     <span class="pi">-</span> <span class="s">group</span>
+  <span class="s">entity_config</span><span class="pi">:</span>
+    <span class="s">switch.kitchen</span><span class="pi">:</span>
+      <span class="s">name</span><span class="pi">:</span> <span class="s">Custom Name for Alexa</span>
+      <span class="s">aliases</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">bright lights</span>
+        <span class="pi">-</span> <span class="s">entry lights</span>
+      <span class="s">type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">action.devices.types.LIGHT'</span>
+    <span class="s">light.living_room</span><span class="pi">:</span>
+      <span class="s">expose</span><span class="pi">:</span> <span class="s">false</span>
 </code></pre>
 </div>
 <p>Configuration variables:</p>
-<ul>
-  <li><strong>expose_by_default</strong> (<em>Optional</em>): Expose devices in all supported domains by default.</li>
-  <li><strong>project_id</strong> (<em>Required</em>): Project ID from the Google Developer console (looks like <code class="highlighter-rouge">words-2ab12</code>)</li>
-  <li><strong>client_id</strong> (<em>Required</em>): A long random URL safe string (no spaces or special characters) that will be used for Implicit OAuth.</li>
-  <li><strong>access_token</strong> (<em>Required</em>): Another different long random URL safe string.</li>
-  <li><strong>agent_user_id</strong> (<em>Optional</em>): A string to identify the user, e.g., email address. If not provided, the component will generate one.</li>
-  <li><strong>api_key</strong> (<em>Optional</em>): An API Key generated for the project from <a href="https://console.cloud.google.com/apis/api/homegraph.googleapis.com/overview">Google Console</a> which allows you to update devices without unlinking and relinking an account (see setup below). If not provided then the request_sync service is not exposed.</li>
-  <li><strong>exposed_domains</strong> (<em>Optional</em>): An array of Home Assistant domains to expose to Google Assistant. Options include:
-    <ul>
-      <li><code class="highlighter-rouge">switch</code></li>
-      <li><code class="highlighter-rouge">light</code></li>
-      <li><code class="highlighter-rouge">cover</code></li>
-      <li><code class="highlighter-rouge">media_player</code></li>
-      <li><code class="highlighter-rouge">group</code></li>
-      <li><code class="highlighter-rouge">fan</code></li>
-      <li><code class="highlighter-rouge">scene</code></li>
-      <li><code class="highlighter-rouge">script</code></li>
-      <li><code class="highlighter-rouge">climate</code></li>
-    </ul>
-  </li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="project_id" href="#project_id"></a> project_id</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">Project ID from the Google Developer console (looks like <code class="highlighter-rouge">words-2ab12</code>)</span></p>
+    </dd>
+    <dt><a class="title-link" name="client_id" href="#client_id"></a> client_id</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">A long random URL safe string (no spaces or special characters) that will be used for Implicit OAuth (example <code class="highlighter-rouge">aBcDeFgHiJkLmNoP</code>)</span></p>
+    </dd>
+    <dt><a class="title-link" name="access_token" href="#access_token"></a> access_token</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">Another different long random URL safe string  (example <code class="highlighter-rouge">aBcDeFgHiJkLmNoP</code>)</span></p>
+    </dd>
+    <dt><a class="title-link" name="agent_user_id" href="#agent_user_id"></a> agent_user_id</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">A string to identify the user, e.g., email address. If not provided, the component will generate one.</span></p>
+    </dd>
+    <dt><a class="title-link" name="api_key" href="#api_key"></a> api_key</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">An API Key generated for the project from <a href="https://console.cloud.google.com/apis/api/homegraph.googleapis.com/overview">Google Console</a> which allows you to update devices without unlinking and relinking an account (see setup below). If not provided then the request_sync service is not exposed.</span></p>
+    </dd>
+    <dt><a class="title-link" name="expose_by_default" href="#expose_by_default"></a> expose_by_default</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Expose devices in all supported domains by default.</span></p>
+      <p class="default">Default value: true</p>
+    </dd>
+    <dt><a class="title-link" name="exposed_domains" href="#exposed_domains"></a> exposed_domains</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="list">list</span>)</span><span class="required">(Optional)</span><span class="description">List of entity domains to expose to Google Assistant.</span></p>
+    </dd>
+    <dt><a class="title-link" name="entity_config" href="#entity_config"></a> entity_config</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Optional)</span><span class="description">Entity specific configuration for Google Assistant</span></p>
+    </dd>
+    <dd>
+      <dl class="nested">
+        <dt><a class="title-link" name="entity_id" href="#entity_id"></a> <code class="highlighter-rouge">&lt;ENTITY_ID&gt;</code></dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Optional)</span><span class="description">Entity to configure</span></p>
+        </dd>
+        <dd>
+          <dl class="nested">
+            <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+            <dd>
+              <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Name of the entity to show in Google Assistant</span></p>
+            </dd>
+            <dt><a class="title-link" name="expose" href="#expose"></a> expose</dt>
+            <dd>
+              <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Force an entity to be exposed/excluded.</span></p>
+            </dd>
+            <dt><a class="title-link" name="aliases" href="#aliases"></a> aliases</dt>
+            <dd>
+              <p class="desc"><span class="type">(<span class="list">list</span>)</span><span class="required">(Optional)</span><span class="description">Aliases that can also be used to refer to this entity</span></p>
+            </dd>
+            <dt><a class="title-link" name="type" href="#type"></a> type</dt>
+            <dd>
+              <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Override the type of the entity in Google Assistant. <a href="https://developers.google.com/actions/smarthome/guides/">List of available types</a></span></p>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </dd>
+  </dl>
+</div>
 <p>It’s very important that you use very long strings for <code class="highlighter-rouge">client_id</code> and <code class="highlighter-rouge">access_token</code>. Those are essentially the credentials to your Home Assistant instance. You can generate them with the following command:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cat /dev/urandom | fold -w 120 | head -n 1 | base64 -w 0 | tr -dc <span class="s1">'0-9A-Za-z'</span> | cut -c -80
 </code></pre>
 </div>
 <p>If you’re not using Linux, you can use sites such as <a href="https://www.browserling.com/tools/random-string">this one</a> to generate a random string (containing mixed case letters and numbers) of up to 80 characters.</p>
-<p>You can also customize your devices similar to other components by adding keys to entities:</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">homeassistant</span><span class="pi">:</span>
-  <span class="s">customize</span><span class="pi">:</span>
-    <span class="s">master_bedroom_light</span><span class="pi">:</span>
-      <span class="s">google_assistant</span><span class="pi">:</span> <span class="s">true</span>
-      <span class="s">google_assistant_name</span><span class="pi">:</span> <span class="s">bedroom light</span>
-    <span class="s">bedroom_blinds</span><span class="pi">:</span>
-      <span class="s">aliases</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="s">bedroom shades</span>
-        <span class="pi">-</span> <span class="s">bedroom covers</span>
-    <span class="s">hallway_ceiling_switch</span><span class="pi">:</span>
-      <span class="s">google_assistant</span><span class="pi">:</span> <span class="s">true</span>
-      <span class="s">google_assistant_type</span><span class="pi">:</span> <span class="s">light</span>
-</code></pre>
-</div>
-<p>Entity Customization Keys:</p>
-<ul>
-  <li><strong>google_assistant</strong>: True exposes entity, false will hide it.</li>
-  <li><strong>google_assistant_name</strong>: Can be used to override the primary name of an entity. By default the <code class="highlighter-rouge">friendly_name</code> of an entity is used.</li>
-  <li><strong>google_assistant_type</strong>: Can be used to override the domain/type of an entity. For example a switch can be treated as a light</li>
-  <li><strong>aliases</strong>: Provides “nicknames” to Google Assistant. These function as alternate names for an entity that Assistant will understand when spoken.</li>
-</ul>
 <h3><a class="title-link" name="setup" href="#setup"></a> Setup</h3>
 <ol>
   <li>Download the <a href="https://developers.google.com/actions/tools/gactions-cli">gactions CLI</a> (you’ll use this later) - you can download and run this anywhere and on any machine, just remember where you put it for later (and don’t forget to run <code class="highlighter-rouge">chmod +x gactions</code>to make it executable on mac or linux)</li>
@@ -191,15 +223,15 @@ Note: This must be an HTTPS URL to work.</li>
   <li>If you haven’t already added the component configuration to <code class="highlighter-rouge">configuration.yaml</code> and restarted Home Assistant, you’ll be unable to continue until you have.</li>
   <li>Open the Google Assistant app and go into <code class="highlighter-rouge">Settings &gt; Home Control</code></li>
   <li>Click the <code class="highlighter-rouge">+</code> sign, and near the bottom, you should have <code class="highlighter-rouge">[test] your app name</code>. Selecting that should lead to you the screen where you can set rooms for your devices or nicknames for your devices.</li>
-  <li>If you want to allow other houshold users to control the devices:
+  <li>If you want to allow other household users to control the devices:
     <ol>
-      <li>Go to the developer console using address from point 4.</li>
+      <li>Go to the developer console using the address from point 4.</li>
       <li>Under the gear icon, click <code class="highlighter-rouge">Permissions</code></li>
       <li>Click <code class="highlighter-rouge">Add</code>, type the new user’s e-mail address and choose <code class="highlighter-rouge">Project -&gt; Editor</code> role</li>
       <li>Have the new user go to <a href="https://console.actions.google.com/">developer console</a> and repeat steps starting from point 7.</li>
     </ol>
   </li>
-  <li>If you want to use the <code class="highlighter-rouge">google_assistant.request_sync</code> service in Home Assistant, then enable Homegraph API for your project:
+  <li>If you want to use the <code class="highlighter-rouge">google_assistant.request_sync</code> service, to update devices without unlinking and relinking, in Home Assistant, then enable Homegraph API for your project:
     <ol>
       <li>Go to the <a href="https://console.cloud.google.com/apis/api/homegraph.googleapis.com/overview">cloud console</a></li>
       <li>Select your project and click Enable Homegraph API</li>
@@ -208,13 +240,16 @@ Note: This must be an HTTPS URL to work.</li>
     </ol>
   </li>
 </ol>
-<p><em>Note:</em> The request_sync service requires that the initial sync from Google includes the agent_user_id. If not, the service will log an error that reads something like “Request contains an invalid argument”. If this happens, then <a href="https://support.google.com/googlehome/answer/7506443?hl=en-GB">unlink the account</a> from Home Control and relink.</p>
-<p><em>Note:</em> The request_sync service may fail with a 404 if the project_id of the Homegraph API differs from the project_id of the Actions SDK found in the preferences of your project on <a href="https://console.actions.google.com">developer console</a>. Resolve this by:
-	1. Removing your project on the <a href="https://console.actions.google.com">developer console</a>.
-	2. Add a new project in the <a href="https://console.cloud.google.com">cloud console</a>. Here you get a new project_id.
-	3. Enable Homegraph API to the new project.
-	4. Generete a new API key.
-	5. Again create a new project in the <a href="https://console.actions.google.com/">developer console</a>. Described above. But at the step ‘Build under the Actions SDK box’ choose your newly created project. By this they share the same project_id.</p>
+<h3><a class="title-link" name="troubleshooting-the-request_sync-service" href="#troubleshooting-the-request_sync-service"></a> Troubleshooting the request_sync service</h3>
+<p>The request_sync service requires that the initial sync from Google includes the agent_user_id. If not, the service will log an error that reads something like “Request contains an invalid argument”. If this happens, then <a href="https://support.google.com/googlehome/answer/7506443?hl=en-GB">unlink the account</a> from Home Control and relink.</p>
+<p>The request_sync service may fail with a 404 if the project_id of the Homegraph API differs from the project_id of the Actions SDK found in the preferences of your project on <a href="https://console.actions.google.com">developer console</a>. Resolve this by:</p>
+<ol>
+  <li>Removing your project from the <a href="https://console.actions.google.com">developer console</a>.</li>
+  <li>Add a new project to the <a href="https://console.cloud.google.com">cloud console</a>. Here you get a new project_id.</li>
+  <li>Enable Homegraph API to the new project.</li>
+  <li>Generate a new API key.</li>
+  <li>Again create a new project in the <a href="https://console.actions.google.com/">developer console</a>. Described above. But at the step ‘Build under the Actions SDK box’ choose your newly created project. By this, they share the same project_id.</li>
+</ol>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -234,9 +269,6 @@ Note: This must be an HTTPS URL to work.</li>
             <a href='/components/alexa/'>Alexa / Amazon Echo</a>
         </li>
         <li>
-            <a href='/components/cloud/'>Cloud</a>
-        </li>
-        <li>
             <a href='/components/conversation/'>Conversation</a>
         </li>
         <li>
@@ -244,6 +276,9 @@ Note: This must be an HTTPS URL to work.</li>
         </li>
         <li>
             Google Assistant
+        </li>
+        <li>
+            <a href='/components/cloud/'>Home Assistant Cloud</a>
         </li>
         <li>
             <a href='/components/mycroft/'>Mycroft</a>

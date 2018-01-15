@@ -102,24 +102,97 @@
     <span class="s">command_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home/rgb1/set"</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>command_topic</strong> (<em>Required</em>): The MQTT topic to publish commands to change the light’s state.</li>
-  <li><strong>brightness</strong> (<em>Optional</em>): Flag that defines if the light supports brightness. Default is false.</li>
-  <li><strong>color_temp</strong> (<em>Optional</em>): Flag that defines if the light supports color temperature. Default is false.</li>
-  <li><strong>effect</strong> (<em>Optional</em>): Flag that defines if the light supports effects. Default is false.</li>
-  <li><strong>effect_list</strong> (<em>Optional</em>): The list of effects the light supports.</li>
-  <li><strong>flash_time_long</strong> (<em>Optional</em>): The duration, in seconds, of a “long” flash. Default is 10.</li>
-  <li><strong>flash_time_short</strong> (<em>Optional</em>): The duration, in seconds, of a “short” flash. Default is 2.</li>
-  <li><strong>name</strong> (<em>Optional</em>): The name of the light. Default is “MQTT JSON Light.”</li>
-  <li><strong>optimistic</strong> (<em>Optional</em>): Flag that defines if the light works in optimistic mode. Default is true if no state topic defined, else false.</li>
-  <li><strong>qos</strong> (<em>Optional</em>): The maximum QoS level of the state topic. Default is 0 and will also be used to publishing messages.</li>
-  <li><strong>retain</strong> (<em>Optional</em>): If the published message should have the retain flag on or not.</li>
-  <li><strong>rgb</strong> (<em>Optional</em>): Flag that defines if the light supports RGB colors. Default is false.</li>
-  <li><strong>state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive state updates.</li>
-  <li><strong>white_value</strong> (<em>Optional</em>): Flag that defines if the light supports white values. Default is false.</li>
-  <li><strong>xy</strong> (<em>Optional</em>): Flag that defines if the light supports XY colors. Default is false.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of the light.</span></p>
+      <p class="default">Default value: MQTT JSON Light</p>
+    </dd>
+    <dt><a class="title-link" name="command_topic" href="#command_topic"></a> command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The MQTT topic to publish commands to change the light’s state.</span></p>
+    </dd>
+    <dt><a class="title-link" name="brightness" href="#brightness"></a> brightness</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Flag that defines if the light supports brightness.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="color_temp" href="#color_temp"></a> color_temp</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Flag that defines if the light supports color temperature.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="effect" href="#effect"></a> effect</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Flag that defines if the light supports effects.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="effect_list" href="#effect_list"></a> effect_list</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string list">string list</span>)</span><span class="required">(Optional)</span><span class="description">The list of effects the light supports.</span></p>
+    </dd>
+    <dt><a class="title-link" name="flash_time_long" href="#flash_time_long"></a> flash_time_long</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The duration, in seconds, of a “long” flash.</span></p>
+      <p class="default">Default value: 10</p>
+    </dd>
+    <dt><a class="title-link" name="flash_time_short" href="#flash_time_short"></a> flash_time_short</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The duration, in seconds, of a “short” flash.</span></p>
+      <p class="default">Default value: 2</p>
+    </dd>
+    <dt><a class="title-link" name="optimistic" href="#optimistic"></a> optimistic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Flag that defines if the light works in optimistic mode.</span></p>
+      <p class="default">Default value: <code class="highlighter-rouge">true</code> if no state topic defined, else <code class="highlighter-rouge">false</code>.</p>
+    </dd>
+    <dt><a class="title-link" name="qos" href="#qos"></a> qos</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The maximum QoS level of the state topic.</span></p>
+      <p class="default">Default value: 0</p>
+    </dd>
+    <dt><a class="title-link" name="retain" href="#retain"></a> retain</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">If the published message should have the retain flag on or not.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="rgb" href="#rgb"></a> rgb</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Flag that defines if the light supports RGB colors.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="state_topic" href="#state_topic"></a> state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive state updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="white_value" href="#white_value"></a> white_value</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Flag that defines if the light supports white values.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="xy" href="#xy"></a> xy</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Flag that defines if the light supports XY colors.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="availability_topic" href="#availability_topic"></a> availability_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive availability (online/offline) updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload_available" href="#payload_available"></a> payload_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the available state.</span></p>
+      <p class="default">Default value: online</p>
+    </dd>
+    <dt><a class="title-link" name="payload_not_available" href="#payload_not_available"></a> payload_not_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the unavailable state.</span></p>
+      <p class="default">Default value: offline</p>
+    </dd>
+  </dl>
+</div>
 <p class="note warning">
   Make sure that your topics match exact. <code class="highlighter-rouge">some-topic/</code> and <code class="highlighter-rouge">some-topic</code> are different topics.
 </p>
@@ -283,6 +356,9 @@
             <a href='/components/light.flux_led/'>Flux Led/MagicLight</a>
         </li>
         <li>
+            <a href='/components/light.greenwave/'>Greenwave Reality (TCP Connected) Lights</a>
+        </li>
+        <li>
             <a href='/components/light.hive/'>Hive Light</a>
         </li>
         <li>
@@ -376,7 +452,7 @@
             <a href='/components/light.skybell/'>Skybell Light</a>
         </li>
         <li>
-            <a href='/components/light.tplink/'>TPLink Bulb</a>
+            <a href='/components/light.tplink/'>TP-Link Bulb</a>
         </li>
         <li>
             <a href='/components/light.tellstick/'>TellStick Light</a>
@@ -422,6 +498,12 @@
         </li>
         <li>
             <a href='/components/light.zigbee/'>ZigBee Light</a>
+        </li>
+        <li>
+            <a href='/components/light.deconz/'>deCONZ lights</a>
+        </li>
+        <li>
+            <a href='/components/light.iglo/'>iGlo</a>
         </li>
         <li>
             <a href='/components/light.mystrom/'>myStrom WiFi Bulb</a>

@@ -76,6 +76,53 @@
   <hr class="divider">
   <p>The <code class="highlighter-rouge">alarmdecoder</code> alarm control panel platform allows you to control your <a href="https://www.alarmdecoder.com">AlarmDecoder</a> alarms.</p>
 <p>The requirement is that you have setup your <a href="/components/alarmdecoder/">AlarmDecoder hub</a>.</p>
+<h3><a class="title-link" name="services" href="#services"></a> Services</h3>
+<p>The Alarm Decoder component gives you access to several services for you to control your alarm with.</p>
+<ul>
+  <li><code class="highlighter-rouge">alarm_arm_away</code>: Arms the alarm in away mode; all faults will trigger the alarm.</li>
+  <li><code class="highlighter-rouge">alarm_arm_home</code>: Arms the alarm in stay mode; faults to the doors or windows will trigger the alarm.</li>
+  <li><code class="highlighter-rouge">alarm_arm_night</code>: Arms the alarm in instant mode; all faults will trigger the alarm. Additionally, the entry delay is turned off on the doors.</li>
+  <li><code class="highlighter-rouge">alarm_disarm</code>: Disarms the alarm from any state. Also clears a <code class="highlighter-rouge">check_zone</code> flag after an alarm was triggered.</li>
+  <li><code class="highlighter-rouge">alarmdecoder_alarm_toggle_chime</code>: Toggles the alarm’s chime state.</li>
+</ul>
+<p><strong>Note</strong>: <code class="highlighter-rouge">alarm_arm_custom_bypass</code> and <code class="highlighter-rouge">alarm_trigger</code>, while available in the services list in Home Assistant, are not currently implemented in the Alarm Decoder component.</p>
+<h3><a class="title-link" name="attributes" href="#attributes"></a> Attributes</h3>
+<p>There are several attributes available on the alarm panel to give you more information about your alarm.</p>
+<ul>
+  <li><code class="highlighter-rouge">ac_power</code>: Set to <code class="highlighter-rouge">true</code> if your system has AC power supplying it.</li>
+  <li><code class="highlighter-rouge">backlight_on</code>: Set to <code class="highlighter-rouge">true</code> if your keypad’s backlight is on.</li>
+  <li><code class="highlighter-rouge">battery_low</code>: Set to <code class="highlighter-rouge">true</code> if your system’s back-up battery is low.</li>
+  <li><code class="highlighter-rouge">check_zone</code>: Set to <code class="highlighter-rouge">true</code> if your system was recently triggered. When <code class="highlighter-rouge">check_zone</code> is <code class="highlighter-rouge">true</code>, it must be cleared by entering your code + 1 before attempting to rearm your alarm.</li>
+  <li><code class="highlighter-rouge">chime</code>: Set to <code class="highlighter-rouge">true</code> if your system’s chime is activated. When activated, your system will beep anytime a door or window is faulted while the alarm is disarmed.</li>
+  <li><code class="highlighter-rouge">entry_delay_off</code>: Set to <code class="highlighter-rouge">true</code> if your system is in “Instant” mode, meaning the alarm will sound on any faults.</li>
+  <li><code class="highlighter-rouge">programming_mode</code>: Set to <code class="highlighter-rouge">true</code> if your system is in programming mode.</li>
+  <li><code class="highlighter-rouge">ready</code>: Set to <code class="highlighter-rouge">true</code> if your system is ready to be armed. Any faults, including motions sensors, will make this value <code class="highlighter-rouge">false</code>.</li>
+  <li><code class="highlighter-rouge">zone_bypassed</code>: Set to <code class="highlighter-rouge">true</code> if your system is currently bypassing a zone.</li>
+</ul>
+<h3><a class="title-link" name="examples" href="#examples"></a> Examples</h3>
+<p>Using a combination of the available services and attributes, you can create switch templates.</p>
+<h4><a class="title-link" name="chime-status-and-control" href="#chime-status-and-control"></a> Chime Status and Control</h4>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">template</span>
+  <span class="s">switches</span><span class="pi">:</span>
+    <span class="s">alarm_chime</span><span class="pi">:</span>
+      <span class="s">friendly_name</span><span class="pi">:</span> <span class="s">Chime</span>
+      <span class="s">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state_attr('alarm_control_panel.alarm_panel',</span><span class="nv"> </span><span class="s">'chime',</span><span class="nv"> </span><span class="s">true)</span><span class="nv"> </span><span class="s">}}"</span>
+      <span class="s">turn_on</span><span class="pi">:</span>
+        <span class="s">service</span><span class="pi">:</span> <span class="s">alarm_control_panel.alarmdecoder_alarm_toggle_chime</span>
+        <span class="s">data</span><span class="pi">:</span>
+          <span class="s">code</span><span class="pi">:</span> <span class="kt">!secret</span> <span class="s">alarm_code</span>
+      <span class="s">turn_off</span><span class="pi">:</span>
+        <span class="s">service</span><span class="pi">:</span> <span class="s">alarm_control_panel.alarmdecoder_alarm_toggle_chime</span>
+        <span class="s">data</span><span class="pi">:</span>
+          <span class="s">code</span><span class="pi">:</span> <span class="kt">!secret</span> <span class="s">alarm_code</span>
+      <span class="s">icon_template</span><span class="pi">:</span> <span class="pi">&gt;-</span>
+          <span class="no">{% if is_state_attr('alarm_control_panel.alarm_panel', 'chime', true) %}</span>
+            <span class="no">mdi:bell-ring</span>
+          <span class="no">{% else %}</span>
+            <span class="no">mdi:bell-off</span>
+          <span class="no">{% endif %}</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

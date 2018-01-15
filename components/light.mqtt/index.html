@@ -84,40 +84,156 @@
     <span class="s">command_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">office/rgb1/light/switch"</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>command_topic</strong> (<em>Required</em>): The MQTT topic to publish commands to change the light’s state.</li>
-  <li><strong>brightness_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the light’s brightness.</li>
-  <li><strong>brightness_scale</strong> (<em>Optional</em>): Defines the maximum brightness value (i.e. 100%) of the MQTT device (defaults to 255).</li>
-  <li><strong>brightness_state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive brightness state updates.</li>
-  <li><strong>brightness_value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the brightness value.</li>
-  <li><strong>color_temp_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the light’s color temperature state.  The color temperature command slider has a range of 157 to 500 mireds (micro reciprocal degrees).</li>
-  <li><strong>color_temp_state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive color temperature state updates.</li>
-  <li><strong>color_temp_value_template</strong> (<em>Optional</em>): Defines a <a href="/topics/templating/">template</a> to extract the color temperature value.</li>
-  <li><strong>effect_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the light’s effect state.</li>
-  <li><strong>effect_state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive effect state updates.</li>
-  <li><strong>effect_value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the effect value.</li>
-  <li><strong>effect_list</strong> (<em>Optional</em>): The list of effects the light supports.</li>
-  <li><strong>name</strong> (<em>Optional</em>): The name of the switch. Default is ‘MQTT Switch’.</li>
-  <li><strong>on_command_type</strong> (<em>Optional</em>): Defines when on the payload_on is sent. Using <code class="highlighter-rouge">last</code> (the default) will send any style (brightness, color, etc) topics first and then a <code class="highlighter-rouge">payload_on</code> to the <code class="highlighter-rouge">command_topic</code>. Using <code class="highlighter-rouge">first</code> will send the <code class="highlighter-rouge">payload_on</code> and then any style topics. Using <code class="highlighter-rouge">brightness</code> will only send brightness commands instead of the <code class="highlighter-rouge">payload_on</code> to turn the light on.</li>
-  <li><strong>optimistic</strong> (<em>Optional</em>): Flag that defines if switch works in optimistic mode. Default is true if no state topic defined, else false.</li>
-  <li><strong>payload_off</strong> (<em>Optional</em>): The payload that represents disabled state. Default is “OFF”.</li>
-  <li><strong>payload_on</strong> (<em>Optional</em>): The payload that represents enabled state. Default is “ON”.</li>
-  <li><strong>qos</strong> (<em>Optional</em>): The maximum QoS level of the state topic. Default is 0 and will also be used to publishing messages.</li>
-  <li><strong>retain</strong> (<em>Optional</em>): If the published message should have the retain flag on or not.</li>
-  <li><strong>rgb_command_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to compose message which will be sent to <code class="highlighter-rouge">rgb_command_topic</code>. Available variables: <code class="highlighter-rouge">red</code>, <code class="highlighter-rouge">green</code> and <code class="highlighter-rouge">blue</code>.</li>
-  <li><strong>rgb_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the light’s RGB state.</li>
-  <li><strong>rgb_state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive RGB state updates.</li>
-  <li><strong>rgb_value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the RGB value.</li>
-  <li><strong>state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive state updates.</li>
-  <li><strong>state_value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the state value. The template should match the payload “on” and “off” values, so if your light uses “power on” to turn on, your <code class="highlighter-rouge">state_value_template</code> string should return “power on” when the switch is on. For example if the message is just “on”, your <code class="highlighter-rouge">state_value_template</code> should be <code class="highlighter-rouge">power </code>.</li>
-  <li><strong>white_value_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the light’s white value.</li>
-  <li><strong>white_value_state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive white value updates.</li>
-  <li><strong>white_value_value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the white value.</li>
-  <li><strong>xy_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the light’s XY state.</li>
-  <li><strong>xy_state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive XY state updates.</li>
-  <li><strong>xy_value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the XY value.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of the light.</span></p>
+      <p class="default">Default value: MQTT Light</p>
+    </dd>
+    <dt><a class="title-link" name="command_topic" href="#command_topic"></a> command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The MQTT topic to publish commands to change the switch state.</span></p>
+    </dd>
+    <dt><a class="title-link" name="brightness_command_topic" href="#brightness_command_topic"></a> brightness_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the light’s brightness.</span></p>
+    </dd>
+    <dt><a class="title-link" name="brightness_scale" href="#brightness_scale"></a> brightness_scale</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">Defines the maximum brightness value (i.e. 100%) of the MQTT device.</span></p>
+      <p class="default">Default value: 255</p>
+    </dd>
+    <dt><a class="title-link" name="brightness_state_topic" href="#brightness_state_topic"></a> brightness_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive brightness state updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="brightness_value_template" href="#brightness_value_template"></a> brightness_value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the brightness value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="color_temp_command_topic" href="#color_temp_command_topic"></a> color_temp_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the light’s color temperature state. The color temperature command slider has a range of 157 to 500 mireds (micro reciprocal degrees).</span></p>
+    </dd>
+    <dt><a class="title-link" name="color_temp_state_topic" href="#color_temp_state_topic"></a> color_temp_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive color temperature state updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="color_temp_value_template" href="#color_temp_value_template"></a> color_temp_value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/topics/templating/">template</a> to extract the color temperature value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="effect_command_topic" href="#effect_command_topic"></a> effect_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the light’s effect state.</span></p>
+    </dd>
+    <dt><a class="title-link" name="effect_state_topic" href="#effect_state_topic"></a> effect_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive effect state updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="effect_value_template" href="#effect_value_template"></a> effect_value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the effect value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="effect_list" href="#effect_list"></a> effect_list</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string list">string list</span>)</span><span class="required">(Optional)</span><span class="description">The list of effects the light supports.</span></p>
+    </dd>
+    <dt><a class="title-link" name="on_command_type" href="#on_command_type"></a> on_command_type</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines when on the payload_on is sent. Using <code class="highlighter-rouge">last</code> (the default) will send any style (brightness, color, etc) topics first and then a <code class="highlighter-rouge">payload_on</code> to the <code class="highlighter-rouge">command_topic</code>. Using <code class="highlighter-rouge">first</code> will send the <code class="highlighter-rouge">payload_on</code> and then any style topics. Using <code class="highlighter-rouge">brightness</code> will only send brightness commands instead of the <code class="highlighter-rouge">payload_on</code> to turn the light on.</span></p>
+    </dd>
+    <dt><a class="title-link" name="optimistic" href="#optimistic"></a> optimistic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Flag that defines if switch works in optimistic mode.</span></p>
+      <p class="default">Default value: <code class="highlighter-rouge">true</code> if no state topic defined, else <code class="highlighter-rouge">false</code>.</p>
+    </dd>
+    <dt><a class="title-link" name="payload_on" href="#payload_on"></a> payload_on</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents enabled state.</span></p>
+      <p class="default">Default value: true</p>
+    </dd>
+    <dt><a class="title-link" name="payload_off" href="#payload_off"></a> payload_off</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents disabled state.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="qos" href="#qos"></a> qos</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The maximum QoS level of the state topic.</span></p>
+      <p class="default">Default value: 0</p>
+    </dd>
+    <dt><a class="title-link" name="retain" href="#retain"></a> retain</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">If the published message should have the retain flag on or not.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="rgb_command_template" href="#rgb_command_template"></a> rgb_command_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to compose message which will be sent to <code class="highlighter-rouge">rgb_command_topic</code>. Available variables: <code class="highlighter-rouge">red</code>, <code class="highlighter-rouge">green</code> and <code class="highlighter-rouge">blue</code>.</span></p>
+    </dd>
+    <dt><a class="title-link" name="rgb_command_topic" href="#rgb_command_topic"></a> rgb_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the light’s RGB state.</span></p>
+    </dd>
+    <dt><a class="title-link" name="rgb_state_topic" href="#rgb_state_topic"></a> rgb_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive RGB state updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="rgb_value_template" href="#rgb_value_template"></a> rgb_value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the RGB value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="state_topic" href="#state_topic"></a> state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive state updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="state_value_template" href="#state_value_template"></a> state_value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the state value. The template should match the payload <code class="highlighter-rouge">on</code> and <code class="highlighter-rouge">off</code> values, so if your light uses <code class="highlighter-rouge">power on</code> to turn on, your <code class="highlighter-rouge">state_value_template</code> string should return <code class="highlighter-rouge">power on</code> when the switch is on. For example if the message is just <code class="highlighter-rouge">on</code>, your <code class="highlighter-rouge">state_value_template</code> should be <code class="highlighter-rouge">power </code>.</span></p>
+    </dd>
+    <dt><a class="title-link" name="white_value_command_topic" href="#white_value_command_topic"></a> white_value_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the light’s white value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="white_value_state_topic" href="#white_value_state_topic"></a> white_value_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive white value updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="white_value_value_template" href="#white_value_value_template"></a> white_value_value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the white value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="xy_command_topic" href="#xy_command_topic"></a> xy_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the light’s XY state.</span></p>
+    </dd>
+    <dt><a class="title-link" name="xy_state_topic" href="#xy_state_topic"></a> xy_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive XY state updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="xy_value_template" href="#xy_value_template"></a> xy_value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract the XY value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="availability_topic" href="#availability_topic"></a> availability_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive availability (online/offline) updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload_available" href="#payload_available"></a> payload_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the available state.</span></p>
+      <p class="default">Default value: online</p>
+    </dd>
+    <dt><a class="title-link" name="payload_not_available" href="#payload_not_available"></a> payload_not_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the unavailable state.</span></p>
+      <p class="default">Default value: offline</p>
+    </dd>
+  </dl>
+</div>
 <p class="note warning">
   Make sure that your topics match exactly. <code class="highlighter-rouge">some-topic/</code> and <code class="highlighter-rouge">some-topic</code> are different topics.
 </p>
@@ -335,6 +451,9 @@
             <a href='/components/light.flux_led/'>Flux Led/MagicLight</a>
         </li>
         <li>
+            <a href='/components/light.greenwave/'>Greenwave Reality (TCP Connected) Lights</a>
+        </li>
+        <li>
             <a href='/components/light.hive/'>Hive Light</a>
         </li>
         <li>
@@ -428,7 +547,7 @@
             <a href='/components/light.skybell/'>Skybell Light</a>
         </li>
         <li>
-            <a href='/components/light.tplink/'>TPLink Bulb</a>
+            <a href='/components/light.tplink/'>TP-Link Bulb</a>
         </li>
         <li>
             <a href='/components/light.tellstick/'>TellStick Light</a>
@@ -474,6 +593,12 @@
         </li>
         <li>
             <a href='/components/light.zigbee/'>ZigBee Light</a>
+        </li>
+        <li>
+            <a href='/components/light.deconz/'>deCONZ lights</a>
+        </li>
+        <li>
+            <a href='/components/light.iglo/'>iGlo</a>
         </li>
         <li>
             <a href='/components/light.mystrom/'>myStrom WiFi Bulb</a>

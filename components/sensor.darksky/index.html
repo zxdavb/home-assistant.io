@@ -6,13 +6,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Dark Sky - Home Assistant</title>
+    <title>Dark Sky Sensor - Home Assistant</title>
     <meta name="author" content="Home Assistant">
     <meta name="description" content="How to integrate Dark Sky within Home Assistant.">
     <meta name="viewport" content="width=device-width">
     <link rel="canonical" href="https://home-assistant.io/components/sensor.darksky/">
     <meta property="fb:app_id" content="338291289691179">
-    <meta property="og:title" content="Dark Sky">
+    <meta property="og:title" content="Dark Sky Sensor">
     <meta property="og:site_name" content="Home Assistant">
     <meta property="og:url" content="https://home-assistant.io/components/sensor.darksky/">
     <meta property="og:type" content="article">
@@ -20,7 +20,7 @@
     <meta property="og:image" content="https://home-assistant.io/images/default-social.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@home_assistant">
-    <meta name="twitter:title" content="Dark Sky">
+    <meta name="twitter:title" content="Dark Sky Sensor">
     <meta name="twitter:description" content="How to integrate Dark Sky within Home Assistant.">
     <meta name="twitter:image" content="https://home-assistant.io/images/default-social.png">
     <link href="/stylesheets/screen.css" media="screen, projection, print" rel="stylesheet">
@@ -70,14 +70,14 @@
           <article class="page">
   <header>
     <h1 class="title indent">
-      Dark Sky
+      Dark Sky Sensor
     </h1>
   </header>
   <hr class="divider">
   <p>The <code class="highlighter-rouge">darksky</code> platform uses the <a href="https://darksky.net/">Dark Sky</a> web service as a source for meteorological data for your location. The location is based on the <code class="highlighter-rouge">longitude</code> and <code class="highlighter-rouge">latitude</code> coordinates configured in your <code class="highlighter-rouge">configuration.yaml</code> file. The coordinates are auto-detected but to take advantage of the hyper-local weather reported by Dark Sky, you can refine them down to your exact home address. GPS coordinates can be found by using <a href="https://www.google.com/maps">Google Maps</a> and clicking on your home or <a href="http://www.openstreetmap.org/">Openstreetmap</a>.</p>
 <p>You need an API key which is free but requires <a href="https://darksky.net/dev/register">registration</a>. You can make up to 1000 calls per day for free which means that you could make one approximately every 86 seconds.</p>
 <p class="note warning">
-<a href="https://darksky.net/">Dark Sky</a> will charge you $0.0001 per API call if you enter your credit card details and create more than 1000 calls per day.
+<a href="https://darksky.net/dev/">Dark Sky</a> will charge you $0.0001 per API call if you enter your credit card details and create more than 1000 calls per day.
 </p>
 <p>To add Dark Sky to your installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
@@ -124,7 +124,7 @@
       <li><strong>uv_index</strong>: The current UV index.</li>
     </ul>
   </li>
-  <li><strong>units</strong> (<em>Optional</em>): Specify the unit system. Default to <code class="highlighter-rouge">si</code> or <code class="highlighter-rouge">us</code> based on the temperature preference in Home Assistant. Other options are <code class="highlighter-rouge">auto</code>, <code class="highlighter-rouge">us</code>, <code class="highlighter-rouge">si</code>, <code class="highlighter-rouge">ca</code>, and <code class="highlighter-rouge">uk2</code>.
+  <li><strong>units</strong> (<em>Optional</em>): Specify the unit system. Default to <code class="highlighter-rouge">si</code> or <code class="highlighter-rouge">us</code> based on the temperature preference in Home Assistant. Other options are <code class="highlighter-rouge">auto</code>, <code class="highlighter-rouge">us</code>, <code class="highlighter-rouge">si</code>, <code class="highlighter-rouge">ca</code>, <code class="highlighter-rouge">uk</code> and <code class="highlighter-rouge">uk2</code>.
 <code class="highlighter-rouge">auto</code> will let Dark Sky decide the unit system based on location.</li>
   <li><strong>update_interval</strong> (<em>Optional</em>): Minimum time interval between updates. Default is 2 minutes. Supported formats:
     <ul>
@@ -166,6 +166,14 @@ While the platform is called “darksky” the sensors will show up in Home Assi
       Source:
       <a href='https://github.com/home-assistant/home-assistant/blob/master/homeassistant/components/sensor/darksky.py'>sensor/darksky.py</a>
     </div>
+          <div class='section'>
+          <h1 class='title delta'>Related components</h1>
+          <ul class='divided'>
+        <li><a href='/components/weather.darksky/'>
+          Dark Sky
+        </a></li>
+    </ul>
+    </div>
     <div class='section'>
     <h1 class="title delta">Category Weather</h1>
     <ul class='divided'>
@@ -185,7 +193,10 @@ While the platform is called “darksky” the sensors will show up in Home Assi
             <a href='/components/sensor.dwd_weather_warnings/'>DWD Weather warnings</a>
         </li>
         <li>
-            Dark Sky
+            <a href='/components/weather.darksky/'>Dark Sky</a>
+        </li>
+        <li>
+            Dark Sky Sensor
         </li>
         <li>
             <a href='/components/weather.ecobee/'>Ecobee Weather</a>

@@ -85,35 +85,124 @@
     <span class="s">temperature_command_topic</span><span class="pi">:</span> <span class="s">/sensors/hvac_study/target_temp</span>
 </code></pre>
 </div>
-<p>Configuration variables <em>except</em> for MQTT topics:</p>
-<ul>
-  <li><strong>name</strong> (<em>Required</em>): Name of MQTT HVAC.</li>
-  <li><strong>qos</strong> (<em>Optional</em>): The maximum QoS level of the state topic. Default is <code class="highlighter-rouge">0</code> and will also be used to publishing messages.</li>
-  <li><strong>retain</strong> (<em>Optional</em>): If the published message should have the retain flag on or not.</li>
-  <li><strong>send_if_off</strong> (<em>Optional</em>): Set to <code class="highlighter-rouge">false</code> to suppress sending of all MQTT messages when the current mode is <code class="highlighter-rouge">Off</code>. Defaults to <code class="highlighter-rouge">true</code>.</li>
-  <li><strong>initial</strong> (<em>Optional</em>): Set the initial target temperature. Defaults to 21 degrees.</li>
-  <li><strong>payload_on</strong> (<em>Optional</em>): For MQTT topics that control an <code class="highlighter-rouge">on</code> / <code class="highlighter-rouge">off</code> value (e.g., <code class="highlighter-rouge">aux_command_topic</code>), set the value that should be sent for <code class="highlighter-rouge">on</code>. Defaults to ‘ON’.</li>
-  <li><strong>payload_off</strong> (<em>Optional</em>): For MQTT topics that control an <code class="highlighter-rouge">on</code> / <code class="highlighter-rouge">off</code> value (e.g., <code class="highlighter-rouge">aux_command_topic</code>), set the value that should be sent for <code class="highlighter-rouge">off</code>. Defaults to ‘OFF’.</li>
-</ul>
-<p>Configuration of the MQTT topics:</p>
-<ul>
-  <li><strong>current_temperature_topic</strong> (<em>Optional</em>): The MQTT topic on which to listen for the current temperature</li>
-  <li><strong>power_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the power state. This is useful if your device has a separate power toggle in addition to mode.</li>
-  <li><strong>mode_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the HVAC operation mode.</li>
-  <li><strong>mode_state_topic</strong> (<em>Optional</em>): The MQTT topic to subscribe for changes of the HVAC operation mode. If this is not set, the operation mode works in optimistic mode (see below).</li>
-  <li><strong>temperature_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the target temperature.</li>
-  <li><strong>temperature_state_topic</strong> (<em>Optional</em>): The MQTT topic to subscribe for changes in the target temperature. If this is not set, the target temperature works in optimistic mode (see below).</li>
-  <li><strong>fan_mode_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the fan mode.</li>
-  <li><strong>fan_mode_state_topic</strong> (<em>Optional</em>): The MQTT topic to subscribe for changes of the HVAC fan mode. If this is not set, the fan mode works in optimistic mode (see below).</li>
-  <li><strong>swing_mode_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the swing mode.</li>
-  <li><strong>swing_mode_state_topic</strong> (<em>Optional</em>): The MQTT topic to subscribe for changes of the HVAC swing mode. If this is not set, the swing mode works in optimistic mode (see below).</li>
-  <li><strong>away_mode_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the away mode.</li>
-  <li><strong>away_mode_state_topic</strong> (<em>Optional</em>): The MQTT topic to subscribe for changes of the HVAC away mode. If this is not set, the away mode works in optimistic mode (see below).</li>
-  <li><strong>hold_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the hold mode.</li>
-  <li><strong>hold_state_topic</strong> (<em>Optional</em>): The MQTT topic to subscribe for changes of the HVAC hold mode. If this is not set, the hold mode works in optimistic mode (see below).</li>
-  <li><strong>aux_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to switch auxiliary heat.</li>
-  <li><strong>aux_state_topic</strong> (<em>Optional</em>): The MQTT topic to subscribe for changes of the auxiliary heat mode. If this is not set, the auxiliary heat mode works in optimistic mode (see below).</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of the HVAC.</span></p>
+      <p class="default">Default value: MQTT HVAC</p>
+    </dd>
+    <dt><a class="title-link" name="qos" href="#qos"></a> qos</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The maximum QoS level to be used when receiving and publishing messages.</span></p>
+      <p class="default">Default value: 0</p>
+    </dd>
+    <dt><a class="title-link" name="retain" href="#retain"></a> retain</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Defines if published messages should have the retain flag set.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="send_if_off" href="#send_if_off"></a> send_if_off</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Set to <code class="highlighter-rouge">false</code> to suppress sending of all MQTT messages when the current mode is <code class="highlighter-rouge">Off</code>.</span></p>
+      <p class="default">Default value: true</p>
+    </dd>
+    <dt><a class="title-link" name="initial" href="#initial"></a> initial</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="number">number</span>)</span><span class="required">(Optional)</span><span class="description">Set the initial target temperature.</span></p>
+      <p class="default">Default value: 21</p>
+    </dd>
+    <dt><a class="title-link" name="payload_on" href="#payload_on"></a> payload_on</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents enabled state.</span></p>
+      <p class="default">Default value: true</p>
+    </dd>
+    <dt><a class="title-link" name="payload_off" href="#payload_off"></a> payload_off</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents disabled state.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="availability_topic" href="#availability_topic"></a> availability_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive availability (online/offline) updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload_available" href="#payload_available"></a> payload_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the available state.</span></p>
+      <p class="default">Default value: online</p>
+    </dd>
+    <dt><a class="title-link" name="payload_not_available" href="#payload_not_available"></a> payload_not_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the unavailable state.</span></p>
+      <p class="default">Default value: offline</p>
+    </dd>
+    <dt><a class="title-link" name="current_temperature_topic" href="#current_temperature_topic"></a> current_temperature_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic on which to listen for the current temperature.</span></p>
+    </dd>
+    <dt><a class="title-link" name="power_command_topic" href="#power_command_topic"></a> power_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the power state. This is useful if your device has a separate power toggle in addition to mode.</span></p>
+    </dd>
+    <dt><a class="title-link" name="mode_command_topic" href="#mode_command_topic"></a> mode_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the HVAC operation mode.</span></p>
+    </dd>
+    <dt><a class="title-link" name="mode_state_topic" href="#mode_state_topic"></a> mode_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes of the HVAC operation mode. If this is not set, the operation mode works in optimistic mode (see below).</span></p>
+    </dd>
+    <dt><a class="title-link" name="temperature_command_topic" href="#temperature_command_topic"></a> temperature_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the target temperature.</span></p>
+    </dd>
+    <dt><a class="title-link" name="temperature_state_topic" href="#temperature_state_topic"></a> temperature_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes in the target temperature. If this is not set, the target temperature works in optimistic mode (see below).</span></p>
+    </dd>
+    <dt><a class="title-link" name="fan_mode_command_topic" href="#fan_mode_command_topic"></a> fan_mode_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the fan mode.</span></p>
+    </dd>
+    <dt><a class="title-link" name="fan_mode_state_topic" href="#fan_mode_state_topic"></a> fan_mode_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes of the HVAC fan mode. If this is not set, the fan mode works in optimistic mode (see below).</span></p>
+    </dd>
+    <dt><a class="title-link" name="swing_mode_command_topic" href="#swing_mode_command_topic"></a> swing_mode_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the swing mode.</span></p>
+    </dd>
+    <dt><a class="title-link" name="swing_mode_state_topic" href="#swing_mode_state_topic"></a> swing_mode_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes of the HVAC swing mode. If this is not set, the swing mode works in optimistic mode (see below).</span></p>
+    </dd>
+    <dt><a class="title-link" name="away_mode_command_topic" href="#away_mode_command_topic"></a> away_mode_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the away mode.</span></p>
+    </dd>
+    <dt><a class="title-link" name="away_mode_state_topic" href="#away_mode_state_topic"></a> away_mode_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes of the HVAC away mode. If this is not set, the away mode works in optimistic mode (see below).</span></p>
+    </dd>
+    <dt><a class="title-link" name="hold_command_topic" href="#hold_command_topic"></a> hold_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the hold mode.</span></p>
+    </dd>
+    <dt><a class="title-link" name="hold_state_topic" href="#hold_state_topic"></a> hold_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes of the HVAC hold mode. If this is not set, the hold mode works in optimistic mode (see below).</span></p>
+    </dd>
+    <dt><a class="title-link" name="aux_command_topic" href="#aux_command_topic"></a> aux_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to switch auxiliary heat.</span></p>
+    </dd>
+    <dt><a class="title-link" name="aux_state_topic" href="#aux_state_topic"></a> aux_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes of the auxiliary heat mode. If this is not set, the auxiliary heat mode works in optimistic mode (see below).</span></p>
+    </dd>
+  </dl>
+</div>
 <h4>Optimistic mode</h4>
 <p>If a property works in <em>optimistic mode</em> (when the corresponding state topic is not set), home assistant will assume that any state changes published to the command topics did work and change the internal state of the entity immediately after publishing to the command topic. If it does not work in optimistic mode, the internal state of the entity is only updated when the requested update is confirmed by the device through the state topic.</p>
 <h3><a class="title-link" name="example" href="#example"></a> Example</h3>
@@ -211,10 +300,22 @@
     <h1 class="title delta">Category Climate</h1>
     <ul class='divided'>
         <li>
+            <a href='/components/climate.daikin/'>Daikin AC</a>
+        </li>
+        <li>
+            <a href='/components/sensor.daikin/'>Daikin AC</a>
+        </li>
+        <li>
+            <a href='/components/daikin/'>Daikin AC</a>
+        </li>
+        <li>
             <a href='/components/climate.ephember/'>EPH Controls Ember Thermostat</a>
         </li>
         <li>
             <a href='/components/climate.eq3btsmart/'>EQ3 Bluetooth Smart Thermostats</a>
+        </li>
+        <li>
+            <a href='/components/climate.econet/'>EcoNet water heater</a>
         </li>
         <li>
             <a href='/components/climate.ecobee/'>Ecobee Thermostat</a>
@@ -253,6 +354,9 @@
             <a href='/components/climate.netatmo/'>Netatmo Thermostat</a>
         </li>
         <li>
+            <a href='/components/climate.nuheat/'>NuHeat Thermostat</a>
+        </li>
+        <li>
             <a href='/components/climate.oem/'>OpenEnergyMonitor WiFi Thermostat</a>
         </li>
         <li>
@@ -260,6 +364,9 @@
         </li>
         <li>
             <a href='/components/climate.radiotherm/'>Radio Thermostat (3M Filtrete) Thermostat</a>
+        </li>
+        <li>
+            <a href='/components/climate.touchline/'>Roth Touchline</a>
         </li>
         <li>
             <a href='/components/climate.sensibo/'>Sensibo A/C controller</a>

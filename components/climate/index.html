@@ -83,7 +83,7 @@
 </div>
 <h2><a class="title-link" name="services" href="#services"></a> Services</h2>
 <h3><a class="title-link" name="climate-control-services" href="#climate-control-services"></a> Climate control services</h3>
-<p>Available services: <code class="highlighter-rouge">climate.set_aux_heat</code>, <code class="highlighter-rouge">climate.set_away_mode</code>, <code class="highlighter-rouge">climate.set_temperature</code>, <code class="highlighter-rouge">climate.set_humidity</code>, <code class="highlighter-rouge">climate.set_fan_mode</code>, <code class="highlighter-rouge">climate.set_operation_mode</code>, <code class="highlighter-rouge">climate.set_swing_mode</code>, <code class="highlighter-rouge">climate.set_hold_mode</code></p>
+<p>Available services: <code class="highlighter-rouge">climate.set_aux_heat</code>, <code class="highlighter-rouge">climate.set_away_mode</code>, <code class="highlighter-rouge">climate.set_temperature</code>, <code class="highlighter-rouge">climate.set_humidity</code>, <code class="highlighter-rouge">climate.set_fan_mode</code>, <code class="highlighter-rouge">climate.set_operation_mode</code>, <code class="highlighter-rouge">climate.set_swing_mode</code>, <code class="highlighter-rouge">climate.set_hold_mode</code>, <code class="highlighter-rouge">climate.turn_on</code>, <code class="highlighter-rouge">climate.turn_off</code></p>
 <p class="note">
 Not all climate services may be available for your platform. Be sure to check the available services Home Assistant has enabled by checking <img src="/images/screenshots/developer-tool-services-icon.png" alt="service developer tool icon" class="no-shadow" height="38" /> <strong>Services</strong>.
 </p>
@@ -388,6 +388,42 @@ temporary target temperature. The particular modes available depend on the clima
         <span class="s">swing_mode</span><span class="pi">:</span> <span class="s">1</span>
 </code></pre>
 </div>
+<h3><a class="title-link" name="service-climateturn_on" href="#service-climateturn_on"></a> Service <code class="highlighter-rouge">climate.turn_on</code></h3>
+<p>Turn climate device on</p>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">entity_id</code></td>
+      <td>yes</td>
+      <td>String or list of strings that point at <code class="highlighter-rouge">entity_id</code>’s of climate devices to control. Targets all when omitted.</td>
+    </tr>
+  </tbody>
+</table>
+<h3><a class="title-link" name="service-climateturn_off" href="#service-climateturn_off"></a> Service <code class="highlighter-rouge">climate.turn_off</code></h3>
+<p>Turn climate device off</p>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">entity_id</code></td>
+      <td>yes</td>
+      <td>String or list of strings that point at <code class="highlighter-rouge">entity_id</code>’s of climate devices to control. Targets all when omitted.</td>
+    </tr>
+  </tbody>
+</table>
 <h4><a class="title-link" name="customization" href="#customization"></a> Customization</h4>
 <p>The step for the setpoint can be adjusted (default to 0,5 increments) by adding the following line into configuration</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">customize</span><span class="pi">:</span>
@@ -405,11 +441,17 @@ temporary target temperature. The particular modes available depend on the clima
   </div>
             <h1 class='title delta'>Platforms</h1>
             <ul class='divided'>
+          <li><a href='/components/climate.daikin/'>
+            Daikin AC
+          </a></li>
           <li><a href='/components/climate.ephember/'>
             EPH Controls Ember Thermostat
           </a></li>
           <li><a href='/components/climate.eq3btsmart/'>
             EQ3 Bluetooth Smart Thermostats
+          </a></li>
+          <li><a href='/components/climate.econet/'>
+            EcoNet water heater
           </a></li>
           <li><a href='/components/climate.ecobee/'>
             Ecobee Thermostat
@@ -447,6 +489,9 @@ temporary target temperature. The particular modes available depend on the clima
           <li><a href='/components/climate.netatmo/'>
             Netatmo Thermostat
           </a></li>
+          <li><a href='/components/climate.nuheat/'>
+            NuHeat Thermostat
+          </a></li>
           <li><a href='/components/climate.oem/'>
             OpenEnergyMonitor WiFi Thermostat
           </a></li>
@@ -455,6 +500,9 @@ temporary target temperature. The particular modes available depend on the clima
           </a></li>
           <li><a href='/components/climate.radiotherm/'>
             Radio Thermostat (3M Filtrete) Thermostat
+          </a></li>
+          <li><a href='/components/climate.touchline/'>
+            Roth Touchline
           </a></li>
           <li><a href='/components/climate.sensibo/'>
             Sensibo A/C controller

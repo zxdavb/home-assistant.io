@@ -75,21 +75,7 @@
   </header>
   <hr class="divider">
   <p>The <code class="highlighter-rouge">insteon_local</code> fan component lets you control your fan connected to an <a href="http://www.insteon.com/insteon-hub/">Insteon Hub</a> with Home Assistant.</p>
-<p>To integrate add a fan, configure your hub Insteon(local) with Home Assistant, add the following section to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml platform entry</span>
-<span class="s">insteon_local</span><span class="pi">:</span>
-  <span class="s">host</span><span class="pi">:</span> <span class="s">YOUR HUB IP</span>
-  <span class="s">username</span><span class="pi">:</span> <span class="s">YOUR HUB USERNAME</span>
-  <span class="s">password</span><span class="pi">:</span> <span class="s">YOUR HUB PASSWORD</span>
-  <span class="s">timeout</span><span class="pi">:</span> <span class="s">10</span>
-  <span class="s">port</span><span class="pi">:</span> <span class="s">25105</span>
-</code></pre>
-</div>
-<p>To add fans to your set-up, add the platform to your light configuration:</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">fan</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">insteon_local</span>
-</code></pre>
-</div>
+<p>To get your insteon fans working with Home Assistant, follow the instructions for the general <a href="/components/insteon_local/">Insteon local component</a>. The fans will be automatically disovered and added to Home Assistant. The device names will be the Insteon address of the fans.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

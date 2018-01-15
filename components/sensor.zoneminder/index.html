@@ -88,6 +88,15 @@ You must have the <a href="/components/zoneminder/">ZoneMinder component</a> con
 <p>Configuration variables:</p>
 <ul>
   <li><strong>include_archived</strong> (<em>Optional</em>): Whether to include archived ZoneMinder events in event counts. Default is <code class="highlighter-rouge">false</code>.</li>
+  <li><strong>monitored_conditions</strong> array (<em>Optional</em>): Event count sensors to display in the frontend. Default is ‘all’.
+    <ul>
+      <li><strong>all</strong>: All events.</li>
+      <li><strong>month</strong>: Events in the last month.</li>
+      <li><strong>week</strong>: Events in the last week.</li>
+      <li><strong>day</strong>: Events in the last day.</li>
+      <li><strong>hour</strong>: Events in the last hour.</li>
+    </ul>
+  </li>
 </ul>
 </article>
         </div>
@@ -177,6 +186,9 @@ You must have the <a href="/components/zoneminder/">ZoneMinder component</a> con
             <a href='/components/sensor.citybikes/'>CityBikes API sensor</a>
         </li>
         <li>
+            <a href='/components/sensor.coinbase/'>Coinbase Sensor</a>
+        </li>
+        <li>
             <a href='/components/sensor.command_line/'>Command line Sensor</a>
         </li>
         <li>
@@ -184,6 +196,9 @@ You must have the <a href="/components/zoneminder/">ZoneMinder component</a> con
         </li>
         <li>
             <a href='/components/sensor.dnsip/'>DNS IP</a>
+        </li>
+        <li>
+            <a href='/components/sensor.discogs/'>Discogs Sensor</a>
         </li>
         <li>
             <a href='/components/sensor.dweet/'>Dweet.io</a>
@@ -469,6 +484,9 @@ You must have the <a href="/components/zoneminder/">ZoneMinder component</a> con
         </li>
         <li>
             <a href='/components/sensor.arest/'>aREST Sensor</a>
+        </li>
+        <li>
+            <a href='/components/sensor.deconz/'>deCONZ Sensor</a>
         </li>
         <li>
             <a href='/components/sensor.mfi/'>mFi Sensor</a>

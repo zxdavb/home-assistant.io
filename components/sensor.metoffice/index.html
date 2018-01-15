@@ -74,16 +74,16 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">metoffice</code> sensor platform uses the Met Office’s <a href="http://www.metoffice.gov.uk/datapoint">DataPoint API</a> for weather data.</p>
+  <p>The <code class="highlighter-rouge">metoffice</code> sensor platform uses the Met Office’s [DataPoint API][datapoint] for weather data.</p>
 <ul>
-  <li>Each sensor will be given the <code class="highlighter-rouge">device_id</code> of “Met Office [condition]”</li>
-  <li>The sensor checks for new data every minute, starting 30 minutes after the timestamp of the most recent data as the data is updated every half-hour.</li>
+  <li>Each sensor will be given the <code class="highlighter-rouge">device_id</code> of “Met Office [condition]” if <code class="highlighter-rouge">name:</code> is not set.</li>
+  <li>The sensor checks for new data every minute, starting 30 minutes after the timestamp of the most recent data as the data is updated every half hour.</li>
 </ul>
 <p>To add the Met Office weather to your installation you’ll need to register for a free api key at the link above and then add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">metoffice</span>
-    <span class="s">api_key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">my-api-key"</span>
+    <span class="s">api_key</span><span class="pi">:</span> <span class="s">YOUR_API_KEY</span>
     <span class="s">monitored_conditions</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">weather</span>
       <span class="pi">-</span> <span class="s">temperature</span>
@@ -102,7 +102,24 @@
 <p>Configuration variables:</p>
 <ul>
   <li><strong>api_key</strong> (<em>Required</em>): Your personal API key from the <a href="http://www.metoffice.gov.uk/datapoint">Datapoint website</a>.</li>
-  <li><strong>name</strong> (<em>Optional</em>): Name to use in the frontend, will be the prefix.</li>
+  <li><strong>name</strong> (<em>Optional</em>): Additional name for the sensors. Default to platform name.</li>
+  <li><strong>latitude</strong> (<em>Optional</em>): Latitude coordinate to monitor weather of (required if <strong>longitude</strong> is specified), defaults to coordinates defined in your <code class="highlighter-rouge">configuration.yaml</code>.</li>
+  <li><strong>longitude</strong> (<em>Optional</em>): Longitude coordinate to monitor weather of (required if <strong>latitude</strong> is specified), defaults to coordinates defined in your <code class="highlighter-rouge">configuration.yaml</code>.</li>
+  <li><strong>monitored_conditions</strong> array (<em>Required</em>): Conditions to display in the frontend.
+    <ul>
+      <li><strong>weather</strong>: A human-readable text summary of the current conditions.</li>
+      <li><strong>temperature</strong>: The current temperature.</li>
+      <li><strong>feels_like_temperature</strong>: A numerical value representing the apparent (or “feels like”) temperature.</li>
+      <li><strong>wind_speed</strong>: The wind speed.</li>
+      <li><strong>wind_direction</strong>: Where the wind is coming from.</li>
+      <li><strong>wind_gust</strong>: If there are wind gusts.</li>
+      <li><strong>visibility</strong>: The average visibility.</li>
+      <li><strong>visibility_distance</strong>: The visibility distance.</li>
+      <li><strong>uv</strong>: The UV index.</li>
+      <li><strong>precipitation</strong>: The average expected intensity of precipitation occurring.</li>
+      <li><strong>humidity</strong>: The relative humidity.</li>
+    </ul>
+  </li>
 </ul>
 <p class="note">
 This sensor is an alternative to the <a href="/components/weather.metoffice/"><code class="highlighter-rouge">metoffice</code></a> weather platform.
@@ -154,7 +171,10 @@ The weather platform is easier to configure but less customizable.
             <a href='/components/sensor.dwd_weather_warnings/'>DWD Weather warnings</a>
         </li>
         <li>
-            <a href='/components/sensor.darksky/'>Dark Sky</a>
+            <a href='/components/weather.darksky/'>Dark Sky</a>
+        </li>
+        <li>
+            <a href='/components/sensor.darksky/'>Dark Sky Sensor</a>
         </li>
         <li>
             <a href='/components/weather.ecobee/'>Ecobee Weather</a>

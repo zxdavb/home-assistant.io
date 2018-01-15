@@ -96,7 +96,7 @@
   <li><strong>password</strong> (<em>Required</em>): Password for the IMAP server.</li>
   <li><strong>senders</strong> (<em>Required</em>): A list of sender email addresses that are allowed to report state via email. Only emails received from these addresses will be processed.</li>
   <li>
-    <p><strong>value_template</strong> (<em>Optional</em>): If specified this template will be used to render the state of sensor. If a template is not supplied the raw message body will be used for the sensor value. The following attributes will be supplied to the template:</p>
+    <p><strong>value_template</strong> (<em>Optional</em>): If specified this template will be used to render the state of the sensor. If a template is not supplied the message subject will be used for the sensor value. The following attributes will be supplied to the template:</p>
     <ul>
       <li><strong>from</strong>: The from address of the email</li>
       <li><strong>body</strong>: The body of the email</li>
@@ -179,6 +179,9 @@
             <a href='/components/sensor.citybikes/'>CityBikes API sensor</a>
         </li>
         <li>
+            <a href='/components/sensor.coinbase/'>Coinbase Sensor</a>
+        </li>
+        <li>
             <a href='/components/sensor.command_line/'>Command line Sensor</a>
         </li>
         <li>
@@ -186,6 +189,9 @@
         </li>
         <li>
             <a href='/components/sensor.dnsip/'>DNS IP</a>
+        </li>
+        <li>
+            <a href='/components/sensor.discogs/'>Discogs Sensor</a>
         </li>
         <li>
             <a href='/components/sensor.dweet/'>Dweet.io</a>
@@ -471,6 +477,9 @@
         </li>
         <li>
             <a href='/components/sensor.arest/'>aREST Sensor</a>
+        </li>
+        <li>
+            <a href='/components/sensor.deconz/'>deCONZ Sensor</a>
         </li>
         <li>
             <a href='/components/sensor.mfi/'>mFi Sensor</a>

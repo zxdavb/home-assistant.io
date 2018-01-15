@@ -91,19 +91,62 @@
     </dd>
     <dt><a class="title-link" name="symbols" href="#symbols"></a> symbols</dt>
     <dd>
-      <p class="desc"><span class="type">(<span class="string, list">string | list</span>)</span><span class="required">(Optional)</span><span class="description">List of stock market symbols for given companies.</span></p>
+      <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Optional)</span><span class="description">List of stock market symbols for given companies.</span></p>
       <p class="default">Default value: GOOGL</p>
+    </dd>
+    <dd>
+      <dl class="nested">
+        <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of the sensor to use for the frontend.</span></p>
+        </dd>
+        <dt><a class="title-link" name="currency" href="#currency"></a> currency</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of the sensor to use for the frontend.</span></p>
+          <p class="default">Default value: USD</p>
+        </dd>
+        <dt><a class="title-link" name="symbol" href="#symbol"></a> symbol</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The stock market symbol for the given company.</span></p>
+        </dd>
+      </dl>
+    </dd>
+    <dt><a class="title-link" name="foreign_exchange" href="#foreign_exchange"></a> foreign_exchange</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Optional)</span><span class="description">List of currencies.</span></p>
+    </dd>
+    <dd>
+      <dl class="nested">
+        <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of the sensor to use for the frontend.</span></p>
+        </dd>
+        <dt><a class="title-link" name="from" href="#from"></a> from</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The source currency.</span></p>
+        </dd>
+        <dt><a class="title-link" name="to" href="#to"></a> to</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The target currency.</span></p>
+        </dd>
+      </dl>
     </dd>
   </dl>
 </div>
 <h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>
 <p>In this section you find some real life examples of how to use this sensor.</p>
-<h3><a class="title-link" name="red-hat-and-google" href="#red-hat-and-google"></a> Red Hat and Google</h3>
+<h3><a class="title-link" name="google-and-the-exchange-rate-for-bitcoin" href="#google-and-the-exchange-rate-for-bitcoin"></a> Google and the exchange rate for Bitcoin</h3>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">alpha_vantage</span>
+    <span class="s">api_key</span><span class="pi">:</span> <span class="s">YOUR_API_KEY</span>
     <span class="s">symbols</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">RHT</span>
-      <span class="pi">-</span> <span class="s">GOOGL</span>
+      <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s">Google</span>
+        <span class="s">currency</span><span class="pi">:</span> <span class="s">USD</span>
+        <span class="s">symbol</span><span class="pi">:</span> <span class="s">GOOGL</span>
+    <span class="s">foreign_exchange</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">from</span><span class="pi">:</span> <span class="s">BTC</span>
+        <span class="s">to</span><span class="pi">:</span> <span class="s">USD</span>
+        <span class="s">name</span><span class="pi">:</span> <span class="s">Bitcoin</span>
 </code></pre>
 </div>
 </article>
@@ -154,6 +197,9 @@
         </li>
         <li>
             <a href='/components/sensor.ripple/'>Ripple</a>
+        </li>
+        <li>
+            <a href='/components/sensor.sochain/'>SoChain</a>
         </li>
         <li>
             <a href='/components/sensor.yahoo_finance/'>Yahoo Finance</a>

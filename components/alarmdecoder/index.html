@@ -95,6 +95,7 @@
     <span class="s">01</span><span class="pi">:</span>
       <span class="s">name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Smoke</span><span class="nv"> </span><span class="s">Detector'</span>
       <span class="s">type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">smoke'</span>
+      <span class="s">rfid</span><span class="pi">:</span> <span class="s1">'</span><span class="s">0123456'</span>
     <span class="s">02</span><span class="pi">:</span>
       <span class="s">name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Front</span><span class="nv"> </span><span class="s">Door'</span>
       <span class="s">type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">opening'</span>
@@ -109,6 +110,7 @@
   <li><strong>baudrate</strong> (<em>Optional</em>): The baud rate of the AlarmDecoder device, if using serial type. Default: <code class="highlighter-rouge">115200</code></li>
   <li><strong>panel_display</strong> (<em>Optional</em>): Create a sensor called sensor.alarm_display to match the Alarm Keypad display. Default: <code class="highlighter-rouge">off</code></li>
   <li><strong>zones</strong> (<em>Optional</em>): AlarmDecoder has no way to tell us which zones are actually in use, so each zone must be configured in Home Assistant. For each zone, at least a name must be given. For more information on the available zone types, take a look at the <a href="/components/binary_sensor.alarmdecoder/">Binary Sensor</a> docs. <em>Note: If no zones are specified, Home Assistant will not load any binary_sensor components.</em></li>
+  <li><strong>rfid</strong> (<em>Optional</em>): The RF serial-number associated with RF zones.  Providing this field allows Home Assistant to associate raw sensor data to a given zone, allowing direct monitoring of the state, battery, and supervision status.</li>
 </ul>
 </article>
         </div>
@@ -278,6 +280,9 @@
             <a href='/components/netatmo/'>Netatmo</a>
         </li>
         <li>
+            <a href='/components/nuheat/'>NuHeat</a>
+        </li>
+        <li>
             <a href='/components/nuimo_controller/'>Nuimo controller</a>
         </li>
         <li>
@@ -297,6 +302,12 @@
         </li>
         <li>
             <a href='/components/rfxtrx/'>RFXtrx</a>
+        </li>
+        <li>
+            <a href='/components/rainbird/'>Rain Bird</a>
+        </li>
+        <li>
+            <a href='/components/sensor.rainbird/'>Rain Bird Sensor</a>
         </li>
         <li>
             <a href='/components/switch.rainbird/'>Rain Bird Switch</a>
@@ -384,6 +395,9 @@
         </li>
         <li>
             <a href='/components/zoneminder/'>ZoneMinder</a>
+        </li>
+        <li>
+            <a href='/components/deconz/'>deCONZ</a>
         </li>
         <li>
             <a href='/components/ecobee/'>ecobee</a>

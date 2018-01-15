@@ -6,13 +6,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Cloud - Home Assistant</title>
+    <title>Home Assistant Cloud - Home Assistant</title>
     <meta name="author" content="Home Assistant">
     <meta name="description" content="Enable the Home Assistant Cloud integration.">
     <meta name="viewport" content="width=device-width">
     <link rel="canonical" href="https://home-assistant.io/components/cloud/">
     <meta property="fb:app_id" content="338291289691179">
-    <meta property="og:title" content="Cloud">
+    <meta property="og:title" content="Home Assistant Cloud">
     <meta property="og:site_name" content="Home Assistant">
     <meta property="og:url" content="https://home-assistant.io/components/cloud/">
     <meta property="og:type" content="article">
@@ -20,7 +20,7 @@
     <meta property="og:image" content="https://home-assistant.io/images/default-social.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@home_assistant">
-    <meta name="twitter:title" content="Cloud">
+    <meta name="twitter:title" content="Home Assistant Cloud">
     <meta name="twitter:description" content="Enable the Home Assistant Cloud integration.">
     <meta name="twitter:image" content="https://home-assistant.io/images/default-social.png">
     <link href="/stylesheets/screen.css" media="screen, projection, print" rel="stylesheet">
@@ -70,118 +70,31 @@
           <article class="page">
   <header>
     <h1 class="title indent">
-      Cloud
+      Home Assistant Cloud
     </h1>
   </header>
   <hr class="divider">
-  <p>The Home Assistant Cloud allows you to quickly integrate your local Home Assistant with various cloud services. Any processing of services from other cloud services is handled by your local Home Assistant.</p>
+  <p class="note">The Home Assistant Cloud is currently in open beta and will become part of the upcoming Community Support Package. <a href="/blog/2017/12/17/introducing-home-assistant-cloud/">Learn more</a></p>
+<p>The Home Assistant Cloud allows you to quickly integrate your local Home Assistant with various cloud services like Amazon Alexa.</p>
+<p>The following integrations are currently available:</p>
+<ul>
+  <li><a href="/components/cloud.alexa/">Amazon Alexa (Amazon Echo)</a></li>
+</ul>
+<!-- - [Google Assistant (Google Home)](/components/cloud.google_assistant/) -->
+<h3><a class="title-link" name="how-does-it-work" href="#how-does-it-work"></a> How does it work?</h3>
+<p>The Home Assistant Cloud has been designed with security in mind. When you activate the Cloud component, your instance will create a secure connection to the Home Assistant Cloud. There is no need for any further configuration or to expose your instance to the internet.</p>
+<p>Integrations like Alexa will deliver messages to our cloud which we will forward to your local instance for processing. We just forward the response back to Alexa. This means that we do not have to store the state of your house in our cloud, we’re just the messenger!</p>
+<p>You can find a list of frequently asked questions (and their answers) in <a href="/blog/2017/12/17/introducing-home-assistant-cloud/#faq">this blog post</a>.</p>
+<h3><a class="title-link" name="enabling-the-cloud" href="#enabling-the-cloud"></a> Enabling the cloud</h3>
+<p>The Home Assistant Cloud is enabled by default. If not, add this to your configuration:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry to enable the cloud component</span>
 <span class="s">cloud</span><span class="pi">:</span>
 </code></pre>
 </div>
-<p>Once activated, go to the configuration panel in Home Assistant and create an account and log in. There is no need to configure your router or expose your instance to the internet in any other way.</p>
-<p>If you are not seeing the <strong>Configuration</strong> panel, make sure you have the following option enabled in your configuration.yaml` file.</p>
+<p>Once activated, go to the configuration panel in Home Assistant and create an account and log in. If you are not seeing the <strong>Configuration</strong> panel, make sure you have the following option enabled in your configuration.yaml` file.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">config</span><span class="pi">:</span>
 </code></pre>
 </div>
-<h3><a class="title-link" name="amazon-alexa" href="#amazon-alexa"></a> Amazon Alexa</h3>
-<p>The Alexa integration allows users to control the entities via the <a href="https://alexa.amazon.com/spa/index.html#skills/dp/B0772J1QKB/?ref=skill_dsk_skb_sr_2">Home Assistant Smart Home skill for Alexa</a>. This means that you can say things like “Alexa, turn on the kitchen light” to control your local instance.</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry configuring Alexa</span>
-<span class="s">cloud</span><span class="pi">:</span>
-  <span class="s">alexa</span><span class="pi">:</span>
-    <span class="s">filter</span><span class="pi">:</span>
-      <span class="s">include_entities</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="s">light.kitchen</span>
-      <span class="s">include_domains</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="s">switch</span>
-      <span class="s">exclude_entities</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="s">light.living_room</span>
-      <span class="s">exclude_domains</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="s">script</span>
-</code></pre>
-</div>
-<div class="config-vars">
-  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
-  <dl class="">
-    <dt><a class="title-link" name="alexa" href="#alexa"></a> alexa</dt>
-    <dd>
-      <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Optional)</span><span class="description">Configuration options for the Amazon Alexa integration.</span></p>
-    </dd>
-    <dd>
-      <dl class="nested">
-        <dt><a class="title-link" name="filter" href="#filter"></a> filter</dt>
-        <dd>
-          <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Optional)</span><span class="description">Filters for entities to include/exclude from Alexa.</span></p>
-        </dd>
-        <dd>
-          <dl class="nested">
-            <dt><a class="title-link" name="include_entities" href="#include_entities"></a> include_entities</dt>
-            <dd>
-              <p class="desc"><span class="type">(<span class="list">list</span>)</span><span class="required">(Optional)</span><span class="description">Entity IDs to include.</span></p>
-            </dd>
-            <dt><a class="title-link" name="include_domains" href="#include_domains"></a> include_domains</dt>
-            <dd>
-              <p class="desc"><span class="type">(<span class="list">list</span>)</span><span class="required">(Optional)</span><span class="description">Domains to include.</span></p>
-            </dd>
-            <dt><a class="title-link" name="exclude_entities" href="#exclude_entities"></a> exclude_entities</dt>
-            <dd>
-              <p class="desc"><span class="type">(<span class="list">list</span>)</span><span class="required">(Optional)</span><span class="description">Entity IDs to exclude.</span></p>
-            </dd>
-            <dt><a class="title-link" name="exclude_domains" href="#exclude_domains"></a> exclude_domains</dt>
-            <dd>
-              <p class="desc"><span class="type">(<span class="list">list</span>)</span><span class="required">(Optional)</span><span class="description">Domains to exclude.</span></p>
-            </dd>
-          </dl>
-        </dd>
-      </dl>
-    </dd>
-  </dl>
-</div>
-<h3><a class="title-link" name="possible-values-for-customize" href="#possible-values-for-customize"></a> Possible values for customize</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Attribute</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="highlighter-rouge">alexa_hidden</code></td>
-      <td>Hide the entity from the Alexa smart home devices.</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">alexa_name</code></td>
-      <td>Defines name of the entity for a Alexa smart home device. Useful if you have an entity with a friendly name in a local language that you want to access using an English sounding name.</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">alexa_description</code></td>
-      <td>The description of the device in the Alexa smart home device list.</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">alexa_display_categories</code></td>
-      <td>Set displayCategories, useful for things like media_player (TV/SPEAKERS) or scene (ACTIVITY_TRIGGER/SCENE_TRIGGER). More info can be found <a href="https://developer.amazon.com/docs/device-apis/alexa-discovery.html#display-categories">here</a>.</td>
-    </tr>
-  </tbody>
-</table>
-<h3><a class="title-link" name="available-domains" href="#available-domains"></a> Available domains</h3>
-<p>Currently, the following domains are available to be used with Alexa:</p>
-<ul>
-  <li>alert</li>
-  <li>automation (enables/disables)</li>
-  <li>cover</li>
-  <li>fan (supports on/off and set speed)</li>
-  <li>group</li>
-  <li>input_boolean</li>
-  <li>light</li>
-  <li>lock (lock and unlock, but unlock is untested as Amazon has disabled unlock for now)</li>
-  <li>media_player (play, pause, stop, set volume, adjust volume, next track and previous track)</li>
-  <li>scene</li>
-  <li>script (enables/disables)</li>
-  <li>switch</li>
-</ul>
-<h3><a class="title-link" name="frequently-asked-questions" href="#frequently-asked-questions"></a> Frequently Asked Questions</h3>
-<p>You can find a list of frequently asked questions (and their answers) in <a href="https://home-assistant.io/blog/2017/12/17/introducing-home-assistant-cloud/#faq">this blog post</a>.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -197,14 +110,17 @@
     <div class='section'>
       Introduced in release: 0.6
     </div>
+            <h1 class='title delta'>Platforms</h1>
+            <ul class='divided'>
+          <li><a href='/components/cloud.alexa/'>
+            Alexa via Home Assistant Cloud
+          </a></li>
+      </ul>
     <div class='section'>
     <h1 class="title delta">Category Voice</h1>
     <ul class='divided'>
         <li>
             <a href='/components/alexa/'>Alexa / Amazon Echo</a>
-        </li>
-        <li>
-            Cloud
         </li>
         <li>
             <a href='/components/conversation/'>Conversation</a>
@@ -214,6 +130,9 @@
         </li>
         <li>
             <a href='/components/google_assistant/'>Google Assistant</a>
+        </li>
+        <li>
+            Home Assistant Cloud
         </li>
         <li>
             <a href='/components/mycroft/'>Mycroft</a>

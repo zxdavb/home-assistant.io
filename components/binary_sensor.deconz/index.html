@@ -6,22 +6,22 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DoorBird Binary Sensor - Home Assistant</title>
+    <title>deCONZ Binary Sensor - Home Assistant</title>
     <meta name="author" content="Home Assistant">
-    <meta name="description" content="Instructions how to integrate DoorBird video doorbell state into Home Assistant.">
+    <meta name="description" content="Instructions on how to integrate Zigbee binary sensors from deCONZ into Home Assistant.">
     <meta name="viewport" content="width=device-width">
-    <link rel="canonical" href="https://home-assistant.io/components/binary_sensor.doorbird/">
+    <link rel="canonical" href="https://home-assistant.io/components/binary_sensor.deconz/">
     <meta property="fb:app_id" content="338291289691179">
-    <meta property="og:title" content="DoorBird Binary Sensor">
+    <meta property="og:title" content="deCONZ Binary Sensor">
     <meta property="og:site_name" content="Home Assistant">
-    <meta property="og:url" content="https://home-assistant.io/components/binary_sensor.doorbird/">
+    <meta property="og:url" content="https://home-assistant.io/components/binary_sensor.deconz/">
     <meta property="og:type" content="article">
-    <meta property="og:description" content="Instructions how to integrate DoorBird video doorbell state into Home Assistant.">
+    <meta property="og:description" content="Instructions on how to integrate Zigbee binary sensors from deCONZ into Home Assistant.">
     <meta property="og:image" content="https://home-assistant.io/images/default-social.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@home_assistant">
-    <meta name="twitter:title" content="DoorBird Binary Sensor">
-    <meta name="twitter:description" content="Instructions how to integrate DoorBird video doorbell state into Home Assistant.">
+    <meta name="twitter:title" content="deCONZ Binary Sensor">
+    <meta name="twitter:description" content="Instructions on how to integrate Zigbee binary sensors from deCONZ into Home Assistant.">
     <meta name="twitter:image" content="https://home-assistant.io/images/default-social.png">
     <link href="/stylesheets/screen.css" media="screen, projection, print" rel="stylesheet">
     <link href="/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
@@ -70,38 +70,51 @@
           <article class="page">
   <header>
     <h1 class="title indent">
-      DoorBird Binary Sensor
+      deCONZ Binary Sensor
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">doorbird</code> binary sensor platform allows Home Assistant to monitor when your <a href="http://www.doorbird.com/">DoorBird</a> doorbell rings.</p>
-<p class="note">
-  You must have the <a href="/components/doorbird/">DoorBird component</a> configured to use this binary sensor.
-</p>
-<p>To enable the binary sensor, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
-<span class="s">binary_sensor</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">doorbird</span>
-</code></pre>
-</div>
+  <p>See the <a href="/components/deconz/">deCONZ main component</a> for configuration instructions.</p>
+<p>The following sensor types are supported:</p>
+<ul>
+  <li>Open/Close detection</li>
+  <li>Presence detection</li>
+</ul>
+<p>Entity ids will be binary_sensor.device_name, where device_name is defined in deCONZ.</p>
+<h4><a class="title-link" name="verified-to-be-supported-binary-sensors" href="#verified-to-be-supported-binary-sensors"></a> Verified to be supported binary sensors</h4>
+<ul>
+  <li>Open/Close Detection
+    <ul>
+      <li>Xiaomi Smart Home Security Door &amp; Window Contact Sensor</li>
+    </ul>
+  </li>
+  <li>Presence Detection
+    <ul>
+      <li>IKEA Trådfri Motion Sensor</li>
+      <li>Philips Hue Motion Sensor</li>
+      <li>Xiaomi Motion Sensor</li>
+      <li>Xiaomi Smart Home Aqara Human Body Sensor</li>
+    </ul>
+  </li>
+</ul>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
           <div class="grid">
     <section class="aside-module grid__item one-whole lap-one-half">
-  <div class='edit-github'><a href='https://github.com/home-assistant/home-assistant.github.io/tree/current/source/_components/binary_sensor.doorbird.markdown'>Edit this page on GitHub</a></div>
+  <div class='edit-github'><a href='https://github.com/home-assistant/home-assistant.github.io/tree/current/source/_components/binary_sensor.deconz.markdown'>Edit this page on GitHub</a></div>
   <div class='brand-logo-container section'>
-      <img src='/images/supported_brands/doorbird.png' />
+      <img src='/images/supported_brands/deconz.jpeg' />
   </div>
     <div class='section'>
-      IoT class<sup><a href='/blog/2016/02/12/classifying-the-internet-of-things/#classifiers'><i class="icon-info-sign"></i></a></sup>: Local Polling
+      IoT class<sup><a href='/blog/2016/02/12/classifying-the-internet-of-things/#classifiers'><i class="icon-info-sign"></i></a></sup>: Local Push
     </div>
     <div class='section'>
-      Introduced in release: 0.54
+      Introduced in release: 0.61
     </div>
     <div class='section'>
       Source:
-      <a href='https://github.com/home-assistant/home-assistant/blob/master/homeassistant/components/binary_sensor/doorbird.py'>binary_sensor/doorbird.py</a>
+      <a href='https://github.com/home-assistant/home-assistant/blob/master/homeassistant/components/binary_sensor/deconz.py'>binary_sensor/deconz.py</a>
     </div>
     <div class='section'>
       This is a platform for
@@ -110,14 +123,17 @@
           <div class='section'>
           <h1 class='title delta'>Related components</h1>
           <ul class='divided'>
-        <li><a href='/components/doorbird/'>
-          DoorBird
+        <li><a href='/components/deconz/'>
+          deCONZ
         </a></li>
-        <li><a href='/components/camera.doorbird/'>
-          DoorBird Camera
+        <li><a href='/components/sensor.deconz/'>
+          deCONZ Sensor
         </a></li>
-        <li><a href='/components/switch.doorbird/'>
-          DoorBird Switch
+        <li><a href='/components/light.deconz/'>
+          deCONZ lights
+        </a></li>
+        <li><a href='/components/scene.deconz/'>
+          deCONZ scenes
         </a></li>
     </ul>
     </div>
@@ -161,9 +177,6 @@
             <a href='/components/binary_sensor.concord232/'>Concord232 Binary Sensor</a>
         </li>
         <li>
-            DoorBird Binary Sensor
-        </li>
-        <li>
             <a href='/components/binary_sensor.ecobee/'>Ecobee Binary Sensor</a>
         </li>
         <li>
@@ -194,7 +207,7 @@
             <a href='/components/binary_sensor.hikvision/'>Hikvision Binary Sensor</a>
         </li>
         <li>
-            <a href='/components/binary_sensor.hive/'>Hive Sensor</a>
+            <a href='/components/binary_sensor.hive/'>Hive Binary Sensor</a>
         </li>
         <li>
             <a href='/components/binary_sensor.homematic/'>Homematic Binary Sensor</a>
@@ -318,6 +331,9 @@
         </li>
         <li>
             <a href='/components/binary_sensor.arest/'>aREST Binary Sensor</a>
+        </li>
+        <li>
+            deCONZ Binary Sensor
         </li>
         <li>
             <a href='/components/binary_sensor.gc100/'>gc100 Binary Sensor</a>

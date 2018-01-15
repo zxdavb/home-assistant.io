@@ -85,31 +85,120 @@
     <span class="s">command_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">bedroom_fan/on/set"</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>command_topic</strong> (<em>Required</em>): The MQTT topic to publish commands to change the fan state.</li>
-  <li><strong>state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive state updates.</li>
-  <li><strong>name</strong> (<em>Optional</em>): The name of the fan. Default is ‘MQTT Fan’.</li>
-  <li><strong>state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive state updates.</li>
-  <li><strong>payload_on</strong> (<em>Optional</em>): The payload that represents the running state. Default is “ON”.</li>
-  <li><strong>payload_off</strong> (<em>Optional</em>): The payload that represents the stop state. Default is “OFF”.</li>
-  <li><strong>state_value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract a value from the state.</li>
-  <li><strong>qos</strong> (<em>Optional</em>): The maximum QoS level of the state topic. Default is 0 and will also be used to publishing messages.</li>
-  <li><strong>optimistic</strong> (<em>Optional</em>): Flag that defines if lock works in optimistic mode. Default is <code class="highlighter-rouge">true</code> if no state topic defined, else <code class="highlighter-rouge">false</code>.</li>
-  <li><strong>retain</strong> (<em>Optional</em>): If the published message should have the retain flag on or not.</li>
-  <li><strong>oscillation_state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive oscillation state updates.</li>
-  <li><strong>oscillation_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change the oscillation state.</li>
-  <li><strong>payload_oscillation_on</strong> (<em>Optional</em>): The payload that represents the oscillation on state. Default is “oscillate_on”.</li>
-  <li><strong>payload_oscillation_off</strong> (<em>Optional</em>): The payload that presents the oscillation off state. Default is “oscillate_off”.</li>
-  <li><strong>oscillation_value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract a value from the oscillation.</li>
-  <li><strong>speed_state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive speed state updates.</li>
-  <li><strong>speed_command_topic</strong> (<em>Optional</em>): The MQTT topic to publish commands to change speed state.</li>
-  <li><strong>payload_low_speed</strong> (<em>Optional</em>): The payload that represents the fan’s low speed.</li>
-  <li><strong>payload_medium_speed</strong> (<em>Optional</em>): The payload that represents the fan’s medium speed.</li>
-  <li><strong>payload_high_speed</strong> (<em>Optional</em>): The payload that represents the fan’s high speed.</li>
-  <li><strong>speed_value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract a value from the speed payload.</li>
-  <li><strong>speeds</strong> array (<em>Optional</em>): Valid entries for the list are <code class="highlighter-rouge">off</code>, <code class="highlighter-rouge">low</code>, <code class="highlighter-rouge">medium</code>, and <code class="highlighter-rouge">high</code>.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of the fan.</span></p>
+      <p class="default">Default value: MQTT Fan</p>
+    </dd>
+    <dt><a class="title-link" name="command_topic" href="#command_topic"></a> command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The MQTT topic to publish commands to change the fan state.</span></p>
+    </dd>
+    <dt><a class="title-link" name="state_topic" href="#state_topic"></a> state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive state updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload_on" href="#payload_on"></a> payload_on</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the running state.</span></p>
+      <p class="default">Default value: true</p>
+    </dd>
+    <dt><a class="title-link" name="payload_off" href="#payload_off"></a> payload_off</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the stop state.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="state_value_template" href="#state_value_template"></a> state_value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract a value from the state.</span></p>
+    </dd>
+    <dt><a class="title-link" name="qos" href="#qos"></a> qos</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The maximum QoS level of the state topic.</span></p>
+      <p class="default">Default value: 0</p>
+    </dd>
+    <dt><a class="title-link" name="optimistic" href="#optimistic"></a> optimistic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Flag that defines if lock works in optimistic mode</span></p>
+      <p class="default">Default value: <code class="highlighter-rouge">true</code> if no state topic defined, else <code class="highlighter-rouge">false</code>.</p>
+    </dd>
+    <dt><a class="title-link" name="retain" href="#retain"></a> retain</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">If the published message should have the retain flag on or not.</span></p>
+      <p class="default">Default value: true</p>
+    </dd>
+    <dt><a class="title-link" name="oscillation_state_topic" href="#oscillation_state_topic"></a> oscillation_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive oscillation state updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="oscillation_command_topic" href="#oscillation_command_topic"></a> oscillation_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the oscillation state.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload_oscillation_on" href="#payload_oscillation_on"></a> payload_oscillation_on</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the oscillation on state.</span></p>
+      <p class="default">Default value: oscillate_on</p>
+    </dd>
+    <dt><a class="title-link" name="payload_oscillation_off" href="#payload_oscillation_off"></a> payload_oscillation_off</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the oscillation off state.</span></p>
+      <p class="default">Default value: oscillate_off</p>
+    </dd>
+    <dt><a class="title-link" name="oscillation_value_template" href="#oscillation_value_template"></a> oscillation_value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract a value from the oscillation.</span></p>
+    </dd>
+    <dt><a class="title-link" name="speed_state_topic" href="#speed_state_topic"></a> speed_state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive speed state updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="speed_command_topic" href="#speed_command_topic"></a> speed_command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change speed state.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload_low_speed" href="#payload_low_speed"></a> payload_low_speed</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the fan’s low speed.</span></p>
+      <p class="default">Default value: low</p>
+    </dd>
+    <dt><a class="title-link" name="payload_medium_speed" href="#payload_medium_speed"></a> payload_medium_speed</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the fan’s medium speed.</span></p>
+      <p class="default">Default value: medium</p>
+    </dd>
+    <dt><a class="title-link" name="payload_high_speed" href="#payload_high_speed"></a> payload_high_speed</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the fan’s high speed.</span></p>
+      <p class="default">Default value: high</p>
+    </dd>
+    <dt><a class="title-link" name="speed_value_template" href="#speed_value_template"></a> speed_value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract a value from the speed payload.</span></p>
+    </dd>
+    <dt><a class="title-link" name="speeds" href="#speeds"></a> speeds</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string list">string list</span>)</span><span class="required">(Optional)</span><span class="description">List of speeds this fan is capable of running at. Valid entries are <code class="highlighter-rouge">off</code>, <code class="highlighter-rouge">low</code>, <code class="highlighter-rouge">medium</code>, and <code class="highlighter-rouge">high</code>.</span></p>
+    </dd>
+    <dt><a class="title-link" name="availability_topic" href="#availability_topic"></a> availability_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive availability (online/offline) updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload_available" href="#payload_available"></a> payload_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the available state.</span></p>
+      <p class="default">Default value: online</p>
+    </dd>
+    <dt><a class="title-link" name="payload_not_available" href="#payload_not_available"></a> payload_not_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the unavailable state.</span></p>
+      <p class="default">Default value: offline</p>
+    </dd>
+  </dl>
+</div>
 <p class="note warning">
 Make sure that your topics match exactly. <code class="highlighter-rouge">some-topic/</code> and <code class="highlighter-rouge">some-topic</code> are different topics.
 </p>

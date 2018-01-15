@@ -74,7 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">doorbird</code> implementation allows you to view the live video and saved images from your <a href="http://www.doorbird.com/">DoorBird</a> device in Home Assistant.</p>
+  <p>The <code class="highlighter-rouge">doorbird</code> implementation allows you to view the live video and previous images from your <a href="http://www.doorbird.com/">DoorBird</a> device in Home Assistant.</p>
 <p class="note">
   You must have the <a href="/components/doorbird/">DoorBird component</a> configured to use this camera.
 </p>
@@ -84,10 +84,6 @@
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">doorbird</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>last_visitor</strong> (<em>Optional</em>): Adds a second camera that shows the last picture taken when someone rang the doorbell. Default is <code class="highlighter-rouge">false</code>.</li>
-</ul>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -116,9 +112,6 @@
           <ul class='divided'>
         <li><a href='/components/doorbird/'>
           DoorBird
-        </a></li>
-        <li><a href='/components/binary_sensor.doorbird/'>
-          DoorBird Binary Sensor
         </a></li>
         <li><a href='/components/switch.doorbird/'>
           DoorBird Switch

@@ -86,7 +86,13 @@
 </div>
 <p>Configuration variables:</p>
 <ul>
-  <li><strong>type</strong> (<em>Required</em>): Type of the connection to Modbus.</li>
+  <li><strong>type</strong> (<em>Required</em>): Type of the connection to Modbus. Possible values are:
+    <ul>
+      <li><em>tcp</em>: Modbus TCP protocol according to “MODBUS Messaging Implementation Guide version 1.0b” provided by Schneider Automation,</li>
+      <li><em>udp</em>: Modbus TCP form, but using UDP for transport (removes the overheads required for TCP),</li>
+      <li><em>rtuovertcp</em>: Modbus RTU message transmitted with a TCP/IP wrapper and sent over a network instead of serial lines.</li>
+    </ul>
+  </li>
   <li><strong>host</strong> (<em>Required</em>): The IP address of your Modbus device, eg. 192.168.1.1.</li>
   <li><strong>port</strong> (<em>Required</em>): The port for the communication.</li>
   <li><strong>timeout</strong> (<em>Optional</em>): Timeout for slave response in seconds. (default: 3)</li>
@@ -105,7 +111,7 @@
 </div>
 <p>Configuration variables:</p>
 <ul>
-  <li><strong>type</strong> (<em>Required</em>): Type of the connection to Modebus.</li>
+  <li><strong>type</strong> (<em>Required</em>): Type of the connection to Modbus.</li>
   <li><strong>method</strong> (<em>Required</em>): Method of the connection to Modbus.</li>
   <li><strong>port</strong> (<em>Required</em>): The port where your Modbus device is connected to your Home Assistant host.</li>
   <li><strong>baudrate</strong> (<em>Required</em>): The speed for the serial connection.</li>
@@ -303,6 +309,9 @@
             <a href='/components/netatmo/'>Netatmo</a>
         </li>
         <li>
+            <a href='/components/nuheat/'>NuHeat</a>
+        </li>
+        <li>
             <a href='/components/nuimo_controller/'>Nuimo controller</a>
         </li>
         <li>
@@ -322,6 +331,12 @@
         </li>
         <li>
             <a href='/components/rfxtrx/'>RFXtrx</a>
+        </li>
+        <li>
+            <a href='/components/rainbird/'>Rain Bird</a>
+        </li>
+        <li>
+            <a href='/components/sensor.rainbird/'>Rain Bird Sensor</a>
         </li>
         <li>
             <a href='/components/switch.rainbird/'>Rain Bird Switch</a>
@@ -409,6 +424,9 @@
         </li>
         <li>
             <a href='/components/zoneminder/'>ZoneMinder</a>
+        </li>
+        <li>
+            <a href='/components/deconz/'>deCONZ</a>
         </li>
         <li>
             <a href='/components/ecobee/'>ecobee</a>

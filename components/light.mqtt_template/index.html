@@ -88,25 +88,92 @@ It is format-agnostic so you can use any data format you want (i.e. string, JSON
     <span class="s">command_off_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">off"</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>name</strong> (<em>Optional</em>): The name of the light. Default is “MQTT Template Light.”</li>
-  <li><strong>effect_list</strong> (<em>Optional</em>): List of possible effects.</li>
-  <li><strong>command_topic</strong> (<em>Required</em>): The MQTT topic to publish commands to change the light’s state.</li>
-  <li><strong>state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive state updates.</li>
-  <li><strong>command_on_template</strong> (<em>Required</em>): The <a href="/docs/configuration/templating/#processing-incoming-data">template</a> for <em>on</em> state changes. Available variables: <code class="highlighter-rouge">state</code>, <code class="highlighter-rouge">brightness</code>, <code class="highlighter-rouge">red</code>, <code class="highlighter-rouge">green</code>, <code class="highlighter-rouge">blue</code>, <code class="highlighter-rouge">flash</code>, <code class="highlighter-rouge">transition</code> and <code class="highlighter-rouge">effect</code>.</li>
-  <li><strong>command_off_template</strong> (<em>Required</em>): The <a href="/docs/configuration/templating/#processing-incoming-data">template</a> for <em>off</em> state changes. Available variables: <code class="highlighter-rouge">state</code> and <code class="highlighter-rouge">transition</code>.</li>
-  <li><strong>state_template</strong> (<em>Optional</em>): <a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract state from the state payload value.</li>
-  <li><strong>brightness_template</strong> (<em>Optional</em>): <a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract brightness from the state payload value.</li>
-  <li><strong>red_template</strong> (<em>Optional</em>): <a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract red color from the state payload value.</li>
-  <li><strong>green_template</strong> (<em>Optional</em>): <a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract green color from the state payload value.</li>
-  <li><strong>blue_template</strong> (<em>Optional</em>): <a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract blue color from the state payload value.</li>
-  <li><strong>color_temp_template</strong> (<em>Optional</em>): <a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract color temperature from the state payload value.</li>
-  <li><strong>effect_template</strong> (<em>Optional</em>): <a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract effect from the state payload value.</li>
-  <li><strong>white_value_template</strong> (<em>Optional</em>): <a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract white value from the state payload value.</li>
-  <li><strong>optimistic</strong> (<em>Optional</em>): Flag that defines if the light works in optimistic mode. Default is true if no state topic or state template is defined, else false.</li>
-  <li><strong>qos</strong> (<em>Optional</em>): The maximum QoS level of the state topic. Default is 0 and will also be used to publishing messages.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of the light.</span></p>
+      <p class="default">Default value: MQTT Template Light</p>
+    </dd>
+    <dt><a class="title-link" name="effect_list" href="#effect_list"></a> effect_list</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string list">string list</span>)</span><span class="required">(Optional)</span><span class="description">List of possible effects.</span></p>
+    </dd>
+    <dt><a class="title-link" name="command_topic" href="#command_topic"></a> command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The MQTT topic to publish commands to change the light’s state.</span></p>
+    </dd>
+    <dt><a class="title-link" name="state_topic" href="#state_topic"></a> state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive state updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="command_on_template" href="#command_on_template"></a> command_on_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The <a href="/docs/configuration/templating/#processing-incoming-data">template</a> for <em>on</em> state changes. Available variables: <code class="highlighter-rouge">state</code>, <code class="highlighter-rouge">brightness</code>, <code class="highlighter-rouge">red</code>, <code class="highlighter-rouge">green</code>, <code class="highlighter-rouge">blue</code>, <code class="highlighter-rouge">flash</code>, <code class="highlighter-rouge">transition</code> and <code class="highlighter-rouge">effect</code>.</span></p>
+    </dd>
+    <dt><a class="title-link" name="command_off_template" href="#command_off_template"></a> command_off_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The <a href="/docs/configuration/templating/#processing-incoming-data">template</a> for <em>off</em> state changes. Available variables: <code class="highlighter-rouge">state</code> and <code class="highlighter-rouge">transition</code>.</span></p>
+    </dd>
+    <dt><a class="title-link" name="state_template" href="#state_template"></a> state_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description"><a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract state from the state payload value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="brightness_template" href="#brightness_template"></a> brightness_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description"><a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract brightness from the state payload value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="red_template" href="#red_template"></a> red_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description"><a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract red color from the state payload value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="green_template" href="#green_template"></a> green_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description"><a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract green color from the state payload value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="blue_template" href="#blue_template"></a> blue_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description"><a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract blue color from the state payload value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="color_temp_template" href="#color_temp_template"></a> color_temp_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description"><a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract color temperature from the state payload value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="effect_template" href="#effect_template"></a> effect_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description"><a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract effect from the state payload value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="white_value_template" href="#white_value_template"></a> white_value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description"><a href="/docs/configuration/templating/#processing-incoming-data">Template</a> to extract white value from the state payload value.</span></p>
+    </dd>
+    <dt><a class="title-link" name="optimistic" href="#optimistic"></a> optimistic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Flag that defines if the light works in optimistic mode.</span></p>
+      <p class="default">Default value: <code class="highlighter-rouge">true</code> if no state topic or state template is defined, else <code class="highlighter-rouge">false</code>.</p>
+    </dd>
+    <dt><a class="title-link" name="qos" href="#qos"></a> qos</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The maximum QoS level of the state topic.</span></p>
+      <p class="default">Default value: 0</p>
+    </dd>
+    <dt><a class="title-link" name="availability_topic" href="#availability_topic"></a> availability_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive availability (online/offline) updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload_available" href="#payload_available"></a> payload_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the available state.</span></p>
+      <p class="default">Default value: online</p>
+    </dd>
+    <dt><a class="title-link" name="payload_not_available" href="#payload_not_available"></a> payload_not_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the unavailable state.</span></p>
+      <p class="default">Default value: offline</p>
+    </dd>
+  </dl>
+</div>
 <p class="note warning">
   Make sure that your topics match exact. <code class="highlighter-rouge">some-topic/</code> and <code class="highlighter-rouge">some-topic</code> are different topics.
 </p>
@@ -273,6 +340,9 @@ It is format-agnostic so you can use any data format you want (i.e. string, JSON
             <a href='/components/light.flux_led/'>Flux Led/MagicLight</a>
         </li>
         <li>
+            <a href='/components/light.greenwave/'>Greenwave Reality (TCP Connected) Lights</a>
+        </li>
+        <li>
             <a href='/components/light.hive/'>Hive Light</a>
         </li>
         <li>
@@ -366,7 +436,7 @@ It is format-agnostic so you can use any data format you want (i.e. string, JSON
             <a href='/components/light.skybell/'>Skybell Light</a>
         </li>
         <li>
-            <a href='/components/light.tplink/'>TPLink Bulb</a>
+            <a href='/components/light.tplink/'>TP-Link Bulb</a>
         </li>
         <li>
             <a href='/components/light.tellstick/'>TellStick Light</a>
@@ -412,6 +482,12 @@ It is format-agnostic so you can use any data format you want (i.e. string, JSON
         </li>
         <li>
             <a href='/components/light.zigbee/'>ZigBee Light</a>
+        </li>
+        <li>
+            <a href='/components/light.deconz/'>deCONZ lights</a>
+        </li>
+        <li>
+            <a href='/components/light.iglo/'>iGlo</a>
         </li>
         <li>
             <a href='/components/light.mystrom/'>myStrom WiFi Bulb</a>

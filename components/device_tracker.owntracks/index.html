@@ -88,6 +88,9 @@
   <li><strong>waypoints</strong> (<em>Optional</em>): Owntracks users can define <a href="http://owntracks.org/booklet/features/waypoints/">waypoints</a> (a.k.a regions) which are similar in spirit to Home Assistant zones. If this configuration variable is <code class="highlighter-rouge">True</code>, the Owntracks users who are in <code class="highlighter-rouge">waypoint_whitelist</code> can export waypoints from the device and Home Assistant will import them as zone definitions. Defaults to <code class="highlighter-rouge">True</code>.</li>
   <li><strong>waypoint_whitelist</strong> (<em>Optional</em>): A list of user names (as defined for <a href="/components/device_tracker.owntracks/">Owntracks</a>) who can export their waypoints from Owntracks to Home Assistant.  This would be the <code class="highlighter-rouge">username</code> portion of the Base Topic Name, (e.g. owntracks/<strong>username</strong>/iPhone). Defaults to all users who are connected to Home Assistant via Owntracks.</li>
   <li><strong>secret</strong> (<em>Optional</em>): <a href="http://owntracks.org/booklet/features/encrypt/">Payload encryption key</a>. This is usable when communicating with a third-party untrusted server or a public server (where anybody can subscribe to any topic). By default the payload is assumed to be unencrypted (although the communication between Home Assistant and the server might still be encrypted). This feature requires the <code class="highlighter-rouge">libsodium</code> library to be present.</li>
+  <li><strong>mqtt_topic</strong> (<em>Optional</em>): The topic to subscribe for Owntracks updates on your MQTT instance (defaults to <code class="highlighter-rouge">owntracks/#</code>).</li>
+  <li><strong>events_only</strong> (<em>Optional</em>): Home Assistant will ignore all location updates and rely solely on geofence enter/leave events.</li>
+  <li><strong>region_mapping</strong> (<em>Optional</em>): Dictionary to remap names of regions as configured in the Owntracks app to Home Assistant zones. Use this if you have multiple homes or Home Assistant instances and want to map a different label to ‘home’. <code class="highlighter-rouge">key: value</code> maps Owntracks region <code class="highlighter-rouge">key</code> to Home Assistant zone <code class="highlighter-rouge">value</code>.</li>
 </ul>
 <p>A full sample configuration for the <code class="highlighter-rouge">owntracks</code> platform is shown below:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
@@ -95,9 +98,14 @@
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">owntracks</span>
     <span class="s">max_gps_accuracy</span><span class="pi">:</span> <span class="s">200</span>
     <span class="s">waypoints</span><span class="pi">:</span> <span class="s">True</span>
+    <span class="s">mqtt_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">owntracks/#"</span>
+    <span class="s">events_only</span><span class="pi">:</span> <span class="s">True</span>
     <span class="s">waypoint_whitelist</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">jon</span>
       <span class="pi">-</span> <span class="s">ram</span>
+    <span class="s">region_mapping</span><span class="pi">:</span>
+      <span class="s">cabin</span><span class="pi">:</span> <span class="s">home</span>
+      <span class="s">office</span><span class="pi">:</span> <span class="s">work</span>
 </code></pre>
 </div>
 <h3><a class="title-link" name="using-owntracks-with-other-device-trackers" href="#using-owntracks-with-other-device-trackers"></a> Using Owntracks with other device trackers</h3>

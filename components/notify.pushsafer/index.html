@@ -84,11 +84,70 @@
     <span class="s">private_key</span><span class="pi">:</span> <span class="s">ABCDEFGHJKLMNOPQRSTUVXYZ</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
+<p><strong>Configuration variables:</strong></p>
 <ul>
   <li><strong>name</strong> (<em>Optional</em>): Setting the optional parameter <code class="highlighter-rouge">name</code> allows multiple notifiers to be created. The default value is <code class="highlighter-rouge">notify</code>. The notifier will bind to the service <code class="highlighter-rouge">notify.NOTIFIER_NAME</code>.</li>
   <li><strong>private_key</strong> (<em>Required</em>): Your private or alias key. Private key = send the notification to all devices with standard params, alias key send the notification to the devices stored in the alias with predefined params.</li>
 </ul>
+<h3><a class="title-link" name="examples" href="#examples"></a> Examples</h3>
+<p>Message to two devices with formated text.</p>
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test to 2 devices"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attention [b]bold[/b] text[br][url=https://www.pushsafer.com]Link to Pushsafer[/url]"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"1111"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2222"</span><span class="p">],</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"iconcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vibration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://home-assistant.io/"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"urltitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open Home Assistant"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"time2live"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<p>Message to one device with formated text and image from an external URL.</p>
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test to 1 device with image from an url"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attention [i]italic[/i] Text[br][url=https://home-assistant.io/]Testlink[/url]"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"1111"</span><span class="p">],</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"iconcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FFFF00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vibration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://home-assistant.io/"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"urltitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open Home Assistant"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"time2live"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"picture1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://home-assistant.io/images/components/alexa/alexa-512x512.png"</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<p>Message to two devices and one device group with formated text and local image.</p>
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test to 3 devices with local image"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attention [i]italic[/i] Text[br][url=https://home-assistant.io/]Testlink[/url]"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"1111"</span><span class="p">,</span><span class="s2">"2222"</span><span class="p">,</span><span class="s2">"gs3333"</span><span class="p">],</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"iconcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF00FF"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vibration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://home-assistant.io/"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"urltitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open Home Assistant"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"time2live"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"picture1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"path"</span><span class="p">:</span><span class="s2">"C:\\Users\\Kevin\\AppData\\Roaming\\.homeassistant\\image-760-testimage.jpg"</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<p>To customize your push-notification you can take a look at the <a href="https://www.pushsafer.com/en/pushapi">Pushsafer API description</a>.</p>
 <p>When setting up the application you can use this <a href="https://home-assistant.io/images/favicon-192x192.png">icon</a>.</p>
 <p>To use notifications, please see the <a href="/getting-started/automation/">getting started with automation page</a>.</p>
 </article>

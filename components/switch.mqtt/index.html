@@ -85,21 +85,67 @@
     <span class="s">command_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home/bedroom/switch1/set"</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>name</strong> (<em>Optional</em>): The name of the switch. Default is ‘MQTT Switch’.</li>
-  <li><strong>state_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive state updates.</li>
-  <li><strong>command_topic</strong> (<em>Required</em>): The MQTT topic to publish commands to change the switch state.</li>
-  <li><strong>availability_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive availability (online/offline) updates.</li>
-  <li><strong>payload_on</strong> (<em>Optional</em>): The payload that represents enabled state. Default is “ON”.</li>
-  <li><strong>payload_off</strong> (<em>Optional</em>): The payload that represents disabled state. Default is “OFF”.</li>
-  <li><strong>payload_available</strong> (<em>Optional</em>): The payload that represents the available state, e.g. ‘online’. Default is “ON”.</li>
-  <li><strong>payload_not_available</strong> (<em>Optional</em>): The payload that represents the unavailable state, e.g. ‘offline’. Default is “OFF”.</li>
-  <li><strong>optimistic</strong> (<em>Optional</em>): Flag that defines if switch works in optimistic mode. Default is <code class="highlighter-rouge">true</code> if no <code class="highlighter-rouge">state_topic</code> defined, else <code class="highlighter-rouge">false</code>.</li>
-  <li><strong>qos</strong> (<em>Optional</em>): The maximum QoS level of the state topic. Default is 0 and will also be used to publishing messages.</li>
-  <li><strong>retain</strong> (<em>Optional</em>): If the published message should have the retain flag on or not.</li>
-  <li><strong>value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract a value from the payload.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name to use when displaying this switch.</span></p>
+      <p class="default">Default value: MQTT Switch</p>
+    </dd>
+    <dt><a class="title-link" name="state_topic" href="#state_topic"></a> state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive state updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="command_topic" href="#command_topic"></a> command_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the switch state.</span></p>
+    </dd>
+    <dt><a class="title-link" name="availability_topic" href="#availability_topic"></a> availability_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive availability (online/offline) updates.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload_on" href="#payload_on"></a> payload_on</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents enabled state.</span></p>
+      <p class="default">Default value: true</p>
+    </dd>
+    <dt><a class="title-link" name="payload_off" href="#payload_off"></a> payload_off</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents disabled state.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="payload_available" href="#payload_available"></a> payload_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the available state.</span></p>
+      <p class="default">Default value: online</p>
+    </dd>
+    <dt><a class="title-link" name="payload_not_available" href="#payload_not_available"></a> payload_not_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the unavailable state.</span></p>
+      <p class="default">Default value: offline</p>
+    </dd>
+    <dt><a class="title-link" name="optimistic" href="#optimistic"></a> optimistic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Flag that defines if switch works in optimistic mode.</span></p>
+      <p class="default">Default value: <code class="highlighter-rouge">true</code> if no <code class="highlighter-rouge">state_topic</code> defined, else <code class="highlighter-rouge">false</code>.</p>
+    </dd>
+    <dt><a class="title-link" name="qos" href="#qos"></a> qos</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The maximum QoS level of the state topic. Default is 0 and will also be used to publishing messages.</span></p>
+      <p class="default">Default value: 0</p>
+    </dd>
+    <dt><a class="title-link" name="retain" href="#retain"></a> retain</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">If the published message should have the retain flag on or not.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="value_template" href="#value_template"></a> value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract a value from the payload.</span></p>
+    </dd>
+  </dl>
+</div>
 <p class="note warning">
 Make sure that your topic matches exactly. <code class="highlighter-rouge">some-topic/</code> and <code class="highlighter-rouge">some-topic</code> are different topics.
 </p>
@@ -346,7 +392,7 @@ Make sure that your topic matches exactly. <code class="highlighter-rouge">some-
             <a href='/components/switch.skybell/'>Skybell Switch</a>
         </li>
         <li>
-            <a href='/components/switch.tplink/'>TPLink Switch</a>
+            <a href='/components/switch.tplink/'>TP-Link Switch</a>
         </li>
         <li>
             <a href='/components/switch.tellstick/'>TellStick Switch</a>

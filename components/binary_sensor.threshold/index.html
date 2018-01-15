@@ -74,7 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">threshold</code> binary sensor platform observes the state of another sensor. If the value is below (<code class="highlighter-rouge">lower</code>) or higher (<code class="highlighter-rouge">upper</code>) than the given threshold then state of the threshold sensor is changed.</p>
+  <p>The <code class="highlighter-rouge">threshold</code> binary sensor platform observes the state of another sensor. If the value is below (<code class="highlighter-rouge">lower</code>) or higher (<code class="highlighter-rouge">upper</code>) than the given threshold then state of the threshold sensor is changed. It support also a range if <code class="highlighter-rouge">lower</code> and <code class="highlighter-rouge">upper</code> are given.</p>
 <p>If the sensor is configured with no hysteresis and the sensor value is equal to the threshold, the sensor is turned off since it is not <code class="highlighter-rouge">lower</code> or <code class="highlighter-rouge">upper</code> with respect to the threshold.</p>
 <p>It’s an alternative to the template binary sensor’s <code class="highlighter-rouge">value_template:</code> to get the abnormal/too high/too low states.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">{{</span> <span class="nv">states.sensor.furnace.state &gt; 2.5</span> <span class="pi">}}</span>
@@ -84,19 +84,37 @@
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">binary_sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">threshold</span>
-    <span class="s">threshold</span><span class="pi">:</span> <span class="s">15</span>
-    <span class="s">type</span><span class="pi">:</span> <span class="s">lower</span>
     <span class="s">entity_id</span><span class="pi">:</span> <span class="s">sensor.random</span>
+    <span class="s">lower</span><span class="pi">:</span> <span class="s">20</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>entity_id</strong> (<em>Required</em>): The entity to monitor. Only <a href="/components/sensor/">sensors</a> are supported.</li>
-  <li><strong>threshold</strong> (<em>Required</em>): The threshold which the observed value is compared against.</li>
-  <li><strong>type</strong> (<em>Required</em>): <code class="highlighter-rouge">lower</code> if the value needs to be below the threshold or <code class="highlighter-rouge">upper</code> if higher.</li>
-  <li><strong>hysteresis</strong> (<em>Optional</em>): The distance the observed value must be from the threshold before the state is changed. Defaults to <code class="highlighter-rouge">0.0</code></li>
-  <li><strong>name</strong> (<em>Optional</em>): Name of the sensor to use in the frontend. Defaults to <code class="highlighter-rouge">Stats</code>.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="entity_id" href="#entity_id"></a> entity_id</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="entity_id">entity_id</span>)</span><span class="required">(Required)</span><span class="description">The entity to monitor. Only <a href="/components/sensor/">sensors</a> are supported.</span></p>
+    </dd>
+    <dt><a class="title-link" name="lower" href="#lower"></a> lower</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="float">float</span>)</span><span class="required">(Optional)</span><span class="description">The lower threshold which the observed value is compared against.</span></p>
+    </dd>
+    <dt><a class="title-link" name="upper" href="#upper"></a> upper</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="float">float</span>)</span><span class="required">(Optional)</span><span class="description">The upper threshold which the observed value is compared against.</span></p>
+    </dd>
+    <dt><a class="title-link" name="hysteresis" href="#hysteresis"></a> hysteresis</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="float">float</span>)</span><span class="required">(Optional)</span><span class="description">The distance the observed value must be from the threshold before the state is changed.</span></p>
+      <p class="default">Default value: 0.0</p>
+    </dd>
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Name of the sensor to use in the frontend.</span></p>
+      <p class="default">Default value: </p>
+    </dd>
+  </dl>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -160,9 +178,6 @@
             <a href='/components/binary_sensor.concord232/'>Concord232 Binary Sensor</a>
         </li>
         <li>
-            <a href='/components/binary_sensor.doorbird/'>DoorBird Binary Sensor</a>
-        </li>
-        <li>
             <a href='/components/binary_sensor.ecobee/'>Ecobee Binary Sensor</a>
         </li>
         <li>
@@ -193,7 +208,7 @@
             <a href='/components/binary_sensor.hikvision/'>Hikvision Binary Sensor</a>
         </li>
         <li>
-            <a href='/components/binary_sensor.hive/'>Hive Sensor</a>
+            <a href='/components/binary_sensor.hive/'>Hive Binary Sensor</a>
         </li>
         <li>
             <a href='/components/binary_sensor.homematic/'>Homematic Binary Sensor</a>
@@ -317,6 +332,9 @@
         </li>
         <li>
             <a href='/components/binary_sensor.arest/'>aREST Binary Sensor</a>
+        </li>
+        <li>
+            <a href='/components/binary_sensor.deconz/'>deCONZ Binary Sensor</a>
         </li>
         <li>
             <a href='/components/binary_sensor.gc100/'>gc100 Binary Sensor</a>

@@ -84,19 +84,57 @@
     <span class="s">state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home-assistant/window/contact"</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>name</strong> (<em>Optional</em>): The name of the binary sensor. Default is <code class="highlighter-rouge">MQTT Binary Sensor</code>.</li>
-  <li><strong>state_topic</strong> (<em>Required</em>): The MQTT topic subscribed to receive sensor values.</li>
-  <li><strong>payload_on</strong> (<em>Optional</em>): The payload that represents the on state. Default is <code class="highlighter-rouge">ON</code>.</li>
-  <li><strong>payload_off</strong> (<em>Optional</em>): The payload that represents the off state. Default is <code class="highlighter-rouge">OFF</code>.</li>
-  <li><strong>availability_topic</strong> (<em>Optional</em>): The MQTT topic subscribed to receive birth and LWT messages from the MQTT device. If <code class="highlighter-rouge">availability_topic</code> is not defined, the binary sensor availability state will always be <code class="highlighter-rouge">available</code>. If <code class="highlighter-rouge">availability_topic</code> is defined, the binary sensor availability state will be <code class="highlighter-rouge">unavailable</code> by default.</li>
-  <li><strong>payload_available</strong> (<em>Optional</em>): The payload that represents the online state. Default is <code class="highlighter-rouge">online</code>.</li>
-  <li><strong>payload_not_available</strong> (<em>Optional</em>): The payload that represents the offline state. Default is <code class="highlighter-rouge">offline</code>.</li>
-  <li><strong>qos</strong> (<em>Optional</em>): The maximum QoS level to be used when receiving messages. Default is <code class="highlighter-rouge">0</code>.</li>
-  <li><strong>device_class</strong> (<em>Optional</em>): The <a href="/components/binary_sensor/">type/class</a> of the sensor to set the icon in the frontend.</li>
-  <li><strong>value_template</strong> (<em>Optional</em>): Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract a value from the payload.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of the binary sensor.</span></p>
+      <p class="default">Default value: MQTT Binary Sensor</p>
+    </dd>
+    <dt><a class="title-link" name="state_topic" href="#state_topic"></a> state_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The MQTT topic subscribed to receive sensor values.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload_on" href="#payload_on"></a> payload_on</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the on state.</span></p>
+      <p class="default">Default value: true</p>
+    </dd>
+    <dt><a class="title-link" name="payload_off" href="#payload_off"></a> payload_off</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the off state.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="availability_topic" href="#availability_topic"></a> availability_topic</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive birth and LWT messages from the MQTT device. If <code class="highlighter-rouge">availability_topic</code> is not defined, the binary sensor availability state will always be <code class="highlighter-rouge">available</code>. If <code class="highlighter-rouge">availability_topic</code> is defined, the binary sensor availability state will be <code class="highlighter-rouge">unavailable</code> by default.</span></p>
+    </dd>
+    <dt><a class="title-link" name="payload_available" href="#payload_available"></a> payload_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the online state.</span></p>
+      <p class="default">Default value: online</p>
+    </dd>
+    <dt><a class="title-link" name="payload_not_available" href="#payload_not_available"></a> payload_not_available</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the offline state.</span></p>
+      <p class="default">Default value: offline</p>
+    </dd>
+    <dt><a class="title-link" name="qos" href="#qos"></a> qos</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="integer">integer</span>)</span><span class="required">(Optional)</span><span class="description">The maximum QoS level to be used when receiving messages.</span></p>
+      <p class="default">Default value: 0</p>
+    </dd>
+    <dt><a class="title-link" name="device_class" href="#device_class"></a> device_class</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The <a href="/components/binary_sensor/">type/class</a> of the sensor to set the icon in the frontend.</span></p>
+    </dd>
+    <dt><a class="title-link" name="value_template" href="#value_template"></a> value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines a <a href="/docs/configuration/templating/#processing-incoming-data">template</a> to extract a value from the payload.</span></p>
+    </dd>
+  </dl>
+</div>
 <p>To test, you can use the command line tool <code class="highlighter-rouge">mosquitto_pub</code> shipped with <code class="highlighter-rouge">mosquitto</code> or the <code class="highlighter-rouge">mosquitto-clients</code> package to send MQTT messages. To set the state of the binary sensor manually:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$  </span>mosquitto_pub -h 127.0.0.1 -t home-assistant/window/contact -m <span class="s2">"OFF"</span>
 </code></pre>
@@ -224,9 +262,6 @@
             <a href='/components/binary_sensor.concord232/'>Concord232 Binary Sensor</a>
         </li>
         <li>
-            <a href='/components/binary_sensor.doorbird/'>DoorBird Binary Sensor</a>
-        </li>
-        <li>
             <a href='/components/binary_sensor.ecobee/'>Ecobee Binary Sensor</a>
         </li>
         <li>
@@ -257,7 +292,7 @@
             <a href='/components/binary_sensor.hikvision/'>Hikvision Binary Sensor</a>
         </li>
         <li>
-            <a href='/components/binary_sensor.hive/'>Hive Sensor</a>
+            <a href='/components/binary_sensor.hive/'>Hive Binary Sensor</a>
         </li>
         <li>
             <a href='/components/binary_sensor.homematic/'>Homematic Binary Sensor</a>
@@ -381,6 +416,9 @@
         </li>
         <li>
             <a href='/components/binary_sensor.arest/'>aREST Binary Sensor</a>
+        </li>
+        <li>
+            <a href='/components/binary_sensor.deconz/'>deCONZ Binary Sensor</a>
         </li>
         <li>
             <a href='/components/binary_sensor.gc100/'>gc100 Binary Sensor</a>

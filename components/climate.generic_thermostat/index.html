@@ -74,7 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">generic_thermostat</code> climate platform is a thermostat implemented in Home Assistant. It uses a sensor and a switch connected to a heater under the hood. If the measured temperature is cooler then the target temperature, the heater will be turned on and turned off when required temperature is reached.</p>
+  <p>The <code class="highlighter-rouge">generic_thermostat</code> climate platform is a thermostat implemented in Home Assistant. It uses a sensor and a switch connected to a heater or air conditioning under the hood. When in heater mode, if the measured temperature is cooler then the target temperature, the heater will be turned on and turned off when the required temperature is reached. When in air conditioning mode, if the measured temperature is hotter then the target temperature, the air conditioning will be turned on and turned off when required temperature is reached.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">climate</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">generic_thermostat</span>
@@ -86,19 +86,22 @@
 <p>Configuration variables:</p>
 <ul>
   <li><strong>name</strong> (<em>Required</em>): Name of thermostat</li>
-  <li><strong>heater</strong> (<em>Required</em>): <code class="highlighter-rouge">entity_id</code> for heater switch, must be a toggle device.</li>
+  <li><strong>heater</strong> (<em>Required</em>): <code class="highlighter-rouge">entity_id</code> for heater switch, must be a toggle device. Becomes air conditioning switch when <code class="highlighter-rouge">ac_mode</code> is set to <code class="highlighter-rouge">True</code></li>
   <li><strong>target_sensor</strong> (<em>Required</em>): <code class="highlighter-rouge">entity_id</code> for a temperature sensor, target_sensor.state must be temperature.</li>
   <li><strong>min_temp</strong> (<em>Optional</em>): Set minimum set point available (default: 7)</li>
   <li><strong>max_temp</strong> (<em>Optional</em>): Set maximum set point available (default: 35)</li>
-  <li><strong>target_temp</strong> (<em>Optional</em>): Set initial target temperature. Failure to set this variable will result in target temperature being set to null on startup. As of version 0.59 it will retain the target temperature set before restart if this variable is not configured.</li>
+  <li><strong>target_temp</strong> (<em>Optional</em>): Set initial target temperature. Failure to set this variable will result in target temperature being set to null on startup. As of version 0.59, it will retain the target temperature set before restart if available.</li>
   <li><strong>ac_mode</strong> (<em>Optional</em>): Set the switch specified in the <em>heater</em> option to be treated as a cooling device instead of a heating device.</li>
   <li><strong>min_cycle_duration</strong> (<em>Optional</em>): Set a minimum amount of time that the switch specified in the <em>heater</em> option must be in it’s current state prior to being switched either off or on.</li>
   <li><strong>cold_tolerance</strong> (<em>Optional</em>): Set a minimum amount of difference between the temperature read by the sensor specified in the <em>target_sensor</em> option and the target temperature that must change prior to being switched on. For example, if the target temperature is 25 and the tolerance is 0.5 the heater will start when the sensor equals or goes below 24.5.</li>
   <li><strong>hot_tolerance</strong> (<em>Optional</em>): Set a minimum amount of difference between the temperature read by the sensor specified in the <em>target_sensor</em> option and the target temperature that must change prior to being switched off. For example, if the target temperature is 25 and the tolerance is 0.5 the heater will stop when the sensor equals or goes above 25.5.</li>
-  <li><strong>keep_alive</strong> (<em>Optional</em>): Set a keep-alive interval. If set, the switch specified in the <em>heater</em> option will be triggered every time the interval elapses. Use with heaters and A/C units that shut off if they don’t receive a signal from their remote for a while.</li>
+  <li><strong>keep_alive</strong> (<em>Optional</em>): Set a keep-alive interval. If set, the switch specified in the <em>heater</em> option will be triggered every time the interval elapses. Use with heaters and A/C units that shut off if they don’t receive a signal from their remote for a while. Use also with switches that might lose state. The keep-alive call is done with the current valid climate component state (either on or off).</li>
   <li><strong>initial_operation_mode</strong> (<em>Optional</em>): Set the initial operation mode. Valid values are <code class="highlighter-rouge">off</code> or <code class="highlighter-rouge">auto</code>. Value has to be double quoted. If this parameter is not set, it is preferable to set a <em>keep_alive</em> value. This is helpful to align any discrepancies between <em>generic_thermostat</em> and <em>heater</em> state.</li>
+  <li><strong>away_temp</strong> (<em>Optional</em>): Set the temperature used by “away_mode” (default: 16). Please specify when using <code class="highlighter-rouge">ac_mode: True</code> to a higher value.</li>
 </ul>
 <p>A full configuration example looks like the one below. <code class="highlighter-rouge">min_cycle_duration</code> and <code class="highlighter-rouge">keep_alive</code> must contain at least one of the following entries: <code class="highlighter-rouge">days:</code>, <code class="highlighter-rouge">hours:</code>, <code class="highlighter-rouge">minutes:</code>, <code class="highlighter-rouge">seconds:</code> or <code class="highlighter-rouge">milliseconds:</code>.</p>
+<p>Currently the <code class="highlighter-rouge">generic_thermostat</code> climate platform supports ‘heat’, ‘cool’ and ‘off’ operation modes. You can force your <code class="highlighter-rouge">generic_thermstat</code> to avoid starting by setting Operation to ‘off’.</p>
+<p>Please note that changing Away Mode you will force a target temperature change as well that will get restored once the Away Mode is turned off.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Full example configuration.yaml entry</span>
 <span class="s">climate</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">generic_thermostat</span>
@@ -107,6 +110,7 @@
     <span class="s">target_sensor</span><span class="pi">:</span> <span class="s">sensor.study_temperature</span>
     <span class="s">min_temp</span><span class="pi">:</span> <span class="s">15</span>
     <span class="s">max_temp</span><span class="pi">:</span> <span class="s">21</span>
+    <span class="s">ac_mode</span><span class="pi">:</span> <span class="s">False</span>
     <span class="s">target_temp</span><span class="pi">:</span> <span class="s">17</span>
     <span class="s">cold_tolerance</span><span class="pi">:</span> <span class="s">0.3</span>
     <span class="s">hot_tolerance</span><span class="pi">:</span> <span class="s">0</span>
@@ -115,6 +119,7 @@
     <span class="s">keep_alive</span><span class="pi">:</span>
       <span class="s">minutes</span><span class="pi">:</span> <span class="s">3</span>
     <span class="s">initial_operation_mode</span><span class="pi">:</span> <span class="s2">"</span><span class="s">off"</span>
+    <span class="s">away_temp</span><span class="pi">:</span> <span class="s">16</span>
 </code></pre>
 </div>
 </article>
@@ -144,10 +149,22 @@
     <h1 class="title delta">Category Climate</h1>
     <ul class='divided'>
         <li>
+            <a href='/components/climate.daikin/'>Daikin AC</a>
+        </li>
+        <li>
+            <a href='/components/sensor.daikin/'>Daikin AC</a>
+        </li>
+        <li>
+            <a href='/components/daikin/'>Daikin AC</a>
+        </li>
+        <li>
             <a href='/components/climate.ephember/'>EPH Controls Ember Thermostat</a>
         </li>
         <li>
             <a href='/components/climate.eq3btsmart/'>EQ3 Bluetooth Smart Thermostats</a>
+        </li>
+        <li>
+            <a href='/components/climate.econet/'>EcoNet water heater</a>
         </li>
         <li>
             <a href='/components/climate.ecobee/'>Ecobee Thermostat</a>
@@ -186,6 +203,9 @@
             <a href='/components/climate.netatmo/'>Netatmo Thermostat</a>
         </li>
         <li>
+            <a href='/components/climate.nuheat/'>NuHeat Thermostat</a>
+        </li>
+        <li>
             <a href='/components/climate.oem/'>OpenEnergyMonitor WiFi Thermostat</a>
         </li>
         <li>
@@ -193,6 +213,9 @@
         </li>
         <li>
             <a href='/components/climate.radiotherm/'>Radio Thermostat (3M Filtrete) Thermostat</a>
+        </li>
+        <li>
+            <a href='/components/climate.touchline/'>Roth Touchline</a>
         </li>
         <li>
             <a href='/components/climate.sensibo/'>Sensibo A/C controller</a>

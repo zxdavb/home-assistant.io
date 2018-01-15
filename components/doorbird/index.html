@@ -88,7 +88,11 @@
   <li><strong>host</strong> (<em>Required</em>): The LAN IP address or hostname of your device. You can find this by going to the <a href="http://www.doorbird.com/checkonline">DoorBird Online check</a> and entering the information from the paper that was included in the box.</li>
   <li><strong>username</strong> (<em>Required</em>): The username of a non-administrator user account on the device.</li>
   <li><strong>password</strong> (<em>Required</em>): The password for the user specified.</li>
+  <li><strong>doorbell_events</strong> (<em>Optional</em>): Setting this to <code class="highlighter-rouge">true</code> this will register a callback URL with the device so that events can be published to the event bus when the doorbell rings.</li>
 </ul>
+<p class="note warning">
+Enabling <code class="highlighter-rouge">doorbell_events</code> will delete all other registered push notification services with the device every time Home Assistant starts. This will not affect notifications delivered by the DoorBird mobile app.
+</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -107,9 +111,6 @@
           <div class='section'>
           <h1 class='title delta'>Related components</h1>
           <ul class='divided'>
-        <li><a href='/components/binary_sensor.doorbird/'>
-          DoorBird Binary Sensor
-        </a></li>
         <li><a href='/components/camera.doorbird/'>
           DoorBird Camera
         </a></li>
@@ -257,6 +258,9 @@
             <a href='/components/netatmo/'>Netatmo</a>
         </li>
         <li>
+            <a href='/components/nuheat/'>NuHeat</a>
+        </li>
+        <li>
             <a href='/components/nuimo_controller/'>Nuimo controller</a>
         </li>
         <li>
@@ -276,6 +280,12 @@
         </li>
         <li>
             <a href='/components/rfxtrx/'>RFXtrx</a>
+        </li>
+        <li>
+            <a href='/components/rainbird/'>Rain Bird</a>
+        </li>
+        <li>
+            <a href='/components/sensor.rainbird/'>Rain Bird Sensor</a>
         </li>
         <li>
             <a href='/components/switch.rainbird/'>Rain Bird Switch</a>
@@ -363,6 +373,9 @@
         </li>
         <li>
             <a href='/components/zoneminder/'>ZoneMinder</a>
+        </li>
+        <li>
+            <a href='/components/deconz/'>deCONZ</a>
         </li>
         <li>
             <a href='/components/ecobee/'>ecobee</a>

@@ -6,22 +6,22 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>TPLink Bulb - Home Assistant</title>
+    <title>TP-Link Bulb - Home Assistant</title>
     <meta name="author" content="Home Assistant">
-    <meta name="description" content="Instructions how to integrate TPLink bulbs into Home Assistant.">
+    <meta name="description" content="Instructions how to integrate TP-Link bulbs into Home Assistant.">
     <meta name="viewport" content="width=device-width">
     <link rel="canonical" href="https://home-assistant.io/components/light.tplink/">
     <meta property="fb:app_id" content="338291289691179">
-    <meta property="og:title" content="TPLink Bulb">
+    <meta property="og:title" content="TP-Link Bulb">
     <meta property="og:site_name" content="Home Assistant">
     <meta property="og:url" content="https://home-assistant.io/components/light.tplink/">
     <meta property="og:type" content="article">
-    <meta property="og:description" content="Instructions how to integrate TPLink bulbs into Home Assistant.">
+    <meta property="og:description" content="Instructions how to integrate TP-Link bulbs into Home Assistant.">
     <meta property="og:image" content="https://home-assistant.io/images/default-social.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@home_assistant">
-    <meta name="twitter:title" content="TPLink Bulb">
-    <meta name="twitter:description" content="Instructions how to integrate TPLink bulbs into Home Assistant.">
+    <meta name="twitter:title" content="TP-Link Bulb">
+    <meta name="twitter:description" content="Instructions how to integrate TP-Link bulbs into Home Assistant.">
     <meta name="twitter:image" content="https://home-assistant.io/images/default-social.png">
     <link href="/stylesheets/screen.css" media="screen, projection, print" rel="stylesheet">
     <link href="/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
@@ -70,11 +70,11 @@
           <article class="page">
   <header>
     <h1 class="title indent">
-      TPLink Bulb
+      TP-Link Bulb
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">tplink</code> light platform allows you to control the state of your <a href="http://www.tp-link.com/en/products/list-5609.html">TPLink smart bulb</a>.</p>
+  <p>The <code class="highlighter-rouge">tplink</code> light platform allows you to control the state of your <a href="http://www.tp-link.com/en/products/list-5609.html">TP-Link smart bulb</a>.</p>
 <p>Supported units:</p>
 <ul>
   <li>LB100</li>
@@ -82,18 +82,27 @@
   <li>LB120</li>
   <li>LB130</li>
 </ul>
-<p>To use your TPLink light in your installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
+<p>To use your TP-Link light in your installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">light</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">tplink</span>
     <span class="s">host</span><span class="pi">:</span> <span class="s">IP_ADDRESS</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>host</strong> (<em>Required</em>): The IP address of your TP-Link bulb, eg. <code class="highlighter-rouge">192.168.1.32</code>.</li>
-  <li><strong>name</strong> (<em>Optional</em>): The name to use when displaying this bulb.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name to use when displaying this bulb.</span></p>
+      <p class="default">Default value: TP-Link Light</p>
+    </dd>
+    <dt><a class="title-link" name="host" href="#host"></a> host</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The IP address of your TP-Link bulb, eg. <code class="highlighter-rouge">192.168.1.32</code>.</span></p>
+    </dd>
+  </dl>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -124,7 +133,7 @@
           TP-Link
         </a></li>
         <li><a href='/components/switch.tplink/'>
-          TPLink Switch
+          TP-Link Switch
         </a></li>
     </ul>
     </div>
@@ -154,6 +163,9 @@
         </li>
         <li>
             <a href='/components/light.flux_led/'>Flux Led/MagicLight</a>
+        </li>
+        <li>
+            <a href='/components/light.greenwave/'>Greenwave Reality (TCP Connected) Lights</a>
         </li>
         <li>
             <a href='/components/light.hive/'>Hive Light</a>
@@ -249,7 +261,7 @@
             <a href='/components/light.skybell/'>Skybell Light</a>
         </li>
         <li>
-            TPLink Bulb
+            TP-Link Bulb
         </li>
         <li>
             <a href='/components/light.tellstick/'>TellStick Light</a>
@@ -295,6 +307,12 @@
         </li>
         <li>
             <a href='/components/light.zigbee/'>ZigBee Light</a>
+        </li>
+        <li>
+            <a href='/components/light.deconz/'>deCONZ lights</a>
+        </li>
+        <li>
+            <a href='/components/light.iglo/'>iGlo</a>
         </li>
         <li>
             <a href='/components/light.mystrom/'>myStrom WiFi Bulb</a>

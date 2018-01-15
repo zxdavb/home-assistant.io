@@ -79,7 +79,17 @@
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">device_tracker</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">gpslogger</span>
+    <span class="s">password</span><span class="pi">:</span> <span class="kt">!secret</span> <span class="s">gpslogger_password</span>
 </code></pre>
+</div>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="password" href="#password"></a> password</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Separate password for GPS Logger endpoint. If provided using regular API password to contact endpoint will result in 401 response.</span></p>
+    </dd>
+  </dl>
 </div>
 <h2><a class="title-link" name="setup-on-your-smartphone" href="#setup-on-your-smartphone"></a> Setup on your smartphone</h2>
 <p>Install <a href="https://play.google.com/store/apps/details?id=com.mendhak.gpslogger">GPSLogger for Android</a> on your device.</p>

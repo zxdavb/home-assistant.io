@@ -93,22 +93,13 @@
   <li><strong>port</strong> (<em>Optional</em>): The port your hub is configured to listen to. Defaults to <code class="highlighter-rouge">25105</code>.</li>
 </ul>
 <h3><a class="title-link" name="full-configuration" href="#full-configuration"></a> Full configuration</h3>
-<p>The <code class="highlighter-rouge">insteon_local</code> component currently supports both lights (dimmers) and switches. A full configuration may look like so:</p>
+<p>The <code class="highlighter-rouge">insteon_local</code> component currently supports lights (dimmers), switches and fans.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">insteon_local</span><span class="pi">:</span>
   <span class="s">host</span><span class="pi">:</span> <span class="s">YOUR HUB IP</span>
   <span class="s">username</span><span class="pi">:</span> <span class="s">YOUR HUB USERNAME</span>
   <span class="s">password</span><span class="pi">:</span> <span class="s">YOUR HUB PASSWORD</span>
   <span class="s">timeout</span><span class="pi">:</span> <span class="s">10</span>
   <span class="s">port</span><span class="pi">:</span> <span class="s">25105</span>
-
-<span class="s">light</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">insteon_local</span>
-  
-<span class="s">switch</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">insteon_local</span>
-  
-<span class="s">fan</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">insteon_local</span>
 </code></pre>
 </div>
 </article>
@@ -276,6 +267,9 @@
             <a href='/components/netatmo/'>Netatmo</a>
         </li>
         <li>
+            <a href='/components/nuheat/'>NuHeat</a>
+        </li>
+        <li>
             <a href='/components/nuimo_controller/'>Nuimo controller</a>
         </li>
         <li>
@@ -295,6 +289,12 @@
         </li>
         <li>
             <a href='/components/rfxtrx/'>RFXtrx</a>
+        </li>
+        <li>
+            <a href='/components/rainbird/'>Rain Bird</a>
+        </li>
+        <li>
+            <a href='/components/sensor.rainbird/'>Rain Bird Sensor</a>
         </li>
         <li>
             <a href='/components/switch.rainbird/'>Rain Bird Switch</a>
@@ -382,6 +382,9 @@
         </li>
         <li>
             <a href='/components/zoneminder/'>ZoneMinder</a>
+        </li>
+        <li>
+            <a href='/components/deconz/'>deCONZ</a>
         </li>
         <li>
             <a href='/components/ecobee/'>ecobee</a>
