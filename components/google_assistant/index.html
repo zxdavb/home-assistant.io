@@ -97,7 +97,7 @@ To use Google Assistant, your Home Assistant configuration has to be externally 
       <span class="s">aliases</span><span class="pi">:</span>
         <span class="pi">-</span> <span class="s">bright lights</span>
         <span class="pi">-</span> <span class="s">entry lights</span>
-      <span class="s">type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">action.devices.types.LIGHT'</span>
+      <span class="s">type</span><span class="pi">:</span> <span class="s">light</span>
     <span class="s">light.living_room</span><span class="pi">:</span>
       <span class="s">expose</span><span class="pi">:</span> <span class="s">false</span>
 </code></pre>
@@ -161,7 +161,7 @@ To use Google Assistant, your Home Assistant configuration has to be externally 
             </dd>
             <dt><a class="title-link" name="type" href="#type"></a> type</dt>
             <dd>
-              <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Override the type of the entity in Google Assistant. <a href="https://developers.google.com/actions/smarthome/guides/">List of available types</a></span></p>
+              <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Override the domain how Google Assistant has to interpretet the entity. For example, set to <code class="highlighter-rouge">light</code> for a switch entity to have it be handeld as a light.</span></p>
             </dd>
           </dl>
         </dd>
