@@ -86,6 +86,8 @@
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>dos2unix homeassistant/components/notify/kodi.py
 </code></pre>
 </div>
+<h3><a class="title-link" name="file-permissions" href="#file-permissions"></a> File permissions</h3>
+<p>Most files don’t need to the be executable. <code class="highlighter-rouge">0644</code> is fine.</p>
 <h3><a class="title-link" name="dependencies" href="#dependencies"></a> Dependencies</h3>
 <p>A lot of components and platforms depends on third-party Python modules. The dependencies which are stored in the <code class="highlighter-rouge">requirements_*.txt</code> files are tracked by <a href="https://gemnasium.com/github.com/home-assistant/home-assistant">gemnasium</a> and <a href="https://requires.io/github/home-assistant/home-assistant/requirements/?branch=dev">Requires.io</a>.</p>
 <p>If you update the requirements of a component/platform through the <code class="highlighter-rouge">REQUIREMENTS = ['modules-xyz==0.3']</code> entry, run the provided script to update the <code class="highlighter-rouge">requirements_*.txt</code> file(s).</p>
