@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Release-Notes | Home Assistant]]></title>
   <link href="https://home-assistant.io/blog/categories/release-notes/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-01-15T21:41:22+00:00</updated>
+  <updated>2018-01-15T22:35:41+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -24,8 +24,13 @@ Almost a 100 contributors to this release 🎉  That's what you get when you ski
 
 This release contain some breaking changes. Please make sure that you check the section below if you are running into trouble.
 
-There is not much more to tell and I don't want to make something up.
+## <a class='title-link' name='assistant-configs' href='#assistant-configs'></a> Assistant configs 
 
+We made a mistake in the foundation of both the Google Assistant and Alexa integrations: they were storing their config inside customize. This is not the right place and we moved them to be under the components itself. See the breaking changes section on how to migrate.
+
+## <a class='title-link' name='hassio-updates' href='#hassio-updates'></a> Hass.io updates 
+
+Pascal has made it easier to create and restore snapshots for Hass.io by calling the new services. This way it will be easy to automate the creation of a snapshot at night. The updater has also been fixed and will now report on new versions of Hass.io that are available.
 
 ## <a class='title-link' name='new-platforms' href='#new-platforms'></a> New Platforms 
 

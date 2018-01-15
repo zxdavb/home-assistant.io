@@ -75,7 +75,7 @@
   <div class="meta clearfix">
     <time datetime="2018-01-14T18:00:00+00:00" pubdate data-updated="true"><i class="icon-calendar"></i> January 14, 2018</time>
     <span class="byline author vcard"><i class='icon-user'></i> Fabian Affolter</span>
-    <span><i class='icon-time'></i> 21 minutes reading time</span>
+    <span><i class='icon-time'></i> 22 minutes reading time</span>
     <span>
     <i class="icon-tags"></i>
     <ul class="tags unstyled">
@@ -91,7 +91,10 @@
     <p><a href="/components/#version/0.61"><img src="/images/blog/2018-01-0.61/components.png" style="border: 0;box-shadow: none;" /></a></p>
 <p>Almost a 100 contributors to this release 🎉  That’s what you get when you skip a release. It’s a little late but “Happy New Year” and welcome to 0.61 the first release 2018.</p>
 <p>This release contain some breaking changes. Please make sure that you check the section below if you are running into trouble.</p>
-<p>There is not much more to tell and I don’t want to make something up.</p>
+<h2><a class="title-link" name="assistant-configs" href="#assistant-configs"></a> Assistant configs</h2>
+<p>We made a mistake in the foundation of both the Google Assistant and Alexa integrations: they were storing their config inside customize. This is not the right place and we moved them to be under the components itself. See the breaking changes section on how to migrate.</p>
+<h2><a class="title-link" name="hassio-updates" href="#hassio-updates"></a> Hass.io updates</h2>
+<p>Pascal has made it easier to create and restore snapshots for Hass.io by calling the new services. This way it will be easy to automate the creation of a snapshot at night. The updater has also been fixed and will now report on new versions of Hass.io that are available.</p>
 <h2><a class="title-link" name="new-platforms" href="#new-platforms"></a> New Platforms</h2>
 <ul>
   <li>Add Discogs Sensor platform (<a href="https://github.com/thibmaek">@thibmaek</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10957">#10957</a>) (<a href="https://home-assistant.io/components/sensor.discogs/">sensor.discogs docs</a>) (new-platform)</li>
