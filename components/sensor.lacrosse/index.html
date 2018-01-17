@@ -100,13 +100,33 @@
   <dl class="">
     <dt><a class="title-link" name="device" href="#device"></a> device</dt>
     <dd>
-      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The serial baudrate.</span></p>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The serial device.</span></p>
       <p class="default">Default value: /dev/ttyUSB0</p>
     </dd>
     <dt><a class="title-link" name="baud" href="#baud"></a> baud</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Required)</span><span class="description">The serial baudrate.</span></p>
       <p class="default">Default value: 57600</p>
+    </dd>
+    <dt><a class="title-link" name="led" href="#led"></a> led</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Activate or deactivate the Jeelink LED.</span></p>
+    </dd>
+    <dt><a class="title-link" name="frequency" href="#frequency"></a> frequency</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">Initial frequency in 5kHz steps.</span></p>
+    </dd>
+    <dt><a class="title-link" name="datarate" href="#datarate"></a> datarate</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">Set the data rate in kbps. Special values for well-known settings are: <code class="highlighter-rouge">0</code>: 17.241 kbps, <code class="highlighter-rouge">1</code>: 9.579 kbps, <code class="highlighter-rouge">2</code>: 8.842 kbps.</span></p>
+    </dd>
+    <dt><a class="title-link" name="toggle_mask" href="#toggle_mask"></a> toggle_mask</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">The following values can be combined bitwise: <code class="highlighter-rouge">1</code> = 17.241 kbps, <code class="highlighter-rouge">2</code> = 9.579 kbps, <code class="highlighter-rouge">4</code> = 8.842 kbps</span></p>
+    </dd>
+    <dt><a class="title-link" name="toggle_interval" href="#toggle_interval"></a> toggle_interval</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">Enable the toggle mode and set the interval in seconds.</span></p>
     </dd>
     <dt><a class="title-link" name="sensors" href="#sensors"></a> sensors</dt>
     <dd>

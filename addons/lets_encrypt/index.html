@@ -79,11 +79,7 @@
 You should not use this if you are also using the <a href="/addons/duckdns/">DuckDNS add-on</a>. The DuckDNS add-on has integrated Let’s Encrypt support.
 </p>
 <p>Setup and manage a <a href="https://letsencrypt.org/">Let’s Encrypt</a> certificate. This will create a certificate on the first run and will auto-renew if the certificate is within 30 days of expiration.</p>
-<p class="note warning">
-This add-on uses ports 80/443 to verify the certificate request. You will need to stop all other add-ons that also use these ports. If you don’t need a port (like with https you don’t need port 80) you can remove this from network config.
-</p>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"challenge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example@example.com"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"domains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"example.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"mqtt.example.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"hass.example.com"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -91,7 +87,6 @@ This add-on uses ports 80/443 to verify the certificate request. You will need t
 </div>
 <p>Configuration variables:</p>
 <ul>
-  <li><strong>challenge</strong> (<em>Optional</em>): Default it use 443 (‘https’) you can change it to ‘http’ for use port 80.</li>
   <li><strong>email</strong> (<em>Required</em>): Your email address for registration on Let’s Encrypt.</li>
   <li><strong>domains</strong> (<em>Required</em>): A list of domains to create/renew the certificate.</li>
 </ul>
@@ -103,7 +98,7 @@ This add-on uses ports 80/443 to verify the certificate request. You will need t
   <span class="s">ssl_key</span><span class="pi">:</span> <span class="s">/ssl/privkey.pem</span>
 </code></pre>
 </div>
-<p>If you use a other port as <code class="highlighter-rouge">8123</code> or a SSL proxy, change the port number.</p>
+<p>If you use another port such as <code class="highlighter-rouge">8123</code> or a SSL proxy, change the port number.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
