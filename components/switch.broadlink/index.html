@@ -112,7 +112,7 @@
 </ul>
 <p>Information about how to install on Windows can be found <a href="https://home-assistant.io/components/sensor.broadlink/#microsoft-windows-installation">here</a></p>
 <h3><a class="title-link" name="how-to-obtain-irrf-packets" href="#how-to-obtain-irrf-packets"></a> How to obtain IR/RF packets?</h3>
-<p>Choose Call Service from the Developer Tools. Choose the service broadlink/learn_command from the list of <strong>Available services:</strong> and hit <strong>CALL SERVICE</strong>. Press the button on your remote with in 20 seconds. The packet will be printed as a persistent notification in the States page of the web interface.</p>
+<p>Choose Call Service from the Developer Tools. Choose the service <code class="highlighter-rouge">switch.broadlink_learn_command</code> from the list of <strong>Available services:</strong> and hit <strong>CALL SERVICE</strong>. Press the button on your remote with in 20 seconds. The packet will be printed as a persistent notification in the States page of the web interface.</p>
 <p>Example config for <code class="highlighter-rouge">rm</code>, <code class="highlighter-rouge">rm2</code>, <code class="highlighter-rouge">rm_mini</code>, <code class="highlighter-rouge">rm_pro_phicomm</code>, <code class="highlighter-rouge">rm2_home_plus</code>, <code class="highlighter-rouge">rm2_home_plus_gdt</code>, <code class="highlighter-rouge">rm2_pro_plus</code>, <code class="highlighter-rouge">rm2_pro_plus2</code>, <code class="highlighter-rouge">rm2_pro_plus_bl</code> and <code class="highlighter-rouge">rm_mini_shate</code> devices:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">switch</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">broadlink</span>
@@ -183,8 +183,8 @@
       <span class="s">slot_4</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Speaker</span><span class="nv"> </span><span class="s">slot'</span>
 </code></pre>
 </div>
-<h3><a class="title-link" name="service-send_packet" href="#service-send_packet"></a> Service <code class="highlighter-rouge">send_packet</code></h3>
-<p>You can use the service broadlink/send_packet to directly send IR packets without the need to assign a switch entity for each command.</p>
+<h3><a class="title-link" name="service-broadlink_send_packet" href="#service-broadlink_send_packet"></a> Service <code class="highlighter-rouge">broadlink_send_packet</code></h3>
+<p>You can use the service <code class="highlighter-rouge">switch.broadlink_send_packet</code> to directly send IR packets without the need to assign a switch entity for each command.</p>
 <table>
   <thead>
     <tr>
@@ -205,7 +205,7 @@
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">script</span><span class="pi">:</span>
   <span class="s">tv_select_source</span><span class="pi">:</span>
     <span class="s">sequence</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">broadlink.send_packet_192_168_0_107</span>
+      <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">switch.broadlink_send_packet_192_168_0_107</span>
         <span class="s">data</span><span class="pi">:</span>
           <span class="s">packet</span><span class="pi">:</span> 
             <span class="pi">-</span> <span class="s2">"</span><span class="s">JgCMAJSSFDYUNhQ2FBEUERQRFBEUERQ2FDYUNhQRFBEUERQRFBEUERQRFDYUERQRFBEUERQRFDYUNhQRFDYUNhQ2FDYUNhQABfWUkhQ2FDYUNhQRFBEUERQRFBEUNhQ2FDYUERQRFBEUERQRFBEUERQ2FBEUERQRFBEUERQ2FDYUERQ2FDYUNhQ2FDYUAA0FAAAAAAAAAAAAAAAA"</span>

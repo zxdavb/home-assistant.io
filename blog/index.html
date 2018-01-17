@@ -75,7 +75,7 @@
   <div class="meta clearfix">
     <time datetime="2018-01-14T18:00:00+00:00" pubdate data-updated="true"><i class="icon-calendar"></i> January 14, 2018</time>
     <span class="byline author vcard"><i class='icon-user'></i> Fabian Affolter</span>
-    <span><i class='icon-time'></i> 22 minutes reading time</span>
+    <span><i class='icon-time'></i> 23 minutes reading time</span>
     <span>
     <i class="icon-tags"></i>
     <ul class="tags unstyled">
@@ -94,7 +94,20 @@
 <h2><a class="title-link" name="assistant-configs" href="#assistant-configs"></a> Assistant configs</h2>
 <p>We made a mistake in the foundation of both the Google Assistant and Alexa integrations: they were storing their config inside customize. This is not the right place and we moved them to be under the components itself. See the breaking changes section on how to migrate.</p>
 <h2><a class="title-link" name="hassio-updates" href="#hassio-updates"></a> Hass.io updates</h2>
-<p>Pascal has made it easier to create and restore snapshots for Hass.io by calling the new services. This way it will be easy to automate the creation of a snapshot at night. The updater has also been fixed and will now report on new versions of Hass.io that are available.</p>
+<p><a href="https://github.com/pvizeli">@pvizeli</a> has made it easier to create and restore snapshots for Hass.io by calling the new services. This way it will be easy to automate the creation of a snapshot at night. The updater has also been fixed and will now report on new versions of Hass.io that are available.</p>
+<h2><a class="title-link" name="improved-loading-speed" href="#improved-loading-speed"></a> Improved loading speed</h2>
+<p><a href="https://github.com/amelchio">@amelchio</a> has made startup of Home Assistant <em>even</em> faster. All service descriptions are now loaded only when needed by the frontend instead of during startup. This did mean that we had to enforce our service convention. We found a few platforms that didn’t follow this and they have been updated:</p>
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>todoist.new_task -&gt; calendar.todoist_new_task
+
+snapcast.snapcast_snapshot -&gt; media_player.snapcast_snapshot
+snapcast.snapcast_restore -&gt; media_player.snapcast_restore
+
+mopar.remote_command -&gt; sensor.mopar_remote_command
+
+broadlink.learn_command_192_168_0_107 -&gt; switch.broadlink_learn_command_192_168_0_107
+broadlink.send_packet_192_168_0_107 -&gt; switch.broadlink_send_packet_192_168_0_107
+</code></pre>
+</div>
 <h2><a class="title-link" name="new-platforms" href="#new-platforms"></a> New Platforms</h2>
 <ul>
   <li>Add Discogs Sensor platform (<a href="https://github.com/thibmaek">@thibmaek</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10957">#10957</a>) (<a href="https://home-assistant.io/components/sensor.discogs/">sensor.discogs docs</a>) (new-platform)</li>
@@ -108,6 +121,14 @@
   <li>Add new iGlo component (<a href="https://github.com/jesserockz">@jesserockz</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11171">#11171</a>) (<a href="https://home-assistant.io/components/light.iglo/">light.iglo docs</a>) (new-platform)</li>
   <li>Add Dark Sky weather component (<a href="https://github.com/DanNixon">@DanNixon</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11435">#11435</a>) (<a href="https://home-assistant.io/components/weather.darksky/">weather.darksky docs</a>) (new-platform)</li>
   <li>Coinbase.com sensor platform (<a href="https://github.com/nkgilley">@nkgilley</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11036">#11036</a>) (<a href="https://home-assistant.io/components/coinbase/">coinbase docs</a>) (<a href="https://home-assistant.io/components/sensor.coinbase/">sensor.coinbase docs</a>) (new-platform)</li>
+</ul>
+<h2><a class="title-link" name="release-0611---january-16" href="#release-0611---january-16"></a> Release 0.61.1 - January 16</h2>
+<ul>
+  <li>Fix zha color probe (<a href="https://github.com/rcloran">@rcloran</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11670">#11670</a>) (<a href="https://home-assistant.io/components/zha/">zha docs</a>) (<a href="https://home-assistant.io/components/light.zha/">light.zha docs</a>)</li>
+  <li>Move several local services to their right domain (<a href="https://github.com/amelchio">@amelchio</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11677">#11677</a>) (<a href="https://home-assistant.io/components/calendar.todoist/">calendar.todoist docs</a>) (<a href="https://home-assistant.io/components/media_player.snapcast/">media_player.snapcast docs</a>) (<a href="https://home-assistant.io/components/media_player.soundtouch/">media_player.soundtouch docs</a>) (<a href="https://home-assistant.io/components/sensor.mopar/">sensor.mopar docs</a>) (<a href="https://home-assistant.io/components/switch.broadlink/">switch.broadlink docs</a>) (<a href="https://home-assistant.io/components/switch.scsgate/">switch.scsgate docs</a>) (breaking change)</li>
+  <li>Rfxtrx fix (<a href="https://github.com/danielhiversen">@danielhiversen</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11678">#11678</a>) (<a href="https://home-assistant.io/components/rfxtrx/">rfxtrx docs</a>) (<a href="https://home-assistant.io/components/binary_sensor.rfxtrx/">binary_sensor.rfxtrx docs</a>)</li>
+  <li>History order bugfix and opt-in option (<a href="https://github.com/rwa">@rwa</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11686">#11686</a>) (<a href="https://home-assistant.io/components/history/">history docs</a>)</li>
+  <li>Fix purge with MariaDB / MySQL (<a href="https://github.com/tinloaf">@tinloaf</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11713">#11713</a>)</li>
 </ul>
 <h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>
 <p>…don’t hesitate to use our very active <a href="https://community.home-assistant.io/">forums</a> or join us for a little <a href="https://discord.gg/c5DvZ4e">chat</a>. The release notes have comments enabled but it’s preferred if you use the former communication channels. Thanks.</p>

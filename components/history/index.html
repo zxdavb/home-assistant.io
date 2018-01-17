@@ -141,6 +141,18 @@ Events are saved in a local database. Google Graphs is used to draw the graph. D
      <span class="pi">-</span> <span class="s">sensor.date</span>
 </code></pre>
 </div>
+<p>If you’d like the order of display of the sensors to follow the way
+they are listed in the included entity list, you can set the flag
+<code class="highlighter-rouge">use_include_order</code> to True.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry using specified entity display order</span>
+<span class="s">history</span><span class="pi">:</span>
+  <span class="s">use_include_order</span><span class="pi">:</span> <span class="s">True</span>
+  <span class="s">include</span><span class="pi">:</span>
+    <span class="s">entities</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">sun.sun</span>
+      <span class="pi">-</span> <span class="s">light.front_porch</span>
+</code></pre>
+</div>
 <h4><a class="title-link" name="implementation-details" href="#implementation-details"></a> Implementation details</h4>
 <p>The history is stored in a SQLite database <code class="highlighter-rouge">home-assistant_v2.db</code> within your configuration directory if the <code class="highlighter-rouge">recorder</code> component is not set up differently.</p>
 <ul>
