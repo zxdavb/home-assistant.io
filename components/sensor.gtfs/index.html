@@ -82,6 +82,7 @@
   <li><a href="http://www.bart.gov/schedules/developers/gtfs">Metropolitan Transit Authority of New York City (MTA)</a> - Provides separate data feeds for subway, bus, LIRR and Metro-North of the greater New York City metropolitan region.</li>
   <li><a href="http://www.gbrail.info/">GBRail.info</a> - Provides data feeds for most if not all rail companies in Britain.</li>
   <li><a href="http://www.fahrplanfelder.ch/en/timetable-data.html">Official Timetable Switzerland</a> - The official timetable data for Switzerland.</li>
+  <li><a href="https://www.data.vic.gov.au/data/dataset/ptv-timetable-and-geographic-information-2015-gtfs">Public Transport Victoria (Australia)</a> - Official PTV GTFS dataset.</li>
 </ul>
 <p>You need to download a GTFS ZIP file and put it into a folder named <code class="highlighter-rouge">gtfs</code> in your configuration directory. For ease of use, it is suggested that you rename the file to just the agency/data source name (i.e. <code class="highlighter-rouge">bart.zip</code> instead of <code class="highlighter-rouge">google_transit_20160328_v1.zip</code>). You can also unzip and place a folder in the <code class="highlighter-rouge">gtfs</code> folder.</p>
 <p>The data will be converted into a queryable format and saved as a SQLite3 database alongside the source data. The sensor will check for the existence of this SQLite3 data at every startup and will re-import the ZIP/Folder if none is found.</p>
