@@ -77,26 +77,39 @@
   <hr class="divider">
   <p>Home Assistant can run as a daemon within init.d with the script below.</p>
 <h3><a class="title-link" name="1-copy-script" href="#1-copy-script"></a> 1. Copy script</h3>
-<p>Copy the script at the end of this page to <code class="highlighter-rouge">/etc/init.d/hass-daemon</code>.</p>
+<p>Copy either the deamon script or the Python environment scrip at the end of this page to <code class="highlighter-rouge">/etc/init.d/hass-daemon</code> depending on your installation.</p>
 <p>After that, set the script to be executable:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo chmod +x /etc/init.d/hass-daemon
 </code></pre>
 </div>
 <h3><a class="title-link" name="2-select-a-user" href="#2-select-a-user"></a> 2. Select a user.</h3>
 <p>Create or pick a user that the Home Assistant daemon will run under. Update script to set <code class="highlighter-rouge">RUN_AS</code> to the username that should be used to execute hass.</p>
-<h3><a class="title-link" name="3-change-hass-executable-if-required" href="#3-change-hass-executable-if-required"></a> 3. Change hass executable if required.</h3>
-<p>Some installation environments may require a change in the Home Assistant executable <code class="highlighter-rouge">hass</code>. Update script to set <code class="highlighter-rouge">HASS_BIN</code> to the appropriate <code class="highlighter-rouge">hass</code> executable path.</p>
-<h3><a class="title-link" name="4-register-the-daemon-with-linux" href="#4-register-the-daemon-with-linux"></a> 4. Register the daemon with Linux</h3>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo update-rc.d hass-daemon defaults
+<h3><a class="title-link" name="3-change-hass-executable-and-other-variables-if-required" href="#3-change-hass-executable-and-other-variables-if-required"></a> 3. Change hass executable and other variables if required.</h3>
+<p>Some installation environments may require a change in the Home Assistant executable <code class="highlighter-rouge">hass</code>. Update script to set <code class="highlighter-rouge">HASS_BIN</code> to the appropriate <code class="highlighter-rouge">hass</code> executable path. Please also check the other variables for the appropriate value. In general the defaults should work</p>
+<h3><a class="title-link" name="4-install-this-service" href="#4-install-this-service"></a> 4. Install this service</h3>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo service hass-daemon install
 </code></pre>
 </div>
-<h3><a class="title-link" name="5-install-this-service" href="#5-install-this-service"></a> 5. Install this service</h3>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo service hass-daemon install
+<h3><a class="title-link" name="5-create-logrotate-rule" href="#5-create-logrotate-rule"></a> 5. Create logrotate rule</h3>
+<p>This logrotate script at <code class="highlighter-rouge">/etc/logrotate.d/homeassistant</code> will create an outage of a few seconds every week at night. If you do not want this add <code class="highlighter-rouge">--log-rotate-days 7</code> to the <code class="highlighter-rouge">FLAGS</code> variable in the init script.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>/var/log/homeassistant/home-assistant.log
+{
+        rotate 7
+        daily
+        missingok
+        notifempty
+        delaycompress
+        compress
+        postrotate
+                invoke-rc.d hass-daemon restart &gt; /dev/null
+        endscript
+}
+
 </code></pre>
 </div>
 <h3><a class="title-link" name="6-restart-machine" href="#6-restart-machine"></a> 6. Restart Machine</h3>
 <p>That’s it. Restart your machine and Home Assistant should start automatically.</p>
-<p>If HA does not start, check the log file output for errors at <code class="highlighter-rouge">/var/opt/homeassistant/home-assistant.log</code></p>
+<p>If HA does not start, check the log file output for errors at <code class="highlighter-rouge">/var/log/homeassistant/home-assistant.log</code></p>
 <h3><a class="title-link" name="extra-running-commands-before-hass-executes" href="#extra-running-commands-before-hass-executes"></a> Extra: Running commands before hass executes</h3>
 <p>If any commands need to run before executing hass (like loading a virtual environment), put them in PRE_EXEC. This command must end with a semicolon.</p>
 <h3><a class="title-link" name="daemon-script" href="#daemon-script"></a> Daemon script</h3>
@@ -118,75 +131,108 @@
 <span class="nv">RUN_AS</span><span class="o">=</span><span class="s2">"USER"</span>
 <span class="nv">PID_FILE</span><span class="o">=</span><span class="s2">"/var/run/hass.pid"</span>
 <span class="nv">CONFIG_DIR</span><span class="o">=</span><span class="s2">"/var/opt/homeassistant"</span>
-<span class="nv">FLAGS</span><span class="o">=</span><span class="s2">"-v --config </span><span class="nv">$CONFIG_DIR</span><span class="s2"> --pid-file </span><span class="nv">$PID_FILE</span><span class="s2"> --daemon"</span>
-<span class="gp">REDIRECT="&gt; </span><span class="nv">$CONFIG_DIR</span>/home-assistant.log 2&gt;&amp;1<span class="s2">"
+<span class="nv">LOG_DIR</span><span class="o">=</span><span class="s2">"/var/log/homeassistant"</span>
+<span class="nv">LOG_FILE</span><span class="o">=</span><span class="s2">"</span><span class="nv">$LOG_DIR</span><span class="s2">/home-assistant.log"</span>
+<span class="nv">FLAGS</span><span class="o">=</span><span class="s2">"-v --config </span><span class="nv">$CONFIG_DIR</span><span class="s2"> --pid-file </span><span class="nv">$PID_FILE</span><span class="s2"> --log-file </span><span class="nv">$LOG_FILE</span><span class="s2"> --daemon"</span>
 
-start() {
-  if [ -f </span><span class="nv">$PID_FILE</span><span class="s2"> ] &amp;&amp; kill -0 </span><span class="k">$(</span>cat <span class="nv">$PID_FILE</span><span class="k">)</span><span class="s2"> 2&gt; /dev/null; then
-    echo 'Service already running' &gt;&amp;2
-    return 1
-  fi
-  echo 'Starting service…' &gt;&amp;2
-  local CMD="</span><span class="nv">$PRE_EXEC</span> <span class="nv">$HASS_BIN</span> <span class="nv">$FLAGS</span> <span class="nv">$REDIRECT</span>;<span class="s2">"
-  su -c "</span><span class="nv">$CMD</span><span class="s2">" </span><span class="nv">$RUN_AS</span><span class="s2">
-  echo 'Service started' &gt;&amp;2
-}
 
-stop() {
-    if [ ! -f "</span><span class="nv">$PID_FILE</span><span class="s2">" ] || ! kill -0 </span><span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span><span class="s2"> 2&gt; /dev/null; then
-    echo 'Service not running' &gt;&amp;2
-    return 1
-  fi
-  echo 'Stopping service…' &gt;&amp;2
-  kill </span><span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span><span class="s2">
-  while ps -p </span><span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span><span class="s2"> &gt; /dev/null 2&gt;&amp;1; do sleep 1;done;
-  echo 'Service stopped' &gt;&amp;2
-}
+start<span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"It seems you did not run"</span>
+    <span class="nb">echo</span> -e <span class="s2">"</span><span class="se">\t</span><span class="s2">service hass-daemon install"</span>
+    <span class="k">return </span>1
+  <span class="k">fi
+  if</span> <span class="o">[</span> -f <span class="nv">$PID_FILE</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">kill</span> -0 <span class="k">$(</span>cat <span class="nv">$PID_FILE</span><span class="k">)</span> 2&gt; /dev/null; <span class="k">then
+    </span><span class="nb">echo</span> <span class="s1">'Service already running'</span> &gt;&amp;2
+    <span class="k">return </span>1
+  <span class="k">fi
+  </span><span class="nb">echo</span> -n <span class="s1">'Starting service… '</span> &gt;&amp;2
+  <span class="nb">local </span><span class="nv">CMD</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PRE_EXEC</span><span class="s2"> </span><span class="nv">$HASS_BIN</span><span class="s2"> </span><span class="nv">$FLAGS</span><span class="s2">;"</span>
+  su -s /bin/bash -c <span class="s2">"</span><span class="nv">$CMD</span><span class="s2">"</span> <span class="nv">$RUN_AS</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>; <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"Failed"</span> &gt;&amp;2
+  <span class="k">else
+    </span><span class="nb">echo</span> <span class="s1">'Done'</span> &gt;&amp;2
+  <span class="k">fi</span>
+<span class="o">}</span>
 
-install() {
-    echo "</span>Installing Home Assistant Daemon <span class="o">(</span>hass-daemon<span class="o">)</span><span class="s2">"
-    echo "</span>999999<span class="s2">" &gt; </span><span class="nv">$PID_FILE</span><span class="s2">
-    chown </span><span class="nv">$RUN_AS</span><span class="s2"> </span><span class="nv">$PID_FILE</span><span class="s2">
-    mkdir -p </span><span class="nv">$CONFIG_DIR</span><span class="s2">
-    chown </span><span class="nv">$RUN_AS</span><span class="s2"> </span><span class="nv">$CONFIG_DIR</span><span class="s2">
-}
+stop<span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span> <span class="o">]</span> <span class="o">||</span> ! <span class="nb">kill</span> -0 <span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span> 2&gt; /dev/null; <span class="k">then
+    </span><span class="nb">echo</span> <span class="s1">'Service not running'</span> &gt;&amp;2
+    <span class="k">return </span>1
+  <span class="k">fi
+  </span><span class="nb">echo</span> -n <span class="s1">'Stopping service… '</span> &gt;&amp;2
+  <span class="nb">kill</span> <span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span>
+  <span class="k">while </span>ps -p <span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span> &gt; /dev/null 2&gt;&amp;1; <span class="k">do </span>sleep 1;done;
+  rm -f <span class="nv">$PID_FILE</span>
+  <span class="nb">echo</span> <span class="s1">'Done'</span> &gt;&amp;2
+<span class="o">}</span>
 
-uninstall() {
-  echo -n "</span>Are you really sure you want to uninstall this service? That cannot be undone. <span class="o">[</span>yes|No] <span class="s2">"
-  local SURE
-  read SURE
-  if [ "</span><span class="nv">$SURE</span><span class="s2">" = "</span>yes<span class="s2">" ]; then
-    stop
-    rm -fv "</span><span class="nv">$PID_FILE</span><span class="s2">"
-    echo "</span>Notice: The config directory has not been removed<span class="s2">"
-    echo </span><span class="nv">$CONFIG_DIR</span><span class="s2">
+install<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"Installing Home Assistant Daemon (hass-daemon)"</span>
+  update-rc.d hass-daemon defaults
+  create_piddir
+  mkdir -p <span class="nv">$CONFIG_DIR</span>
+  chown <span class="nv">$RUN_AS</span> <span class="nv">$CONFIG_DIR</span>
+  mkdir -p <span class="nv">$LOG_DIR</span>
+  chown <span class="nv">$RUN_AS</span> <span class="nv">$LOG_DIR</span>
+<span class="o">}</span>
+
+uninstall<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"Are you really sure you want to uninstall this service? The INIT script will"</span>
+  <span class="nb">echo</span> -n <span class="s2">"also be deleted! That cannot be undone. [yes|No] "</span>
+  <span class="nb">local </span>SURE
+  <span class="nb">read </span>SURE
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$SURE</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"yes"</span> <span class="o">]</span>; <span class="k">then
+    </span>stop
+    remove_piddir
+    <span class="nb">echo</span> <span class="s2">"Notice: The config directory has not been removed"</span>
+    <span class="nb">echo</span> <span class="nv">$CONFIG_DIR</span>
+    <span class="nb">echo</span> <span class="s2">"Notice: The log directory has not been removed"</span>
+    <span class="nb">echo</span> <span class="nv">$LOG_DIR</span>
     update-rc.d -f hass-daemon remove
-    rm -fv "</span><span class="nv">$0</span><span class="s2">"
-    echo "</span>Home Assistant Daemon has been removed. Home Assistant is still installed.<span class="s2">"
-  fi
-}
+    rm -fv <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span>
+    <span class="nb">echo</span> <span class="s2">"Home Assistant Daemon has been removed. Home Assistant is still installed."</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
 
-case "</span><span class="nv">$1</span><span class="s2">" in
-  start)
+create_piddir<span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+    </span>mkdir -p <span class="nv">$PID_DIR</span>
+    chown <span class="nv">$RUN_AS</span> <span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">"</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+
+remove_piddir<span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> -d <span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+    if</span> <span class="o">[</span> -e <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+      </span>rm -fv <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span>
+    <span class="k">fi
+    </span>rmdir -fv <span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">"</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="k">case</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="k">in
+  </span>start<span class="p">)</span>
     start
-    ;;
-  stop)
+    <span class="p">;;</span>
+  stop<span class="p">)</span>
     stop
-    ;;
-  install)
+    <span class="p">;;</span>
+  install<span class="p">)</span>
     install
-    ;;
-  uninstall)
+    <span class="p">;;</span>
+  uninstall<span class="p">)</span>
     uninstall
-    ;;
-  restart)
+    <span class="p">;;</span>
+  restart<span class="p">)</span>
     stop
     start
-    ;;
-  *)
-    echo "</span>Usage: <span class="nv">$0</span> <span class="o">{</span>start|stop|restart|install|uninstall<span class="o">}</span><span class="s2">"
-esac
-</span></code></pre>
+    <span class="p">;;</span>
+  <span class="k">*</span><span class="p">)</span>
+    <span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart|install|uninstall}"</span>
+<span class="k">esac</span>
+</code></pre>
 </div>
 <h3><a class="title-link" name="python-virtual-environment" href="#python-virtual-environment"></a> Python virtual environment</h3>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
@@ -201,81 +247,114 @@ esac
 
 <span class="c"># /etc/init.d Service Script for Home Assistant</span>
 <span class="c"># Created with: https://gist.github.com/naholyr/4275302#file-new-service-sh</span>
-<span class="nv">PRE_EXEC</span><span class="o">=</span><span class="s2">"cd /srv/homeassistant &amp;&amp; python3 -m venv . &amp;&amp; source bin/activate &amp;&amp;"</span>
+<span class="nv">PRE_EXEC</span><span class="o">=</span><span class="s2">"cd /srv/homeassistant; python3 -m venv .; source bin/activate;"</span>
 <span class="c"># Typically /usr/bin/hass</span>
 <span class="nv">HASS_BIN</span><span class="o">=</span><span class="s2">"hass"</span>
-<span class="nv">RUN_AS</span><span class="o">=</span><span class="s2">"USER"</span>
-<span class="nv">PID_FILE</span><span class="o">=</span><span class="s2">"/var/run/hass.pid"</span>
-<span class="nv">CONFIG_DIR</span><span class="o">=</span><span class="s2">"/home/USER/.homeassistant"</span>
-<span class="nv">FLAGS</span><span class="o">=</span><span class="s2">"-v --config </span><span class="nv">$CONFIG_DIR</span><span class="s2"> --pid-file </span><span class="nv">$PID_FILE</span><span class="s2"> --daemon"</span>
-<span class="gp">REDIRECT="&gt; </span><span class="nv">$CONFIG_DIR</span>/home-assistant.log 2&gt;&amp;1<span class="s2">"
+<span class="nv">RUN_AS</span><span class="o">=</span><span class="s2">"homeassistant"</span>
+<span class="nv">PID_DIR</span><span class="o">=</span><span class="s2">"/var/run/hass"</span>
+<span class="nv">PID_FILE</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">/hass.pid"</span>
+<span class="nv">CONFIG_DIR</span><span class="o">=</span><span class="s2">"/home/</span><span class="nv">$RUN_AS</span><span class="s2">/.homeassistant"</span>
+<span class="nv">LOG_DIR</span><span class="o">=</span><span class="s2">"/var/log/homeassistant"</span>
+<span class="nv">LOG_FILE</span><span class="o">=</span><span class="s2">"</span><span class="nv">$LOG_DIR</span><span class="s2">/home-assistant.log"</span>
+<span class="nv">FLAGS</span><span class="o">=</span><span class="s2">"-v --config </span><span class="nv">$CONFIG_DIR</span><span class="s2"> --pid-file </span><span class="nv">$PID_FILE</span><span class="s2"> --log-file </span><span class="nv">$LOG_FILE</span><span class="s2"> --daemon"</span>
 
-start() {
-  if [ -f </span><span class="nv">$PID_FILE</span><span class="s2"> ] &amp;&amp; kill -0 </span><span class="k">$(</span>cat <span class="nv">$PID_FILE</span><span class="k">)</span><span class="s2"> 2&gt; /dev/null; then
-    echo 'Service already running' &gt;&amp;2
-    return 1
-  fi
-  echo 'Starting service…' &gt;&amp;2
-  local CMD="</span><span class="nv">$PRE_EXEC</span> <span class="nv">$HASS_BIN</span> <span class="nv">$FLAGS</span> <span class="nv">$REDIRECT</span>;<span class="s2">"
-  su -s /bin/bash -c "</span><span class="nv">$CMD</span><span class="s2">" </span><span class="nv">$RUN_AS</span><span class="s2">
-  echo 'Service started' &gt;&amp;2
-}
+start<span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"It seems you did not run"</span>
+    <span class="nb">echo</span> -e <span class="s2">"</span><span class="se">\t</span><span class="s2">service hass-daemon install"</span>
+    <span class="k">return </span>1
+  <span class="k">fi
+  if</span> <span class="o">[</span> -f <span class="nv">$PID_FILE</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">kill</span> -0 <span class="k">$(</span>cat <span class="nv">$PID_FILE</span><span class="k">)</span> 2&gt; /dev/null; <span class="k">then
+    </span><span class="nb">echo</span> <span class="s1">'Service already running'</span> &gt;&amp;2
+    <span class="k">return </span>1
+  <span class="k">fi
+  </span><span class="nb">echo</span> -n <span class="s1">'Starting service… '</span> &gt;&amp;2
+  <span class="nb">local </span><span class="nv">CMD</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PRE_EXEC</span><span class="s2"> </span><span class="nv">$HASS_BIN</span><span class="s2"> </span><span class="nv">$FLAGS</span><span class="s2">;"</span>
+  su -s /bin/bash -c <span class="s2">"</span><span class="nv">$CMD</span><span class="s2">"</span> <span class="nv">$RUN_AS</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>; <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"Failed"</span> &gt;&amp;2
+  <span class="k">else
+    </span><span class="nb">echo</span> <span class="s1">'Done'</span> &gt;&amp;2
+  <span class="k">fi</span>
+<span class="o">}</span>
 
-stop() {
-    if [ ! -f "</span><span class="nv">$PID_FILE</span><span class="s2">" ] || ! kill -0 </span><span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span><span class="s2"> 2&gt; /dev/null; then
-    echo 'Service not running' &gt;&amp;2
-    return 1
-  fi
-  echo 'Stopping service…' &gt;&amp;2
-  kill </span><span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span><span class="s2">
-  while ps -p </span><span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span><span class="s2"> &gt; /dev/null 2&gt;&amp;1; do sleep 1;done;
-  echo 'Service stopped' &gt;&amp;2
-}
+stop<span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span> <span class="o">]</span> <span class="o">||</span> ! <span class="nb">kill</span> -0 <span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span> 2&gt; /dev/null; <span class="k">then
+    </span><span class="nb">echo</span> <span class="s1">'Service not running'</span> &gt;&amp;2
+    <span class="k">return </span>1
+  <span class="k">fi
+  </span><span class="nb">echo</span> -n <span class="s1">'Stopping service… '</span> &gt;&amp;2
+  <span class="nb">kill</span> <span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span>
+  <span class="k">while </span>ps -p <span class="k">$(</span>cat <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span> &gt; /dev/null 2&gt;&amp;1; <span class="k">do </span>sleep 1;done;
+  rm -f <span class="nv">$PID_FILE</span>
+  <span class="nb">echo</span> <span class="s1">'Done'</span> &gt;&amp;2
+<span class="o">}</span>
 
-install() {
-    echo "</span>Installing Home Assistant Daemon <span class="o">(</span>hass-daemon<span class="o">)</span><span class="s2">"
-    echo "</span>999999<span class="s2">" &gt; </span><span class="nv">$PID_FILE</span><span class="s2">
-    chown </span><span class="nv">$RUN_AS</span><span class="s2"> </span><span class="nv">$PID_FILE</span><span class="s2">
-    mkdir -p </span><span class="nv">$CONFIG_DIR</span><span class="s2">
-    chown </span><span class="nv">$RUN_AS</span><span class="s2"> </span><span class="nv">$CONFIG_DIR</span><span class="s2">
-}
+install<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"Installing Home Assistant Daemon (hass-daemon)"</span>
+  update-rc.d hass-daemon defaults
+  create_piddir
+  mkdir -p <span class="nv">$CONFIG_DIR</span>
+  chown <span class="nv">$RUN_AS</span> <span class="nv">$CONFIG_DIR</span>
+  mkdir -p <span class="nv">$LOG_DIR</span>
+  chown <span class="nv">$RUN_AS</span> <span class="nv">$LOG_DIR</span>
+<span class="o">}</span>
 
-uninstall() {
-  echo -n "</span>Are you really sure you want to uninstall this service? That cannot be undone. <span class="o">[</span>yes|No] <span class="s2">"
-  local SURE
-  read SURE
-  if [ "</span><span class="nv">$SURE</span><span class="s2">" = "</span>yes<span class="s2">" ]; then
-    stop
-    rm -fv "</span><span class="nv">$PID_FILE</span><span class="s2">"
-    echo "</span>Notice: The config directory has not been removed<span class="s2">"
-    echo </span><span class="nv">$CONFIG_DIR</span><span class="s2">
+uninstall<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"Are you really sure you want to uninstall this service? The INIT script will"</span>
+  <span class="nb">echo</span> -n <span class="s2">"also be deleted! That cannot be undone. [yes|No] "</span>
+  <span class="nb">local </span>SURE
+  <span class="nb">read </span>SURE
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$SURE</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"yes"</span> <span class="o">]</span>; <span class="k">then
+    </span>stop
+    remove_piddir
+    <span class="nb">echo</span> <span class="s2">"Notice: The config directory has not been removed"</span>
+    <span class="nb">echo</span> <span class="nv">$CONFIG_DIR</span>
+    <span class="nb">echo</span> <span class="s2">"Notice: The log directory has not been removed"</span>
+    <span class="nb">echo</span> <span class="nv">$LOG_DIR</span>
     update-rc.d -f hass-daemon remove
-    rm -fv "</span><span class="nv">$0</span><span class="s2">"
-    echo "</span>Home Assistant Daemon has been removed. Home Assistant is still installed.<span class="s2">"
-  fi
-}
+    rm -fv <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span>
+    <span class="nb">echo</span> <span class="s2">"Home Assistant Daemon has been removed. Home Assistant is still installed."</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
 
-case "</span><span class="nv">$1</span><span class="s2">" in
-  start)
+create_piddir<span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+    </span>mkdir -p <span class="nv">$PID_DIR</span>
+    chown <span class="nv">$RUN_AS</span> <span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">"</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+
+remove_piddir<span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> -d <span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+    if</span> <span class="o">[</span> -e <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+      </span>rm -fv <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span>
+    <span class="k">fi
+    </span>rmdir -fv <span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">"</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="k">case</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="k">in
+  </span>start<span class="p">)</span>
     start
-    ;;
-  stop)
+    <span class="p">;;</span>
+  stop<span class="p">)</span>
     stop
-    ;;
-  install)
+    <span class="p">;;</span>
+  install<span class="p">)</span>
     install
-    ;;
-  uninstall)
+    <span class="p">;;</span>
+  uninstall<span class="p">)</span>
     uninstall
-    ;;
-  restart)
+    <span class="p">;;</span>
+  restart<span class="p">)</span>
     stop
     start
-    ;;
-  *)
-    echo "</span>Usage: <span class="nv">$0</span> <span class="o">{</span>start|stop|restart|install|uninstall<span class="o">}</span><span class="s2">"
-esac
-</span></code></pre>
+    <span class="p">;;</span>
+  <span class="k">*</span><span class="p">)</span>
+    <span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart|install|uninstall}"</span>
+<span class="k">esac</span>
+</code></pre>
 </div>
 </article>
         </div>
