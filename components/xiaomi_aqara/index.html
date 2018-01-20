@@ -339,6 +339,21 @@
       <span class="s">gw_mac</span><span class="pi">:</span> <span class="s">xxxxxxxxxxxx</span>
 </code></pre>
 </div>
+<h3><a class="title-link" name="double-click-on-smart-button" href="#double-click-on-smart-button"></a> Double Click on Smart Button</h3>
+<p>This example toggles the living room lamp on a double click of the button.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">alias</span><span class="pi">:</span> <span class="s">Double Click to toggle living room lamp</span>
+  <span class="s">trigger</span><span class="pi">:</span>
+    <span class="s">platform</span><span class="pi">:</span> <span class="s">event</span>
+    <span class="s">event_type</span><span class="pi">:</span> <span class="s">click</span>
+    <span class="s">event_data</span><span class="pi">:</span>
+      <span class="s">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.switch_158d000xxxxxc2</span>
+      <span class="s">click_type</span><span class="pi">:</span> <span class="s">double</span>
+  <span class="s">action</span><span class="pi">:</span>
+    <span class="s">service</span><span class="pi">:</span> <span class="s">light.toggle</span>
+    <span class="s">data</span><span class="pi">:</span>
+      <span class="s">entity_id</span><span class="pi">:</span> <span class="s">light.living_room_lamp</span>
+</code></pre>
+</div>
 <h2><a class="title-link" name="troubleshooting" href="#troubleshooting"></a> Troubleshooting</h2>
 <h3><a class="title-link" name="initial-setup-problem" href="#initial-setup-problem"></a> Initial setup problem</h3>
 <p>If you run into trouble initializing the gateway with your app, try another smartphone. E.g., it didn’t work on an OnePlus 3, but it worked with a Nexus 5.</p>
