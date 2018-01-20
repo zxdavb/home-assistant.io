@@ -77,7 +77,7 @@
   <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">server-sent events</a> feature is a one-way channel from your Home Assistant server to a client which is acting as a consumer. For bi-directional communication check the <a href="/developers/rest_api/">RESTful API</a> and <a href="/developers/python_api/">Python API</a>.</p>
 <p>The URI that is generating the data is <code class="highlighter-rouge">/api/stream</code>.</p>
 <p>A requirement on the client-side is existing support for the <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventSource">EventSource</a> interface.</p>
-<p>There are various ways to access the stream. One is <code class="highlighter-rouge">curl</code>:</p>
+<p>There are various ways to access the stream. If you have not set an <code class="highlighter-rouge">api_password</code> in the <a href="/components/http/"><code class="highlighter-rouge">http</code></a> section of your <code class="highlighter-rouge">configuration.yaml</code> file then you use your modern browser to read the messages. A command-line option is <code class="highlighter-rouge">curl</code>:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl -X GET -H <span class="s2">"x-ha-access: YOUR_PASSWORD"</span> <span class="se">\</span>
        -H <span class="s2">"Content-Type: application/json"</span> http://localhost:8123/api/stream
 </code></pre>
