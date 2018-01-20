@@ -79,25 +79,62 @@
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">device_tracker</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">unifi</span>
-    <span class="s">username</span><span class="pi">:</span> <span class="s">YOUR_ADMIN_USERNAME</span>
-    <span class="s">password</span><span class="pi">:</span> <span class="s">YOUR_ADMIN_PASSWORD</span>
+    <span class="s">username</span><span class="pi">:</span> <span class="s">USERNAME</span>
+    <span class="s">password</span><span class="pi">:</span> <span class="s">PASSWORD</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>host</strong> (<em>Optional</em>): The hostname or IP address of your controller. Defaults to <code class="highlighter-rouge">localhost</code>.</li>
-  <li><strong>port</strong> (<em>Optional</em>): The port of your controller’s web interface. Defaults to <code class="highlighter-rouge">8443</code>.</li>
-  <li><strong>username</strong> (<em>Required</em>: The username of an user with administrative privileges, usually <code class="highlighter-rouge">admin</code>.</li>
-  <li><strong>password</strong> (<em>Required</em>): The password for your given admin account.</li>
-  <li><strong>site_id</strong> (<em>Optional</em>): Allows you to specify a <code class="highlighter-rouge">site_id</code> for device tracking. Defaults to <code class="highlighter-rouge">default</code>. Found in the URL of the controller (i.e. https://CONTROLLER:PORT/manage/site/SITE_ID/dashboard).</li>
-  <li><strong>verify_ssl</strong> (<em>Optional</em>): Controls if the SSL certificate running on your Unifi webserver must be trusted by a known Certificate Authority on the server running Home Assistant. Defaults to ‘True’ but can also be a value that points to your custom cert “path/to/custom_cert.pem”.</li>
-  <li><strong>detection_time</strong> (<em>Optional</em>): The Unifi component will only return devices that have been seen by the controller in the last 180 seconds. You can adjust this threshold with this variable and accepts seconds or <code class="highlighter-rouge">00:00:00</code> time formats.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="username" href="#username"></a> username</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">A user on the controller</span></p>
+    </dd>
+    <dt><a class="title-link" name="password" href="#password"></a> password</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The password for the account</span></p>
+    </dd>
+    <dt><a class="title-link" name="host" href="#host"></a> host</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The hostname or IP address of your controller</span></p>
+      <p class="default">Default value: localhost</p>
+    </dd>
+    <dt><a class="title-link" name="port" href="#port"></a> port</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">The port of your controller’s web interface</span></p>
+      <p class="default">Default value: 8443</p>
+    </dd>
+    <dt><a class="title-link" name="site_id" href="#site_id"></a> site_id</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">For multisite installations, you can specify <code class="highlighter-rouge">site_id</code> to specify which is used</span></p>
+      <p class="default">Default value: default</p>
+    </dd>
+    <dt><a class="title-link" name="verify_ssl" href="#verify_ssl"></a> verify_ssl</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean or filename">boolean or filename</span>)</span><span class="required">(Optional)</span><span class="description">Whether to do strict validation on SSL certificates of the Unifi controller. This can be true/false or the path to a locally trusted certificate to use for verification (i.e. “/path/to/custom_cert.pm”)</span></p>
+      <p class="default">Default value: true</p>
+    </dd>
+    <dt><a class="title-link" name="detection_time" href="#detection_time"></a> detection_time</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">How long since the last seen time before the device is marked away, specified in seconds.</span></p>
+      <p class="default">Default value: 300</p>
+    </dd>
+  </dl>
+</div>
 <p>See the <a href="/components/device_tracker/">device tracker component page</a> for instructions how to configure the people to be tracked.</p>
-<p class="note">
-If you decide to install the Unifi Controller on the same system as your Home Assistant, be aware there may be overlap in ports if you have the MQTT component as well.
-<a href="https://github.com/home-assistant/home-assistant/issues/10507">Related Issue</a>
-</p>
+<h3><a class="title-link" name="configuring-users" href="#configuring-users"></a> Configuring Users</h3>
+<p>The Unifi controller allows you to create multiple users on it besides
+the main administrator. It is recommended that you create a limited
+user that has <code class="highlighter-rouge">read-only</code> permissions for the Unifi device tracker.</p>
+<h3><a class="title-link" name="conflicts-with-mqtt" href="#conflicts-with-mqtt"></a> Conflicts with MQTT</h3>
+<p>The Unifi controller can either be a dedicated hardware device
+(Unifi’s cloud key), or as software any Linux system. If you run the
+the Unifi controller on the same operating system as Home Assistant
+there may be conflicts in ports if you have the MQTT component as
+well.</p>
+<p>It is recommended that you run the Unifi controller in a dedicate
+virtual machine to avoid that situation.</p>
+<p><a href="https://github.com/home-assistant/home-assistant/issues/10507">Related Issue</a></p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

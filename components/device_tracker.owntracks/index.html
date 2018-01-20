@@ -74,7 +74,10 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>This platform allows you to detect presence using <a href="http://owntracks.org/">Owntracks</a>. OwnTracks allows users to track their location on Android and iOS phones and publish it to an MQTT broker. This platform will connect to the broker and monitor for new locations.</p>
+  <p>This platform allows you to detect presence using <a href="http://owntracks.org/">Owntracks</a>. OwnTracks allows users to track their location on iOS phones and publish it to an MQTT broker. This platform will connect to the broker and monitor for new locations.</p>
+<p class="note">
+The Android app for OwnTracks is no longer developed or supported, Zanzito is a drop in replacement for OwnTracks MQTT.
+</p>
 <p>This component requires <a href="/components/mqtt/">the MQTT component</a> to be set up and works very well together with <a href="/components/zone/">the zone component</a>.</p>
 <p>To integrate Owntracks in Home Assistant, add the following section to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
