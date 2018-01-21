@@ -75,7 +75,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>As long as a fully featured configuration GUI for Home Assistant is still under development, you can use this add-on to add a browser based file-editor to your Hass.IO installation. By default it will listen on port <code class="highlighter-rouge">3218</code> of the host Hass.IO is running on.</p>
+  <p>As long as a fully featured configuration GUI for Home Assistant is still under development, you can use this add-on to add a browser-based file-editor to your Hass.IO installation. By default it will listen on port <code class="highlighter-rouge">3218</code> of the host Hass.IO is running on.</p>
 <p>More information and a standalone version for regular Home Assistant installations can be found in the <a href="https://github.com/danielperna84/hass-configurator">GitHub repository</a>.</p>
 <p class="img">
 <img src="/images/hassio/screenshots/addon-hass-configurator.png" />
@@ -86,8 +86,8 @@ Screenshot of the HASS Configurator.
   <li>Web-Based editor to modify your files with syntax highlighting.</li>
   <li>Upload and download files.</li>
   <li>Stage and commit changes in Git repositories, create and switch between branches, push to remotes.</li>
-  <li>Lists of available triggers, events, entities, conditions and services. Selected element gets inserted into the editor at the last cursor position.</li>
-  <li>Restart Home Assistant directly with the click of a button. Reloading groups, automations etc. can be done as well. An API-password is required.</li>
+  <li>Lists of available triggers, events, entities, conditions, and services. The selected element gets inserted into the editor at the last cursor position.</li>
+  <li>Restart Home Assistant directly with the click of a button. Reloading groups, automations, etc. can be done as well. An API-password is required.</li>
   <li>SSL support.</li>
   <li>Optional authentication and IP filtering for added security.</li>
   <li>Direct links to Home Assistant documentation and icons.</li>
@@ -113,14 +113,14 @@ Screenshot of the HASS Configurator.
   <li><strong>username</strong> (<em>Optional</em>): Set a username to access your configuration is protected.</li>
   <li><strong>password</strong> (<em>Required</em>): Set a password for access.</li>
   <li><strong>ssl</strong> (<em>Optional</em>): Enable or Disable SSL for the editor.</li>
-  <li><strong>allowed_networks</strong> (<em>Optional</em>): Limit access to the configurator by adding allowed IP addresses / networks to the list.</li>
+  <li><strong>allowed_networks</strong> (<em>Optional</em>): Limit access to the configurator by adding allowed IP addresses/networks to the list.</li>
   <li><strong>banned_ips</strong> (<em>Optional</em>): List of statically banned IP addresses.</li>
   <li><strong>banlimit</strong> (<em>Optional</em>): Ban access from IPs after <code class="highlighter-rouge">banlimit</code> failed login attempts. The default value <code class="highlighter-rouge">0</code> disables this feature. Restart the add-on to clear the list of banned IP addresses.</li>
   <li><strong>ignore_pattern</strong> (<em>Optional</em>): Files and folders to ignore in the UI.</li>
-  <li><strong>dirsfirst</strong> (<em>Optional</em>): List directories before files in the filebrowser.</li>
+  <li><strong>dirsfirst</strong> (<em>Optional</em>): List directories before files in the file browser.</li>
 </ul>
 <h3><a class="title-link" name="embedding-into-home-assistant" href="#embedding-into-home-assistant"></a> Embedding into Home-Assistant</h3>
-<p>Using the Home Assistant component <a href="https://home-assistant.io/components/panel_iframe/">panel_iframe</a> it is possible to embed the configurator directly into Home Assistant, allowing you to modify your configuration within the Home Assistant frontend.</p>
+<p>Using the Home Assistant component <a href="https://home-assistant.io/components/panel_iframe/">panel_iframe</a> it is possible to embed the configurator directly into Home Assistant, allowing you to modify your configuration from within the Home Assistant frontend.</p>
 <p>An example configuration would look like this:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">panel_iframe</span><span class="pi">:</span>
   <span class="s">configurator</span><span class="pi">:</span>
@@ -130,7 +130,7 @@ Screenshot of the HASS Configurator.
 </code></pre>
 </div>
 <p class="note warning">
-Be careful when setting up port forwarding to the configurator while embedding into Home Assistant. If you don’t restrict access by requiring authentication and / or blocking based on client IP addresses, your configuration will be exposed to the internet!
+Be careful when setting up port forwarding to the configurator while embedding into Home Assistant. If you don’t restrict access by requiring authentication and/or blocking based on client IP addresses, your configuration will be exposed to the internet!
 </p>
 </article>
         </div>

@@ -76,7 +76,7 @@
   </header>
   <hr class="divider">
   <p class="note">
-  If you are wanting to integrate your Google Home, or mobile phone running Google Assistant, with Home Assistant then you want the <a href="https://home-assistant.io/components/google_assistant/">Google Assistant component</a>.
+  If you want to integrate your Google Home, or mobile phone running Google Assistant, with Home Assistant, then you want the <a href="https://home-assistant.io/components/google_assistant/">Google Assistant component</a>.
 </p>
 <p><a href="https://assistant.google.com/">Google Assistant</a> is an AI-powered voice assistant that runs on the Raspberry Pi and x86 platforms and interact via the <a href="/components/dialogflow/">DialogFlow</a> integration with Home-Assistant. You can also use <a href="https://actions.google.com/">Google Actions</a> to extend its functionality.</p>
 <p>To enable access to the Google Assistant API, do the following:</p>
@@ -109,8 +109,8 @@ card 1: Microphone [Yeti Stereo Microphone], device 0: USB Audio [USB Audio]
 <p>You need to use this information to point the add-on at the right speakers and microphone. The information describes different cards and devices. On a Raspberry Pi 3, card 0 - device 0 is the built-in headset port, card 0 - device 1 is the HDMI port. In the example above, the USB microphone showed up as card 1 - device 0.</p>
 <p>Find the microphone and speakers that you want to use and note down their device and card number. We will need that to configure the add-on options <code class="highlighter-rouge">mic</code> (microphone to use) and <code class="highlighter-rouge">speaker</code> (speaker to use). The format for these options is <code class="highlighter-rouge">&lt;card #&gt;,&lt;device #&gt;</code>. Change the configuration options and click save.</p>
 <p>The next step is to authenticate your Google account with Google Assistant. Start the add-on and click on the “OPEN WEB UI” button to start authentication.</p>
-<h3>Add-On configuration</h3>
-<p>Configuration example that uses the USB microphone and use the built-in headset audio output on the Raspberry Pi. Note that card and device numbers can differ on your device.</p>
+<h3>Add-on configuration</h3>
+<p>Configuration example that uses the USB microphone and the built-in headset audio output on the Raspberry Pi. Note that card and device numbers can differ on your device.</p>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"mic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1,0"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"speaker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0,0"</span><span class="p">,</span><span class="w">

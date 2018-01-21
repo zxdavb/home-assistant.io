@@ -76,14 +76,14 @@
   </header>
   <hr class="divider">
   <p>Setting up an <a href="https://openssh.org/">SSH</a> server allows access to your Hass.io folders with any SSH client. It also includes a command-line tool to access the <a href="https://github.com/home-assistant/hassio/blob/dev/API.md">Hass.io API</a>. Try it out:</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>hassio <span class="nb">help</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>hassio <span class="nb">help</span>
 </code></pre>
 </div>
 <p class="note">
 This add-on will not enable you to install packages or do anything as root. This is not allowed with Hass.io.
 </p>
-<p>To use this add-on, you must have a private/public key to log in. To generate them, follow the <a href="https://www.digitalocean.com/community/tutorials/how-to-create-ssh-keys-with-putty-to-connect-to-a-vps">instructions for Windows</a> and <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">these for other platforms</a>. It is possible to set a password for login since version 2.0 but for high security use private/public keys. You can not run both variant at same time.</p>
-<p>In order to start this add-on for the first time, you either need to include an ssh key (enclosed in quotation marks, on a single line without line breaks) or set a password in the options section.</p>
+<p>To use this add-on, you must have a private/public key to log in. To generate them, follow the <a href="https://www.digitalocean.com/community/tutorials/how-to-create-ssh-keys-with-putty-to-connect-to-a-vps">instructions for Windows</a> and <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">these for other platforms</a>. It is possible to set a password for login since version 2.0 but for high security use private/public keys. You can not run both variants at the same time.</p>
+<p>To start this add-on for the first time, you either need to include an ssh key (enclosed in quotation marks, on a single line without line breaks) or set a password in the options section.</p>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"authorized_keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"ssh-rsa AKDJD3839...== my-key"</span><span class="w">
@@ -96,7 +96,7 @@ This add-on will not enable you to install packages or do anything as root. This
 <p>After logging in, you will find yourself in this add-ons container. The Home Assistant configuration directory is mounted on the path <code class="highlighter-rouge">/config</code>.</p>
 <p>Configuration variables:</p>
 <ul>
-  <li><strong>authorized_keys</strong> (<em>Optional</em>): Your public keys for authorized keyfile. Every element will be a line inside that file.</li>
+  <li><strong>authorized_keys</strong> (<em>Optional</em>): Your public keys for the authorized key file. Every element will be a line inside that file.</li>
   <li><strong>password</strong> (<em>Optional</em>): Set a password for login. We do not recommend this variant.</li>
 </ul>
 <div class="videoWrapper">

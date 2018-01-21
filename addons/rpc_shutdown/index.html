@@ -75,7 +75,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>Allow to shutdown a Windows computer with a service call from Home Assistant.</p>
+  <p>Allows you to shut down a Windows computer with a service call from Home Assistant.</p>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"computers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -88,10 +88,10 @@
 </span></code></pre>
 </div>
 <ul>
-  <li><strong>computers</strong> (<em>Required</em>): A list of computer object to shutdown from Home-Assistant.</li>
-  <li><strong>computers/alias</strong> (<em>Required</em>): Set a alias for this record and that is the name for the input.</li>
-  <li><strong>computers/address</strong> (<em>Required</em>): IP address or netbios name of the computer for shutdown.</li>
-  <li><strong>computers/credentials</strong> (<em>Required</em>): Credentials for logging into computer. Use a <code class="highlighter-rouge">%</code> as delimiter of username and password.</li>
+  <li><strong>computers</strong> (<em>Required</em>): A list of computer objects to shutdown from Home-Assistant.</li>
+  <li><strong>computers/alias</strong> (<em>Required</em>): Set an alias for this record which becomes the name for the input.</li>
+  <li><strong>computers/address</strong> (<em>Required</em>): IP address or NetBIOS name of the computer for the shutdown.</li>
+  <li><strong>computers/credentials</strong> (<em>Required</em>): Credentials for logging into computer. Use a <code class="highlighter-rouge">%</code> as the delimiter of username and password.</li>
 </ul>
 <h2><a class="title-link" name="home-assistant" href="#home-assistant"></a> Home Assistant</h2>
 <p>Use the following inside Home Assistant service call to use it:</p>

@@ -75,8 +75,8 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>Set up a <a href="https://github.com/eq-3/occu">HomeMatic</a> hardware layer. At the moment we don’t support hmIP but that is in progress. For learning and handling devices use our internal homematic panel and services (in progress) or use <a href="https://github.com/hobbyquaker/homematic-manager">Homematic-Manager</a> &gt; 2.0.</p>
-<p>The logic layer will be Home-Assistant. There is no ReGa or other logic layer installed. You can’t import exists configuration, you need new learn it into Home-Assistant.</p>
+  <p>Set up a <a href="https://github.com/eq-3/occu">HomeMatic</a> hardware layer. At the moment we don’t support hmIP, but that is in progress. For learning and handling devices use our internal HomeMatic panel and services (in progress) or use <a href="https://github.com/hobbyquaker/homematic-manager">Homematic-Manager</a> &gt; 2.0.</p>
+<p>The logic layer will be Home-Assistant. There is no ReGa or other logic layer installed. You can’t import an existing configuration, you’ll need re-learn it into Home-Assistant.</p>
 <p>Follow devices will be supported and tested:</p>
 <ul>
   <li><a href="https://www.elv.ch/homematic-funkmodul-fuer-raspberry-pi-bausatz.html">HM-MOD-RPI-PCB</a></li>
@@ -107,14 +107,14 @@
 </ul>
 <p>For RF devices</p>
 <ul>
-  <li><strong>type</strong> (<em>Require</em>): Device type for RFD service. Look into handbook of your device.</li>
-  <li><strong>device</strong> (<em>Require</em>): Device on host.</li>
+  <li><strong>type</strong> (<em>Require</em>): Device type for RFD service. Look into the manual of your device.</li>
+  <li><strong>device</strong> (<em>Require</em>): Device on the host.</li>
 </ul>
 <p>For RF devices</p>
 <ul>
-  <li><strong>serial</strong> (<em>Require</em>): Serial number of device.</li>
+  <li><strong>serial</strong> (<em>Require</em>): Serial number of the device.</li>
   <li><strong>key</strong> (<em>Require</em>): Encrypted key.</li>
-  <li><strong>ip</strong> (<em>Require</em>): IP address of lan gateway.</li>
+  <li><strong>ip</strong> (<em>Require</em>): IP address of LAN gateway.</li>
 </ul>
 <h2><a class="title-link" name="home-assistant-configuration" href="#home-assistant-configuration"></a> Home Assistant configuration</h2>
 <p>Use the following configuration in Home Assistant to use it:</p>
@@ -126,7 +126,7 @@
 </code></pre>
 </div>
 <h2><a class="title-link" name="raspberry-pi3" href="#raspberry-pi3"></a> Raspberry Pi3</h2>
-<p>With HM-MOD-PRI-PCB you need add follow into your <code class="highlighter-rouge">config.txt</code> on boot partition:</p>
+<p>With HM-MOD-PRI-PCB you need to add follow into your <code class="highlighter-rouge">config.txt</code> on boot partition:</p>
 <div class="highlighter-rouge"><pre class="highlight"><code>dtoverlay=pi3-miniuart-bt
 </code></pre>
 </div>
