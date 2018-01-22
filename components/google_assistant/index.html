@@ -77,7 +77,7 @@
   <p>The <code class="highlighter-rouge">google_assistant</code> component allows you to control things via Google Assistant (on your mobile or tablet) or a Google Home device.</p>
 <p>The Google Assistant component requires a bit more setup than most due to the way Google requires Assistant Apps to be set up.</p>
 <p class="note">
-To use Google Assistant, your Home Assistant configuration has to be externally accessible, with a hostname and SSL certificate. If you haven’t already configured that you should do so before continuing.
+To use Google Assistant, your Home Assistant configuration has to be externally accessible with a hostname and SSL certificate. If you haven’t already configured that, you should do so before continuing.
 </p>
 <p>To enable this, add the following lines to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
@@ -120,7 +120,7 @@ To use Google Assistant, your Home Assistant configuration has to be externally 
     </dd>
     <dt><a class="title-link" name="agent_user_id" href="#agent_user_id"></a> agent_user_id</dt>
     <dd>
-      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">A string to identify the user, e.g., email address. If not provided, the component will generate one.</span></p>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">A string to identify the user, e.g. email address. If not provided, the component will generate one.</span></p>
     </dd>
     <dt><a class="title-link" name="api_key" href="#api_key"></a> api_key</dt>
     <dd>
@@ -161,7 +161,7 @@ To use Google Assistant, your Home Assistant configuration has to be externally 
             </dd>
             <dt><a class="title-link" name="type" href="#type"></a> type</dt>
             <dd>
-              <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Override the domain how Google Assistant has to interpretet the entity. For example, set to <code class="highlighter-rouge">light</code> for a switch entity to have it be handeld as a light.</span></p>
+              <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Override how Google Assistant interprets the domain of the entity. For example, set to <code class="highlighter-rouge">light</code> for a switch entity to have it be handled as a light.</span></p>
             </dd>
           </dl>
         </dd>
@@ -176,7 +176,7 @@ To use Google Assistant, your Home Assistant configuration has to be externally 
 <p>If you’re not using Linux, you can use sites such as <a href="https://www.browserling.com/tools/random-string">this one</a> to generate a random string (containing mixed case letters and numbers) of up to 80 characters.</p>
 <h3><a class="title-link" name="setup" href="#setup"></a> Setup</h3>
 <ol>
-  <li>Download the <a href="https://developers.google.com/actions/tools/gactions-cli">gactions CLI</a> (you’ll use this later) - you can download and run this anywhere and on any machine, just remember where you put it for later (and don’t forget to run <code class="highlighter-rouge">chmod +x gactions</code>to make it executable on mac or linux)</li>
+  <li>Download the <a href="https://developers.google.com/actions/tools/gactions-cli">gactions CLI</a> to be used later. You can download and run this anywhere and on any machine. Just remember where you put it for later and don’t forget to run <code class="highlighter-rouge">chmod +x gactions</code> to make it executable on Mac or Linux.</li>
   <li>Create a new file named <code class="highlighter-rouge">project.json</code> (in the same directory you downloaded <code class="highlighter-rouge">gactions</code> to) and replace the <code class="highlighter-rouge">[YOUR HOME ASSISTANT URL]</code> below with the URL you use to access Home Assistant.
 Note: This must be an HTTPS URL to work.</li>
 </ol>
@@ -190,7 +190,7 @@ Note: This must be an HTTPS URL to work.</li>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}],</span><span class="w">
   </span><span class="nt">"conversations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"automation"</span><span class="w"> </span><span class="p">:</span><span class="w">
+    </span><span class="nt">"automation"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"automation"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://[YOUR HOME ASSISTANT URL]/api/google_assistant"</span><span class="w">
@@ -201,13 +201,12 @@ Note: This must be an HTTPS URL to work.</li>
 </div>
 <ol>
   <li>Create a new project in the <a href="https://console.actions.google.com/">developer console</a>.
-    <ol>
-      <li>Add/Import project</li>
-      <li>Go to Build under the Actions SDK box</li>
-      <li>Copy the command that looks like:
- <code class="highlighter-rouge">gactions update --action_package PACKAGE_NAME --project doctest-2d0b8</code></li>
-    </ol>
-  </li>
+  a. Add/Import project
+  b. Go to Build under the Actions SDK box
+  c. Copy the command that looks like:</li>
+</ol>
+<p><code class="highlighter-rouge">gactions update --action_package PACKAGE_NAME --project doctest-2d0b8</code></p>
+<ol>
   <li>Replace <code class="highlighter-rouge">PACKAGE_NAME</code> with <code class="highlighter-rouge">project.json</code> and run that command in a console from the same directory you saved <code class="highlighter-rouge">project.json</code> in (you’ll need to put <code class="highlighter-rouge">./</code> before <code class="highlighter-rouge">gactions</code> so that it reads <code class="highlighter-rouge">./gactions</code> if you’re running it on Linux or Windows). It should output a URL like <code class="highlighter-rouge">https://console.actions.google.com/project/doctest-2d0b8/overview</code> - go there.</li>
   <li>You’ll need to fill out most of the information on that page, but none of it really matters since you won’t be addressing the App directly, only through the Smart Home functionality built into Google Assistant.</li>
   <li>The final item on that page <code class="highlighter-rouge">Account linking</code> is required for your app to interact with Home Assistant.
@@ -248,7 +247,7 @@ Note: This must be an HTTPS URL to work.</li>
   <li>Add a new project to the <a href="https://console.cloud.google.com">cloud console</a>. Here you get a new project_id.</li>
   <li>Enable Homegraph API to the new project.</li>
   <li>Generate a new API key.</li>
-  <li>Again create a new project in the <a href="https://console.actions.google.com/">developer console</a>. Described above. But at the step ‘Build under the Actions SDK box’ choose your newly created project. By this, they share the same project_id.</li>
+  <li>Again, create a new project in the <a href="https://console.actions.google.com/">developer console</a>. Described above. But at the step ‘Build under the Actions SDK box’ choose your newly created project. By this, they share the same project_id.</li>
 </ol>
 </article>
         </div>
