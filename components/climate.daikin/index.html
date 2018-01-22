@@ -74,8 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <h3>Description</h3>
-<p>The climate component integrates Daikin air conditioning systems into Home Assistant, enabling control of setting the following parameters:</p>
+  <p>The <code class="highlighter-rouge">daikin</code> climate platform integrates Daikin air conditioning systems into Home Assistant, enabling control of setting the following parameters:</p>
 <ul>
   <li><strong>mode</strong> (cool, heat, dry, fan only or auto)</li>
   <li><strong>fan speed</strong></li>
@@ -84,22 +83,28 @@
 </ul>
 <p>Current temperature is displayed.</p>
 <p class="note warning">
-    Please note, the <code class="highlighter-rouge">daikin</code> platform integrates <strong>ONLY the european versions of Daikin ACs (models BRP069A41, 42, 43, 45)</strong> into Home Assistant
+Please note, the <code class="highlighter-rouge">daikin</code> platform integrates <strong>ONLY the european versions of Daikin ACs (models BRP069A41, 42, 43, 45)</strong> into Home Assistant
 </p>
-<h3>Configuration</h3>
-<p>Manual configuration and customization is possible by using the sample configuration from below:</p>
+<p>To enable the platform, add the following lines to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">climate</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">daikin</span>
-      <span class="s">host</span><span class="pi">:</span> <span class="s">10.0.0.1</span>
-      <span class="s">name</span><span class="pi">:</span> <span class="s">optional name</span>
+    <span class="s">host</span><span class="pi">:</span> <span class="s">10.0.0.1</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>host</strong> (<em>Required</em>): IP or hostname of the device</li>
-  <li><strong>name</strong> (<em>Optional</em>): If the device has a name previously set by the user than that name will be used</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="host" href="#host"></a> host</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">IP or hostname of the device.</span></p>
+    </dd>
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">If the device has a name previously set by the user than that name will be used.</span></p>
+    </dd>
+  </dl>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -107,7 +112,7 @@
     <section class="aside-module grid__item one-whole lap-one-half">
   <div class='edit-github'><a href='https://github.com/home-assistant/home-assistant.github.io/tree/current/source/_components/climate.daikin.markdown'>Edit this page on GitHub</a></div>
   <div class='brand-logo-container section'>
-      <img src='/images/supported_brands/daikin.svg' />
+      <img src='/images/supported_brands/daikin.png' />
   </div>
     <div class='section'>
       IoT class<sup><a href='/blog/2016/02/12/classifying-the-internet-of-things/#classifiers'><i class="icon-info-sign"></i></a></sup>: Local Polling

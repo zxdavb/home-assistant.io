@@ -74,17 +74,15 @@
     </h1>
   </header>
   <hr class="divider">
-  <h3>Description</h3>
-<p>The component integrates Daikin air conditioning systems into Home Assistant.</p>
-<p>To automatically add all your Daikin devices (ACs and associated sensors) into your Home Assistant installation, add the following to your ‘configuration.yaml’ file:</p>
+  <p>The <code class="highlighter-rouge">daikin</code> component integrates Daikin air conditioning systems into Home Assistant.</p>
 <p class="note warning">
-    Please note, the Daikin platform integrates <strong>ONLY the european versions of Daikin ACs (models BRP069A41, 42, 43, 45)</strong> into Home Assistant
+Please note, the Daikin platform integrates <strong>ONLY the european versions of Daikin ACs (models BRP069A41, 42, 43, 45)</strong> into Home Assistant
 </p>
+<p>To automatically add all your Daikin devices (ACs and associated sensors) into your Home Assistant installation, add the following to your ‘configuration.yaml’ file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">daikin</span><span class="pi">:</span>
   <span class="s">hosts</span><span class="pi">:</span>
     <span class="pi">-</span> <span class="s">192.168.4.161</span>
-
   <span class="s">monitored_conditions</span><span class="pi">:</span>
     <span class="pi">-</span> <span class="s">inside_temperature</span>  
     <span class="pi">-</span> <span class="s">outside_temperature</span>  
@@ -101,6 +99,7 @@
     <dt><a class="title-link" name="monitored_conditions" href="#monitored_conditions"></a> monitored_conditions</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="list">list</span>)</span><span class="required">(Optional)</span><span class="description">List of items you want to monitor for each device.</span></p>
+      <p class="default">Default value: All conditions</p>
     </dd>
     <dd>
       <dl class="nested">
@@ -117,13 +116,8 @@
   </dl>
 </div>
 <p class="note warning">
-    Please note that some AC devices may report outside temperature only when they are turned on.
+Please note that some AC devices may report outside temperature only when they are turned on.
 </p>
-<p>The Daikin Home Assistant platform currently supports the following Hive devices:</p>
-<ul>
-  <li><a href="/components/climate.daikin">Climate</a></li>
-  <li><a href="/components/sensor.daikin">Sensor</a></li>
-</ul>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -131,7 +125,7 @@
     <section class="aside-module grid__item one-whole lap-one-half">
   <div class='edit-github'><a href='https://github.com/home-assistant/home-assistant.github.io/tree/current/source/_components/daikin.markdown'>Edit this page on GitHub</a></div>
   <div class='brand-logo-container section'>
-      <img src='/images/supported_brands/daikin.svg' />
+      <img src='/images/supported_brands/daikin.png' />
   </div>
     <div class='section'>
       IoT class<sup><a href='/blog/2016/02/12/classifying-the-internet-of-things/#classifiers'><i class="icon-info-sign"></i></a></sup>: Local Polling
