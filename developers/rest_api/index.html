@@ -87,7 +87,7 @@
     http://IP_ADDRESS:8123/ENDPOINT
 </code></pre>
 </div>
-<p>Another option is to use Python and the <a href="http://docs.python-requests.org/en/latest/">Requests</a> module.</p>
+<p>Another option is to use Python and the <a href="http://docs.python-requests.org/en/latest/">Requests</a> module. =</p>
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">get</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s">'http://localhost:8123/ENDPOINT'</span>
@@ -124,8 +124,8 @@ You can append <code class="highlighter-rouge">?api_password=YOUR_PASSWORD</code
 </div>
 <h4><a class="title-link" name="get-apiconfig" href="#get-apiconfig"></a> GET /api/config</h4>
 <p>Returns the current configuration as JSON.</p>
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">  
-   </span><span class="nt">"components"</span><span class="p">:[</span><span class="w">  
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nt">"components"</span><span class="p">:[</span><span class="w">
       </span><span class="s2">"sensor.cpuspeed"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"frontend"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"config.core"</span><span class="p">,</span><span class="w">
@@ -157,7 +157,7 @@ You can append <code class="highlighter-rouge">?api_password=YOUR_PASSWORD</code
       </span><span class="nt">"volume"</span><span class="p">:</span><span class="s2">"L"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"0.56.2"</span><span class="p">,</span><span class="w">
-   </span><span class="nt">"whitelist_external_dirs"</span><span class="p">:[</span><span class="w">  
+   </span><span class="nt">"whitelist_external_dirs"</span><span class="p">:[</span><span class="w">
       </span><span class="s2">"/home/ha/.homeassistant/www"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"/home/ha/.homeassistant/"</span><span class="w">
    </span><span class="p">]</span><span class="w">

@@ -95,6 +95,15 @@
   <li><code class="highlighter-rouge">round trip time min</code></li>
   <li><code class="highlighter-rouge">round trip time max</code></li>
 </ul>
+<p>The default polling interval is 5 minutes. As many components <a href="/docs/configuration/platform_options">based on the entity class</a>, it is possible to overwrite this scan interval by specifying a <code class="highlighter-rouge">scan_interval</code> configuration key (value in seconds). In the example below we setup the <code class="highlighter-rouge">ping</code> binary sensor to poll the devices every 30 seconds.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry to ping host 192.168.0.1 with 2 packets every 30 seconds.</span>
+<span class="s">binary_sensor</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">ping</span>
+    <span class="s">host</span><span class="pi">:</span> <span class="s">192.168.0.1</span>
+    <span class="s">count</span><span class="pi">:</span> <span class="s">2</span>
+    <span class="s">scan_interval</span><span class="pi">:</span> <span class="s">30</span>
+</code></pre>
+</div>
 <p class="note">
 When run on Windows systems, the round trip time attributes are rounded to the nearest millisecond and the mdev value is unavailable.
 </p>

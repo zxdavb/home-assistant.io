@@ -104,20 +104,20 @@ You can change this, however, using the following procedure. This is a more adva
   <li>Once logged in, go to <em>System Settings</em>, <em>Report</em> and change the Server Address for your primary server to the IP or hostname of your Home Assistant machine. You can leave the port number set to 52010 or change it to anything you like. <strong>Make sure to change the settings of the primary server otherwise the messages will not come through. Note that this will limit (or fully stop) the number of alarm messages you will get through Egardia’s / Woonveilig services.</strong> Maybe, that is just what you want. Make sure to save your settings by selecting ‘OK’.</li>
   <li>On your Home Assistant machine run <code class="highlighter-rouge">$ sudo python3 egardiaserver.py</code>. Refer to the <a href="https://github.com/jeroenterheerdt/python-egardia">python-egardia repository</a> for detailed documentation on parameters. This will receive status codes from your alarm control panel and display them. You will need the codes to include in your configuration.yaml. Make sure to change the status of your alarm to all states (disarm, arm, home) by all means possible (all users, remotes, web login, app) as well as trigger the alarm in all ways possible to get 100% coverage. <strong>Before triggering the alarm it might be good to disable the siren temporarily (can be done in Panel Settings).</strong></li>
   <li>Once you have the codes, update your <code class="highlighter-rouge">configuration.yaml</code>:
-    <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
-<span class="s">alarm_control_panel</span><span class="pi">:</span>
+    <div class="language-yaml highlighter-rouge"><pre class="highlight"><code> <span class="c1"># Example configuration.yaml entry</span>
+ <span class="s">alarm_control_panel</span><span class="pi">:</span>
  <span class="s"> - platform</span><span class="pi">:</span> <span class="s">egardia</span>
  <span class="s">   host</span><span class="pi">:</span> <span class="s">YOUR_HOST</span>
  <span class="s">   username</span><span class="pi">:</span> <span class="s">YOUR_USERNAME</span>
  <span class="s">   password</span><span class="pi">:</span> <span class="s">YOUR_PASSWORD</span>
- <span class="s">report_server_enabled</span><span class="pi">:</span> <span class="s">True</span>
- <span class="s">report_server_port</span><span class="pi">:</span> <span class="s">PORT_OF_EGARDIASERVER (optional, defaults to 52010)</span>
- <span class="s">report_server_codes</span><span class="pi">:</span>
-   <span class="s">arm</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXX</span>
-   <span class="s">disarm</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXX</span>
-   <span class="s">home</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX</span>
-   <span class="s">triggered</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXX</span>
-   <span class="s">ignore</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX</span>
+     <span class="s">report_server_enabled</span><span class="pi">:</span> <span class="s">True</span>
+     <span class="s">report_server_port</span><span class="pi">:</span> <span class="s">PORT_OF_EGARDIASERVER (optional, defaults to 52010)</span>
+     <span class="s">report_server_codes</span><span class="pi">:</span>
+       <span class="s">arm</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXX</span>
+       <span class="s">disarm</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXX</span>
+       <span class="s">home</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX</span>
+       <span class="s">triggered</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXX</span>
+       <span class="s">ignore</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX</span>
 </code></pre>
     </div>
   </li>
