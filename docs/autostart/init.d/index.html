@@ -138,12 +138,8 @@
 
 
 start<span class="o">()</span> <span class="o">{</span>
-  <span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
-    </span><span class="nb">echo</span> <span class="s2">"It seems you did not run"</span>
-    <span class="nb">echo</span> -e <span class="s2">"</span><span class="se">\t</span><span class="s2">service hass-daemon install"</span>
-    <span class="k">return </span>1
-  <span class="k">fi
-  if</span> <span class="o">[</span> -f <span class="nv">$PID_FILE</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">kill</span> -0 <span class="k">$(</span>cat <span class="nv">$PID_FILE</span><span class="k">)</span> 2&gt; /dev/null; <span class="k">then
+  create_piddir
+  <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$PID_FILE</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">kill</span> -0 <span class="k">$(</span>cat <span class="nv">$PID_FILE</span><span class="k">)</span> 2&gt; /dev/null; <span class="k">then
     </span><span class="nb">echo</span> <span class="s1">'Service already running'</span> &gt;&amp;2
     <span class="k">return </span>1
   <span class="k">fi
@@ -260,12 +256,8 @@ remove_piddir<span class="o">()</span> <span class="o">{</span>
 <span class="nv">FLAGS</span><span class="o">=</span><span class="s2">"-v --config </span><span class="nv">$CONFIG_DIR</span><span class="s2"> --pid-file </span><span class="nv">$PID_FILE</span><span class="s2"> --log-file </span><span class="nv">$LOG_FILE</span><span class="s2"> --daemon"</span>
 
 start<span class="o">()</span> <span class="o">{</span>
-  <span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
-    </span><span class="nb">echo</span> <span class="s2">"It seems you did not run"</span>
-    <span class="nb">echo</span> -e <span class="s2">"</span><span class="se">\t</span><span class="s2">service hass-daemon install"</span>
-    <span class="k">return </span>1
-  <span class="k">fi
-  if</span> <span class="o">[</span> -f <span class="nv">$PID_FILE</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">kill</span> -0 <span class="k">$(</span>cat <span class="nv">$PID_FILE</span><span class="k">)</span> 2&gt; /dev/null; <span class="k">then
+  create_piddir
+  <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$PID_FILE</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">kill</span> -0 <span class="k">$(</span>cat <span class="nv">$PID_FILE</span><span class="k">)</span> 2&gt; /dev/null; <span class="k">then
     </span><span class="nb">echo</span> <span class="s1">'Service already running'</span> &gt;&amp;2
     <span class="k">return </span>1
   <span class="k">fi
