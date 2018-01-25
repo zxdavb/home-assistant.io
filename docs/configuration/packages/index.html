@@ -133,7 +133,7 @@ light:
 Components inside packages can only specify platform entries using configuration style 1, where all the platforms are grouped under the component name.
 </p>
 <h3><a class="title-link" name="create-a-packages-folder" href="#create-a-packages-folder"></a> Create a packages folder</h3>
-<p>One way to organise packages would be to create a folder named “packages” in your Home Assistant configuration directory. In the packages directory you can store any number of packages in a YAML file. This entry in your <code class="highlighter-rouge">configuration.yaml</code> will load all packages:</p>
+<p>One way to organize packages would be to create a folder named “packages” in your Home Assistant configuration directory. In the packages directory you can store any number of packages in a YAML file. This entry in your <code class="highlighter-rouge">configuration.yaml</code> will load all packages:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">homeassistant</span><span class="pi">:</span>
   <span class="s">packages</span><span class="pi">:</span> <span class="kt">!include_dir_named</span> <span class="s">packages</span>
 </code></pre>

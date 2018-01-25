@@ -121,15 +121,15 @@
   <li>Use the domain that Home Assistant is available on the internet or the public IP address. Can be a local IP address if you are using a VPN setup.</li>
   <li>Only remove <code class="highlighter-rouge">[Port]</code> if your Home Assistant instance is using port 80. Otherwise set it to 8123.</li>
   <li>For Home Assistant only the above URL, as written, will work - do not add or remove any parameters.</li>
-  <li>Make sure to include your <a href="/components/http/">API password</a> if you have configured a password. Add <code class="highlighter-rouge">&amp;api_password=[Your pasword]</code> to the end of the URL.</li>
+  <li>Make sure to include your <a href="/components/http/">API password</a> if you have configured a password. Add <code class="highlighter-rouge">&amp;api_password=[Your password]</code> to the end of the URL.</li>
   <li>You can change the name of your device name by replacing <code class="highlighter-rouge">&amp;device=%SER</code> with <code class="highlighter-rouge">&amp;device=[Devicename]</code>.</li>
 </ul>
-<p>If your battery drains fast then you can tune the performence of GPSLogger under <strong>Performance</strong> -&gt; <strong>Location providers</strong></p>
+<p>If your battery drains fast then you can tune the performance of GPSLogger under <strong>Performance</strong> -&gt; <strong>Location providers</strong></p>
 <p class="img">
   <img width="300" src="/images/components/gpslogger/performance.png" />
   Performance
 </p>
-<p>A request can be forced from the app to test if everything is working fine. A succesful request will update the <code class="highlighter-rouge">known_devices.yaml</code> file with the device’s serial number.</p>
+<p>A request can be forced from the app to test if everything is working fine. A successful request will update the <code class="highlighter-rouge">known_devices.yaml</code> file with the device’s serial number.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

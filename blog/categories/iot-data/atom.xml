@@ -4,7 +4,7 @@
   <title><![CDATA[Category: IoT-Data | Home Assistant]]></title>
   <link href="https://home-assistant.io/blog/categories/iot-data/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-01-24T13:02:59+00:00</updated>
+  <updated>2018-01-25T17:24:11+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -205,7 +205,7 @@ plt.xlabel('Time line')
 plt.savefig('sensor.png')
 ```
 
-Creating a connection to the database and executing a query is similar to the ways already seen. The return values from the query are splitted into two lists. The time stamps must be converted in an value which is accepted by matplotlib and then the graph is generated and saved as image. 
+Creating a connection to the database and executing a query is similar to the ways already seen. The return values from the query are split into two lists. The time stamps must be converted in an value which is accepted by matplotlib and then the graph is generated and saved as image. 
 
 <p class='img'>
   <img src='/images/blog/2016-07-reporting/mpl-sensor.png' />

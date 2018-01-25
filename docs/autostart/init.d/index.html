@@ -77,7 +77,7 @@
   <hr class="divider">
   <p>Home Assistant can run as a daemon within init.d with the script below.</p>
 <h3><a class="title-link" name="1-copy-script" href="#1-copy-script"></a> 1. Copy script</h3>
-<p>Copy either the deamon script or the Python environment scrip at the end of this page to <code class="highlighter-rouge">/etc/init.d/hass-daemon</code> depending on your installation.</p>
+<p>Copy either the daemon script or the Python environment scrip at the end of this page to <code class="highlighter-rouge">/etc/init.d/hass-daemon</code> depending on your installation.</p>
 <p>After that, set the script to be executable:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo chmod +x /etc/init.d/hass-daemon
 </code></pre>
@@ -129,7 +129,8 @@
 <span class="c"># Typically /usr/bin/hass</span>
 <span class="nv">HASS_BIN</span><span class="o">=</span><span class="s2">"hass"</span>
 <span class="nv">RUN_AS</span><span class="o">=</span><span class="s2">"USER"</span>
-<span class="nv">PID_FILE</span><span class="o">=</span><span class="s2">"/var/run/hass.pid"</span>
+<span class="nv">PID_DIR</span><span class="o">=</span><span class="s2">"/var/run"</span>
+<span class="nv">PID_FILE</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PID_DIR</span><span class="s2">/hass.pid"</span>
 <span class="nv">CONFIG_DIR</span><span class="o">=</span><span class="s2">"/var/opt/homeassistant"</span>
 <span class="nv">LOG_DIR</span><span class="o">=</span><span class="s2">"/var/log/homeassistant"</span>
 <span class="nv">LOG_FILE</span><span class="o">=</span><span class="s2">"</span><span class="nv">$LOG_DIR</span><span class="s2">/home-assistant.log"</span>

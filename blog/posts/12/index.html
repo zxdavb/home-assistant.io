@@ -256,7 +256,7 @@
 <p>The reason I started using iBeacons was to improve presence detection (and I think that’s the case with most people) so that’s what I’ll discuss in <em>part 1</em>. In <em>part 2</em> I’ll talk about using iBeacons to track devices that can’t track themselves.</p>
 <h3><a class="title-link" name="using-beacons-to-improve-owntracks-location-data" href="#using-beacons-to-improve-owntracks-location-data"></a> Using beacons to improve OwnTracks location data</h3>
 <p>When you use OwnTracks in standard <em>major move</em> mode (which is kind to your phone battery) it sometimes fails to update when you’d like it to. In my case I found that it would often send a location update as I was on my way home, but then not update when I got home. The result would be that Home Assistant would think I was 500M away from home, and take quite a while to notice I was home. It would also mean that the automation that should turn on my lights when I got home didn’t work very well! There were a few times when my phone location updated at 2am and turned the lights on for me. Fortunately my wife is very patient!</p>
-<p>Luckily, OwnTracks supports iBeacons so I could use them to make presence detection more reliable. When OwnTracks sees a beacon it recognises, it will send an update. This means that if you put a beacon at your front door - OwnTracks will see it within a few seconds of you arriving home - and send an update saying it has seen this iBeacon.</p>
+<p>Luckily, OwnTracks supports iBeacons so I could use them to make presence detection more reliable. When OwnTracks sees a beacon it recognizes, it will send an update. This means that if you put a beacon at your front door - OwnTracks will see it within a few seconds of you arriving home - and send an update saying it has seen this iBeacon.</p>
       <a class="btn pull-right" href="/blog/2016/04/30/ibeacons-part-1-making-presence-detection-work-better/#read-more">Read on &rarr;</a>
   </div>
   </article>
@@ -282,8 +282,8 @@
   </div>
 </header>
   <div class="entry-content clearfix">
-    <p>It’s time for 0.18. This release cycle is 2 days shorter than usual as I’ll be travelling to Europe. This also means that it can take some more time before you get feedback on PRs.</p>
-<p>Since the last release we have moved all Home Assistant source code etc into it’s own <a href="https://github.com/home-assistant">organisation on GitHub</a>. We’re growing up! This sadly did cause us to have to move all Docker images. Check the breaking changes section for more info.</p>
+    <p>It’s time for 0.18. This release cycle is 2 days shorter than usual as I’ll be traveling to Europe. This also means that it can take some more time before you get feedback on PRs.</p>
+<p>Since the last release we have moved all Home Assistant source code etc into it’s own <a href="https://github.com/home-assistant">organization on GitHub</a>. We’re growing up! This sadly did cause us to have to move all Docker images. Check the breaking changes section for more info.</p>
 <p><a href="/demo/"><img src="/images/blog/2016-04-release-18/media_player.png" style="box-shadow: none; border: 0;" /></a></p>
 <p><img src="/images/supported_brands/bluetooth.png" style="clear: right; margin-left: 5px; border:none; box-shadow: none; float: right; margin-bottom: 16px;" width="150" /><img src="/images/supported_brands/webos.png" style="clear: right; margin-left: 5px; border:none; box-shadow: none; float: right; margin-bottom: 16px;" width="150" /><img src="/images/supported_brands/rss.gif" style="clear: right; margin-left: 5px; border:none; box-shadow: none; float: right; margin-bottom: 16px;" width="150" /><img src="/images/supported_brands/eq3.gif" style="clear: right; margin-left: 5px; border:none; box-shadow: none; float: right; margin-bottom: 16px;" width="150" /><img src="/images/supported_brands/thinkingcleaner.png" style="clear: right; margin-left: 5px; border:none; box-shadow: none; float: right; margin-bottom: 16px;" width="100" /></p>
 <ul>
@@ -336,7 +336,7 @@
     <span>
     <i class="icon-tags"></i>
     <ul class="tags unstyled">
-        <li>Organisation</li>
+        <li>Organization</li>
     </ul>
   </span>
       <a class='comments'
@@ -345,7 +345,7 @@
   </div>
 </header>
   <div class="entry-content clearfix">
-    <p>After 2.5 years I think we can proudly say: Home Assistant is a success. I write <em>we</em> because Home Assistant is no longer a one-person side project. It has become the side project of many people who spend countless hours on making Home Assistant the best home automation software out there. To acknowledge this we migrated the repositories from being under my name to be under our own <a href="https://github.com/home-assistant/">organisation on GitHub</a>.</p>
+    <p>After 2.5 years I think we can proudly say: Home Assistant is a success. I write <em>we</em> because Home Assistant is no longer a one-person side project. It has become the side project of many people who spend countless hours on making Home Assistant the best home automation software out there. To acknowledge this we migrated the repositories from being under my name to be under our own <a href="https://github.com/home-assistant/">organization on GitHub</a>.</p>
 <p>On our journey we’ve reached many noteworthy milestones:</p>
 <ul>
   <li>#1 on HackerNews</li>
@@ -388,7 +388,7 @@
   <div class="entry-content clearfix">
     <p>One of the main complaints that we receive is something along the lines “I read that X is possible yet I am unable to find it on the website.”. This post is to announce that we have taken the first steps to improve it by revamping the <a href="/getting-started/">getting started</a> and <a href="/developers/">developers</a> sections. It’s still a work in progress but we now have a solid foundation to build on for the future 👍.</p>
 <p>Our documentation has been going through various phases. Initially it was just the README in our GitHub repository. I discovered Jekyll and GitHub pages in December 2014 and created home-assistant.io. I more or less broke the README in 5 pages and <a href="/blog/2014/12/18/website-launched/">called it a website</a>. Back then we had a whopping <a href="https://github.com/home-assistant/home-assistant.io/blob/86bb2df430ce267ab2123d51592d3f068ae509b5/source/components/index.markdown">11 components</a>.</p>
-<p>As Home Assistant grew, so did our documentation. <a href="https://github.com/fabaff">Fabian Affolter</a> does an amazing job in making sure there is at least a documentation stub for each new feature that lands. And that’s quite a feat given our <a href="https://home-assistant.io/blog/categories/release-notes/">frequent releases</a>! But despite all the efforts, the documentation outgrew our existing documentation organisation.</p>
+<p>As Home Assistant grew, so did our documentation. <a href="https://github.com/fabaff">Fabian Affolter</a> does an amazing job in making sure there is at least a documentation stub for each new feature that lands. And that’s quite a feat given our <a href="https://home-assistant.io/blog/categories/release-notes/">frequent releases</a>! But despite all the efforts, the documentation outgrew our existing documentation organization.</p>
 <p>Today it has been almost 1.5 years since we started the website. We now have <a href="/components/">264 components and platforms</a> under our belt and have been honored with 1.5 million page views ✨. And hopefully we now also have documentation that our community deserves.</p>
 <p>Finally, if you see some content that could use more clarifcation or is outdated, don’t hesitate to use the ‘Edit in GitHub’ link that is present on each page.</p>
   </div>
@@ -534,7 +534,7 @@
       <li><a href="/blog/categories/media/">Media</a></li>
       <li><a href="/blog/categories/merchandise/">Merchandise</a></li>
       <li><a href="/blog/categories/micropython/">Micropython</a></li>
-      <li><a href="/blog/categories/organisation/">Organisation</a></li>
+      <li><a href="/blog/categories/organization/">Organization</a></li>
       <li><a href="/blog/categories/owntracks/">OwnTracks</a></li>
       <li><a href="/blog/categories/presence-detection/">Presence Detection</a></li>
       <li><a href="/blog/categories/public-service-announcement/">Public Service Announcement</a></li>

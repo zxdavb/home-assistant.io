@@ -77,7 +77,7 @@
   <hr class="divider">
   <p>After filling Home Assistant with all your precious home automation devices, you usually end up with a cluttered interface and lots of groups that are not interesting in your current context. What if you just want to show groups that are interesting <em>now</em> and hide the rest? That’s when group visibility comes to play.</p>
 <h2><a class="title-link" name="changing-visibility-of-a-group" href="#changing-visibility-of-a-group"></a> Changing visibility of a group</h2>
-<p>To change visibility of a group, use the service <code class="highlighter-rouge">group.set_visibility</code>, pass the group name as <code class="highlighter-rouge">entity_id</code> and use <code class="highlighter-rouge">visible</code> to decide wheter the group should be shown or hidden.</p>
+<p>To change visibility of a group, use the service <code class="highlighter-rouge">group.set_visibility</code>, pass the group name as <code class="highlighter-rouge">entity_id</code> and use <code class="highlighter-rouge">visible</code> to decide whether the group should be shown or hidden.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">service</span><span class="pi">:</span> <span class="s">group.set_visibility</span>
 <span class="s">entity_id</span><span class="pi">:</span> <span class="s">group.basement</span>
 <span class="s">data</span><span class="pi">:</span>

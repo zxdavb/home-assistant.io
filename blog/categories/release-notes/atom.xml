@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Release-Notes | Home Assistant]]></title>
   <link href="https://home-assistant.io/blog/categories/release-notes/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-01-24T13:02:59+00:00</updated>
+  <updated>2018-01-25T17:24:11+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -1229,14 +1229,14 @@ With the Dominos Pizza integration made by [@wardcraigj] your home is now taking
 </p>
 
 ## <a class='title-link' name='shopping-list-tweaks' href='#shopping-list-tweaks'></a> Shopping list tweaks 
-[@balloob] has refreshed the shopping list UI to make it more usable. It's now possible to add items by typing, instead of just voice. Also editting has been made easier.
+[@balloob] has refreshed the shopping list UI to make it more usable. It's now possible to add items by typing, instead of just voice. Also editing has been made easier.
 
 ## <a class='title-link' name='entity-picker' href='#entity-picker'></a> Entity picker 
 [@balloob] improved the way if you want to pick an entity. In the automation editor, the script editor and the service section of the Developer Tools it's much easier to identify the right one! The automation editor will only suggest relevant entities.
 
 <p class='img'>
     <img src='/images/blog/2017-12-0.59/picker.png' alt='Screenshot of the Entity Picker.'>
-    Screenshot of the of the Enitity Picker.
+    Screenshot of the of the Entity Picker.
 </p>
 
 ## <a class='title-link' name='hassio-add-ons' href='#hassio-add-ons'></a> Hass.io Add-ons 
@@ -1647,7 +1647,7 @@ The Hass.io release of 0.58 will be delayed by a couple of days because Pascal i
 
 ## <a class='title-link' name='translation-update' href='#translation-update'></a> Translation update 
 
-Translations are up and running in full speed. Shortly after the last release we got our translation pipeline figured out. [@armills] and [@c727] are doing an amazing job managing this project. We've doubled the number of supported languages to 42 and the amount of keys to translate went from 8 to 130. Our translaters are on top of their game and 79% is already translated.
+Translations are up and running in full speed. Shortly after the last release we got our translation pipeline figured out. [@armills] and [@c727] are doing an amazing job managing this project. We've doubled the number of supported languages to 42 and the amount of keys to translate went from 8 to 130. Our translators are on top of their game and 79% is already translated.
 
 Talking about our translators, we now have 445 people with an account to help with translations. Not bad for 3 weeks!
 

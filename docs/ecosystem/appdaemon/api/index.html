@@ -97,7 +97,7 @@
   <li>Following a change in the status of Daylight Savings Time</li>
   <li>Following a restart of Home Assistant</li>
 </ul>
-<p>In every case, the App is responsible for recreating any state it might need as if it were the first time it was ever started. If <code class="highlighter-rouge">initialize()</code> is called, the app can safely assume that it is either being loaded for the first time, or that all callbacks and timers have been cancelled. In either case, the APP will need to recreate them. Depending upon the application it may be desirable for the App to establish state such as whether or not a particular light is on, within the <code class="highlighter-rouge">initialize()</code> function to ensure that everything is as expected or to make immediate remedial action (e.g. turn off a light that might have been left on by mistake when the app was restarted).</p>
+<p>In every case, the App is responsible for recreating any state it might need as if it were the first time it was ever started. If <code class="highlighter-rouge">initialize()</code> is called, the app can safely assume that it is either being loaded for the first time, or that all callbacks and timers have been canceled. In either case, the APP will need to recreate them. Depending upon the application it may be desirable for the App to establish state such as whether or not a particular light is on, within the <code class="highlighter-rouge">initialize()</code> function to ensure that everything is as expected or to make immediate remedial action (e.g. turn off a light that might have been left on by mistake when the app was restarted).</p>
 <p>After the <code class="highlighter-rouge">initialize()</code> function is in place, the rest of the app consists of functions that are called by the various callback mechanisms, and any additional functions the user wants to add as part of the program logic. Apps are able to subscribe to 2 main classes of events:</p>
 <ul>
   <li>Scheduled Events</li>
@@ -461,7 +461,7 @@
 </code></pre>
 </div>
 <h3><a class="title-link" name="cancel_listen_state" href="#cancel_listen_state"></a> cancel_listen_state()</h3>
-<p>Cancel a <code class="highlighter-rouge">listen_state()</code> callback. This will mean that the App will no longer be notified for the specific state change that has been cancelled. Other state changes will continue to be monitored.</p>
+<p>Cancel a <code class="highlighter-rouge">listen_state()</code> callback. This will mean that the App will no longer be notified for the specific state change that has been canceled. Other state changes will continue to be monitored.</p>
 <h4><a class="title-link" name="synopsis" href="#synopsis"></a> Synopsis</h4>
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">cancel_listen_state</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
 </code></pre>
@@ -937,7 +937,7 @@
 </code></pre>
 </div>
 <h3><a class="title-link" name="notify" href="#notify"></a> notify()</h3>
-<p>This is a convenience function for the <code class="highlighter-rouge">notify.notify</code> service. It will send a notification to your defualt notification service. If you have more than one, use <code class="highlighter-rouge">call_service()</code> to call the specific notification service you require instead.</p>
+<p>This is a convenience function for the <code class="highlighter-rouge">notify.notify</code> service. It will send a notification to your default notification service. If you have more than one, use <code class="highlighter-rouge">call_service()</code> to call the specific notification service you require instead.</p>
 <h4><a class="title-link" name="synopsis" href="#synopsis"></a> Synopsis</h4>
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">notify</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 </code></pre>
@@ -1069,7 +1069,7 @@
 <p>The name of the event that caused the callback, e.g. <code class="highlighter-rouge">"MODE_CHANGE"</code> or <code class="highlighter-rouge">call_service</code>.</p>
 <h4><a class="title-link" name="data" href="#data"></a> data</h4>
 <p>A dictionary containing any additional information associated with the event.</p>
-<h3><a class="title-link" name="use-of-events-for-signalling-between-home-assistant-and-appdaemon" href="#use-of-events-for-signalling-between-home-assistant-and-appdaemon"></a> Use of Events for Signalling between Home Assistant and AppDaemon</h3>
+<h3><a class="title-link" name="use-of-events-for-signaling-between-home-assistant-and-appdaemon" href="#use-of-events-for-signaling-between-home-assistant-and-appdaemon"></a> Use of Events for Signaling between Home Assistant and AppDaemon</h3>
 <p>Home Assistant allows for the creation of custom events and existing components can send and receive them. This provides a useful mechanism for signaling back and forth between Home Assistant and AppDaemon. For instance, if you would like to create a UI Element to fire off some code in Home Assistant, all that is necessary is to create a script to fire a custom event, then subscribe to that event in AppDaemon. The script would look something like this:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">alias</span><span class="pi">:</span> <span class="s">Day</span>
 <span class="s">sequence</span><span class="pi">:</span>
@@ -1180,7 +1180,7 @@
 </code></pre>
 </div>
 <h4><a class="title-link" name="returns" href="#returns"></a> Returns</h4>
-<p>A localised Python time object representing the current AppDaemon time.</p>
+<p>A localized Python time object representing the current AppDaemon time.</p>
 <h4><a class="title-link" name="parameters" href="#parameters"></a> Parameters</h4>
 <p>None</p>
 <h4><a class="title-link" name="example" href="#example"></a> Example</h4>
@@ -1194,7 +1194,7 @@
 </code></pre>
 </div>
 <h4><a class="title-link" name="returns" href="#returns"></a> Returns</h4>
-<p>A localised Python time object representing the current AppDaemon date.</p>
+<p>A localized Python time object representing the current AppDaemon date.</p>
 <h4><a class="title-link" name="parameters" href="#parameters"></a> Parameters</h4>
 <p>None</p>
 <h4><a class="title-link" name="example" href="#example"></a> Example</h4>
@@ -1208,7 +1208,7 @@
 </code></pre>
 </div>
 <h4><a class="title-link" name="returns" href="#returns"></a> Returns</h4>
-<p>A localised Python datetime object representing the current AppDaemon date and time.</p>
+<p>A localized Python datetime object representing the current AppDaemon date and time.</p>
 <h4><a class="title-link" name="parameters" href="#parameters"></a> Parameters</h4>
 <p>None</p>
 <h4><a class="title-link" name="example" href="#example"></a> Example</h4>
@@ -1216,13 +1216,13 @@
 </code></pre>
 </div>
 <h3><a class="title-link" name="convert_utc" href="#convert_utc"></a> convert_utc()</h3>
-<p>Home Assistant provides timestamps of several different sorts that may be used to gain additional insight into state changes. These timestamps are in UTC and are coded as ISO 8601 Combined date and time strings. <code class="highlighter-rouge">convert_utc()</code> will accept one of these strings and convert it to a localised Python datetime object representing the timestamp</p>
+<p>Home Assistant provides timestamps of several different sorts that may be used to gain additional insight into state changes. These timestamps are in UTC and are coded as ISO 8601 Combined date and time strings. <code class="highlighter-rouge">convert_utc()</code> will accept one of these strings and convert it to a localized Python datetime object representing the timestamp</p>
 <h4><a class="title-link" name="synopsis" href="#synopsis"></a> Synopsis</h4>
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">convert_utc</span><span class="p">(</span><span class="n">utc_string</span><span class="p">)</span>
 </code></pre>
 </div>
 <h4><a class="title-link" name="returns" href="#returns"></a> Returns</h4>
-<p><code class="highlighter-rouge">convert_utc(utc_string)</code> returns a localised Python datetime object representing the timestamp.</p>
+<p><code class="highlighter-rouge">convert_utc(utc_string)</code> returns a localized Python datetime object representing the timestamp.</p>
 <h4><a class="title-link" name="parameters" href="#parameters"></a> Parameters</h4>
 <h5><a class="title-link" name="utc_string" href="#utc_string"></a> utc_string</h5>
 <p>An ISO 8601 encoded date and time string in the following format: <code class="highlighter-rouge">2016-07-13T14:24:02.040658-04:00</code></p>
@@ -1411,7 +1411,7 @@
 </div>
 <p>Note the timestamps in the log - AppDaemon believes it is now just before sunset and will process any callbacks appropriately.</p>
 <h3><a class="title-link" name="speeding-things-up" href="#speeding-things-up"></a> Speeding things up</h3>
-<p>Some Apps need to run for periods of a day or two for you to test all aspects. This can be time consuming, but Time Travel can also help here in two ways. The first is by speeding up time. To do this, simply use the <code class="highlighter-rouge">-t</code> option on the command line. This specifies the amount of time a second lasts while time travelling. The default of course is 1 second, but if you change it to <code class="highlighter-rouge">0.1</code> for instance, AppDaemon will work 10x faster. If you set it to <code class="highlighter-rouge">0</code>, AppDaemon will work as fast as possible and, depending in your hardware, may be able to get through an entire day in a matter of minutes. Bear in mind however, due to the threaded nature of AppDaemon, when you are running with <code class="highlighter-rouge">-t 0</code> you may see actual events firing a little later than expected as the rest of the system tries to keep up with the timer. To set the tick time, start AppDaemon as follows:</p>
+<p>Some Apps need to run for periods of a day or two for you to test all aspects. This can be time consuming, but Time Travel can also help here in two ways. The first is by speeding up time. To do this, simply use the <code class="highlighter-rouge">-t</code> option on the command line. This specifies the amount of time a second lasts while time traveling. The default of course is 1 second, but if you change it to <code class="highlighter-rouge">0.1</code> for instance, AppDaemon will work 10x faster. If you set it to <code class="highlighter-rouge">0</code>, AppDaemon will work as fast as possible and, depending in your hardware, may be able to get through an entire day in a matter of minutes. Bear in mind however, due to the threaded nature of AppDaemon, when you are running with <code class="highlighter-rouge">-t 0</code> you may see actual events firing a little later than expected as the rest of the system tries to keep up with the timer. To set the tick time, start AppDaemon as follows:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>appdaemon -t 0.1
 </code></pre>
 </div>
@@ -1433,7 +1433,7 @@
 </code></pre>
 </div>
 <h3><a class="title-link" name="a-note-on-times" href="#a-note-on-times"></a> A Note on Times</h3>
-<p>Some Apps you write may depend on checking times of events relative to the current time. If you are time travelling this will not work if you use standard python library calls to get the current time and date etc. For this reason, always use the AppDamon supplied <code class="highlighter-rouge">time()</code>, <code class="highlighter-rouge">date()</code> and <code class="highlighter-rouge">datetime()</code> calls, documented earlier. These calls will consult with AppDaemon’s internal time rather than the actual time and give you the correct values.</p>
+<p>Some Apps you write may depend on checking times of events relative to the current time. If you are time traveling this will not work if you use standard python library calls to get the current time and date etc. For this reason, always use the AppDamon supplied <code class="highlighter-rouge">time()</code>, <code class="highlighter-rouge">date()</code> and <code class="highlighter-rouge">datetime()</code> calls, documented earlier. These calls will consult with AppDaemon’s internal time rather than the actual time and give you the correct values.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

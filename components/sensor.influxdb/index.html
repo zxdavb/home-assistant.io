@@ -108,7 +108,7 @@
 </ul>
 <h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>
 <h3><a class="title-link" name="full-configuration" href="#full-configuration"></a> Full configuration</h3>
-<p>The example configuration entry bellow create two request to your local InfluxDB instance, one to the database <code class="highlighter-rouge">db1</code>, the other to <code class="highlighter-rouge">db2</code>:</p>
+<p>The example configuration entry below create two request to your local InfluxDB instance, one to the database <code class="highlighter-rouge">db1</code>, the other to <code class="highlighter-rouge">db2</code>:</p>
 <ul>
   <li><code class="highlighter-rouge">select last(value) as value from "°C" where "name" = "foo"</code></li>
   <li><code class="highlighter-rouge">select min(tmp) as value from "%" where "entity_id" = ''salon'' and time &gt; now() - 1h</code></li>

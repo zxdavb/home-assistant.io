@@ -4,7 +4,7 @@
   <title><![CDATA[Home Assistant]]></title>
   <link href="https://home-assistant.io/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-01-24T13:02:59+00:00</updated>
+  <updated>2018-01-25T17:24:11+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -754,14 +754,14 @@ Note however, that this feature was replaced by a new ignore_string config optio
 </p>
 
 <h2><a class="title-link" name="shopping-list-tweaks" href="#shopping-list-tweaks"></a> Shopping list tweaks</h2>
-<p><a href="https://github.com/balloob">@balloob</a> has refreshed the shopping list UI to make it more usable. It’s now possible to add items by typing, instead of just voice. Also editting has been made easier.</p>
+<p><a href="https://github.com/balloob">@balloob</a> has refreshed the shopping list UI to make it more usable. It’s now possible to add items by typing, instead of just voice. Also editing has been made easier.</p>
 
 <h2><a class="title-link" name="entity-picker" href="#entity-picker"></a> Entity picker</h2>
 <p><a href="https://github.com/balloob">@balloob</a> improved the way if you want to pick an entity. In the automation editor, the script editor and the service section of the Developer Tools it’s much easier to identify the right one! The automation editor will only suggest relevant entities.</p>
 
 <p class="img">
     <img src="/images/blog/2017-12-0.59/picker.png" alt="Screenshot of the Entity Picker." />
-    Screenshot of the of the Enitity Picker.
+    Screenshot of the of the Entity Picker.
 </p>
 
 <h2><a class="title-link" name="hassio-add-ons" href="#hassio-add-ons"></a> Hass.io Add-ons</h2>
@@ -1081,7 +1081,7 @@ The Hass.io release of 0.58 will be delayed by a couple of days because Pascal i
 
 <h2><a class="title-link" name="translation-update" href="#translation-update"></a> Translation update</h2>
 
-<p>Translations are up and running in full speed. Shortly after the last release we got our translation pipeline figured out. <a href="https://github.com/armills">@armills</a> and <a href="https://github.com/c727">@c727</a> are doing an amazing job managing this project. We’ve doubled the number of supported languages to 42 and the amount of keys to translate went from 8 to 130. Our translaters are on top of their game and 79% is already translated.</p>
+<p>Translations are up and running in full speed. Shortly after the last release we got our translation pipeline figured out. <a href="https://github.com/armills">@armills</a> and <a href="https://github.com/c727">@c727</a> are doing an amazing job managing this project. We’ve doubled the number of supported languages to 42 and the amount of keys to translate went from 8 to 130. Our translators are on top of their game and 79% is already translated.</p>
 
 <p>Talking about our translators, we now have 445 people with an account to help with translations. Not bad for 3 weeks!</p>
 
@@ -1298,7 +1298,7 @@ For Custom UI users: your custom UI will need to be updated before it can work w
 
 <h2><a class="title-link" name="setting-up-tor" href="#setting-up-tor"></a> Setting up Tor</h2>
 
-<p>Our <a href="/docs/ecosystem/tor/">documentation</a> provides an detailled guide about seting up a <a href="https://www.torproject.org/docs/hidden-services.html.en">Tor’s Hidden Service</a>. The setup is straight-forward:</p>
+<p>Our <a href="/docs/ecosystem/tor/">documentation</a> provides an detailed guide about seting up a <a href="https://www.torproject.org/docs/hidden-services.html.en">Tor’s Hidden Service</a>. The setup is straight-forward:</p>
 
 <ol>
   <li>Install Tor. On a Debian-based system: <code class="highlighter-rouge">$ sudo apt-get install tor</code>. On Fedora: <code class="highlighter-rouge">$ sudo dnf install tor</code></li>

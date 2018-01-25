@@ -200,11 +200,11 @@
 <p>Do less and be lazy. It sounds so obvious and it took a while before it started to dawn on me. I think most of the code I write is pretty fast, but I don’t often stop to take a harder look at how and when it runs in practice. When do we need the result, can it be postponed?</p>
 <p>And thus started my journey to take a critical look at how the Home Assistant app was working and how to make things faster. Below is the list of the different things that I did to make it fast.</p>
 <p>I hope this list can be useful to other people, as a guide for optimizing their own apps or for avoiding pitfalls when building a new one.</p>
-<p>The first thing to do is to measure. The Home Assistant front end is a mobile web app, so we shouldn’t measure this on a machine with 8 cores and gigabytes of ram but instead measure on devices you expect a mobile web app to run: phones. Below are two timelines recorded with Home Assistant 0.18.2 (pre-optimizations) and Google Chrome 53. <strong>On my Mac the app starts in 1400 miliseconds and on my Nexus 5x in ~6500 miliseconds (~4.5 times slower!).</strong></p>
+<p>The first thing to do is to measure. The Home Assistant front end is a mobile web app, so we shouldn’t measure this on a machine with 8 cores and gigabytes of ram but instead measure on devices you expect a mobile web app to run: phones. Below are two timelines recorded with Home Assistant 0.18.2 (pre-optimizations) and Google Chrome 53. <strong>On my Mac the app starts in 1400 milliseconds and on my Nexus 5x in ~6500 milliseconds (~4.5 times slower!).</strong></p>
 <p class="img">
   <img src="/images/blog/2016-08-optimizing-web-app/performance-timeline-0.18.2.png" alt="Timeline of loading the front end in Home Assistant 0.18.2" />
 </p>
-<p>Although the app takes 6500 milliseconds to load on my phone, it would perform well afterwards. Still, that initial load is unacceptable. You expect to open an app on your phone and be able to use it, quickly. After I applied all the changes described below, I managed to reduce startup time to 900 miliseconds (-35%) on my Mac and 2400 miliseconds (-63%) on my Nexus 5x. <a href="https://home-assistant.io/demo">Check out the demo here.</a></p>
+<p>Although the app takes 6500 milliseconds to load on my phone, it would perform well afterwards. Still, that initial load is unacceptable. You expect to open an app on your phone and be able to use it, quickly. After I applied all the changes described below, I managed to reduce startup time to 900 milliseconds (-35%) on my Mac and 2400 milliseconds (-63%) on my Nexus 5x. <a href="https://home-assistant.io/demo">Check out the demo here.</a></p>
 <p class="img">
   <img src="/images/blog/2016-08-optimizing-web-app/performance-diagram.png" alt="diagram showing old and new loading times next to one another" />
   <img src="/images/blog/2016-08-optimizing-web-app/performance-timeline-0.26.png" alt="Timeline of loading the front end in Home Assistant 0.26" />
@@ -267,7 +267,7 @@
 </header>
   <div class="entry-content clearfix">
     <p>When Home Assistant started the focus has always been on making a great developer experience. Allowing anyone to add support for their favorite devices to Home Assistant easily. This focus has been a great success since we now have 339 components and platforms!</p>
-<p>Starting with this release, we are extending our extensability to the frontend. Starting this release, any component can <a href="/developers/frontend_creating_custom_panels/">add it’s own page to the frontend</a>. Examples of this today are the map, logbook and history. We are looking forward to all the crazy panels you’ll come up with!</p>
+<p>Starting with this release, we are extending our extensibility to the frontend. Starting this release, any component can <a href="/developers/frontend_creating_custom_panels/">add it’s own page to the frontend</a>. Examples of this today are the map, logbook and history. We are looking forward to all the crazy panels you’ll come up with!</p>
 <p>We have also seen an exciting trend of people starting to visualize their Internet of Things data using <a href="http://jupyter.org/">Jupyter</a> Notebooks, which are a great way to create and share documents that contain code, visualizations, and explanatory text. In case you missed it, the <a href="/blog/2016/07/23/internet-of-things-data-exploration-with-jupyter-notebooks/">blog</a> post by <a href="https://github.com/kireyeu">@kireyeu</a> shows an advanced usecase while our <a href="/cookbook/#jupyter-notebooks">Notebooks</a> in the <a href="https://github.com/home-assistant/home-assistant-notebooks">Home Assistant Notebooks repository</a> cover the basics.</p>
 <p>This release also includes a bunch of new integrations, among others three new media player platforms. This means that today Home Assistant can talk to 26 different media players!</p>
 <p>The brand-new <a href="/components/panel_iframe/">iFrame panel component</a> allows you to add other websites as pages in the Home Assistant frontend. They will show up in the sidebar and can be used the same way as you open the frontend in your browser but all within one view.</p>
@@ -550,7 +550,7 @@ Over a year ago I participated in the <a href="https://www.kickstarter.com/proje
       <li><a href="/blog/categories/media/">Media</a></li>
       <li><a href="/blog/categories/merchandise/">Merchandise</a></li>
       <li><a href="/blog/categories/micropython/">Micropython</a></li>
-      <li><a href="/blog/categories/organisation/">Organisation</a></li>
+      <li><a href="/blog/categories/organization/">Organization</a></li>
       <li><a href="/blog/categories/owntracks/">OwnTracks</a></li>
       <li><a href="/blog/categories/presence-detection/">Presence Detection</a></li>
       <li><a href="/blog/categories/public-service-announcement/">Public Service Announcement</a></li>
