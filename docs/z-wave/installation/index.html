@@ -204,6 +204,7 @@ The device type is <code class="highlighter-rouge">c</code> (character special) 
   <span class="s">usb_path</span><span class="pi">:</span> <span class="s">/dev/ttyACM0</span>
 </code></pre>
 </div>
+<p>Depending on your Z-Wave device it may instead be <code class="highlighter-rouge">/dev/ttyAMA0</code> (eg Razberry board) or <code class="highlighter-rouge">/dev/ttyUSB0</code> (eg HUBUZB-1).</p>
 <h3><a class="title-link" name="rancheros" href="#rancheros"></a> RancherOS</h3>
 <p>If you’re using RancherOS for containers, you’ll need to ensure you enable the kernel-extras service so that the <code class="highlighter-rouge">USB_ACM</code> module (also known as <code class="highlighter-rouge">cdc_acm</code>) is loaded:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo ros service <span class="nb">enable </span>kernel-extras
