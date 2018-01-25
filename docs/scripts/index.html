@@ -161,6 +161,30 @@
   <span class="s">domain</span><span class="pi">:</span> <span class="s">light</span>
 </code></pre>
 </div>
+<h3><a class="title-link" name="raise-and-consume-custom-events" href="#raise-and-consume-custom-events"></a> Raise and Consume Custom Events</h3>
+<p>The following automation shows how to raise a custom event called <code class="highlighter-rouge">event_light_turned_on</code> with <code class="highlighter-rouge">entity_id</code> as the event data. The action part could be inside a script or an automation.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- alias: Fire Event
+  trigger:
+    platform: state
+    entity_id: light.kitchen
+    to: 'on'
+  action:
+    event: event_light_turned_on
+    event_data:
+      entity_id: ""
+</code></pre>
+</div>
+<p>The following automation shows how to capture the custom event <code class="highlighter-rouge">event_light_turned_on</code>, and retrieve corresponsing <code class="highlighter-rouge">entity_id</code> that was passed as the event data.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- alias: Capture Event
+  trigger:
+    platform: event
+    event_type: light_turned_on
+  action:
+    - service: notify.notify
+      data_template:
+        message: " is turned on."
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
