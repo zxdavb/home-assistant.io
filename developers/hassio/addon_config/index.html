@@ -75,9 +75,14 @@
   </header>
   <hr class="divider">
   <p>Each add-on is stored in a folder. The file structure looks like this:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>addon_name/
-  Dockerfile
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>addon_name/
+  build.json
+  CHANGELOG.md
   config.json
+  Dockerfile
+  icon.png
+  logo.png
+  README.md
   run.sh
 </code></pre>
 </div>
@@ -500,6 +505,7 @@ CMD [ "/run.sh" ]
           <li><a  href='/developers/hassio/addon_communication/'>Communication </a></li>
           <li><a  href='/developers/hassio/addon_testing/'>Local Testing </a></li>
           <li><a  href='/developers/hassio/addon_publishing/'>Publishing </a></li>
+          <li><a  href='/developers/hassio/addon_presentation/'>Presentation </a></li>
           <li><a  href='/developers/hassio/addon_repository/'>Repositories </a></li>
         </ul>
       </li>
