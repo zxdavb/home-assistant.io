@@ -163,26 +163,26 @@
 </div>
 <h3><a class="title-link" name="raise-and-consume-custom-events" href="#raise-and-consume-custom-events"></a> Raise and Consume Custom Events</h3>
 <p>The following automation shows how to raise a custom event called <code class="highlighter-rouge">event_light_turned_on</code> with <code class="highlighter-rouge">entity_id</code> as the event data. The action part could be inside a script or an automation.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>- alias: Fire Event
-  trigger:
-    platform: state
-    entity_id: light.kitchen
-    to: 'on'
-  action:
-    event: event_light_turned_on
-    event_data:
-      entity_id: ""
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">alias</span><span class="pi">:</span> <span class="s">Fire Event</span>
+  <span class="s">trigger</span><span class="pi">:</span>
+    <span class="s">platform</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="s">entity_id</span><span class="pi">:</span> <span class="s">light.kitchen</span>
+    <span class="s">to</span><span class="pi">:</span> <span class="s1">'</span><span class="s">on'</span>
+  <span class="s">action</span><span class="pi">:</span>
+    <span class="s">event</span><span class="pi">:</span> <span class="s">event_light_turned_on</span>
+    <span class="s">event_data</span><span class="pi">:</span>
+      <span class="s">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.entity_id</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre>
 </div>
 <p>The following automation shows how to capture the custom event <code class="highlighter-rouge">event_light_turned_on</code>, and retrieve corresponsing <code class="highlighter-rouge">entity_id</code> that was passed as the event data.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>- alias: Capture Event
-  trigger:
-    platform: event
-    event_type: light_turned_on
-  action:
-    - service: notify.notify
-      data_template:
-        message: " is turned on."
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">alias</span><span class="pi">:</span> <span class="s">Capture Event</span>
+  <span class="s">trigger</span><span class="pi">:</span>
+    <span class="s">platform</span><span class="pi">:</span> <span class="s">event</span>
+    <span class="s">event_type</span><span class="pi">:</span> <span class="s">light_turned_on</span>
+  <span class="s">action</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">notify.notify</span>
+      <span class="s">data_template</span><span class="pi">:</span>
+        <span class="s">message</span><span class="pi">:</span> <span class="s2">"</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">turned</span><span class="nv"> </span><span class="s">on."</span>
 </code></pre>
 </div>
 </article>
