@@ -84,7 +84,7 @@
     </ul>
   </span>
       <a class='comments'
-         href="#disqus_thread"
+         href="#post-comments"
          >Comments</a>
   </div>
 </header>
@@ -168,6 +168,7 @@ For example, my wife works next door - and I couldn’t detect whether she’s a
 <p>You can achieve the same effect by using the same the same <code class="highlighter-rouge">UUID</code> but different <code class="highlighter-rouge">major</code> / <code class="highlighter-rouge">minor</code> numbers - and tell OwnTracks not to worry about the <code class="highlighter-rouge">minor</code> / <code class="highlighter-rouge">major</code> numbers for a particular region by setting them to 0).</p>
 <p><em>Make sure to also check out <a href="/blog/2016/05/26/ibeacons-how-to-track-things-that-cant-track-themselves-part-ii/">part II</a> where I talk about how to use iBeacons to track any object.</em></p>
 </article>
+<div id='post-comments'></div>
 <section id="disqus">
   <h3 class="indent title">Comments</h3>
   <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
@@ -254,18 +255,6 @@ For example, my wife works next door - and I couldn’t detect whether she’s a
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
   g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
   s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
-<script>
-  var disqus_shortname = 'home-assistant';
-    // var disqus_developer = 1;
-    var disqus_identifier = 'https://home-assistant.io/blog/2016/04/30/ibeacons-part-1-making-presence-detection-work-better/';
-    var disqus_url = 'https://home-assistant.io/blog/2016/04/30/ibeacons-part-1-making-presence-detection-work-better/';
-    var disqus_script = 'embed.js';
-  (function () {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  }());
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

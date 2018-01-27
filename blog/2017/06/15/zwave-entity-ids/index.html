@@ -81,7 +81,7 @@
     </ul>
   </span>
       <a class='comments'
-         href="#disqus_thread"
+         href="#post-comments"
          >Comments</a>
   </div>
 </header>
@@ -91,6 +91,7 @@
 <p>With the release of 0.47, this feature will be opt-in. Setting <code class="highlighter-rouge">new_entity_ids: true</code> under <code class="highlighter-rouge">zwave:</code> in your configuration.yaml will enable the new generation. After 0.48 this feature will become opt-out. From 0.48 onward, unless you’ve declared <code class="highlighter-rouge">new_entity_ids: false</code> you will switch to the new entity_id generation. At an undecided point in the future, the old entity_id generation will be removed completely.</p>
 <p>I’m sure all ZWave users understand that the current entity_ids aren’t easy to use. They’re annoying to type in configuration.yaml, and break if a node needs to be re-included to the network. We know that breaking changes are painful, and so we’re doing what we can to roll this change out as smoothly as possible. The end result should be a dramatic simplification of most ZWave configurations. We hope that this change will ultimately make ZWave much easier to work with, and bring ZWave configuration just a little closer to the rest of the Home Assistant platforms.</p>
 </article>
+<div id='post-comments'></div>
 <section id="disqus">
   <h3 class="indent title">Comments</h3>
   <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
@@ -177,18 +178,6 @@
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
   g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
   s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
-<script>
-  var disqus_shortname = 'home-assistant';
-    // var disqus_developer = 1;
-    var disqus_identifier = 'https://home-assistant.io/blog/2017/06/15/zwave-entity-ids/';
-    var disqus_url = 'https://home-assistant.io/blog/2017/06/15/zwave-entity-ids/';
-    var disqus_script = 'embed.js';
-  (function () {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  }());
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

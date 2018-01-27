@@ -82,7 +82,7 @@
     </ul>
   </span>
       <a class='comments'
-         href="#disqus_thread"
+         href="#post-comments"
          >Comments</a>
   </div>
 </header>
@@ -108,7 +108,7 @@
 <ul>
   <li>Tahoma platform will get new entity IDs (<a href="https://github.com/glpatcern">@glpatcern</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11547">#11547</a>) (<a href="https://home-assistant.io/components/tahoma/">tahoma docs</a>) (<a href="https://home-assistant.io/components/cover.tahoma/">cover.tahoma docs</a>) (breaking change)</li>
   <li>Mold indicator: attribute names no longer include spaces or periods (<a href="https://github.com/olskar">@olskar</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11694">#11694</a>) (<a href="https://home-assistant.io/components/sensor.mold_indicator/">sensor.mold_indicator docs</a>) (breaking change)</li>
-  <li>Custom component devs only: <code class="highlighter-rouge">EntityComponent.add_entity(entity)</code> and <code class="highlighter-rouge">EntityComponent.async_add_entity(entity)</code> have been removed. Use <code class="highlighter-rouge">EntityComponent.add_entities([entity])</code> and <code class="highlighter-rouge">EntityComponent.async_add_entities([entity])</code> instead. (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11691">#11691</a>) (breaking change)</li>
+  <li>Custom component devs only: <code class="highlighter-rouge">EntityComponent.add_entity(entity)</code> and <code class="highlighter-rouge">EntityComponent.async_add_entity(entity)</code> have been removed. Use <code class="highlighter-rouge">EntityComponent.add_entities([entity])</code> and <code class="highlighter-rouge">EntityComponent.async_add_entities([entity])</code> instead. Also <code class="highlighter-rouge">EntityComponent.entities</code> is no longer a dictionary but instead an iterable. Use <code class="highlighter-rouge">EntityComponent.get_entity(entity_id)</code> to get entity by id. (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11691">#11691</a>) (breaking change)</li>
 </ul>
 <h2>All changes</h2>
 <ul>
@@ -242,10 +242,17 @@
   <li>Update pyhomematic to 0.1.38 (<a href="https://github.com/danielperna84">@danielperna84</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11936">#11936</a>) (<a href="https://home-assistant.io/components/homematic/">homematic docs</a>)</li>
 </ul>
 </article>
-<section id="disqus">
-  <h3 class="indent title">Comments</h3>
-  <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
-</section>
+<div id='post-comments'></div>
+<div id='discourse-comments'></div>
+<script type="text/javascript">
+  DiscourseEmbed = { discourseUrl: 'https://community.home-assistant.io/',
+                     discourseEmbedUrl: 'https://home-assistant.io/blog/2018/01/27/release-62/' };
+  (function() {
+    var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+    d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
           <div class="grid">
@@ -325,18 +332,6 @@
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
   g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
   s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
-<script>
-  var disqus_shortname = 'home-assistant';
-    // var disqus_developer = 1;
-    var disqus_identifier = 'https://home-assistant.io/blog/2018/01/27/release-62/';
-    var disqus_url = 'https://home-assistant.io/blog/2018/01/27/release-62/';
-    var disqus_script = 'embed.js';
-  (function () {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  }());
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

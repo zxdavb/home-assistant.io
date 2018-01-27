@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Release-Notes | Home Assistant]]></title>
   <link href="https://home-assistant.io/blog/categories/release-notes/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-01-27T07:46:41+00:00</updated>
+  <updated>2018-01-27T08:43:39+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -50,7 +50,7 @@ Experiencing issues introduced by this release? Please report them in our [issue
 
 - Tahoma platform will get new entity IDs ([@glpatcern] - [#11547]) ([tahoma docs]) ([cover.tahoma docs]) (breaking change)
 - Mold indicator: attribute names no longer include spaces or periods ([@olskar] - [#11694]) ([sensor.mold_indicator docs]) (breaking change)
-- Custom component devs only: `EntityComponent.add_entity(entity)` and `EntityComponent.async_add_entity(entity)` have been removed. Use `EntityComponent.add_entities([entity])` and `EntityComponent.async_add_entities([entity])` instead. ([@balloob] - [#11691]) (breaking change)
+- Custom component devs only: `EntityComponent.add_entity(entity)` and `EntityComponent.async_add_entity(entity)` have been removed. Use `EntityComponent.add_entities([entity])` and `EntityComponent.async_add_entities([entity])` instead. Also `EntityComponent.entities` is no longer a dictionary but instead an iterable. Use `EntityComponent.get_entity(entity_id)` to get entity by id. ([@balloob] - [#11691]) (breaking change)
 
 ## All changes
 

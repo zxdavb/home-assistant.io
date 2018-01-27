@@ -82,7 +82,7 @@
     </ul>
   </span>
       <a class='comments'
-         href="#disqus_thread"
+         href="#post-comments"
          >Comments</a>
   </div>
 </header>
@@ -97,6 +97,7 @@
 <p>The <a href="https://pypi.python.org/pypi/hbmqtt">HBMQTT</a> broker provides websockets support for MQTT and mqttws31.js included in web page gives you access to the MQTT messages. It’s a matter of minutes. OK, it took a little longer because I’m not a Javascript guy to create the software part that will show details about your environment. The source is available at <a href="https://github.com/fabaff/home-assistant-display">https://github.com/fabaff/home-assistant-display</a> and the screenshot above shows the result. I guess that every person who is familiar with Javascript would be able to reduce the amount of code and to make it more flexible. Well, it’s a only prototype and showcase to include an image in this blog post.</p>
 <p>I hope that this little article could give you an idea of extending Home Assistant in an unconventional way.</p>
 </article>
+<div id='post-comments'></div>
 <section id="disqus">
   <h3 class="indent title">Comments</h3>
   <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
@@ -183,18 +184,6 @@
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
   g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
   s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
-<script>
-  var disqus_shortname = 'home-assistant';
-    // var disqus_developer = 1;
-    var disqus_identifier = 'https://home-assistant.io/blog/2016/04/07/static-website/';
-    var disqus_url = 'https://home-assistant.io/blog/2016/04/07/static-website/';
-    var disqus_script = 'embed.js';
-  (function () {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  }());
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

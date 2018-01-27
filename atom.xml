@@ -4,7 +4,7 @@
   <title><![CDATA[Home Assistant]]></title>
   <link href="https://home-assistant.io/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-01-27T07:46:41+00:00</updated>
+  <updated>2018-01-27T08:43:39+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -53,7 +53,7 @@
 <ul>
   <li>Tahoma platform will get new entity IDs (<a href="https://github.com/glpatcern">@glpatcern</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11547">#11547</a>) (<a href="https://home-assistant.io/components/tahoma/">tahoma docs</a>) (<a href="https://home-assistant.io/components/cover.tahoma/">cover.tahoma docs</a>) (breaking change)</li>
   <li>Mold indicator: attribute names no longer include spaces or periods (<a href="https://github.com/olskar">@olskar</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11694">#11694</a>) (<a href="https://home-assistant.io/components/sensor.mold_indicator/">sensor.mold_indicator docs</a>) (breaking change)</li>
-  <li>Custom component devs only: <code class="highlighter-rouge">EntityComponent.add_entity(entity)</code> and <code class="highlighter-rouge">EntityComponent.async_add_entity(entity)</code> have been removed. Use <code class="highlighter-rouge">EntityComponent.add_entities([entity])</code> and <code class="highlighter-rouge">EntityComponent.async_add_entities([entity])</code> instead. (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11691">#11691</a>) (breaking change)</li>
+  <li>Custom component devs only: <code class="highlighter-rouge">EntityComponent.add_entity(entity)</code> and <code class="highlighter-rouge">EntityComponent.async_add_entity(entity)</code> have been removed. Use <code class="highlighter-rouge">EntityComponent.add_entities([entity])</code> and <code class="highlighter-rouge">EntityComponent.async_add_entities([entity])</code> instead. Also <code class="highlighter-rouge">EntityComponent.entities</code> is no longer a dictionary but instead an iterable. Use <code class="highlighter-rouge">EntityComponent.get_entity(entity_id)</code> to get entity by id. (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11691">#11691</a>) (breaking change)</li>
 </ul>
 
 <h2>All changes</h2>

@@ -83,7 +83,7 @@
     </ul>
   </span>
       <a class='comments'
-         href="#disqus_thread"
+         href="#post-comments"
          >Comments</a>
   </div>
 </header>
@@ -211,6 +211,7 @@ If a module is missing then you need to download it from the <a href="https://gi
 <p>Upload <code class="highlighter-rouge">main.py</code> the same way as <code class="highlighter-rouge">boot.py</code>. After a reboot (<code class="highlighter-rouge">&gt;&gt;&gt; import machine</code> and <code class="highlighter-rouge">&gt;&gt;&gt; machine.reboot()</code>) or power-cycling your physical notifier is ready.</p>
 <p>If you run into trouble, press “Ctrl+c” in the REPL to stop the execution of the code, enter <code class="highlighter-rouge">&gt;&gt;&gt; import webrepl</code> and <code class="highlighter-rouge">&gt;&gt;&gt; webrepl.start()</code>, and upload your fixed file.</p>
 </article>
+<div id='post-comments'></div>
 <section id="disqus">
   <h3 class="indent title">Comments</h3>
   <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
@@ -297,18 +298,6 @@ If a module is missing then you need to download it from the <a href="https://gi
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
   g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
   s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
-<script>
-  var disqus_shortname = 'home-assistant';
-    // var disqus_developer = 1;
-    var disqus_identifier = 'https://home-assistant.io/blog/2016/07/28/esp8266-and-micropython-part1/';
-    var disqus_url = 'https://home-assistant.io/blog/2016/07/28/esp8266-and-micropython-part1/';
-    var disqus_script = 'embed.js';
-  (function () {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  }());
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

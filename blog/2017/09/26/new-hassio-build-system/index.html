@@ -81,7 +81,7 @@
     </ul>
   </span>
       <a class='comments'
-         href="#disqus_thread"
+         href="#post-comments"
          >Comments</a>
   </div>
 </header>
@@ -109,6 +109,7 @@ FROM $BUILD_FROM
 <p>The new system will become active with Hass.io 0.64 and Host OS 1.1. Host OS 1.1 is available today. Navigate to Advanced Settings in the Hass.io panel to start the OTA update.</p>
 <p>We have also updated our build scripts and replaced it with a <a href="https://github.com/home-assistant/hassio-build/tree/master/builder">builder docker engine</a>. This builder makes deploying Hass.io components very easy. All basic functionality is supported. If you want more functionality, check out <a href="https://github.com/hassio-addons/build-env">the builder by the Community Hass.io Add-ons project</a>.</p>
 </article>
+<div id='post-comments'></div>
 <section id="disqus">
   <h3 class="indent title">Comments</h3>
   <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
@@ -195,18 +196,6 @@ FROM $BUILD_FROM
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
   g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
   s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
-<script>
-  var disqus_shortname = 'home-assistant';
-    // var disqus_developer = 1;
-    var disqus_identifier = 'https://home-assistant.io/blog/2017/09/26/new-hassio-build-system/';
-    var disqus_url = 'https://home-assistant.io/blog/2017/09/26/new-hassio-build-system/';
-    var disqus_script = 'embed.js';
-  (function () {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  }());
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
