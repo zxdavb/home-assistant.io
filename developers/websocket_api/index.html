@@ -81,14 +81,15 @@
   <li><a href="https://raw.githubusercontent.com/home-assistant/home-assistant-dev-helper/master/ha-websocket.html">JavaScript/HTML</a> - WebSocket connection in your browser</li>
 </ul>
 <p>Connect your websocket implementation to <code class="highlighter-rouge">ws://localhost:8123/api/websocket</code>.</p>
+<p>If you are not using the <a href="/components/frontend/"><code class="highlighter-rouge">frontend</code></a> in your setup then you need to add the <a href="/components/websocket_api/"><code class="highlighter-rouge">websocket_api</code> component</a> to your <code class="highlighter-rouge">configuration.yaml</code> file to use the WebSocket API.</p>
 <h2><a class="title-link" name="server-states" href="#server-states"></a> Server states</h2>
 <ol>
-  <li>Client connects</li>
-  <li>Authentication phase starts
+  <li>Client connects.</li>
+  <li>Authentication phase starts.
     <ul>
-      <li>If no further authentication necessary for the user: go to 3</li>
-      <li>Server sends <code class="highlighter-rouge">auth_required</code> message</li>
-      <li>Client sends <code class="highlighter-rouge">auth</code> message</li>
+      <li>If no further authentication necessary for the user: go to 3.</li>
+      <li>Server sends <code class="highlighter-rouge">auth_required</code> message.</li>
+      <li>Client sends <code class="highlighter-rouge">auth</code> message.</li>
       <li>If <code class="highlighter-rouge">auth</code> message correct: go to 3.</li>
       <li>Server sends <code class="highlighter-rouge">auth_invalid</code>. Go to 6.</li>
     </ul>

@@ -75,18 +75,22 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>On Linux platforms (other than Hass.io) there is one dependency you will need to have installed ahead of time (included in <code class="highlighter-rouge">systemd-devel</code> on Fedora/RHEL systems):</p>
+  <p>The first time you enable the Z-Wave component it will install the Z-Wave drivers (python-openzwave). This can take up to half an hour on slow machines like Raspberry Pi.</p>
+<p>Installing the drivers might require some extra packages to be installed. Check your platform below.</p>
+<h2><a class="title-link" name="platform-specific-installation-instructions" href="#platform-specific-installation-instructions"></a> Platform specific installation instructions</h2>
+<h3><a class="title-link" name="linux-except-hassio" href="#linux-except-hassio"></a> Linux (except Hass.io)</h3>
+<p>On Linux platforms (other than Hass.io) there is one dependency you will need to have installed ahead of time (included in <code class="highlighter-rouge">systemd-devel</code> on Fedora/RHEL systems):</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install libudev-dev
 </code></pre>
 </div>
 <p>On Python 3.6 you may also have to install libpython3.6-dev, and possibly python3.6-dev.</p>
+<h3><a class="title-link" name="macos" href="#macos"></a> macOS</h3>
 <p>When installing on macOS you may have to also run the command below ahead of time, replace “x.x” with the version of Python (<code class="highlighter-rouge">$ python3 --version</code>) you have installed.</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo /Applications/Python<span class="se">\ </span>x.x/Install<span class="se">\ </span>Certificates.command
 </code></pre>
 </div>
-<p class="note">
-The installation of python-openzwave happens when you first enable the Z-Wave component, and can take half an hour or more on a Raspberry Pi.
-</p>
+<h3><a class="title-link" name="raspberry-pi" href="#raspberry-pi"></a> Raspberry Pi</h3>
+<p>On Raspberry Pi you will need to enable the serial interface in the <code class="highlighter-rouge">raspbi-config</code> tool before you can add Z-Wave to Home Assistant.</p>
 <h2><a class="title-link" name="configuration" href="#configuration"></a> Configuration</h2>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">zwave</span><span class="pi">:</span>

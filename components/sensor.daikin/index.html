@@ -80,16 +80,16 @@
   <li><strong>outside temperature</strong></li>
 </ul>
 <p class="note warning">
-Please note, the <code class="highlighter-rouge">daikin</code> platform integrates <strong>ONLY the european versions of Daikin ACs (models BRP069A41, 42, 43, 45)</strong> into Home Assistant
+Please note, the <code class="highlighter-rouge">daikin</code> platform integrates <strong>ONLY the european versions of Daikin ACs (models BRP069A41, 42, 43, 45)</strong> into Home Assistant.
 </p>
-<p>To enable the platform, add the following lines to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
+<p>To enable the platform manually, add the following lines to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">daikin</span>
     <span class="s">host</span><span class="pi">:</span> <span class="s">10.0.0.1</span>
     <span class="s">monitored_conditions</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">inside_temperature</span>  
-      <span class="pi">-</span> <span class="s">outside_temperature</span>  
+      <span class="pi">-</span> <span class="s">inside_temperature</span>
+      <span class="pi">-</span> <span class="s">outside_temperature</span>
 </code></pre>
 </div>
 <div class="config-vars">
@@ -183,6 +183,9 @@ Please note, the <code class="highlighter-rouge">daikin</code> platform integrat
         </li>
         <li>
             <a href='/components/sensor.bme280/'>BME280 Sensor</a>
+        </li>
+        <li>
+            <a href='/components/sensor.bme680/'>BME680 Sensor</a>
         </li>
         <li>
             <a href='/components/sensor.bbox/'>Bbox Sensor</a>
@@ -291,6 +294,9 @@ Please note, the <code class="highlighter-rouge">daikin</code> platform integrat
         </li>
         <li>
             <a href='/components/sensor.homematic/'>Homematic Sensor</a>
+        </li>
+        <li>
+            <a href='/components/sensor.ihc/'>IHC Sensor</a>
         </li>
         <li>
             <a href='/components/sensor.imap_email_content/'>IMAP Email Content</a>
@@ -435,6 +441,9 @@ Please note, the <code class="highlighter-rouge">daikin</code> platform integrat
         </li>
         <li>
             <a href='/components/sensor.tank_utility/'>Tank Utility Sensor</a>
+        </li>
+        <li>
+            <a href='/components/sensor.teksavvy/'>TekSavvy</a>
         </li>
         <li>
             <a href='/components/sensor.tellstick/'>TellStick Sensor</a>

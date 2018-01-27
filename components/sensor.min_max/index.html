@@ -74,7 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">min_max</code> sensor platform consumes the state from other sensors to determine the minimum, maximum, and the mean of the collected states. The sensor will always show you the lowest/highest value which was received from all monitored sensors. If you have spikes in your values, it’s recommended to filter/equalize your values with a <a href="/components/sensor.statistics/">statistics sensor</a> first.</p>
+  <p>The <code class="highlighter-rouge">min_max</code> sensor platform consumes the state from other sensors to determine the minimum, maximum, latest (last) and the mean of the collected states. The sensor will always show you the lowest/highest/latest value which was received from all monitored sensors. If you have spikes in your values, it’s recommended to filter/equalize your values with a <a href="/components/sensor.statistics/">statistics sensor</a> first.</p>
 <p>This sensor is an alternative to the <a href="/components/sensor.template/">template sensor</a>’s <code class="highlighter-rouge">value_template:</code> to get the average of multiple sensors.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">{{</span> <span class="nv">((float(states.sensor.kitchen_temperature.state) +</span> 
      <span class="nv">float(states.sensor.living_room_temperature.state) +</span>
@@ -96,7 +96,7 @@
 <p>Configuration variables:</p>
 <ul>
   <li><strong>entity_ids</strong> (<em>Required</em>): At least two entities to monitor. The unit of measurement of the first entry will be the one that’s used. All entities must use the same unit of measurement.</li>
-  <li><strong>type</strong> (<em>Optional</em>): The type of sensor: <code class="highlighter-rouge">min</code>, <code class="highlighter-rouge">max</code> or <code class="highlighter-rouge">mean</code>. Defaults to <code class="highlighter-rouge">max</code>.</li>
+  <li><strong>type</strong> (<em>Optional</em>): The type of sensor: <code class="highlighter-rouge">min</code>, <code class="highlighter-rouge">max</code>, <code class="highlighter-rouge">last</code> or <code class="highlighter-rouge">mean</code>. Defaults to <code class="highlighter-rouge">max</code>.</li>
   <li><strong>name</strong> (<em>Optional</em>): Name of the sensor to use in the frontend.</li>
   <li><strong>round_digits</strong> (<em>Optional</em>): Round mean value to specified number of digits. Defaults to 2.</li>
 </ul>
@@ -151,6 +151,9 @@
         </li>
         <li>
             <a href='/components/sensor.bme280/'>BME280 Sensor</a>
+        </li>
+        <li>
+            <a href='/components/sensor.bme680/'>BME680 Sensor</a>
         </li>
         <li>
             <a href='/components/sensor.bbox/'>Bbox Sensor</a>
@@ -259,6 +262,9 @@
         </li>
         <li>
             <a href='/components/sensor.homematic/'>Homematic Sensor</a>
+        </li>
+        <li>
+            <a href='/components/sensor.ihc/'>IHC Sensor</a>
         </li>
         <li>
             <a href='/components/sensor.imap_email_content/'>IMAP Email Content</a>
@@ -403,6 +409,9 @@
         </li>
         <li>
             <a href='/components/sensor.tank_utility/'>Tank Utility Sensor</a>
+        </li>
+        <li>
+            <a href='/components/sensor.teksavvy/'>TekSavvy</a>
         </li>
         <li>
             <a href='/components/sensor.tellstick/'>TellStick Sensor</a>

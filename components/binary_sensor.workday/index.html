@@ -86,8 +86,8 @@
 <p>Configuration variables:</p>
 <ul>
   <li><strong>name</strong> (<em>Optional</em>): A name for this sensor. Defaults to <em>Workday Sensor</em></li>
-  <li><strong>country</strong> (<em>Required</em>): Country code according to <a href="https://pypi.python.org/pypi/holidays/0.8.1">holidays</a> notation.</li>
-  <li><strong>province</strong> (<em>Optional</em>): Province code according to <a href="https://pypi.python.org/pypi/holidays/0.8.1">holidays</a> notation. Defaults to None.</li>
+  <li><strong>country</strong> (<em>Required</em>): Country code according to <a href="https://pypi.python.org/pypi/holidays/0.9.3">holidays</a> notation.</li>
+  <li><strong>province</strong> (<em>Optional</em>): Province code according to <a href="https://pypi.python.org/pypi/holidays/0.9.3">holidays</a> notation. Defaults to None.</li>
   <li><strong>workdays</strong> (<em>Optional</em>): List of workdays. Defaults to <code class="highlighter-rouge">mon</code>, <code class="highlighter-rouge">tue</code>, <code class="highlighter-rouge">wed</code>, <code class="highlighter-rouge">thu</code>, <code class="highlighter-rouge">fri</code>.</li>
   <li><strong>excludes</strong> (<em>Optional</em>): List of workday excludes. Defaults to <code class="highlighter-rouge">sat</code>, <code class="highlighter-rouge">sun</code>, <code class="highlighter-rouge">holiday</code>.</li>
   <li><strong>days_offset</strong> (<em>Optional</em>): Set days offset. Defaults to <code class="highlighter-rouge">0</code>.</li>
@@ -209,6 +209,9 @@ If you use the sensor for Canada (<code class="highlighter-rouge">CA</code>) wit
         </li>
         <li>
             <a href='/components/binary_sensor.homematic/'>Homematic Binary Sensor</a>
+        </li>
+        <li>
+            <a href='/components/binary_sensor.ihc/'>IHC Binary Sensor</a>
         </li>
         <li>
             <a href='/components/binary_sensor.isy994/'>ISY994 Binary Sensor</a>

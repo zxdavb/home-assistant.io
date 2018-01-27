@@ -6,22 +6,22 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Xiaomi Air Purifier 2 - Home Assistant</title>
+    <title>Xiaomi Air Purifier - Home Assistant</title>
     <meta name="author" content="Home Assistant">
-    <meta name="description" content="Instructions how to integrate your Xiaomi Air Purifier 2 within Home Assistant.">
+    <meta name="description" content="Instructions how to integrate your Xiaomi Air Purifier within Home Assistant.">
     <meta name="viewport" content="width=device-width">
     <link rel="canonical" href="https://home-assistant.io/components/fan.xiaomi_miio/">
     <meta property="fb:app_id" content="338291289691179">
-    <meta property="og:title" content="Xiaomi Air Purifier 2">
+    <meta property="og:title" content="Xiaomi Air Purifier">
     <meta property="og:site_name" content="Home Assistant">
     <meta property="og:url" content="https://home-assistant.io/components/fan.xiaomi_miio/">
     <meta property="og:type" content="article">
-    <meta property="og:description" content="Instructions how to integrate your Xiaomi Air Purifier 2 within Home Assistant.">
+    <meta property="og:description" content="Instructions how to integrate your Xiaomi Air Purifier within Home Assistant.">
     <meta property="og:image" content="https://home-assistant.io/images/default-social.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@home_assistant">
-    <meta name="twitter:title" content="Xiaomi Air Purifier 2">
-    <meta name="twitter:description" content="Instructions how to integrate your Xiaomi Air Purifier 2 within Home Assistant.">
+    <meta name="twitter:title" content="Xiaomi Air Purifier">
+    <meta name="twitter:description" content="Instructions how to integrate your Xiaomi Air Purifier within Home Assistant.">
     <meta name="twitter:image" content="https://home-assistant.io/images/default-social.png">
     <link href="/stylesheets/screen.css" media="screen, projection, print" rel="stylesheet">
     <link href="/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
@@ -70,56 +70,68 @@
           <article class="page">
   <header>
     <h1 class="title indent">
-      Xiaomi Air Purifier 2
+      Xiaomi Air Purifier
     </h1>
   </header>
   <hr class="divider">
   <p>The <code class="highlighter-rouge">xiaomi_miio</code> fan platform allows you to control the Xiaomi Air Purifier 2, Air Purifier 2S and Air Purifier Pro.</p>
-<p>Currently, the supported features are</p>
+<p>Currently, the supported features are:</p>
 <ul>
   <li>On, Off</li>
   <li>Operation modes (auto, silent, favorite, idle)</li>
   <li>Buzzer (on, off)</li>
+  <li>Child lock (on, off)</li>
   <li>LED (on, off), LED brightness (bright, dim, off)</li>
-  <li>Favorite Level</li>
-  <li>States
+  <li>Favorite Level (0…16)</li>
+  <li>Attributes
     <ul>
       <li>power</li>
       <li>aqi</li>
+      <li>average_aqi</li>
       <li>humidity</li>
       <li>temperature</li>
       <li>mode</li>
+      <li>favorite_level</li>
       <li>led</li>
       <li>led_brightness</li>
       <li>buzzer</li>
       <li>child_lock</li>
-      <li>brightness</li>
-      <li>favorite_level</li>
-      <li>filter1_life</li>
-      <li>f1_hour_used</li>
-      <li>use_time</li>
-      <li>motor1_speed</li>
+      <li>purify_volume</li>
+      <li>filter_life_remaining</li>
+      <li>filter_hours_used</li>
+      <li>motor_speed</li>
     </ul>
   </li>
 </ul>
-<h2><a class="title-link" name="setup" href="#setup"></a> Setup</h2>
-<p>Please follow the instructions on <a href="/components/vacuum.xiaomi_miio/#retrieving-the-access-token">Retrieving the Access Token</a> to get the API token to use in the <code class="highlighter-rouge">configuration.yaml</code> file.</p>
+<p>Please follow the instructions on <a href="/components/vacuum.xiaomi_miio/#retrieving-the-access-token">Retrieving the Access Token</a> to get the API token.</p>
 <p>To add a Xiaomi Air Purifier to your installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">fan</span><span class="pi">:</span>
+<span class="c1"># Example configuration.yaml entry</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">xiaomi_miio</span>
-    <span class="s">name</span><span class="pi">:</span> <span class="s">Xiaomi Air Purifier 2</span>
     <span class="s">host</span><span class="pi">:</span> <span class="s">192.168.130.66</span>
     <span class="s">token</span><span class="pi">:</span> <span class="s">YOUR_TOKEN</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>host</strong> (<em>Required</em>): The IP of your plug.</li>
-  <li><strong>token</strong> (<em>Required</em>): The API token of your plug.</li>
-  <li><strong>name</strong> (<em>Optional</em>): The name of your plug.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="host" href="#host"></a> host</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The IP address of your fan.</span></p>
+    </dd>
+    <dt><a class="title-link" name="token" href="#token"></a> token</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The API token of your fan.</span></p>
+    </dd>
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of your fan.</span></p>
+      <p class="default">Default value: Xiaomi Air Purifier</p>
+    </dd>
+  </dl>
+</div>
 <h2><a class="title-link" name="platform-services" href="#platform-services"></a> Platform Services</h2>
-<h3>Service fan/xiaomi_miio_set_buzzer_on</h3>
+<h3><a class="title-link" name="service-fanxiaomi_miio_set_buzzer_on" href="#service-fanxiaomi_miio_set_buzzer_on"></a> Service fan/xiaomi_miio_set_buzzer_on</h3>
 <p>Turn the buzzer on.</p>
 <table>
   <thead>
@@ -133,11 +145,11 @@
     <tr>
       <td><code class="highlighter-rouge">entity_id</code></td>
       <td>yes</td>
-      <td>Only act on specific air purifier. Else targets all.</td>
+      <td>Only act on a specific air purifier. Else targets all.</td>
     </tr>
   </tbody>
 </table>
-<h3>Service fan/xiaomi_miio_set_buzzer_off</h3>
+<h3><a class="title-link" name="service-fanxiaomi_miio_set_buzzer_off" href="#service-fanxiaomi_miio_set_buzzer_off"></a> Service fan/xiaomi_miio_set_buzzer_off</h3>
 <p>Turn the buzzer off.</p>
 <table>
   <thead>
@@ -151,11 +163,11 @@
     <tr>
       <td><code class="highlighter-rouge">entity_id</code></td>
       <td>yes</td>
-      <td>Only act on specific air purifier. Else targets all.</td>
+      <td>Only act on a specific air purifier. Else targets all.</td>
     </tr>
   </tbody>
 </table>
-<h3>Service fan/xiaomi_miio_set_led_on</h3>
+<h3><a class="title-link" name="service-fanxiaomi_miio_set_led_on" href="#service-fanxiaomi_miio_set_led_on"></a> Service fan/xiaomi_miio_set_led_on</h3>
 <p>Turn the led on.</p>
 <table>
   <thead>
@@ -169,11 +181,11 @@
     <tr>
       <td><code class="highlighter-rouge">entity_id</code></td>
       <td>yes</td>
-      <td>Only act on specific air purifier. Else targets all.</td>
+      <td>Only act on a specific air purifier. Else targets all.</td>
     </tr>
   </tbody>
 </table>
-<h3>Service fan/xiaomi_miio_set_led_off</h3>
+<h3><a class="title-link" name="service-fanxiaomi_miio_set_led_off" href="#service-fanxiaomi_miio_set_led_off"></a> Service fan/xiaomi_miio_set_led_off</h3>
 <p>Turn the led off.</p>
 <table>
   <thead>
@@ -187,11 +199,47 @@
     <tr>
       <td><code class="highlighter-rouge">entity_id</code></td>
       <td>yes</td>
-      <td>Only act on specific air purifier. Else targets all.</td>
+      <td>Only act on a specific air purifier. Else targets all.</td>
     </tr>
   </tbody>
 </table>
-<h3>Service fan/xiaomi_miio_set_led_brightness</h3>
+<h3><a class="title-link" name="service-fanxiaomi_miio_set_child_lock_on" href="#service-fanxiaomi_miio_set_child_lock_on"></a> Service fan/xiaomi_miio_set_child_lock_on</h3>
+<p>Turn the child lock on.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">entity_id</code></td>
+      <td>yes</td>
+      <td>Only act on a specific air purifier. Else targets all.</td>
+    </tr>
+  </tbody>
+</table>
+<h3><a class="title-link" name="service-fanxiaomi_miio_set_child_lock_off" href="#service-fanxiaomi_miio_set_child_lock_off"></a> Service fan/xiaomi_miio_set_child_lock_off</h3>
+<p>Turn the child lock off.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">entity_id</code></td>
+      <td>yes</td>
+      <td>Only act on a specific air purifier. Else targets all.</td>
+    </tr>
+  </tbody>
+</table>
+<h3><a class="title-link" name="service-fanxiaomi_miio_set_led_brightness" href="#service-fanxiaomi_miio_set_led_brightness"></a> Service fan/xiaomi_miio_set_led_brightness</h3>
 <p>Set the led brightness. Supported values are 0 (Bright), 1 (Dim), 2 (Off).</p>
 <table>
   <thead>
@@ -205,7 +253,7 @@
     <tr>
       <td><code class="highlighter-rouge">entity_id</code></td>
       <td>yes</td>
-      <td>Only act on specific air purifier. Else targets all.</td>
+      <td>Only act on a specific air purifier. Else targets all.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">brightness</code></td>
@@ -214,7 +262,7 @@
     </tr>
   </tbody>
 </table>
-<h3>Service fan/xiaomi_miio_set_favorite_level</h3>
+<h3><a class="title-link" name="service-fanxiaomi_miio_set_favorite_level" href="#service-fanxiaomi_miio_set_favorite_level"></a> Service fan/xiaomi_miio_set_favorite_level</h3>
 <p>Set the favorite level of the operation mode “favorite”.</p>
 <table>
   <thead>
@@ -228,7 +276,7 @@
     <tr>
       <td><code class="highlighter-rouge">entity_id</code></td>
       <td>yes</td>
-      <td>Only act on specific air purifier. Else targets all.</td>
+      <td>Only act on a specific air purifier. Else targets all.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">level</code></td>
@@ -272,232 +320,37 @@
     </ul>
     </div>
     <div class='section'>
-    <h1 class="title delta">Category Switch</h1>
+    <h1 class="title delta">Category Fan</h1>
     <ul class='divided'>
         <li>
-            <a href='/components/switch.ads/'>ADS Switch</a>
+            <a href='/components/fan.dyson/'>Dyson Purifier Fan</a>
         </li>
         <li>
-            <a href='/components/switch.anel_pwrctrl/'>ANEL PwrCtrl Switch</a>
+            <a href='/components/fan.isy994/'>ISY994 Fan</a>
         </li>
         <li>
-            <a href='/components/switch.fritzdect/'>AVM FRITZ!DECT Switch</a>
+            <a href='/components/fan.insteon_local/'>Insteon (Local) Fan</a>
         </li>
         <li>
-            <a href='/components/switch.abode/'>Abode Switch</a>
+            <a href='/components/fan.insteon_hub/'>Insteon Hub Fan</a>
         </li>
         <li>
-            <a href='/components/switch.acer_projector/'>Acer Projector Switch</a>
+            <a href='/components/fan.mqtt/'>MQTT Fan</a>
         </li>
         <li>
-            <a href='/components/switch.android_ip_webcam/'>Android IP Webcam Settings</a>
+            <a href='/components/fan.velbus/'>Velbus Fans</a>
         </li>
         <li>
-            <a href='/components/switch.bbb_gpio/'>BeagleBone Black GPIO Switch</a>
+            <a href='/components/fan.wink/'>Wink Fan</a>
         </li>
         <li>
-            <a href='/components/switch.wemo/'>Belkin WeMo Switch</a>
+            Xiaomi Air Purifier
         </li>
         <li>
-            <a href='/components/switch.broadlink/'>Broadlink RM Switch</a>
+            <a href='/components/fan.zwave/'>Z-Wave Fan</a>
         </li>
         <li>
-            <a href='/components/switch.command_line/'>Command line Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.dlink/'>D-Link Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.digitalloggers/'>Digital Loggers Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.digital_ocean/'>Digital Ocean Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.doorbird/'>DoorBird Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.edimax/'>Edimax Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.enocean/'>EnOcean Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.hikvisioncam/'>Hikvision Camera Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.hive/'>Hive Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.homematic/'>Homematic Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.hook/'>Hook Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.isy994/'>ISY994 Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.insteon_local/'>Insteon (Local) Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.insteon_plm/'>Insteon PLM Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.knx/'>KNX Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.kankun/'>Kankun SP3 Wifi Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.litejet/'>LiteJet Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.lutron_caseta/'>Lutron Caseta Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.mqtt/'>MQTT Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.raincloud/'>Melnor Raincloud Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.mochad/'>Mochad Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.modbus/'>Modbus Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.mysensors/'>MySensors Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.neato/'>Neato Robotics Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.netio/'>Netio Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.orvibo/'>Orvibo Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.rpi_pfio/'>PiFace Digital I/O Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.pilight/'>Pilight Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.pulseaudio_loopback/'>PulseAudio Loopback Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.qwikswitch/'>QwikSwitch Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.rest/'>RESTful Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.rflink/'>RFLink Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.rfxtrx/'>RFXtrx Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.rachio/'>Rachio Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.rainmachine/'>RainMachine Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.rpi_gpio/'>Raspberry PI GPIO Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.rpi_rf/'>Raspberry Pi RF Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.raspihats/'>Raspihats Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.scsgate/'>SCSGate Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.snmp/'>SNMP Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.skybell/'>Skybell Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.tplink/'>TP-Link Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.tellstick/'>TellStick Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.tellduslive/'>Telldus Live Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.telnet/'>Telnet Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.template/'>Template Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.tesla/'>Tesla Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.thinkingcleaner/'>Thinking Cleaner Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.toon/'>Toon Smart Plugs</a>
-        </li>
-        <li>
-            <a href='/components/switch.velbus/'>Velbus Switches</a>
-        </li>
-        <li>
-            <a href='/components/switch.vera/'>Vera Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.verisure/'>Verisure SmartPlug</a>
-        </li>
-        <li>
-            <a href='/components/switch.vultr/'>Vultr Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.wake_on_lan/'>Wake on LAN Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.wink/'>Wink Switch</a>
-        </li>
-        <li>
-            Xiaomi Air Purifier 2
-        </li>
-        <li>
-            <a href='/components/switch.xiaomi_miio/'>Xiaomi Smart WiFi Socket and Smart Power Strip</a>
-        </li>
-        <li>
-            <a href='/components/switch.xiaomi_aqara/'>Xiaomi Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.zwave/'>Z-Wave Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.zha/'>ZigBee Home Automation Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.zigbee/'>ZigBee Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.zoneminder/'>ZoneMinder Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.arest/'>aREST Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.gc100/'>gc100 Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.mfi/'>mFi Switch</a>
-        </li>
-        <li>
-            <a href='/components/switch.mystrom/'>myStrom Switch</a>
+            <a href='/components/fan.comfoconnect/'>Zehnder ComfoAir Q Ventilation fans</a>
         </li>
     </ul>
     </div>

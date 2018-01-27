@@ -80,6 +80,7 @@
   <li>http://IP_ADDRESS:8123/api/ is a Rest API.</li>
 </ul>
 <p>The API accepts and returns only JSON encoded objects. All API calls have to be accompanied by the header <code class="highlighter-rouge">X-HA-Access: YOUR_PASSWORD</code> (YOUR_PASSWORD as specified in your <code class="highlighter-rouge">configuration.yaml</code> file in the <a href="/components/http/"><code class="highlighter-rouge">http:</code> section</a>).</p>
+<p>If you are not using the <a href="/components/frontend/"><code class="highlighter-rouge">frontend</code></a> in your setup then you need to add the <a href="/components/api/"><code class="highlighter-rouge">api</code> component</a> to your <code class="highlighter-rouge">configuration.yaml</code> file.</p>
 <p>There are multiple ways to consume the Home Assistant Rest API. One is with <code class="highlighter-rouge">curl</code>:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>curl -X GET <span class="se">\</span>
     -H <span class="s2">"x-ha-access: YOUR_PASSWORD"</span> <span class="se">\</span>

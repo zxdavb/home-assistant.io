@@ -169,6 +169,34 @@ to set volume per source.</p>
 
 </code></pre>
 </div>
+<h3><a class="title-link" name="service-yamaha_enable_output" href="#service-yamaha_enable_output"></a> Service <code class="highlighter-rouge">yamaha_enable_output</code></h3>
+<p>Enable or disable an output port (HDMI) on the receiver.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">entity_id</code></td>
+      <td>yes</td>
+      <td>String or list of strings that point at <code class="highlighter-rouge">entity_id</code>s of Yamaha receivers.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">port</code></td>
+      <td>no</td>
+      <td>Port to enable or disable, e.g. <code class="highlighter-rouge">hdmi1</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">enabled</code></td>
+      <td>no</td>
+      <td>To enable set true, otherwise set to false.</td>
+    </tr>
+  </tbody>
+</table>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

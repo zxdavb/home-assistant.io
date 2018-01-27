@@ -137,6 +137,10 @@
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The payload that represents the unavailable state.</span></p>
       <p class="default">Default value: offline</p>
     </dd>
+    <dt><a class="title-link" name="value_template" href="#value_template"></a> value_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Optional)</span><span class="description">Default template to render the payloads on <em>all</em> <code class="highlighter-rouge">*_state_topic</code>s with.</span></p>
+    </dd>
     <dt><a class="title-link" name="current_temperature_topic" href="#current_temperature_topic"></a> current_temperature_topic</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic on which to listen for the current temperature.</span></p>
@@ -153,6 +157,10 @@
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes of the HVAC operation mode. If this is not set, the operation mode works in optimistic mode (see below).</span></p>
     </dd>
+    <dt><a class="title-link" name="mode_state_template" href="#mode_state_template"></a> mode_state_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Optional)</span><span class="description">A template to render the value received on the <code class="highlighter-rouge">mode_state_topic</code> with.</span></p>
+    </dd>
     <dt><a class="title-link" name="temperature_command_topic" href="#temperature_command_topic"></a> temperature_command_topic</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the target temperature.</span></p>
@@ -160,6 +168,10 @@
     <dt><a class="title-link" name="temperature_state_topic" href="#temperature_state_topic"></a> temperature_state_topic</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes in the target temperature. If this is not set, the target temperature works in optimistic mode (see below).</span></p>
+    </dd>
+    <dt><a class="title-link" name="temperature_state_template" href="#temperature_state_template"></a> temperature_state_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Optional)</span><span class="description">A template to render the value received on the <code class="highlighter-rouge">temperature_state_topic</code> with.</span></p>
     </dd>
     <dt><a class="title-link" name="fan_mode_command_topic" href="#fan_mode_command_topic"></a> fan_mode_command_topic</dt>
     <dd>
@@ -169,6 +181,10 @@
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes of the HVAC fan mode. If this is not set, the fan mode works in optimistic mode (see below).</span></p>
     </dd>
+    <dt><a class="title-link" name="fan_mode_state_template" href="#fan_mode_state_template"></a> fan_mode_state_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Optional)</span><span class="description">A template to render the value received on the <code class="highlighter-rouge">fan_mode_state_topic</code> with.</span></p>
+    </dd>
     <dt><a class="title-link" name="swing_mode_command_topic" href="#swing_mode_command_topic"></a> swing_mode_command_topic</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the swing mode.</span></p>
@@ -176,6 +192,10 @@
     <dt><a class="title-link" name="swing_mode_state_topic" href="#swing_mode_state_topic"></a> swing_mode_state_topic</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes of the HVAC swing mode. If this is not set, the swing mode works in optimistic mode (see below).</span></p>
+    </dd>
+    <dt><a class="title-link" name="swing_mode_state_template" href="#swing_mode_state_template"></a> swing_mode_state_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Optional)</span><span class="description">A template to render the value received on the <code class="highlighter-rouge">swing_mode_state_topic</code> with.</span></p>
     </dd>
     <dt><a class="title-link" name="away_mode_command_topic" href="#away_mode_command_topic"></a> away_mode_command_topic</dt>
     <dd>
@@ -185,6 +205,10 @@
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes of the HVAC away mode. If this is not set, the away mode works in optimistic mode (see below).</span></p>
     </dd>
+    <dt><a class="title-link" name="away_mode_state_template" href="#away_mode_state_template"></a> away_mode_state_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Optional)</span><span class="description">A template to render the value received on the <code class="highlighter-rouge">away_mode_state_topic</code> with.</span></p>
+    </dd>
     <dt><a class="title-link" name="hold_command_topic" href="#hold_command_topic"></a> hold_command_topic</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to publish commands to change the hold mode.</span></p>
@@ -192,6 +216,10 @@
     <dt><a class="title-link" name="hold_state_topic" href="#hold_state_topic"></a> hold_state_topic</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes of the HVAC hold mode. If this is not set, the hold mode works in optimistic mode (see below).</span></p>
+    </dd>
+    <dt><a class="title-link" name="hold_state_template" href="#hold_state_template"></a> hold_state_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Optional)</span><span class="description">A template to render the value received on the <code class="highlighter-rouge">hold_state_topic</code> with.</span></p>
     </dd>
     <dt><a class="title-link" name="aux_command_topic" href="#aux_command_topic"></a> aux_command_topic</dt>
     <dd>
@@ -201,10 +229,30 @@
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic to subscribe for changes of the auxiliary heat mode. If this is not set, the auxiliary heat mode works in optimistic mode (see below).</span></p>
     </dd>
+    <dt><a class="title-link" name="aux_state_template" href="#aux_state_template"></a> aux_state_template</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Optional)</span><span class="description">A template to render the value received on the <code class="highlighter-rouge">aux_state_topic</code> with.</span></p>
+    </dd>
   </dl>
 </div>
-<h4>Optimistic mode</h4>
+<h4><a class="title-link" name="optimistic-mode" href="#optimistic-mode"></a> Optimistic mode</h4>
 <p>If a property works in <em>optimistic mode</em> (when the corresponding state topic is not set), home assistant will assume that any state changes published to the command topics did work and change the internal state of the entity immediately after publishing to the command topic. If it does not work in optimistic mode, the internal state of the entity is only updated when the requested update is confirmed by the device through the state topic.</p>
+<h4><a class="title-link" name="using-templates" href="#using-templates"></a> Using Templates</h4>
+<p>For all <code class="highlighter-rouge">*_state_topic</code>s, a template can be specified that will be used to render the incoming payloads on these topics. Also, a default template that applies to all state topis can be specified as <code class="highlighter-rouge">value_template</code>. This can be useful if you received payloads are e.g. in JSON format. Since in JSON, a quoted string (e.g. <code class="highlighter-rouge">"foo"</code>) is just a string, this can also be used for unquoting.</p>
+<p>Say you receive the operation mode <code class="highlighter-rouge">"auto"</code> via your <code class="highlighter-rouge">mode_state_topic</code>, but the mode is actually called just <code class="highlighter-rouge">auto</code>, here’s what you could do:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">climate</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">mqtt</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">Study</span>
+    <span class="s">modes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">off</span>
+      <span class="pi">-</span> <span class="s">on</span>
+      <span class="pi">-</span> <span class="s">auto</span>
+    <span class="s">mode_command_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">study/ac/mode/set"</span>
+    <span class="s">mode_state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">study/ac/mode/state"</span>
+    <span class="s">mode_state_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">value_json</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre>
+</div>
+<p>This will parse the incoming <code class="highlighter-rouge">"auto"</code> as JSON, resulting in <code class="highlighter-rouge">auto</code>. Obvisouly, in this case you could also just set <code class="highlighter-rouge">value_template: "{{ value_json }}"</code>.</p>
 <h3><a class="title-link" name="example" href="#example"></a> Example</h3>
 <p>A full configuration example looks like the one below.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Full example configuration.yaml entry</span>
@@ -373,6 +421,9 @@
         </li>
         <li>
             <a href='/components/climate.toon/'>Toon Thermostat</a>
+        </li>
+        <li>
+            <a href='/components/climate.venstar/'>Venstar Thermostat</a>
         </li>
         <li>
             <a href='/components/climate.vera/'>Vera Thermostat</a>

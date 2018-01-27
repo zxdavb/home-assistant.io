@@ -184,6 +184,107 @@
       <span class="s">hours</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">slots.timer_duration.value.hours</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre>
 </div>
+<h3>Sending TTS Notifications</h3>
+<p>You can send TTS notifications to Snips using the snips.say and snips.say_action services. Say_action starts a session and waits for user response, “Would you like me to close the garage door?”, “Yes, close the garage door”.</p>
+<h4><a class="title-link" name="service-snipssay" href="#service-snipssay"></a> Service <code class="highlighter-rouge">snips/say</code></h4>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">text</code></td>
+      <td>no</td>
+      <td>Text to say.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">site_id</code></td>
+      <td>yes</td>
+      <td>Site to use to start session.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">custom_data</code></td>
+      <td>yes</td>
+      <td>custom data that will be included with all messages in this session.</td>
+    </tr>
+  </tbody>
+</table>
+<h4><a class="title-link" name="service-snipssay_action" href="#service-snipssay_action"></a> Service <code class="highlighter-rouge">snips/say_action</code></h4>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">text</code></td>
+      <td>no</td>
+      <td>Text to say.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">site_id</code></td>
+      <td>yes</td>
+      <td>Site to use to start session.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">custom_data</code></td>
+      <td>yes</td>
+      <td>custom data that will be included with all messages in this session.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">can_be_enqueued</code></td>
+      <td>yes</td>
+      <td>If True, session waits for an open session to end, if False session is dropped if one is running.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">intent_filter</code></td>
+      <td>yes</td>
+      <td>Array of Strings - A list of intents names to restrict the NLU resolution to on the first query.</td>
+    </tr>
+  </tbody>
+</table>
+<h4>Configuration Examples</h4>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">script</span><span class="pi">:</span>
+  <span class="s">turn_on_light</span><span class="pi">:</span>
+    <span class="s">sequence</span><span class="pi">:</span>
+      <span class="s">service</span><span class="pi">:</span> <span class="s">script.turn_on_light</span>
+      <span class="s">service</span><span class="pi">:</span> <span class="s">snips.say</span>
+        <span class="s">data</span><span class="pi">:</span>
+          <span class="s">text</span><span class="pi">:</span> <span class="s1">'</span><span class="s">OK,</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">light</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">now</span><span class="nv"> </span><span class="s">on'</span>
+
+<span class="s">automation</span><span class="pi">:</span>
+  <span class="s">query_garage_door</span><span class="pi">:</span>
+    <span class="s">trigger</span><span class="pi">:</span>
+     <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="s">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.my_garage_door_sensor</span>
+        <span class="s">from</span><span class="pi">:</span> <span class="s1">'</span><span class="s">off'</span>
+        <span class="s">to</span><span class="pi">:</span> <span class="s1">'</span><span class="s">on'</span>
+        <span class="s">for</span><span class="pi">:</span>
+          <span class="s">minutes</span><span class="pi">:</span> <span class="s">10</span>
+    <span class="s">sequence</span><span class="pi">:</span>
+      <span class="s">service</span><span class="pi">:</span> <span class="s">snips.say_action</span>
+        <span class="s">data</span><span class="pi">:</span>
+          <span class="s">text</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Garage</span><span class="nv"> </span><span class="s">door</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">open</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">minutes,</span><span class="nv"> </span><span class="s">would</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">like</span><span class="nv"> </span><span class="s">me</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">close</span><span class="nv"> </span><span class="s">it?'</span>
+          <span class="s">intentFilter</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="s">closeGarageDoor</span>
+
+<span class="c1"># This intent is fired if the user responds with the appropriate intent after the above notification</span>
+<span class="s">intent_script</span><span class="pi">:</span>
+  <span class="s">closeGarageDoor</span><span class="pi">:</span>
+    <span class="s">speech</span><span class="pi">:</span>
+      <span class="s">type</span><span class="pi">:</span> <span class="s">plain</span>
+      <span class="s">text</span><span class="pi">:</span> <span class="s1">'</span><span class="s">OK,</span><span class="nv"> </span><span class="s">closing</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">garage</span><span class="nv"> </span><span class="s">door'</span>
+    <span class="s">action</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">script.garage_door_close</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

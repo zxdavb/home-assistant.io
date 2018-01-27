@@ -75,7 +75,7 @@
   </header>
   <hr class="divider">
   <p>See the <a href="https://dev-docs.home-assistant.io/en/master/api/homeassistant.html#module-homeassistant.remote">developer documentation</a> for a full overview of the documentation. The rest of this page will contain examples on how to use it.</p>
-<p>In the package <a href="https://github.com/home-assistant/home-assistant/blob/master/homeassistant/remote.py"><code class="highlighter-rouge">homeassistant.remote</code></a> a Python API on top of the <a href="/developers/api/">HTTP API</a> can be found.</p>
+<p>In the package <a href="https://github.com/home-assistant/home-assistant/blob/master/homeassistant/remote.py"><code class="highlighter-rouge">homeassistant.remote</code></a> a Python API on top of the <a href="/developers/api/">HTTP API</a> can be found. If you are not using the <a href="/components/frontend/"><code class="highlighter-rouge">frontend</code></a> in your setup then you need to add the <a href="/components/api/"><code class="highlighter-rouge">api</code> component</a> to your <code class="highlighter-rouge">configuration.yaml</code> file to use the Python Remote API.</p>
 <p>A simple way to get all current entities is to visit the “Set State” page in the “Developer Tools”. For the examples below just choose one from the available entries. Here the sensor <code class="highlighter-rouge">sensor.office_temperature</code> and the switch <code class="highlighter-rouge">switch.livingroom_pin_2</code> are used.</p>
 <p>First import the module and setup the basics:</p>
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">homeassistant.remote</span> <span class="kn">as</span> <span class="nn">remote</span>

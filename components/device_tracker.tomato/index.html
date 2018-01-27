@@ -86,15 +86,49 @@
     <span class="s">http_id</span><span class="pi">:</span> <span class="s">YOUR_HTTP_ID</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>host</strong> (<em>Required</em>): The IP address of your router, e.g. 192.168.1.1.</li>
-  <li><strong>username</strong> (<em>Required</em>: The username of an user with administrative privileges, usually <em>admin</em>.</li>
-  <li><strong>password</strong> (<em>Required</em>): The password for your given admin account.</li>
-  <li><strong>http_id</strong> (<em>Required</em>): The value can be obtained by logging in to the Tomato admin interface and search for <code class="highlighter-rouge">http_id</code> in the page source code.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="host" href="#host"></a> host</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The IP address or hostname of your router, e.g. <code class="highlighter-rouge">192.168.1.1</code> or <code class="highlighter-rouge">rt-ac68u</code>.</span></p>
+    </dd>
+    <dt><a class="title-link" name="port" href="#port"></a> port</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">The port number of your router, e.g. <code class="highlighter-rouge">443</code>.</span></p>
+      <p class="default">Default value: 80/443 (automatically detected)</p>
+    </dd>
+    <dt><a class="title-link" name="ssl" href="#ssl"></a> ssl</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="bool">bool</span>)</span><span class="required">(Optional)</span><span class="description">Whether to connect via <code class="highlighter-rouge">https</code>.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+    <dt><a class="title-link" name="verify_ssl" href="#verify_ssl"></a> verify_ssl</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string bool">string | bool</span>)</span><span class="required">(Optional)</span><span class="description">If SSL verification for https resources needs to be turned off (for self-signed certs, etc.) this can take on boolean values <code class="highlighter-rouge">False</code> or <code class="highlighter-rouge">True</code> or you can pass a location on the device where a certificate can be used for verification e.g. <code class="highlighter-rouge">/mnt/NAS/router_cert.pem</code>.</span></p>
+      <p class="default">Default value: true</p>
+    </dd>
+    <dt><a class="title-link" name="username" href="#username"></a> username</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The username of an user with administrative privileges, usually <em>admin</em>.</span></p>
+    </dd>
+    <dt><a class="title-link" name="password" href="#password"></a> password</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The password for your given admin account.</span></p>
+    </dd>
+    <dt><a class="title-link" name="http_id" href="#http_id"></a> http_id</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The value can be obtained by logging in to the Tomato admin interface and search for <code class="highlighter-rouge">http_id</code> in the page source code.</span></p>
+    </dd>
+  </dl>
+</div>
 <p>See the <a href="/components/device_tracker/">device tracker component page</a> for instructions how to configure the people to be tracked.</p>
 <p>A description of the API s available in this <a href="http://paulusschoutsen.nl/blog/2013/10/tomato-api-documentation/">Tomato API</a> blog post.</p>
+<p>SSL Certificate:</p>
+<p>Gathering the SSL Certificate of your router can be accomplished with this (or a similar) command:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>openssl s_client -showcerts -connect 172.10.10.1:443 &lt;/dev/null 2&gt;/dev/null | openssl x509 -outform PEM &gt; router_cert.pem
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

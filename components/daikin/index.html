@@ -75,18 +75,18 @@
   </header>
   <hr class="divider">
   <p>The <code class="highlighter-rouge">daikin</code> component integrates Daikin air conditioning systems into Home Assistant.</p>
-<p class="note warning">
-Please note, the Daikin platform integrates <strong>ONLY the european versions of Daikin ACs (models BRP069A41, 42, 43, 45)</strong> into Home Assistant
-</p>
 <p>To automatically add all your Daikin devices (ACs and associated sensors) into your Home Assistant installation, add the following to your ‘configuration.yaml’ file:</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<p class="note warning">
+Please note, the Daikin platform integrates <strong>ONLY the european versions of Daikin ACs (models BRP069A41, 42, 43, 45)</strong> into Home Assistant.
+</p>
+<p>To automatically add all your Daikin devices (ACs and associated sensors) into your Home Assistant installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Full manual example configuration.yaml entry</span>
 <span class="s">daikin</span><span class="pi">:</span>
   <span class="s">hosts</span><span class="pi">:</span>
     <span class="pi">-</span> <span class="s">192.168.4.161</span>
   <span class="s">monitored_conditions</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">inside_temperature</span>  
-    <span class="pi">-</span> <span class="s">outside_temperature</span>  
-    
+    <span class="pi">-</span> <span class="s">inside_temperature</span>
+    <span class="pi">-</span> <span class="s">outside_temperature</span>
 </code></pre>
 </div>
 <div class="config-vars">
@@ -94,7 +94,8 @@ Please note, the Daikin platform integrates <strong>ONLY the european versions o
   <dl class="">
     <dt><a class="title-link" name="hosts" href="#hosts"></a> hosts</dt>
     <dd>
-      <p class="desc"><span class="type">(<span class="array">array</span>)</span><span class="required">(Required)</span><span class="description">List of IP addresses or hostnames.</span></p>
+      <p class="desc"><span class="type">(<span class="array">array</span>)</span><span class="required">(Optional)</span><span class="description">List of IP addresses or hostnames.</span></p>
+      <p class="default">Default value: All discovered hosts</p>
     </dd>
     <dt><a class="title-link" name="monitored_conditions" href="#monitored_conditions"></a> monitored_conditions</dt>
     <dd>
@@ -217,6 +218,9 @@ Please note that some AC devices may report outside temperature only when they a
             <a href='/components/homematic/'>Homematic</a>
         </li>
         <li>
+            <a href='/components/ihc/'>IHC</a>
+        </li>
+        <li>
             <a href='/components/tradfri/'>IKEA Trådfri (Tradfri)</a>
         </li>
         <li>
@@ -272,6 +276,9 @@ Please note that some AC devices may report outside temperature only when they a
         </li>
         <li>
             <a href='/components/modbus/'>Modbus</a>
+        </li>
+        <li>
+            <a href='/components/mychevy/'>MyChevy</a>
         </li>
         <li>
             <a href='/components/mysensors/'>MySensors</a>
@@ -383,6 +390,9 @@ Please note that some AC devices may report outside temperature only when they a
         </li>
         <li>
             <a href='/components/vultr/'>Vultr</a>
+        </li>
+        <li>
+            <a href='/components/waterfurnace/'>WaterFurnace</a>
         </li>
         <li>
             <a href='/components/wink/'>Wink</a>

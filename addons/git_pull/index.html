@@ -101,6 +101,8 @@
   <li><strong>auto_restart</strong> (<em>Optional</em>): Make a restart of Home-Assistant if the config have change and is valid.</li>
   <li><strong>repeat/active</strong> (<em>Optional</em>): Pull periodic for GIT updates.</li>
   <li><strong>repeat/interval</strong> (<em>Optional</em>): Pull all x seconds and look for changes.</li>
+  <li><strong>deployment_user</strong> (<em>Optional</em>): Username to use when authenticating to a repo with a username and password.</li>
+  <li><strong>deployment_password</strong> (<em>Optional</em>): Password to use when authenticating to a repo.  Ignored if deployment_user is not set.</li>
   <li><strong>deployment_key</strong> (<em>Optional</em>): A private SSH key that will be used for communication during git operations. This key is mandatory for ssh-accessed repositories, which are the ones with the following pattern: <code class="highlighter-rouge">&lt;user&gt;@&lt;host&gt;:&lt;repository path&gt;</code>.</li>
   <li>
     <p><strong>deployment_key_protocol</strong> (<em>Optional</em>): The key protocol. Default is “rsa”. Valid protocols are:</p>

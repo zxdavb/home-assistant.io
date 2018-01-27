@@ -77,9 +77,9 @@
   <p>The <code class="highlighter-rouge">clicksend</code> platform uses <a href="https://clicksend.com">ClickSend</a> to deliver notifications from Home Assistant.</p>
 <h3>Get your ClickSend API Credentials</h3>
 <p>Go to your <a href="https://dashboard.clicksend.com">ClickSend Dashboard</a> section and create your new project. After creating your project, you should now be able to obtain your <code class="highlighter-rouge">username</code> and <code class="highlighter-rouge">api_key</code>.</p>
-<h3>Configuration</h3>
 <p>To add ClickSend to your installation, add the following to your Home Assistant <code class="highlighter-rouge">configuration.yaml</code> file:</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">notify</span><span class="pi">:</span>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="s">notify</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">clicksend</span>
     <span class="s">name</span><span class="pi">:</span> <span class="s">ClickSend</span>
     <span class="s">username</span><span class="pi">:</span> <span class="s">CLICKSEND_USERNAME</span>
@@ -87,13 +87,32 @@
     <span class="s">recipient</span><span class="pi">:</span> <span class="s">PHONE_NO</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>name</strong> (Optional): Setting the optional parameter name allows multiple notifiers to be created. The default value is <code class="highlighter-rouge">ClickSend</code>. The notifier will bind to the service notify.NOTIFIER_NAME.</li>
-  <li><strong>username</strong> (Required): Your <code class="highlighter-rouge">Username</code>.</li>
-  <li><strong>api_key</strong> (Required): Your <code class="highlighter-rouge">API Key</code>.</li>
-  <li><strong>recipient</strong> (Required): Your phone no. This is where you want to send your notification SMS messages. eg: <code class="highlighter-rouge">09171234567</code></li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Setting the optional parameter name allows multiple notifiers to be created. The default value is <code class="highlighter-rouge">ClickSend</code>. The notifier will bind to the service <code class="highlighter-rouge">notify.NOTIFIER_NAME</code>.</span></p>
+    </dd>
+    <dt><a class="title-link" name="username" href="#username"></a> username</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">Your Clicksend username.</span></p>
+    </dd>
+    <dt><a class="title-link" name="api_key" href="#api_key"></a> api_key</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">Your Clicksend API Key.</span></p>
+    </dd>
+    <dt><a class="title-link" name="recipient" href="#recipient"></a> recipient</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">Your phone number. This is where you want to send your notification SMS messages, e.g., <code class="highlighter-rouge">09171234567</code>.</span></p>
+    </dd>
+    <dt><a class="title-link" name="sender" href="#sender"></a> sender</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name or number of the sender.</span></p>
+      <p class="default">Default value: recipient</p>
+    </dd>
+  </dl>
+</div>
 <p>To use notifications, please see the <a href="https://home-assistant.io/getting-started/automation/">getting started with automation page</a>.</p>
 </article>
         </div>

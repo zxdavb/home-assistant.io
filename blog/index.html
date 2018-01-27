@@ -70,6 +70,48 @@
   <article class="listing">
     <header>
   <h1 class="beta">
+    <a href="/blog/2018/01/27/release-62/">0.62: MyChevy, Iota and Venstar Thermostat</a>
+  </h1>
+  <div class="meta clearfix">
+    <time datetime="2018-01-27T01:00:00+00:00" pubdate data-updated="true"><i class="icon-calendar"></i> January 27, 2018</time>
+    <span class="byline author vcard"><i class='icon-user'></i> Paulus Schoutsen</span>
+    <span><i class='icon-time'></i> 12 minutes reading time</span>
+    <span>
+    <i class="icon-tags"></i>
+    <ul class="tags unstyled">
+        <li>Release-Notes</li>
+    </ul>
+  </span>
+      <a class='comments'
+         href="/blog/2018/01/27/release-62/#disqus_thread"
+         >Comments</a>
+  </div>
+</header>
+  <div class="entry-content clearfix">
+    <p><a href="/components/#version/0.62"><img src="/images/blog/2018-01-0.62/components.png" style="border: 0;box-shadow: none;" /></a></p>
+<p>Second release of the year and it’s buzzing on GitHub. This release we had 70 people contribute code. We’ve also managed to finally get our PR count below a 100 open PRs again. A lot of cool stuff still waiting to make it to a future Home Assistant release.</p>
+<p>I want to give a shout out to <a href="https://github.com/martinhjelmare">@martinhjelmare</a> and <a href="https://github.com/frenck">@frenck</a>. Martin is doing an amazing job at code reviews and Franck has been kicking ass with Hass.io add-ons and keeping track of our documentation PRs. Thanks for this amazing work!</p>
+<h2>MyChevy</h2>
+<p>With this new integration by <a href="https://github.com/sdague">@sdague</a> you are able to keep an eye on your Chevy Bolt EV. Keep track if your car is plugged in, the battery stats and the range it is currently capable of driving. Hip!</p>
+<h2>New Platforms</h2>
+<ul>
+  <li>Adding support for Lutron covers (<a href="https://github.com/nickovs">@nickovs</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11602">#11602</a>) (<a href="https://home-assistant.io/components/lutron/">lutron docs</a>) (<a href="https://home-assistant.io/components/cover.lutron/">cover.lutron docs</a>) (new-platform)</li>
+  <li>Add basic mychevy component (<a href="https://github.com/sdague">@sdague</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11409">#11409</a>) (<a href="https://home-assistant.io/components/mychevy/">mychevy docs</a>) (new-platform)</li>
+  <li>Added support for TekSavvy bandwidth sensor (<a href="https://github.com/jpjodoin">@jpjodoin</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11186">#11186</a>) (<a href="https://home-assistant.io/components/sensor.teksavvy/">sensor.teksavvy docs</a>) (new-platform)</li>
+  <li>Ihc component and platforms (<a href="https://github.com/dingusdk">@dingusdk</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10916">#10916</a>) (<a href="https://home-assistant.io/components/ihc/">ihc docs</a>) (<a href="https://home-assistant.io/components/binary_sensor.ihc/">binary_sensor.ihc docs</a>) (<a href="https://home-assistant.io/components/light.ihc/">light.ihc docs</a>) (<a href="https://home-assistant.io/components/sensor.ihc/">sensor.ihc docs</a>) (<a href="https://home-assistant.io/components/switch.ihc/">switch.ihc docs</a>) (new-platform)</li>
+  <li>Iota wallet (<a href="https://github.com/jinnerbichler">@jinnerbichler</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11398">#11398</a>) (<a href="https://home-assistant.io/components/iota/">iota docs</a>) (<a href="https://home-assistant.io/components/sensor.iota/">sensor.iota docs</a>) (new-platform)</li>
+</ul>
+<h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>
+<p>…don’t hesitate to use our very active <a href="https://community.home-assistant.io/">forums</a> or join us for a little <a href="https://discord.gg/c5DvZ4e">chat</a>. The release notes have comments enabled but it’s preferred if you use the former communication channels. Thanks.</p>
+<h2><a class="title-link" name="reporting-issues" href="#reporting-issues"></a> Reporting Issues</h2>
+<p>Experiencing issues introduced by this release? Please report them in our <a href="https://github.com/home-assistant/home-assistant/issues">issue tracker</a>. Make sure to fill in all fields of the issue template.</p>
+      <a class="btn pull-right" href="/blog/2018/01/27/release-62/#read-more">Read on &rarr;</a>
+  </div>
+  </article>
+  <hr>
+  <article class="listing">
+    <header>
+  <h1 class="beta">
     <a href="/blog/2018/01/21/clarification-emulated-hue/">Clarification about Emulated Hue</a>
   </h1>
   <div class="meta clearfix">
@@ -570,33 +612,6 @@ For Custom UI users: your custom UI will need to be updated before it can work w
 <p>There is, however, another option available that most people do not realize: <a href="https://www.torproject.org">Tor</a>. <a href="https://www.torproject.org">Tor</a> offers a capability that they refer to as <a href="https://www.torproject.org/docs/hidden-services.html.en">Tor’s Hidden Services</a>, which allows you to securely access your Home Assistant installation <em>without</em> the need for all these things. No need to forward and open ports, no need to expose your public IP, no DNS entry, no need for SSL certificates, and you do not have to assign a fixed IP to the device running your Home Assistant.</p>
 <p>The most amazing part? It is super easy to set up!</p>
       <a class="btn pull-right" href="/blog/2017/11/12/tor/#read-more">Read on &rarr;</a>
-  </div>
-  </article>
-  <hr>
-  <article class="listing">
-    <header>
-  <h1 class="beta">
-    <a href="/blog/2017/11/10/ttn-with-mqtt/">Home Assistant and The Things Network (TTN)</a>
-  </h1>
-  <div class="meta clearfix">
-    <time datetime="2017-11-10T12:00:00+00:00" pubdate data-updated="true"><i class="icon-calendar"></i> November 10, 2017</time>
-    <span class="byline author vcard"><i class='icon-user'></i> Fabian Affolter</span>
-    <span><i class='icon-time'></i> seven minutes reading time</span>
-    <span>
-    <i class="icon-tags"></i>
-    <ul class="tags unstyled">
-        <li>How-To</li>
-    </ul>
-  </span>
-      <a class='comments'
-         href="/blog/2017/11/10/ttn-with-mqtt/#disqus_thread"
-         >Comments</a>
-  </div>
-</header>
-  <div class="entry-content clearfix">
-    <p>The Home Assistant integration for <a href="https://www.thethingsnetwork.org/">The Things Network (TTN)</a> uses their <a href="https://www.thethingsnetwork.org/docs/applications/storage/">Storage</a> feature to get the sensor data. The easiest way to observe TTN sensors would be <a href="https://www.thethingsnetwork.org/docs/applications/mqtt/">MQTT</a> as it doesn’t requires any additional configuration.</p>
-<p>At the moment Home Assistant only supports one <a href="/docs/mqtt/">MQTT broker</a>. This means that you can’t subscribe to topics which are located on different brokers.</p>
-      <a class="btn pull-right" href="/blog/2017/11/10/ttn-with-mqtt/#read-more">Read on &rarr;</a>
   </div>
   </article>
   <hr>

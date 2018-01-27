@@ -86,13 +86,16 @@
 </div>
 <p>Configuration variables:</p>
 <ul>
-  <li><strong>baseoid</strong> (<em>Required</em>): The SNMP BaseOID which to poll for the state of the switch and which to set in order to turn the switch on and off.</li>
+  <li><strong>baseoid</strong> (<em>Required</em>): The SNMP BaseOID which to poll for the state of the switch.</li>
+  <li><strong>command_oid</strong> (<em>Optional</em>): The SNMP OID which to set in order to turn the switch on and off, if different from <code class="highlighter-rouge">baseoid</code>.</li>
   <li><strong>host</strong> (<em>Optional</em>): The IP/host which to control. Defaults to <code class="highlighter-rouge">localhost</code>.</li>
   <li><strong>port</strong> (<em>Optional</em>): The port on which to communicate. Defaults to <code class="highlighter-rouge">161</code>.</li>
   <li><strong>community</strong> (<em>Optional</em>): community string to use for authentication. Defaults to <code class="highlighter-rouge">private</code>.</li>
   <li><strong>version</strong> (<em>Optional</em>): SNMP version to use - either <code class="highlighter-rouge">1</code> or <code class="highlighter-rouge">2c</code>. Defaults to <code class="highlighter-rouge">1</code>.</li>
-  <li><strong>payload_on</strong> (<em>Optional</em>): What return value represents an <code class="highlighter-rouge">On</code> state for the switch. The same value is used in writes to turn on the switch. Defaults to <code class="highlighter-rouge">1</code>.</li>
-  <li><strong>payload_off</strong> (<em>Optional</em>): What return value represents an <code class="highlighter-rouge">Off</code> state for the switch. The same value is used in writes to turn off the switch. Defaults to <code class="highlighter-rouge">0</code>.</li>
+  <li><strong>payload_on</strong> (<em>Optional</em>): What return value represents an <code class="highlighter-rouge">On</code> state for the switch. The same value is used in writes to turn on the switch if <code class="highlighter-rouge">command_payload_on</code> is not set. Defaults to <code class="highlighter-rouge">1</code>.</li>
+  <li><strong>payload_off</strong> (<em>Optional</em>): What return value represents an <code class="highlighter-rouge">Off</code> state for the switch. The same value is used in writes to turn off the switch if <code class="highlighter-rouge">command_payload_off</code> is not set. Defaults to <code class="highlighter-rouge">0</code>.</li>
+  <li><strong>command_payload_on</strong> (<em>Optional</em>): The value to write to turn on the switch, if different from <code class="highlighter-rouge">payload_on</code>.</li>
+  <li><strong>command_payload_off</strong> (<em>Optional</em>): The value to write to turn off the switch, if different from <code class="highlighter-rouge">payload_off</code>.</li>
 </ul>
 <p>You should check with your device’s vendor to find out the correct BaseOID and what values turn the switch on and off.</p>
 <p>A complete example:</p>
@@ -202,6 +205,9 @@
         </li>
         <li>
             <a href='/components/switch.hook/'>Hook Switch</a>
+        </li>
+        <li>
+            <a href='/components/switch.ihc/'>IHC Switch</a>
         </li>
         <li>
             <a href='/components/switch.isy994/'>ISY994 Switch</a>
@@ -334,9 +340,6 @@
         </li>
         <li>
             <a href='/components/switch.wink/'>Wink Switch</a>
-        </li>
-        <li>
-            <a href='/components/fan.xiaomi_miio/'>Xiaomi Air Purifier 2</a>
         </li>
         <li>
             <a href='/components/switch.xiaomi_miio/'>Xiaomi Smart WiFi Socket and Smart Power Strip</a>

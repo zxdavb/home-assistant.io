@@ -77,14 +77,15 @@
   <p>The <code class="highlighter-rouge">daikin</code> climate platform integrates Daikin air conditioning systems into Home Assistant, enabling control of setting the following parameters:</p>
 <ul>
   <li><strong>mode</strong> (cool, heat, dry, fan only or auto)</li>
-  <li><strong>fan speed</strong></li>
+  <li><strong>fan speed</strong> (on supported models)</li>
   <li><strong>target temperature</strong></li>
   <li><strong>swing mode</strong> (on supported models)</li>
 </ul>
 <p>Current temperature is displayed.</p>
 <p class="note warning">
-Please note, the <code class="highlighter-rouge">daikin</code> platform integrates <strong>ONLY the european versions of Daikin ACs (models BRP069A41, 42, 43, 45)</strong> into Home Assistant
+Please note, the <code class="highlighter-rouge">daikin</code> platform integrates <strong>ONLY the european versions of Daikin ACs (models BRP069A41, 42, 43, 45)</strong> into Home Assistant. BRP069A42 does not support setting of fan speed or fan swing mode.
 </p>
+<p>The platform has been integrated with discovery so all your Daikin AC’s climate devices can be automatically discovered.</p>
 <p>To enable the platform, add the following lines to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">climate</span><span class="pi">:</span>
@@ -216,6 +217,9 @@ Please note, the <code class="highlighter-rouge">daikin</code> platform integrat
         </li>
         <li>
             <a href='/components/climate.toon/'>Toon Thermostat</a>
+        </li>
+        <li>
+            <a href='/components/climate.venstar/'>Venstar Thermostat</a>
         </li>
         <li>
             <a href='/components/climate.vera/'>Vera Thermostat</a>

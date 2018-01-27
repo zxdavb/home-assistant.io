@@ -92,6 +92,30 @@
   <li><strong>token</strong> (<em>Required</em>): The API token of your light.</li>
   <li><strong>name</strong> (<em>Optional</em>): The name of your light.</li>
 </ul>
+<h2><a class="title-link" name="platform-services" href="#platform-services"></a> Platform Services</h2>
+<h3>Service fan/xiaomi_miio_set_scene</h3>
+<p>Set one of the 4 available fixed scenes.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">entity_id</code></td>
+      <td>yes</td>
+      <td>Only act on specific light. Else targets all.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">scene</code></td>
+      <td>no</td>
+      <td>Scene, between 1 and 4.</td>
+    </tr>
+  </tbody>
+</table>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -116,7 +140,7 @@
           <h1 class='title delta'>Related components</h1>
           <ul class='divided'>
         <li><a href='/components/fan.xiaomi_miio/'>
-          Xiaomi Air Purifier 2
+          Xiaomi Air Purifier
         </a></li>
         <li><a href='/components/vacuum.xiaomi_miio/'>
           Xiaomi Mi Robot Vacuum
@@ -164,6 +188,9 @@
         </li>
         <li>
             <a href='/components/light.hyperion/'>Hyperion</a>
+        </li>
+        <li>
+            <a href='/components/light.ihc/'>IHC Light</a>
         </li>
         <li>
             <a href='/components/light.tradfri/'>IKEA Trådfri lights</a>
