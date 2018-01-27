@@ -109,6 +109,13 @@
 </ul>
 <p>The payload will be checked like an entry in your <code class="highlighter-rouge">configuration.yaml</code> file if a new device is added. This means that missing variables will be filled with the platform’s default values. All configuration variables which are <em>required</em> must be present in the initial payload send to <code class="highlighter-rouge">/config</code>.</p>
 <p>The <code class="highlighter-rouge">&lt;node_id&gt;</code> level can be used by clients to only subscribe to their own (command) topics by using one wildcard topic like <code class="highlighter-rouge">&lt;discovery_prefix&gt;/+/&lt;node_id&gt;/+/set</code>.</p>
+<h3><a class="title-link" name="support-by-third-party-tools" href="#support-by-third-party-tools"></a> Support by third-party tools</h3>
+<p>The following firmware for ESP8266, ESP32 and Sonoff unit has built-in support for MQTT discovery:</p>
+<ul>
+  <li><a href="https://github.com/arendst/Sonoff-Tasmota">Sonoff-Tasmota</a> (starting with 5.11.1e)</li>
+  <li><a href="https://github.com/OttoWinter/esphomelib">esphomelib</a></li>
+  <li><a href="https://bitbucket.org/xoseperez/espurna">ESPurna</a></li>
+</ul>
 <h3><a class="title-link" name="examples" href="#examples"></a> Examples</h3>
 <p>A motion detection device which can be represented by a <a href="/components/binary_sensor.mqtt/">binary sensor</a> for your garden would sent its configuration as JSON payload to the Configuration topic. After the first message to <code class="highlighter-rouge">config</code>, then the MQTT messages sent to the state topic will update the state in Home Assistant.</p>
 <ul>
