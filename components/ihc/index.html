@@ -79,7 +79,7 @@
 <p>An <code class="highlighter-rouge">ihc</code> section must be present in the <code class="highlighter-rouge">configuration.yaml</code> file and contain the following options:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">ihc</span><span class="pi">:</span>
-   <span class="s">host</span><span class="pi">:</span> <span class="s">http://192.168.1.3</span>
+   <span class="s">url</span><span class="pi">:</span> <span class="s">http://192.168.1.3</span>
    <span class="s">username</span><span class="pi">:</span> <span class="s">admin</span>
    <span class="s">password</span><span class="pi">:</span> <span class="s">mysecret</span>
    <span class="s">auto_setup</span><span class="pi">:</span> <span class="s">True</span>
@@ -93,10 +93,6 @@
     <dd>
       <p class="desc"><span class="type">(<span class="bool">bool</span>)</span><span class="required">(Optional)</span><span class="description">True to have IHC products auto setup.</span></p>
     </dd>
-    <dt><a class="title-link" name="host" href="#host"></a> host</dt>
-    <dd>
-      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The URL of the IHC Controller.</span></p>
-    </dd>
     <dt><a class="title-link" name="info" href="#info"></a> info</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="bool">bool</span>)</span><span class="required">(Optional)</span><span class="description">If True additional IHC info will be shown on each component.</span></p>
@@ -104,6 +100,10 @@
     <dt><a class="title-link" name="password" href="#password"></a> password</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The password for the IHC Controller.</span></p>
+    </dd>
+    <dt><a class="title-link" name="url" href="#url"></a> url</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The URL of the IHC Controller.</span></p>
     </dd>
     <dt><a class="title-link" name="username" href="#username"></a> username</dt>
     <dd>
@@ -121,7 +121,7 @@ This will make it easier to identify the IHC products within Home Assistant</p>
   <li><a href="/components/switch.ihc/">Switch</a></li>
 </ul>
 <h3>Auto setup of IHC products</h3>
-<p>If auto setup is enabled, the <code class="highlighter-rouge">ihc</code> component will automatically find IHC products and insert these as devices in Home Assistant.
+<p>If the auto setup is enabled, the <code class="highlighter-rouge">ihc</code> component will automatically find IHC products and insert these as devices in Home Assistant.
 To disable this set auto_setup to False. (Auto setup is on by default)
 See the individual device types for a list of IHC products to be recognized automatically.</p>
 <p>Components will get a default name that is a combination of the IHC group and IHC resource id.
@@ -139,7 +139,7 @@ These are the &lt;resource_input&gt; and &lt;resource_output&gt; elements from t
 <p>The IHC resource id should be specified as an integer value. (In the project file the id will be specified as a hex number)</p>
 <p>If you want an easier way to get the IHC resource ids, you can download the <a href="https://www.dingus.dk/updated-ihc-alternative-service-view/">Alternative Service View application</a>.
 The application will show the product tree. You can expand it, select inputs and outputs and when selected you can see the resource id.</p>
-<p>See each device type for the manual configuration options.</p>
+<p>See the manual of each device type for configuration options.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

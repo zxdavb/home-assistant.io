@@ -74,12 +74,19 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">Etherscan</code> sensor platform displays Ethereum wallet balances from <a href="https://etherscan.io">Etherscan.io</a>.</p>
-<p>To add the Etherscan sensor to your installation, specify an ethereum address to watch in the <code class="highlighter-rouge">configuration.yaml</code> file:</p>
+  <p>The <code class="highlighter-rouge">Etherscan</code> sensor platform displays Ether and ERC-20 token balances from <a href="https://etherscan.io">Etherscan.io</a>.</p>
+<p>To add the Etherscan sensor to your installation, specify an Ethereum address to watch in the <code class="highlighter-rouge">configuration.yaml</code> file. You can also optionally provide a token name to retrieve and ERC-20 token balance. If no token is provided then the balance retrieved will be in ETH. You can also optionally provide the token contract address in case the token name is not found.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">etherscan</span>
     <span class="s">address</span><span class="pi">:</span> <span class="s1">'</span><span class="s">0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359'</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">etherscan</span>
+    <span class="s">address</span><span class="pi">:</span> <span class="s2">"</span><span class="s">0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359"</span>
+    <span class="s">token</span><span class="pi">:</span> <span class="s">OMG</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">etherscan</span>
+    <span class="s">address</span><span class="pi">:</span> <span class="s2">"</span><span class="s">0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359"</span>
+    <span class="s">token_address</span><span class="pi">:</span> <span class="s2">"</span><span class="s">0xef68e7c694f40c8202821edf525de3782458639f"</span>
+    <span class="s">token</span><span class="pi">:</span> <span class="s">LRC</span>
 </code></pre>
 </div>
 <div class="config-vars">
@@ -92,7 +99,15 @@
     <dt><a class="title-link" name="name" href="#name"></a> name</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of the sensor used in the frontend.</span></p>
-      <p class="default">Default value: Ethereum Balance</p>
+      <p class="default">Default value: ETH Balance</p>
+    </dd>
+    <dt><a class="title-link" name="token" href="#token"></a> token</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The ERC20 token symbol. i.e., OMG.</span></p>
+    </dd>
+    <dt><a class="title-link" name="token_address" href="#token_address"></a> token_address</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The ERC20 token contract address.</span></p>
     </dd>
   </dl>
 </div>
