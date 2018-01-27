@@ -168,7 +168,24 @@ Make sure that your topic matches exactly. <code class="highlighter-rouge">some-
 </code></pre>
 </div>
 <p>For a check you can use the command line tools <code class="highlighter-rouge">mosquitto_pub</code> shipped with <code class="highlighter-rouge">mosquitto</code> to send MQTT messages. This allows you to operate your switch manually:</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$  </span>mosquitto_pub -h 127.0.0.1 -t home/bedroom/switch1 -m <span class="s2">"ON"</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mosquitto_pub -h 127.0.0.1 -t home/bedroom/switch1 -m <span class="s2">"ON"</span>
+</code></pre>
+</div>
+<h3><a class="title-link" name="set-the-state-of-a-device-with-espeasy" href="#set-the-state-of-a-device-with-espeasy"></a> Set the state of a device with ESPEasy</h3>
+<p>Assuming that you have flashed your ESP8266 unit with <a href="https://github.com/letscontrolit/ESPEasy">ESPEasy</a>. Under “Config” is a name (“Unit Name:”) set for your device (here it’s “bathroom”). A configuration for a “Controller” for MQTT with the protocol “OpenHAB MQTT” is present and the entries (“Controller Subscribe:” and “Controller Publish:”) are adjusted to match your needs. In this example the topics are prefixed with “home”. There is no further configuration needed as the <a href="https://www.letscontrolit.com/wiki/index.php/GPIO">GPIOs</a> can be controlled with MQTT directly.</p>
+<p>Manually you can set pin 13 to high with <code class="highlighter-rouge">mosquitto_pub</code> or another MQTT tool:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mosquitto_pub -h 127.0.0.1 -t home/bathroom/gpio/13 -m <span class="s2">"1"</span>
+</code></pre>
+</div>
+<p>The configuration will look like the example below:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yml entry</span>
+<span class="s">switch</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">mqtt</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">bathroom</span>
+    <span class="s">state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home/bathroom/gpio/13"</span>
+    <span class="s">command_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home/bathroom/gpio/13"</span>
+    <span class="s">payload_on</span><span class="pi">:</span> <span class="s2">"</span><span class="s">1"</span>
+    <span class="s">payload_off</span><span class="pi">:</span> <span class="s2">"</span><span class="s">0"</span>
 </code></pre>
 </div>
 </article>

@@ -144,7 +144,7 @@
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>owntracks/tablet/tablet <span class="o">{</span><span class="s2">"_type"</span>:<span class="s2">"location"</span>,<span class="s2">"lon"</span>:7.21,<span class="s2">"t"</span>:<span class="s2">"u"</span>,<span class="s2">"batt"</span>:92,<span class="s2">"tst"</span>:144995643,<span class="s2">"tid"</span>:<span class="s2">"ta"</span>,<span class="s2">"acc"</span>:27,<span class="s2">"lat"</span>:46.12<span class="o">}</span>
 </code></pre>
 </div>
-<p>Thus the trick is extract the battery level from the payload.</p>
+<p>Thus the trick is extracting the battery level from the payload.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yml entry</span>
 <span class="s">sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">mqtt</span>
@@ -176,6 +176,22 @@
     <span class="s">name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Humidity'</span>
     <span class="s">unit_of_measurement</span><span class="pi">:</span> <span class="s1">'</span><span class="s">%'</span>
     <span class="s">value_template</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">value_json.humidity</span><span class="nv"> </span><span class="s">}}'</span>
+</code></pre>
+</div>
+<h3><a class="title-link" name="get-sensor-value-from-a-device-with-espeasy" href="#get-sensor-value-from-a-device-with-espeasy"></a> Get sensor value from a device with ESPEasy</h3>
+<p>Assuming that you have flashed your ESP8266 unit with <a href="https://github.com/letscontrolit/ESPEasy">ESPEasy</a>. Under “Config” set a name (“Unit Name:”) for your device (here it’s “bathroom”). A “Controller” for MQTT with the protocol “OpenHAB MQTT” is present and the entries (“Controller Subscribe:” and “Controller Publish:”) are adjusted to match your needs. In this example the topics are prefixed with “home”. Also, add a sensor in the “Devices” tap with the name “analog” and “brightness” as value.</p>
+<p>As soon as the unit is online, you will get the state of the sensor.</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>home/bathroom/status Connected
+...
+home/bathroom/analog/brightness 290.00
+</code></pre>
+</div>
+<p>The configuration will look like the example below:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yml entry</span>
+<span class="s">sensor</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">mqtt</span>
+    <span class="s">state_topic</span><span class="pi">:</span> <span class="s1">'</span><span class="s">home/bathroom/analog/brightness'</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">Brightness</span>
 </code></pre>
 </div>
 </article>
