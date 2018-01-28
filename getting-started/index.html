@@ -94,12 +94,12 @@
 <ol>
   <li>Put the SD card in your SD card reader.</li>
   <li>Open Etcher, select the Hass.io image and flash it to the SD card.</li>
-  <li>WiFi setup only: open the file <code class="highlighter-rouge">system-connections/resin-sample</code> with a text editor. Change <code class="highlighter-rouge">ssid</code> to be your network name and <code class="highlighter-rouge">psk</code> to be your password.</li>
+  <li>WiFi setup only: open the file <code class="highlighter-rouge">system-connections/resin-sample</code> (from the <code class="highlighter-rouge">resin-boot</code> volume on the SD card) with a text editor. Change <code class="highlighter-rouge">ssid</code> to be your network name and <code class="highlighter-rouge">psk</code> to be your password. Note that the Raspberry Pi 3 is a 2.4GHz WiFi device, so do not try to connect it to a 5GHz network.</li>
   <li>Unmount the SD card and remove it from your SD card reader.</li>
   <li>Insert the SD card into your Raspberry Pi 3. If you are going to use an Ethernet cable, connect that too.</li>
   <li>Connect your Raspberry Pi to the power supply so it turns on.</li>
-  <li>The Raspberry Pi will now boot up, connect to the Internet and download the latest version of Home Assistant. This will take about 20 minutes.</li>
-  <li>Home Assistant will be available at <a href="http://hassio.local:8123">http://hassio.local:8123</a>.</li>
+  <li>The Raspberry Pi will now boot up, connect to the Internet and download the latest version of Home Assistant. This will take about 20 minutes. Do not expect anything but the Home Assistant logo on the HDMI display, or any use for a keyboard or mouse.</li>
+  <li>Home Assistant will be available at <a href="http://hassio.local:8123">http://hassio.local:8123</a>. Shortly after the download has started, a simple preparation status page will be available at this URL. Point your browser there. The page refreshes automatically, and Home Assistant will be shown when the download is complete.</li>
 </ol>
 <h3><a href="/getting-started/configuration/">Next step: Configuring Home Assistant »</a></h3>
 </article>
