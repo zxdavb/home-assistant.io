@@ -202,15 +202,15 @@ If no <code class="highlighter-rouge">entity_id</code> is given all active timer
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>
-<h3><a class="title-link" name="configuration-example" href="#configuration-example"></a> Configuration example</h3>
+<h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>
+<p>Set a timer called <code class="highlighter-rouge">test</code> to a duration of 30 seconds.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
-
-<span class="c1"># Set a timer called test to a duration of 30 seconds: </span>
 <span class="s">timer</span><span class="pi">:</span>
   <span class="s">test</span><span class="pi">:</span>
     <span class="s">duration</span><span class="pi">:</span> <span class="s1">'</span><span class="s">00:00:30'</span>
 </code></pre>
 </div>
+<h3><a class="title-link" name="control-a-timer-from-the-frontend" href="#control-a-timer-from-the-frontend"></a> Control a timer from the frontend</h3>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example automations.yaml entry</span>
 <span class="pi">-</span> <span class="s">action</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">timer.start</span>
@@ -236,6 +236,31 @@ If no <code class="highlighter-rouge">entity_id</code> is given all active timer
     <span class="s">event_type</span><span class="pi">:</span> <span class="s">timer.finished</span>
     <span class="s">event_data</span><span class="pi">:</span> 
       <span class="s">entity_id</span><span class="pi">:</span> <span class="s">timer.test</span>
+</code></pre>
+</div>
+<h3><a class="title-link" name="control-a-timer-from-the-frontend" href="#control-a-timer-from-the-frontend"></a> Control a timer from the frontend</h3>
+<p>With the <a href="/components/script/"><code class="highlighter-rouge">script</code></a> component you would be able to control a timer (see above for a <code class="highlighter-rouge">timer</code> configuration sample) manually.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">script</span><span class="pi">:</span>
+  <span class="s">start_timer</span><span class="pi">:</span>
+    <span class="s">alias</span><span class="pi">:</span> <span class="s">Start timer</span>
+    <span class="s">sequence</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">timer.start</span>
+        <span class="s">entity_id</span><span class="pi">:</span> <span class="s">timer.test</span>
+  <span class="s">pause_timer</span><span class="pi">:</span>
+    <span class="s">alias</span><span class="pi">:</span> <span class="s">Pause timer</span>
+    <span class="s">sequence</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">timer.pause</span>
+        <span class="s">entity_id</span><span class="pi">:</span> <span class="s">timer.test</span>
+  <span class="s">cancel_timer</span><span class="pi">:</span>
+    <span class="s">alias</span><span class="pi">:</span> <span class="s">Cancel timer</span>
+    <span class="s">sequence</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">timer.cancel</span>
+        <span class="s">entity_id</span><span class="pi">:</span> <span class="s">timer.test</span>
+  <span class="s">finish_timer</span><span class="pi">:</span>
+    <span class="s">alias</span><span class="pi">:</span> <span class="s">Finish timer</span>
+    <span class="s">sequence</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">timer.finish</span>
+        <span class="s">entity_id</span><span class="pi">:</span> <span class="s">timer.test</span>
 </code></pre>
 </div>
 </article>
