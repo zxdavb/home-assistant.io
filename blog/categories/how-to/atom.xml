@@ -4,7 +4,7 @@
   <title><![CDATA[Category: How-To | Home Assistant]]></title>
   <link href="https://home-assistant.io/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-01-28T17:56:25+00:00</updated>
+  <updated>2018-01-28T21:52:35+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -181,7 +181,7 @@ The most amazing part? It is super easy to set up!
 
 ## <a class='title-link' name='setting-up-tor' href='#setting-up-tor'></a> Setting up Tor 
 
-Our [documentation](/docs/ecosystem/tor/) provides an detailed guide about seting up a [Tor's Hidden Service](https://www.torproject.org/docs/hidden-services.html.en). The setup is straight-forward:
+Our [documentation](/docs/ecosystem/tor/) provides a detailed guide about setting up a [Tor's Hidden Service](https://www.torproject.org/docs/hidden-services.html.en). The setup is straight-forward:
 
 1. Install Tor. On a Debian-based system: `$ sudo apt-get install tor`. On Fedora: `$ sudo dnf install tor`
 2. Modify Tor's main configuration file `/etc/tor/torrc` to include the following lines:
@@ -446,7 +446,7 @@ sensor:
     state_topic: "home/ttn/garden_temp"
 ```
 
-This solution is not production-ready, scalable or stable but it could fill the gape till Home Assistant is able to connect to multiple MQTT brokers. If you have multiple devices relay all messages to your local broker and add an configuration variable to `mqtt_ttn` sensor which allows you to select the device.
+This solution is not production-ready, scalable or stable but it could fill the gape till Home Assistant is able to connect to multiple MQTT brokers. If you have multiple devices relay all messages to your local broker and add a configuration variable to `mqtt_ttn` sensor which allows you to select the device.
 ]]></content>
   </entry>
   

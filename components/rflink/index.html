@@ -166,7 +166,7 @@ Wildcards only work at the end of the ID, not in the middle or front!
 <p>If you find a device is recognized differently, with different protocols or the ON OFF is swapped or detected as two ON commands, it can  be overcome with the RFLink ‘RF Signal Learning’ mechanism from RFLink Rev 46 (11 March 2017). <a href="http://www.rflink.nl/blog2/faq#RFFind">Link to further detail.</a></p>
 <h3><a class="title-link" name="technical-overview" href="#technical-overview"></a> Technical Overview</h3>
 <ul>
-  <li>The<code class="highlighter-rouge">rflink</code> Python module is a asyncio transport/protocol which is setup to fire a callback for every (valid/supported) packet received by the RFLink gateway.</li>
+  <li>The<code class="highlighter-rouge">rflink</code> Python module is an asyncio transport/protocol which is setup to fire a callback for every (valid/supported) packet received by the RFLink gateway.</li>
   <li>This component uses this callback to distribute ‘rflink packet events’ over <a href="https://home-assistant.io/docs/configuration/events/">Home Assistant’s event bus</a> which can be subscribed to by entities/platform implementations.</li>
   <li>The platform implementation takes care of creating new devices (if enabled) for unseen incoming packet ID’s.</li>
   <li>Device entities take care of matching to the packet ID, interpreting and performing actions based on the packet contents. Common entity logic is maintained in this main component.</li>

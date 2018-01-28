@@ -4,7 +4,7 @@
   <title><![CDATA[Home Assistant]]></title>
   <link href="https://home-assistant.io/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-01-28T17:56:25+00:00</updated>
+  <updated>2018-01-28T21:52:35+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -1477,7 +1477,7 @@ For Custom UI users: your custom UI will need to be updated before it can work w
 
 <h2><a class="title-link" name="setting-up-tor" href="#setting-up-tor"></a> Setting up Tor</h2>
 
-<p>Our <a href="/docs/ecosystem/tor/">documentation</a> provides an detailed guide about seting up a <a href="https://www.torproject.org/docs/hidden-services.html.en">Tor’s Hidden Service</a>. The setup is straight-forward:</p>
+<p>Our <a href="/docs/ecosystem/tor/">documentation</a> provides a detailed guide about setting up a <a href="https://www.torproject.org/docs/hidden-services.html.en">Tor’s Hidden Service</a>. The setup is straight-forward:</p>
 
 <ol>
   <li>Install Tor. On a Debian-based system: <code class="highlighter-rouge">$ sudo apt-get install tor</code>. On Fedora: <code class="highlighter-rouge">$ sudo dnf install tor</code></li>
@@ -1750,7 +1750,7 @@ INFO: -----------------------------------------------------------
 </code></pre>
 </div>
 
-<p>This solution is not production-ready, scalable or stable but it could fill the gape till Home Assistant is able to connect to multiple MQTT brokers. If you have multiple devices relay all messages to your local broker and add an configuration variable to <code class="highlighter-rouge">mqtt_ttn</code> sensor which allows you to select the device.</p>
+<p>This solution is not production-ready, scalable or stable but it could fill the gape till Home Assistant is able to connect to multiple MQTT brokers. If you have multiple devices relay all messages to your local broker and add a configuration variable to <code class="highlighter-rouge">mqtt_ttn</code> sensor which allows you to select the device.</p>
 ]]></content>
   </entry>
   
@@ -2686,7 +2686,7 @@ Demo is running... -&gt; CTRL + C to shutdown
 <h2><a class="title-link" name="breaking-changes" href="#breaking-changes"></a> Breaking Changes</h2>
 
 <ul>
-  <li>history_graph component: If your component used <code class="highlighter-rouge">history.get_significant_states</code> function then you need to adjust the string <code class="highlighter-rouge">entitity_id</code> parameter has been changed to a list of strings <code class="highlighter-rouge">entity_ids</code> parameter. (<a href="https://github.com/andrey-git">@andrey-git</a> - <a href="https://github.com/home-assistant/home-assistant/pull/9472">#9472</a>) (<a href="https://home-assistant.io/components/history_graph/">history_graph docs</a>) (breaking change)</li>
+  <li>history_graph component: If your component used <code class="highlighter-rouge">history.get_significant_states</code> function then you need to adjust the string <code class="highlighter-rouge">entity_id</code> parameter has been changed to a list of strings <code class="highlighter-rouge">entity_ids</code> parameter. (<a href="https://github.com/andrey-git">@andrey-git</a> - <a href="https://github.com/home-assistant/home-assistant/pull/9472">#9472</a>) (<a href="https://home-assistant.io/components/history_graph/">history_graph docs</a>) (breaking change)</li>
   <li>UPNP component: The <code class="highlighter-rouge">external_port</code> configuration option was removed. (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/9560">#9560</a>) (<a href="https://home-assistant.io/components/upnp/">upnp docs</a>) (breaking change)</li>
   <li>New Wink services: pair new device, rename, delete and add new lock key code. All device attributes that are multi-words are now separated by  “_” and no longer “ “. (<a href="https://github.com/w1ll1am23">@w1ll1am23</a> - <a href="https://github.com/home-assistant/home-assistant/pull/9303">#9303</a>) (<a href="https://home-assistant.io/components/wink/">wink docs</a>) (<a href="https://home-assistant.io/components/binary_sensor.wink/">binary_sensor.wink docs</a>) (<a href="https://home-assistant.io/components/lock.wink/">lock.wink docs</a>) (breaking change)</li>
   <li>TP-Link Switch: Attribute names now uses underscores and unnecessary capitalization was removed. (<a href="https://github.com/djchen">@djchen</a> - <a href="https://github.com/home-assistant/home-assistant/pull/9607">#9607</a>) (<a href="https://home-assistant.io/components/switch.tplink/">switch.tplink docs</a>) (breaking change)</li>

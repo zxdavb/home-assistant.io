@@ -94,14 +94,14 @@
 <p class="note">
 We change the platform name for binary sensor in 0.38 from <code class="highlighter-rouge">ffmpeg</code> to <code class="highlighter-rouge">ffmpeg_noise</code>. Also all service going to component and was rename from <code class="highlighter-rouge">binary_sensor.ffmpeg_xy</code> to <code class="highlighter-rouge">ffmpeg.xy</code>.
 </p>
-<p>On Raspbian Jessie, you can setup <a href="/components/ffmpeg">FFmpeg</a> and install a <a href="http://icecast.org/">icecast2</a> server using:</p>
+<p>On Raspbian Jessie, you can setup <a href="/components/ffmpeg">FFmpeg</a> and install an <a href="http://icecast.org/">icecast2</a> server using:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo <span class="nb">echo</span> <span class="s2">"deb http://ftp.debian.org/debian jessie-backports main"</span> &gt;&gt; /etc/apt/sources.list
 <span class="gp">$ </span>sudo apt-get update
 <span class="gp">$ </span>sudo apt-get -t jessie-backports install ffmpeg
 <span class="gp">$ </span>sudo apt-get install icecast2
 </code></pre>
 </div>
-<p>We setup a icecast mount point for our babyphone and update <code class="highlighter-rouge">/etc/icecast2/icecast.xml</code>:</p>
+<p>We setup an icecast mount point for our babyphone and update <code class="highlighter-rouge">/etc/icecast2/icecast.xml</code>:</p>
 <div class="highlighter-rouge"><pre class="highlight"><code>&lt;mount&gt;
     &lt;mount-name&gt;/babyphone.mp3&lt;/mount-name&gt;
     &lt;stream-name&gt;Babyphone&lt;/stream-name&gt;
@@ -152,7 +152,7 @@ We change the platform name for binary sensor in 0.38 from <code class="highligh
      <span class="s">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.ffmpeg_noise</span>
 </code></pre>
 </div>
-<h3><a class="title-link" name="trigger-a-alarm" href="#trigger-a-alarm"></a> Trigger a alarm</h3>
+<h3><a class="title-link" name="trigger-an-alarm" href="#trigger-an-alarm"></a> Trigger an alarm</h3>
 <p>Now we can make a lot stuff. Here is a simple example of an automation what should be possible with Sonos speakers.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">automation</span><span class="pi">:</span>
  <span class="pi">-</span> <span class="s">alias</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Babyphone</span><span class="nv"> </span><span class="s">alarm</span><span class="nv"> </span><span class="s">on'</span>

@@ -106,13 +106,13 @@
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>ln -s /path/to/your/installation/of/gi /path/to/your/venv/lib/python3.4/site-packages
 </code></pre>
 </div>
-<p>On a Raspberry PI, you may need to add the Home Assistant user to the <code class="highlighter-rouge">audio</code> group:</p>
+<p>On a Raspberry Pi, you may need to add the Home Assistant user to the <code class="highlighter-rouge">audio</code> group:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo usermod -a -G audio &lt;ha_user&gt;
 </code></pre>
 </div>
 <h2><a class="title-link" name="example-usage" href="#example-usage"></a> Example Usage</h2>
 <h3><a class="title-link" name="using-with-tts" href="#using-with-tts"></a> Using with TTS</h3>
-<p>To play TTS on your local computer (for example, if you have speakers attached to your Raspberry PI:</p>
+<p>To play TTS on your local computer (for example, if you have speakers attached to your Raspberry Pi:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">media_player</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">gstreamer</span>
 

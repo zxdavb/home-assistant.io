@@ -236,7 +236,7 @@ Z-Wave light bulb    |
 <p>There are a lot of stops along the way for these events, but each piece is a simple translation layer to shuttle the events between systems.</p>
 <h3>Future Improvements</h3>
 <ul>
-  <li><strong>Raspberry pi</strong>: There is a lot of interest in getting this running on the Raspberry Pi. It only requires binaries compiled for ARM, so we plan to get ARM-compatible versions of the containers going at some point.</li>
+  <li><strong>Raspberry Pi</strong>: There is a lot of interest in getting this running on the Raspberry Pi. It only requires binaries compiled for ARM, so we plan to get ARM-compatible versions of the containers going at some point.</li>
   <li><strong>Authentication for MQTT</strong>: At the moment, the MQTT bridge doesn’t understand how to authenticate to MQTT, so only unauthenticated MQTT is supported. This is mitigated to some degree if you use our Docker Compose config, because MQTT’s port is not actually shared publicly.</li>
   <li><strong>Authentication for MQTT Bridge</strong>: Right now the bridge expects that anyone subscribing is the SmartThings hub. This could use proper authentication.</li>
 </ul>
