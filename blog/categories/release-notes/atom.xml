@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Release-Notes | Home Assistant]]></title>
   <link href="https://home-assistant.io/blog/categories/release-notes/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-01-29T22:47:57+00:00</updated>
+  <updated>2018-01-30T01:29:46+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -35,6 +35,16 @@ With this new integration by [@sdague] you are able to keep an eye on your Chevy
 - Added support for TekSavvy bandwidth sensor ([@jpjodoin] - [#11186]) ([sensor.teksavvy docs]) (new-platform)
 - Ihc component and platforms ([@dingusdk] - [#10916]) ([ihc docs]) ([binary_sensor.ihc docs]) ([light.ihc docs]) ([sensor.ihc docs]) ([switch.ihc docs]) (new-platform)
 - Iota wallet ([@jinnerbichler] - [#11398]) ([iota docs]) ([sensor.iota docs]) (new-platform)
+
+## <a class='title-link' name='release-0621---january-30' href='#release-0621---january-30'></a> Release 0.62.1 - January 30 
+
+- Snips - (fix/change) remove response when intent not handled ([@tschmidty69] - [#11929]) ([snips docs])
+- Fix asuswrt AttributeError on neigh for unknown device ([@scop] - [#11960]) ([device_tracker.asuswrt docs])
+- Set default values for Daikin devices that don't support fan direction and fan speed features ([@rofrantz] - [#12000]) ([climate.daikin docs])
+- Fix parameter escaping ([@smoldaner] - [#12008]) ([media_player.squeezebox docs])
+- Error handling, in case no connections are available ([@ReneNulschDE] - [#12010]) ([sensor.deutsche_bahn docs])
+- Fix 404 for Hass.io panel using frontend dev ([@c727] - [#12039]) ([frontend docs])
+- Upgrade pyharmony to 1.0.20 ([@amelchio] - [#12043]) ([remote.harmony docs])
 
 ## <a class='title-link' name='if-you-need-help' href='#if-you-need-help'></a> If you need help... 
 
@@ -484,7 +494,29 @@ Experiencing issues introduced by this release? Please report them in our [issue
 [xiaomi_aqara docs]: https://home-assistant.io/components/xiaomi_aqara/
 [zwave docs]: https://home-assistant.io/components/zwave/
 [@martinhjelmare]: https://github.com/martinhjelmare
-[@frenck]: https://github.com/frenck]]></content>
+[@frenck]: https://github.com/frenck
+[#11929]: https://github.com/home-assistant/home-assistant/pull/11929
+[#11960]: https://github.com/home-assistant/home-assistant/pull/11960
+[#12000]: https://github.com/home-assistant/home-assistant/pull/12000
+[#12008]: https://github.com/home-assistant/home-assistant/pull/12008
+[#12010]: https://github.com/home-assistant/home-assistant/pull/12010
+[#12039]: https://github.com/home-assistant/home-assistant/pull/12039
+[#12043]: https://github.com/home-assistant/home-assistant/pull/12043
+[@ReneNulschDE]: https://github.com/ReneNulschDE
+[@amelchio]: https://github.com/amelchio
+[@c727]: https://github.com/c727
+[@rofrantz]: https://github.com/rofrantz
+[@scop]: https://github.com/scop
+[@smoldaner]: https://github.com/smoldaner
+[@tschmidty69]: https://github.com/tschmidty69
+[climate.daikin docs]: https://home-assistant.io/components/climate.daikin/
+[device_tracker.asuswrt docs]: https://home-assistant.io/components/device_tracker.asuswrt/
+[frontend docs]: https://home-assistant.io/components/frontend/
+[media_player.squeezebox docs]: https://home-assistant.io/components/media_player.squeezebox/
+[remote.harmony docs]: https://home-assistant.io/components/remote.harmony/
+[sensor.deutsche_bahn docs]: https://home-assistant.io/components/sensor.deutsche_bahn/
+[snips docs]: https://home-assistant.io/components/snips/
+]]></content>
   </entry>
   
   <entry>

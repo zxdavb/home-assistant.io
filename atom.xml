@@ -4,7 +4,7 @@
   <title><![CDATA[Home Assistant]]></title>
   <link href="https://home-assistant.io/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-01-29T22:47:57+00:00</updated>
+  <updated>2018-01-30T01:29:46+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -36,6 +36,18 @@
   <li>Added support for TekSavvy bandwidth sensor (<a href="https://github.com/jpjodoin">@jpjodoin</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11186">#11186</a>) (<a href="https://home-assistant.io/components/sensor.teksavvy/">sensor.teksavvy docs</a>) (new-platform)</li>
   <li>Ihc component and platforms (<a href="https://github.com/dingusdk">@dingusdk</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10916">#10916</a>) (<a href="https://home-assistant.io/components/ihc/">ihc docs</a>) (<a href="https://home-assistant.io/components/binary_sensor.ihc/">binary_sensor.ihc docs</a>) (<a href="https://home-assistant.io/components/light.ihc/">light.ihc docs</a>) (<a href="https://home-assistant.io/components/sensor.ihc/">sensor.ihc docs</a>) (<a href="https://home-assistant.io/components/switch.ihc/">switch.ihc docs</a>) (new-platform)</li>
   <li>Iota wallet (<a href="https://github.com/jinnerbichler">@jinnerbichler</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11398">#11398</a>) (<a href="https://home-assistant.io/components/iota/">iota docs</a>) (<a href="https://home-assistant.io/components/sensor.iota/">sensor.iota docs</a>) (new-platform)</li>
+</ul>
+
+<h2><a class="title-link" name="release-0621---january-30" href="#release-0621---january-30"></a> Release 0.62.1 - January 30</h2>
+
+<ul>
+  <li>Snips - (fix/change) remove response when intent not handled (<a href="https://github.com/tschmidty69">@tschmidty69</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11929">#11929</a>) (<a href="https://home-assistant.io/components/snips/">snips docs</a>)</li>
+  <li>Fix asuswrt AttributeError on neigh for unknown device (<a href="https://github.com/scop">@scop</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11960">#11960</a>) (<a href="https://home-assistant.io/components/device_tracker.asuswrt/">device_tracker.asuswrt docs</a>)</li>
+  <li>Set default values for Daikin devices that don’t support fan direction and fan speed features (<a href="https://github.com/rofrantz">@rofrantz</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12000">#12000</a>) (<a href="https://home-assistant.io/components/climate.daikin/">climate.daikin docs</a>)</li>
+  <li>Fix parameter escaping (<a href="https://github.com/smoldaner">@smoldaner</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12008">#12008</a>) (<a href="https://home-assistant.io/components/media_player.squeezebox/">media_player.squeezebox docs</a>)</li>
+  <li>Error handling, in case no connections are available (<a href="https://github.com/ReneNulschDE">@ReneNulschDE</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12010">#12010</a>) (<a href="https://home-assistant.io/components/sensor.deutsche_bahn/">sensor.deutsche_bahn docs</a>)</li>
+  <li>Fix 404 for Hass.io panel using frontend dev (<a href="https://github.com/c727">@c727</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12039">#12039</a>) (<a href="https://home-assistant.io/components/frontend/">frontend docs</a>)</li>
+  <li>Upgrade pyharmony to 1.0.20 (<a href="https://github.com/amelchio">@amelchio</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12043">#12043</a>) (<a href="https://home-assistant.io/components/remote.harmony/">remote.harmony docs</a>)</li>
 </ul>
 
 <h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>

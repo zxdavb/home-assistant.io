@@ -1,15 +1,15 @@
 {
-  "current_version": "0.62.0",
-  "release_date": "2018-01-27T00:00:00+00:00",
+  "current_version": "0.62.1",
+  "release_date": "2018-01-30T00:00:00+00:00",
   "release_notes": "https://home-assistant.io/blog/2018/01/27/release-62/",
   "release_notes_path": "/blog/2018/01/27/release-62/",
   "release_title": "0.62: MyChevy, Iota and Venstar Thermostat",
   "release_description": "Keep track of your Chevy Bolt, monitor your IOTA wallets and control your Venstar Thermostats.",
-  "patch_version_notes": "#",
+  "patch_version_notes": "#release-0621---january-30",
   "root_url": "https://home-assistant.io",
   "semantic_version": {
     "major": 0,
     "minor": 62,
-    "patch": 0
+    "patch": 1
   }
 }
