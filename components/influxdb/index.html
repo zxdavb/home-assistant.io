@@ -115,108 +115,11 @@
   <li><strong>tags</strong> (<em>Optional</em>): Tags to mark the data.</li>
   <li><strong>tags_attributes</strong> (<em>Optional</em>): The list of attribute names which should be reported as tags and not fields to InfluxDB. For example, if set to <code class="highlighter-rouge">friendly_name</code>, it will be possible to group by entities’ friendly names as well, in addition to their ids.</li>
 </ul>
-<h2><a class="title-link" name="data-migration" href="#data-migration"></a> Data migration</h2>
-<p>Starting with 0.36 the InfluxDB component has a new schema to store values in the InfluxDB databases.</p>
+<h2><a class="title-link" name="helper-scripts" href="#helper-scripts"></a> Helper scripts</h2>
 <ul>
-  <li>There will no longer be any tags/fields named <code class="highlighter-rouge">time</code>.</li>
-  <li>All numeric fields (int/float/bool) will be stored as float inside InfluxDB database.</li>
-  <li>All string fields corresponding to state attributes will be renamed as <code class="highlighter-rouge">FIELDNAME_str</code>, where <code class="highlighter-rouge">FIELDNAME</code> is the state attribute, to avoid type conflicts.</li>
-  <li>All string fields corresponding to a state will be renamed as <code class="highlighter-rouge">state</code> (former value).</li>
-  <li>Fields named <code class="highlighter-rouge">value</code> will always be stored as float.</li>
-  <li>Fields named <code class="highlighter-rouge">state</code> will always be stored as string.</li>
+  <li><a href="/docs/tools/influxdb_import/">Helper script <code class="highlighter-rouge">influxdb_import</code></a></li>
+  <li><a href="/docs/tools/db_migrator/">Helper script <code class="highlighter-rouge">db_migrator</code></a> (only used for <a href="/blog/2017/01/14/iss-usps-images-packages/#influxdb-export">Home Assistant 0.36</a>)</li>
 </ul>
-<h3><a class="title-link" name="migration-script" href="#migration-script"></a> Migration script</h3>
-<p>If you need to migrate your database, you may require to run the <code class="highlighter-rouge">influxdb_migrator</code> script. Run the script after upgrade to 0.36 but before the first regular start of <code class="highlighter-rouge">hass</code> version 0.36.</p>
-<p>These are the steps the script will perform:</p>
-<ol>
-  <li>Create a new database (called <code class="highlighter-rouge">DBNAME__old</code>) to store old data.</li>
-  <li>Copy data from <code class="highlighter-rouge">DBNAME</code> database to <code class="highlighter-rouge">DBNAME__old</code> database.</li>
-  <li>Empty <code class="highlighter-rouge">DBNAME</code> database (using <code class="highlighter-rouge">drop</code> then <code class="highlighter-rouge">create</code>). <code class="highlighter-rouge">DBNAME</code> database is now considered as the new database.</li>
-  <li>For each measurement of <code class="highlighter-rouge">DBNAME__old</code> database:</li>
-  <li>Read all points from the current measurement (in groups of 1000 points by default) and convert them.</li>
-  <li>Send group of points to <code class="highlighter-rouge">DBNAME</code> database.</li>
-  <li>Delete the <code class="highlighter-rouge">DBNAME__old</code> database if needed.</li>
-</ol>
-<p>Example to run the script:</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>hass --script influxdb_migrator <span class="se">\</span>
-    -H IP_INFLUXDB_HOST -u INFLUXDB_USERNAME -p INFLUXDB_PASSWORD <span class="se">\</span>
-    -d INFLUXDB_DB_NAME
-</code></pre>
-</div>
-<p>Script arguments:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>required arguments:
-  -d dbname, --dbname dbname  InfluxDB database name
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -H host, --host host  InfluxDB host address
-  -P port, --port port  InfluxDB host port
-  -u username, --username username
-                        InfluxDB username
-  -p password, --password password
-                        InfluxDB password
-  -s step, --step step  How many points to migrate at the same time
-  -o override_measurement, --override-measurement override_measurement
-                        Store all your points in the same measurement
-  -D, --delete          Delete old database
-</code></pre>
-</div>
-<ul>
-  <li>If you run the script with only the <code class="highlighter-rouge">-h</code> option, you will get a help printout with a short explanation of the different options.</li>
-  <li>The host option defaults to <code class="highlighter-rouge">'127.0.0.1'</code>.</li>
-  <li>The port option defaults to <code class="highlighter-rouge">8086</code>.</li>
-  <li>You should be able to omit username and password if InfluxDB authentication is disabled, which it is by default.</li>
-  <li>The step option defaults to <code class="highlighter-rouge">1000</code>.</li>
-</ul>
-<h2><a class="title-link" name="data-import-script" href="#data-import-script"></a> Data import script</h2>
-<p>If you want to import all the recorded data from your recorder database you can use the data import script.
-It will read all your state_change events from the database and add them as data-points to the InfluxDB.
-You can specify the source database either by pointing the <code class="highlighter-rouge">--config</code> option to the config directory which includes the default SQLite database or by giving a sqlalchemy connection URI with <code class="highlighter-rouge">--uri</code>.
-The writing to InfluxDB is done in batches that can be changed with <code class="highlighter-rouge">--step</code>.</p>
-<p>You can control, which data is imported by using the command line options <code class="highlighter-rouge">--exclude_entities</code> and <code class="highlighter-rouge">--exclude_domains</code>.
-Both get a comma separated list of either entity-ids or domain names that are excluded from the import.</p>
-<p>To test what gets imported you can use the <code class="highlighter-rouge">--simulate</code> option, which disables the actual write to the InfluxDB instance.
-This only writes the statistics how much points would be imported from which entity.</p>
-<p>Example to run the script:</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>hass --script influxdb_import --config CONFIG_DIR <span class="se">\</span>
-    -H IP_INFLUXDB_HOST -u INFLUXDB_USERNAME -p INFLUXDB_PASSWORD <span class="se">\</span>
-    --dbname INFLUXDB_DB_NAME --exclude_domains automation,configurator
-</code></pre>
-</div>
-<p>Script arguments:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>required arguments:
-  -d dbname, --dbname dbname
-                        InfluxDB database name
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -c path_to_config_dir, --config path_to_config_dir
-                        Directory that contains the Home Assistant
-                        configuration
-  --uri URI             Connect to URI and import (if other than default
-                        sqlite) eg: mysql://localhost/homeassistant
-
-  -H host, --host host  InfluxDB host address
-  -P port, --port port  InfluxDB host port
-  -u username, --username username
-                        InfluxDB username
-  -p password, --password password
-                        InfluxDB password
-  -s step, --step step  How many points to import at the same time
-  -t tags, --tags tags  Comma separated list of tags (key:value) for all
-                        points
-  -D default_measurement, --default-measurement default_measurement
-                        Store all your points in the same measurement
-  -o override_measurement, --override-measurement override_measurement
-                        Store all your points in the same measurement
-  -e exclude_entities, --exclude_entities exclude_entities
-                        Comma separated list of excluded entities
-  -E exclude_domains, --exclude_domains exclude_domains
-                        Comma separated list of excluded domains
-  -S, --simulate        Do not write points but simulate preprocessing
-                        and print statistics
-</code></pre>
-</div>
 <h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>
 <h3><a class="title-link" name="full-configuration" href="#full-configuration"></a> Full configuration</h3>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">influxdb</span><span class="pi">:</span>

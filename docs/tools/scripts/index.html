@@ -75,34 +75,6 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The command-line and the frontend which simplify common tasks, are helping with migrations, and ensure that Home Assistant runs properly. Please do not confuse those with Home Assistant’s <a href="/docs/scripts/">script</a> feature.</p>
-<h3><a class="title-link" name="configuration-check" href="#configuration-check"></a> Configuration check</h3>
-<p>Test any changes to your <code class="highlighter-rouge">configuration.yaml</code> file before launching Home Assistant. This script allows you to test changes without the need to restart Home Assistant.</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>hass --script check_config
-</code></pre>
-</div>
-<h3><a class="title-link" name="existence-of-configuration" href="#existence-of-configuration"></a> Existence of configuration</h3>
-<p>This script checks if the <code class="highlighter-rouge">configuration.yaml</code> file exists. If the file is not available, one is created.</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>hass --script ensure_config
-</code></pre>
-</div>
-<h3><a class="title-link" name="secrets" href="#secrets"></a> Secrets</h3>
-<p>There is a method to store secrets outside of your <code class="highlighter-rouge">configuration.yaml</code> file. For further details, please refer to the <a href="/docs/configuration/secrets/">Storing Secrets</a> documentation.</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>hass --script keyring
-</code></pre>
-</div>
-<h3><a class="title-link" name="benchmark" href="#benchmark"></a> Benchmark</h3>
-<p>For testing the performance of Home Assistant the Benchmark script runs until you exit using Control+C.</p>
-<p>Firing and handling of a million events.</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>hass --script benchmark async_million_events
-</code></pre>
-</div>
-<h3><a class="title-link" name="old-scripts" href="#old-scripts"></a> Old scripts</h3>
-<p>Usually those scripts were only used when a massive update happened and was announced in the release notes.</p>
-<ul>
-  <li><code class="highlighter-rouge">db_migrator</code>: Migrate an existing SQLite database to the new schema.</li>
-  <li><code class="highlighter-rouge">influxdb_migrator</code>: Convert an old InfluxDB to the new format.</li>
-</ul>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -196,7 +168,13 @@
         <ul>
           <li><a  href='/docs/tools/dev-tools/'>Developer Tools </a></li>
           <li><a  href='/docs/tools/hass/'>hass </a></li>
-          <li><a class='active' href='/docs/tools/scripts/'>Scripts </a></li>
+          <li><a  href='/docs/tools/benchmark/'>benchmark </a></li>
+          <li><a  href='/docs/tools/check_config/'>check_config </a></li>
+          <li><a  href='/docs/tools/credstash/'>credstash </a></li>
+          <li><a  href='/docs/tools/db_migrator/'>db_migrator </a></li>
+          <li><a  href='/docs/tools/ensure_config/'>ensure_config </a></li>
+          <li><a  href='/docs/tools/influxdb_import/'>influxdb_import </a></li>
+          <li><a  href='/docs/tools/keyring/'>keyring </a></li>
         </ul>
       </li>
       <li>
