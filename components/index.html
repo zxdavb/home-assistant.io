@@ -84,7 +84,7 @@ Support for these components is provided by the Home Assistant community.
       <a href='#featured' class="btn featured">Featured</a>
       <a href='#version/0.62' class="btn added_in_current_version">Added in 0.62 (13)</a>
       <a href='#version/0.61' class="btn added_one_version_ago">Added in 0.61 (18)</a>
-      <a href='#version/0.60' class="btn added_two_versions_ago">Added in 0.60 (18)</a>
+      <a href='#version/0.60' class="btn added_two_versions_ago">Added in 0.60 (21)</a>
     <a href='#alarm' class="btn">Alarm (20)</a>
     <a href='#automation' class="btn">Automation (20)</a>
     <a href='#binary-sensor' class="btn">Binary Sensor (68)</a>
@@ -189,7 +189,7 @@ var allComponents = [
 {url:"/components/sensor.alarmdecoder/", title:"AlarmDecoder Sensor", cat:"sensor", featured: false, v: "0.43", logo: "alarmdecoder.png"},
 {url:"/components/alert/", title:"Alert", cat:"automation", featured: false, v: "0.38", logo: "home-assistant.png"},
 {url:"/components/alexa/", title:"Alexa / Amazon Echo", cat:"voice", featured: true, v: "0.10", logo: "amazon-echo.png"},
-{url:"/components/cloud.alexa/", title:"Alexa via Home Assistant Cloud", cat:"cloud", featured: false, v: "0.6", logo: "home-assistant.png"},
+{url:"/components/cloud.alexa/", title:"Alexa via Home Assistant Cloud", cat:"cloud", featured: false, v: "0.60", logo: "home-assistant.png"},
 {url:"/components/sensor.alpha_vantage/", title:"Alpha Vantage", cat:"finance", featured: false, v: "0.60", logo: "alpha_vantage.png"},
 {url:"/components/tts.amazon_polly/", title:"Amazon Polly", cat:"text-to-speech", featured: false, v: "0.37", logo: "polly.png"},
 {url:"/components/camera.amcrest/", title:"Amcrest IP Camera", cat:"camera", featured: false, v: "0.34", logo: "amcrest.png"},
@@ -301,7 +301,7 @@ var allComponents = [
 {url:"/components/sensor.daikin/", title:"Daikin AC", cat:"sensor", featured: false, v: "0.59", logo: "daikin.png"},
 {url:"/components/daikin/", title:"Daikin AC", cat:"hub", featured: false, v: "0.59", logo: "daikin.png"},
 {url:"/components/weather.darksky/", title:"Dark Sky", cat:"weather", featured: false, v: "0.61", logo: "dark_sky.png"},
-{url:"/components/sensor.darksky/", title:"Dark Sky Sensor", cat:"weather", featured: true, v: "0.3", logo: "dark_sky.png"},
+{url:"/components/sensor.darksky/", title:"Dark Sky Sensor", cat:"weather", featured: true, v: "0.30", logo: "dark_sky.png"},
 {url:"/components/datadog/", title:"Datadog", cat:"history", featured: false, v: "0.45", logo: "datadog.png"},
 {url:"/components/sensor.deluge/", title:"Deluge Sensor", cat:"downloading", featured: false, v: "0.57", logo: "deluge.png"},
 {url:"/components/switch.deluge/", title:"Deluge Switch", cat:"downloading", featured: false, v: "0.57", logo: "deluge.png"},
@@ -318,7 +318,7 @@ var allComponents = [
 {url:"/components/sensor.discogs/", title:"Discogs Sensor", cat:"sensor", featured: false, v: "0.61", logo: "discogs.png"},
 {url:"/components/notify.discord/", title:"Discord", cat:"notifications", featured: false, v: "0.37", logo: "discord.png"},
 {url:"/components/discovery/", title:"Discovery", cat:"other", featured: false, v: "0.0", logo: "home-assistant.png"},
-{url:"/components/camera.dispatcher/", title:"Dispatcher IP Camera", cat:"camera", featured: false, v: "0.4", logo: "camcorder.png"},
+{url:"/components/camera.dispatcher/", title:"Dispatcher IP Camera", cat:"camera", featured: false, v: "0.40", logo: "camcorder.png"},
 {url:"/components/image_processing.dlib_face_detect/", title:"Dlib Face Detect", cat:"image-processing", featured: false, v: "0.44", logo: "dlib.png"},
 {url:"/components/image_processing.dlib_face_identify/", title:"Dlib Face Identify", cat:"image-processing", featured: false, v: "0.44", logo: "dlib.png"},
 {url:"/components/dominos/", title:"Dominos Pizza", cat:"other", featured: false, v: "0.0", logo: "dominos.png"},
@@ -443,7 +443,7 @@ var allComponents = [
 {url:"/components/sensor.hive/", title:"Hive Sensor", cat:"sensor", featured: false, v: "0.59", logo: "hive.png"},
 {url:"/components/switch.hive/", title:"Hive Switch", cat:"switch", featured: false, v: "0.59", logo: "hive.png"},
 {url:"/components/climate.hive/", title:"Hive Thermostat", cat:"climate", featured: false, v: "0.59", logo: "hive.png"},
-{url:"/components/cloud/", title:"Home Assistant Cloud", cat:"voice", featured: false, v: "0.6", logo: "home-assistant.png"},
+{url:"/components/cloud/", title:"Home Assistant Cloud", cat:"voice", featured: false, v: "0.60", logo: "home-assistant.png"},
 {url:"/components/homematic/", title:"Homematic", cat:"hub", featured: false, v: "0.0", logo: "homematic.png"},
 {url:"/components/binary_sensor.homematic/", title:"Homematic Binary Sensor", cat:"binary-sensor", featured: false, v: "0.23", logo: "homematic.png"},
 {url:"/components/cover.homematic/", title:"Homematic Cover", cat:"cover", featured: false, v: "0.27", logo: "homematic.png"},
@@ -490,7 +490,7 @@ var allComponents = [
 {url:"/components/switch.insteon_local/", title:"Insteon (Local) Switch", cat:"switch", featured: false, v: "0.0", logo: "insteon.png"},
 {url:"/components/insteon_local/", title:"Insteon (local)", cat:"hub", featured: false, v: "0.0", logo: "insteon.png"},
 {url:"/components/insteon_hub/", title:"Insteon Hub", cat:"hub", featured: false, v: "0.0", logo: "insteon.png"},
-{url:"/components/fan.insteon_hub/", title:"Insteon Hub Fan", cat:"fan", featured: false, v: "0.3", logo: "insteon.png"},
+{url:"/components/fan.insteon_hub/", title:"Insteon Hub Fan", cat:"fan", featured: false, v: "0.30", logo: "insteon.png"},
 {url:"/components/light.insteon_hub/", title:"Insteon Hub Light", cat:"light", featured: false, v: "0.21", logo: "insteon.png"},
 {url:"/components/insteon_plm/", title:"Insteon PLM", cat:"hub", featured: false, v: "0.0", logo: "insteon.png"},
 {url:"/components/binary_sensor.insteon_plm/", title:"Insteon PLM Binary Sensor", cat:"binary-sensor", featured: false, v: "0.0", logo: "insteon.png"},
@@ -514,7 +514,7 @@ var allComponents = [
 {url:"/components/notify.knx/", title:"KNX Notify", cat:"notifications", featured: false, v: "0.53", logo: "knx.png"},
 {url:"/components/sensor.knx/", title:"KNX Sensor", cat:"sensor", featured: false, v: "0.29", logo: "knx.png"},
 {url:"/components/switch.knx/", title:"KNX Switch", cat:"switch", featured: false, v: "0.24", logo: "knx.png"},
-{url:"/components/sensor.kwb/", title:"KWB Easyfire Sensor", cat:"sensor", featured: false, v: "0.4", logo: "kwb.png"},
+{url:"/components/sensor.kwb/", title:"KWB Easyfire Sensor", cat:"sensor", featured: false, v: "0.40", logo: "kwb.png"},
 {url:"/components/switch.kankun/", title:"Kankun SP3 Wifi Switch", cat:"switch", featured: false, v: "0.36", logo: ""},
 {url:"/components/device_tracker.keenetic_ndms2/", title:"Keenetic NDMS2 Routers", cat:"presence-detection", featured: false, v: "0.54", logo: "keenetic.png"},
 {url:"/components/keyboard/", title:"Keyboard", cat:"automation", featured: false, v: "0.7", logo: "keyboard.png"},
@@ -595,7 +595,7 @@ var allComponents = [
 {url:"/components/mailgun/", title:"Mailgun", cat:"notifications", featured: false, v: "0.38", logo: "mailgun.png"},
 {url:"/components/notify.mailgun/", title:"Mailgun Notify", cat:"notifications", featured: false, v: "0.38", logo: "mailgun.png"},
 {url:"/components/alarm_control_panel.manual/", title:"Manual Alarm Control Panel", cat:"alarm", featured: false, v: "0.7", logo: "home-assistant.png"},
-{url:"/components/alarm_control_panel.manual_mqtt/", title:"Manual Alarm Control Panel with MQTT Support", cat:"alarm", featured: false, v: "0.5", logo: "home-assistant.png"},
+{url:"/components/alarm_control_panel.manual_mqtt/", title:"Manual Alarm Control Panel with MQTT Support", cat:"alarm", featured: false, v: "0.50", logo: "home-assistant.png"},
 {url:"/components/ifttt.manything/", title:"ManyThing", cat:"camera", featured: false, v: "0.0", logo: "manything.png"},
 {url:"/components/map/", title:"Map", cat:"other", featured: false, v: "0.0", logo: "home-assistant.png"},
 {url:"/components/tts.marytts/", title:"MaryTTS", cat:"text-to-speech", featured: false, v: "0.43", logo: "marytts.png"},
@@ -712,7 +712,7 @@ var allComponents = [
 {url:"/components/panel_iframe/", title:"Panel iFrame", cat:"front-end", featured: false, v: "0.25", logo: "home-assistant.png"},
 {url:"/components/sensor.serial_pm/", title:"Particulate matter Sensor", cat:"diy", featured: false, v: "0.26", logo: "serial_pm.png"},
 {url:"/components/persistent_notification/", title:"Persistent notification", cat:"other", featured: false, v: "0.23", logo: "home-assistant.png"},
-{url:"/components/hue/", title:"Philips Hue", cat:"hub", featured: true, v: "0.6", logo: "philips_hue.png"},
+{url:"/components/hue/", title:"Philips Hue", cat:"hub", featured: true, v: "0.60", logo: "philips_hue.png"},
 {url:"/components/light.hue/", title:"Philips Hue Light", cat:"light", featured: true, v: "0.7", logo: "philips_hue.png"},
 {url:"/components/media_player.philips_js/", title:"Philips TV", cat:"media-player", featured: false, v: "0.34", logo: "philips.png"},
 {url:"/components/sensor.pi_hole/", title:"Pi-Hole Sensor", cat:"system-monitor", featured: false, v: "0.28", logo: "pi_hole.png"},
@@ -870,7 +870,7 @@ var allComponents = [
 {url:"/components/sensor.sytadin/", title:"Sytadin Sensor", cat:"sensor", featured: false, v: "0.57", logo: "sytadin.png"},
 {url:"/components/binary_sensor.tcp/", title:"TCP Binary Sensor", cat:"binary-sensor", featured: false, v: "0.14", logo: "tcp_ip.png"},
 {url:"/components/sensor.tcp/", title:"TCP Sensor", cat:"sensor", featured: false, v: "0.14", logo: "tcp_ip.png"},
-{url:"/components/sensor.ted5000/", title:"TED5000 electricity monitoring", cat:"sensor", featured: false, v: "0.3", logo: "ted.png"},
+{url:"/components/sensor.ted5000/", title:"TED5000 electricity monitoring", cat:"sensor", featured: false, v: "0.30", logo: "ted.png"},
 {url:"/components/sensor.temper/", title:"TEMPer Sensor", cat:"sensor", featured: false, v: "0.7", logo: ""},
 {url:"/components/device_tracker.tplink/", title:"TP-Link", cat:"presence-detection", featured: false, v: "0.7", logo: "tp-link.png"},
 {url:"/components/light.tplink/", title:"TP-Link Bulb", cat:"light", featured: false, v: "0.50", logo: "tp-link.png"},
