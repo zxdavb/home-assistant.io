@@ -92,29 +92,31 @@
 </ul>
 <h3><a class="title-link" name="getting-ready-for-chrome" href="#getting-ready-for-chrome"></a> Getting ready for Chrome</h3>
 <ol>
-  <li>Create new project at <a href="https://console.cloud.google.com/home/dashboard">https://console.cloud.google.com/home/dashboard</a>.</li>
-  <li>Go to <a href="https://console.cloud.google.com/apis/credentials/domainverification">https://console.cloud.google.com/apis/credentials/domainverification</a> and verify your domain.</li>
-  <li>After that, go to <a href="https://console.firebase.google.com">https://console.firebase.google.com</a> and select import Google project, select the project you created.</li>
+  <li>Make sure you can access your Home Assistant installation from outside your network over https (<a href="https://home-assistant.io/docs/configuration/remote/">see docs</a>).</li>
+  <li>Create a new project at <a href="https://console.cloud.google.com/home/dashboard">https://console.cloud.google.com/home/dashboard</a>.</li>
+  <li>Go to <a href="https://console.cloud.google.com/apis/credentials/domainverification">https://console.cloud.google.com/apis/credentials/domainverification</a> and verify your domain via Google Webmaster Central / Search Console - <a href="#verify-your-domain">instructions</a>.</li>
+  <li>With the domain verified, go to <a href="https://console.firebase.google.com">https://console.firebase.google.com</a>, select import Google project, and select the project you created.</li>
   <li>Then, click the cogwheel on top left and select “Project settings”.</li>
-  <li>Select ‘Cloud Messaging’ tab, listed beneath Project Credentials will be your 152 character ‘Server Key’ and 12 digit ID ‘Sender ID’.</li>
+  <li>Select ‘Cloud Messaging’ tab, listed beneath Project Credentials will be your 152 character ‘Server Key’ and 12 digit ID ‘Sender ID’ you need for configuring this component.</li>
 </ol>
-<h4><a class="title-link" name="verify-your-domain-with-hassio" href="#verify-your-domain-with-hassio"></a> Verify your domain with Hass.io</h4>
+<h4><a class="title-link" name="verify-your-domain" href="#verify-your-domain"></a> Verify your domain</h4>
+<p>Follow these steps to verify domain ownership with Google Webmaster Central / Search Console:</p>
 <ol>
-  <li>Set <code class="highlighter-rouge">https://yourdomain/local/</code> as URL.</li>
-  <li>For verifying your domain you need to download a file in step 2.</li>
-  <li>Create a directory named “www” in you Hass.io configuration directory.</li>
-  <li>Place the file (something like this: google*.html) in the “www” directory.</li>
-  <li>Verify the domain.</li>
-  <li>Proceed with step 3.</li>
+  <li>Enter your domain and add <strong>‘/local’</strong> at the end, ie. https://example.com:8123/local</li>
+  <li>Select HTML file verification and download the google*.html file.</li>
+  <li>Create a directory named “www” in your Home Assistant configuration directory (/config share from Samba add-on).</li>
+  <li>Place the downloaded google*.html file in the “www” directory.</li>
+  <li>RESTART Home Assistant - this is important!</li>
+  <li>Verify the file can be accessed in the browser, ie. <strong>https://example.com:8123/local/google123456789.html</strong> (change filename) - you should a plain text message saying “google-site-verification: …” - if you see “404: Not Found” or something else, retry the above steps.</li>
+  <li>Go back to Google Webmaster Central / Search Console and proceed with the verification.</li>
 </ol>
 <h3><a class="title-link" name="requirements" href="#requirements"></a> Requirements</h3>
-<p>The <code class="highlighter-rouge">html5</code> platform can only function if all of the following requirements are met:
-(On Hass.io these requirements are already met.)</p>
+<p>The <code class="highlighter-rouge">html5</code> platform can only function if all of the following requirements are met:</p>
 <ul>
   <li>You are using Chrome and/or Firefox on any desktop platform, ChromeOS or Android.</li>
   <li>Your Home Assistant instance is exposed to the world.</li>
   <li>If using a proxy, HTTP basic authentication must be off for registering or unregistering for push notifications. It can be re-enabled afterwards.</li>
-  <li><code class="highlighter-rouge">pywebpush</code> must be installed. <code class="highlighter-rouge">libffi-dev</code>, <code class="highlighter-rouge">libpython-dev</code>, and <code class="highlighter-rouge">libssl-dev</code> must be installed prior to <code class="highlighter-rouge">pywebpush</code> (i.e. <code class="highlighter-rouge">pywebpush</code> probably won’t automatically install).</li>
+  <li>If you don’t run Hass.io: <code class="highlighter-rouge">pywebpush</code> must be installed. <code class="highlighter-rouge">libffi-dev</code>, <code class="highlighter-rouge">libpython-dev</code>, and <code class="highlighter-rouge">libssl-dev</code> must be installed prior to <code class="highlighter-rouge">pywebpush</code> (i.e. <code class="highlighter-rouge">pywebpush</code> probably won’t automatically install).</li>
   <li>You have configured SSL for your Home Assistant. It doesn’t need to be configured in Home Assistant though, i.e. you can be running <a href="/ecosystem/nginx/">NGINX</a> in front of Home Assistant and this will still work. The certificate must be trustworthy (i.e. not self signed).</li>
   <li>You are willing to accept the notification permission in your browser.</li>
 </ul>
