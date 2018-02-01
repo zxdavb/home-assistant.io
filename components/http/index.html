@@ -89,7 +89,7 @@ Don’t use option <code class="highlighter-rouge">server_host</code> on a hass.
 <p>Configuration variables:</p>
 <ul>
   <li><strong>api_password</strong> (<em>Optional</em>): Protect Home Assistant with a password.</li>
-  <li><strong>server_host</strong> (<em>Optional</em>): Only listen to incoming requests on specific IP/host (default: accept all)</li>
+  <li><strong>server_host</strong> (<em>Optional</em>): Only listen to incoming requests on specific IP/host (default: bind to <code class="highlighter-rouge">0.0.0.0</code> which means accept all IPv4 connections). Use <code class="highlighter-rouge">server_host: "::0"</code> if you want to listen to (and only) IPv6.</li>
   <li><strong>server_port</strong> (<em>Optional</em>): Let you set a port to use. Defaults to 8123.</li>
   <li><strong>base_url</strong> (<em>Optional</em>): The URL that Home Assistant is available on the internet. For example: <code class="highlighter-rouge">hass-example.duckdns.org:8123</code>. Defaults to the local IP address. The iOS app finds local installations, if you have an outside URL use this so that you can auto-fill when discovered in the app.</li>
   <li><strong>ssl_certificate</strong> (<em>Optional</em>): Path to your TLS/SSL certificate to serve Home Assistant over a secure connection.</li>
