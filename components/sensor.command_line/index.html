@@ -125,7 +125,7 @@
 <span class="s">sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">command_line</span>
     <span class="s">name</span><span class="pi">:</span> <span class="s">badlogin</span>
-    <span class="s">command</span><span class="pi">:</span> <span class="s">grep -c 'Login attempt' /home/hass/.homeassistant/home-assistant.log</span>
+    <span class="s">command</span><span class="pi">:</span> <span class="s2">"</span><span class="s">grep</span><span class="nv"> </span><span class="s">-c</span><span class="nv"> </span><span class="s">'Login</span><span class="nv"> </span><span class="s">attempt'</span><span class="nv"> </span><span class="s">/home/hass/.homeassistant/home-assistant.log"</span>
 </code></pre>
 </div>
 <p>Make sure to configure the <a href="/components/logger">logger component</a> to monitor the <a href="https://home-assistant.io/components/http/">http component</a> at least the <code class="highlighter-rouge">warning</code> level.</p>

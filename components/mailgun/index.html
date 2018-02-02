@@ -74,21 +74,20 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The component supports push messages and generates events based on inbound data. To use, add a Route set to Store and Notify with a URL of the following form: <code class="highlighter-rouge">https://&lt;domain&gt;/api/mailgun?api_password=&lt;password&gt;</code></p>
+  <p>The component supports push messages and generates events based on inbound data. To use, add a Route set to Store and Notify with a URL of the following form: <code class="highlighter-rouge">https://&lt;home-assistant-domain&gt;/api/mailgun?api_password=&lt;password&gt;</code></p>
 <p>To send messages, use the <a href="/components/notify.mailgun/">Mailgun notify platform</a>.</p>
 <h2><a class="title-link" name="sample-configuration" href="#sample-configuration"></a> Sample configuration</h2>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">mailgun</span><span class="pi">:</span>
   <span class="s">domain</span><span class="pi">:</span> <span class="s">mg.example.com</span>
   <span class="s">api_key</span><span class="pi">:</span> <span class="s">token-XXXXXXXXX</span>
-  <span class="s">sandbox</span><span class="pi">:</span> <span class="s">False</span>
 </code></pre>
 </div>
 <p>Configuration variables:</p>
 <ul>
-  <li><strong>domain</strong> (<em>Optional</em>): This is the domain name to be used when sending out mail. Defaults to the first custom domain you have set up.</li>
-  <li><strong>sandbox</strong> (<em>Optional</em>): Whether to use the sandboxed domain for outgoing mail. The <code class="highlighter-rouge">domain</code> item takes precedence over this. Defaults to <code class="highlighter-rouge">False</code>.</li>
+  <li><strong>domain</strong> (<em>Required</em>): This is the domain name to be used when sending out mail. Defaults to the first custom domain you have set up.</li>
   <li><strong>api_key</strong> (<em>Required</em>): This is the API token that has been generated in your Mailgun account.</li>
+  <li><strong>sandbox</strong> (<em>Optional</em>): Whether to use the sandboxed domain for outgoing mail. The <code class="highlighter-rouge">domain</code> item takes precedence over this. Defaults to <code class="highlighter-rouge">False</code>.</li>
 </ul>
 </article>
         </div>
