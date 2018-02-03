@@ -114,6 +114,11 @@ From the Hass.io main panel open the add-on store.
 <h2><a class="title-link" name="configuring-integrations" href="#configuring-integrations"></a> Configuring integrations</h2>
 <p>Now that you are able to edit the configuration, it’s time to set up some of your devices and services. Each service and device will have its own instructions on how to be integrated. Find  your devices and services on the <a href="/components/">components overview page</a>.</p>
 <p class="note">YAML can be a little daunting at first. A lot is possible! <a href="/docs/configuration/devices/">Here is some more info.</a></p>
+<p>For a sensor that is showing <a href="/components/sensor.random/">random values</a>, the entry would look like the sample below:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sensor</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">random</span>
+</code></pre>
+</div>
 <h3><a href="/getting-started/automation/">Next step: Automate Home Assistant »</a></h3>
 </article>
         </div>
