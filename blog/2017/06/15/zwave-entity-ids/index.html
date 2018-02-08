@@ -92,21 +92,15 @@
 <p>I’m sure all ZWave users understand that the current entity_ids aren’t easy to use. They’re annoying to type in configuration.yaml, and break if a node needs to be re-included to the network. We know that breaking changes are painful, and so we’re doing what we can to roll this change out as smoothly as possible. The end result should be a dramatic simplification of most ZWave configurations. We hope that this change will ultimately make ZWave much easier to work with, and bring ZWave configuration just a little closer to the rest of the Home Assistant platforms.</p>
 </article>
 <div id='post-comments'></div>
-<section id="disqus">
-  <h3 class="indent title">Comments</h3>
-  <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
-</section>
-<script>
-  var disqus_shortname = 'home-assistant';
-    // var disqus_developer = 1;
-    var disqus_identifier = 'https://home-assistant.io/blog/2017/06/15/zwave-entity-ids/';
-    var disqus_url = 'https://home-assistant.io/blog/2017/06/15/zwave-entity-ids/';
-    var disqus_script = 'embed.js';
-  (function () {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  }());
+<div id='discourse-comments'></div>
+<script type="text/javascript">
+  DiscourseEmbed = { discourseUrl: 'https://community.home-assistant.io/',
+                     discourseEmbedUrl: 'https://home-assistant.io/blog/2017/06/15/zwave-entity-ids/' };
+  (function() {
+    var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+    d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
 </script>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

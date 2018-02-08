@@ -123,17 +123,13 @@
 </div>
 <p>See the <a href="/components/device_tracker/">device tracker component page</a> for instructions how to configure the people to be tracked.</p>
 <h3><a class="title-link" name="configuring-users" href="#configuring-users"></a> Configuring Users</h3>
-<p>The Unifi controller allows you to create multiple users on it besides
-the main administrator. It is recommended that you create a limited
-user that has <code class="highlighter-rouge">read-only</code> permissions for the Unifi device tracker.</p>
+<p>The Unifi controller allows you to create multiple users on it besides the main administrator. It is recommended that you create a limited user that has <code class="highlighter-rouge">read-only</code> permissions for the Unifi device tracker.</p>
 <h3><a class="title-link" name="conflicts-with-mqtt" href="#conflicts-with-mqtt"></a> Conflicts with MQTT</h3>
-<p>The Unifi controller can either be a dedicated hardware device
-(Unifi’s cloud key), or as software any Linux system. If you run the
-the Unifi controller on the same operating system as Home Assistant
-there may be conflicts in ports if you have the MQTT component as
-well.</p>
-<p>It is recommended that you run the Unifi controller in a dedicate
-virtual machine to avoid that situation.</p>
+<p>The Unifi controller can either be a dedicated hardware device (Unifi’s cloud key), or as software any Linux system. If you run the the Unifi controller on the same operating system as Home Assistant there may be conflicts in ports if you have the MQTT component as well.</p>
+<p>It is recommended that you run the Unifi controller in a dedicate virtual machine to avoid that situation.</p>
+<h3><a class="title-link" name="troubleshooting-and-time-synchronization" href="#troubleshooting-and-time-synchronization"></a> Troubleshooting and Time Synchronization</h3>
+<p>Presence detection depends on accurate time configuration between Home Assistant and the Unifi controller.</p>
+<p>If Home Assistant and the Unifi controller are running on separate machines or VMs ensure that all clocks are syncronized. Failing to have syncronized clocks will lead to Home Assistant failing to mark a device as home.</p>
 <p><a href="https://github.com/home-assistant/home-assistant/issues/10507">Related Issue</a></p>
 </article>
         </div>

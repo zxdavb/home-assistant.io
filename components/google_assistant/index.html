@@ -169,6 +169,19 @@ To use Google Assistant, your Home Assistant configuration has to be externally 
     </dd>
   </dl>
 </div>
+<h3><a class="title-link" name="available-domains" href="#available-domains"></a> Available domains</h3>
+<p>Currently, the following domains are available to be used with Google Assistant, listed with their default types:</p>
+<ul>
+  <li>group = switch (on/off)</li>
+  <li>scene = scene (on)</li>
+  <li>script = scene (on)</li>
+  <li>switch = switch (on/off)</li>
+  <li>fan = switch (on/off)</li>
+  <li>light = light (on/off/brightness/rgb color/color temp)</li>
+  <li>cover = switch (on/off/set position (brightness) )</li>
+  <li>media_player = switch (on/off/set volume (brightness) )</li>
+  <li>climate = thermostat (temperature setting)</li>
+</ul>
 <p>It’s very important that you use very long strings for <code class="highlighter-rouge">client_id</code> and <code class="highlighter-rouge">access_token</code>. Those are essentially the credentials to your Home Assistant instance. You can generate them with the following command:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cat /dev/urandom | fold -w 120 | head -n 1 | base64 -w 0 | tr -dc <span class="s1">'0-9A-Za-z'</span> | cut -c -80
 </code></pre>
