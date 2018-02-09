@@ -117,6 +117,14 @@
     <span class="s">still_image_url</span><span class="pi">:</span> <span class="s">https://127.0.0.1:8123/local/your_image.png</span>
 </code></pre>
 </div>
+<h3><a class="title-link" name="sharing-a-camera-feed-from-one-home-assistant-instance-to-another" href="#sharing-a-camera-feed-from-one-home-assistant-instance-to-another"></a> Sharing a camera feed from one Home Assistant instance to another</h3>
+<p>If you are running more than one Home Assistant instance (let’s call them the ‘host’ and ‘receiver’ instances) you may wish to display the camera feed from the host instance on the receiver instance. You can use the <a href="/developers/rest_api/#get-apicamera_proxycameraltentity_id">REST API</a> to access the camera feed on the host (IP address 127.0.0.5) and display it on the receiver instance by configuring the receiver with the the following:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">camera</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">generic</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">Host instance camera feed</span>
+    <span class="s">still_image_url</span><span class="pi">:</span> <span class="s">https://127.0.0.5:8123/api/camera_proxy/camera.live_view</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
