@@ -170,7 +170,7 @@ an event trigger.</p>
 </code></pre>
 </div>
 <h3><a class="title-link" name="raise-and-consume-custom-events" href="#raise-and-consume-custom-events"></a> Raise and Consume Custom Events</h3>
-<p>The following automation shows how to raise a custom event called <code class="highlighter-rouge">event_light_turned_on</code> with <code class="highlighter-rouge">entity_id</code> as the event data. The action part could be inside a script or an automation.</p>
+<p>The following automation shows how to raise a custom event called <code class="highlighter-rouge">event_light_state_changed</code> with <code class="highlighter-rouge">entity_id</code> as the event data. The action part could be inside a script or an automation.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">alias</span><span class="pi">:</span> <span class="s">Fire Event</span>
   <span class="s">trigger</span><span class="pi">:</span>
     <span class="s">platform</span><span class="pi">:</span> <span class="s">state</span>
@@ -182,7 +182,7 @@ an event trigger.</p>
       <span class="s">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
 </code></pre>
 </div>
-<p>The following automation shows how to capture the custom event <code class="highlighter-rouge">event_light_turned_on</code>, and retrieve corresponding <code class="highlighter-rouge">entity_id</code> that was passed as the event data.</p>
+<p>The following automation shows how to capture the custom event <code class="highlighter-rouge">event_light_state_changed</code>, and retrieve corresponding <code class="highlighter-rouge">entity_id</code> that was passed as the event data.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">alias</span><span class="pi">:</span> <span class="s">Capture Event</span>
   <span class="s">trigger</span><span class="pi">:</span>
     <span class="s">platform</span><span class="pi">:</span> <span class="s">event</span>
