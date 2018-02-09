@@ -247,6 +247,12 @@ sudo chmod g+rw /dev/ttyAMA0
 </div>
 <h3><a class="title-link" name="device-path-changes" href="#device-path-changes"></a> Device path changes</h3>
 <p>If your device path changes when you restart, see <a href="http://hintshop.ludvig.co.nz/show/persistent-names-usb-serial-devices/">this guide</a> on fixing it.</p>
+<h3><a class="title-link" name="unable-to-install-python_openzwave" href="#unable-to-install-python_openzwave"></a> Unable to install python_openzwave</h3>
+<p>If you’re getting errors like:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>openzwave-embed/open-zwave-master/libopenzwave.a: No such file or directory
+</code></pre>
+</div>
+<p>Then the problem is that you’re missing <code class="highlighter-rouge">libudev-dev</code>, please <a href="/docs/z-wave/installation/#linux-except-hassio">install it</a>.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
