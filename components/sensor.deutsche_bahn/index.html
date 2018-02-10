@@ -83,11 +83,24 @@
     <span class="s">to</span><span class="pi">:</span> <span class="s">NAME_OF_FINAL_STATION</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>from</strong> (<em>Required</em>): The name of the start station.</li>
-  <li><strong>to</strong> (<em>Required</em>): The name of the end/destination station.</li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="from" href="#from"></a> from</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The name of the start station.</span></p>
+    </dd>
+    <dt><a class="title-link" name="to" href="#to"></a> to</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The name of the end/destination station.</span></p>
+    </dd>
+    <dt><a class="title-link" name="only_direct" href="#only_direct"></a> only_direct</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Only show direct connections.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
+  </dl>
+</div>
 <p>This sensor stores a lot of attributes which can be accessed by other sensors eg. a <a href="/components/sensor.template/">template sensor</a>.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">sensor</span><span class="pi">:</span>

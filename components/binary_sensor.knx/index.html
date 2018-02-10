@@ -83,6 +83,7 @@
     <span class="s">address</span><span class="pi">:</span> <span class="s1">'</span><span class="s">6/0/2'</span>
     <span class="s">device_class</span><span class="pi">:</span> <span class="s1">'</span><span class="s">motion'</span>
     <span class="c1">#significant_bit: 2</span>
+    <span class="c1">#reset_after: 100</span>
 </code></pre>
 </div>
 <p>Configuration variables:</p>
@@ -91,6 +92,7 @@
   <li><strong>address</strong>: KNX group address of the binary sensor.</li>
   <li><strong>device_class</strong> (Optional): HASS device class e.g. “motion”.</li>
   <li><strong>significant_bit</strong> (Optional): Specify which significant bit of the KNX value should be used. Default is 1.</li>
+  <li><strong>reset_after</strong> (Optional): Reset back to OFF state after specified milliseconds.</li>
 </ul>
 <p>You can also attach actions to binary sensors (e.g., to switch on a light when a switch was pressed). In this example, one light is switched on when the button was pressed once and two others when the button was pressed a second time.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
@@ -160,6 +162,9 @@
         </a></li>
         <li><a href='/components/notify.knx/'>
           KNX Notify
+        </a></li>
+        <li><a href='/components/scene.knx/'>
+          KNX Scene
         </a></li>
         <li><a href='/components/sensor.knx/'>
           KNX Sensor
@@ -264,6 +269,9 @@
         </li>
         <li>
             <a href='/components/binary_sensor.raincloud/'>Melnor Raincloud Binary Sensor</a>
+        </li>
+        <li>
+            <a href='/components/binary_sensor.mercedesme/'>Mercedes me Binary Sensor</a>
         </li>
         <li>
             <a href='/components/binary_sensor.modbus/'>Modbus Binary Sensor</a>

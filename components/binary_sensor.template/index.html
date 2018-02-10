@@ -108,6 +108,10 @@ your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
             <dd>
               <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Name to use in the frontend.</span></p>
             </dd>
+            <dt><a class="title-link" name="entity_id" href="#entity_id"></a> entity_id</dt>
+            <dd>
+              <p class="desc"><span class="type">(<span class="string, list">string | list</span>)</span><span class="required">(Optional)</span><span class="description">A list of entity IDs so the sensor only reacts to state changes of these entities. This can be used if the automatic analysis fails to find all relevant entities.</span></p>
+            </dd>
             <dt><a class="title-link" name="device_class" href="#device_class"></a> device_class</dt>
             <dd>
               <p class="desc"><span class="type">(<span class="device_class"><a href="/components/binary_sensor/#device_class">device_class</a></span>)</span><span class="required">(Optional)</span><span class="description">The type/class of the sensor to set the icon in the frontend.</span></p>
@@ -116,6 +120,14 @@ your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
             <dt><a class="title-link" name="value_template" href="#value_template"></a> value_template</dt>
             <dd>
               <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Required)</span><span class="description">Defines a template to set the state of the sensor.</span></p>
+            </dd>
+            <dt><a class="title-link" name="icon_template" href="#icon_template"></a> icon_template</dt>
+            <dd>
+              <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Optional)</span><span class="description">Defines a template for the icon of the sensor.</span></p>
+            </dd>
+            <dt><a class="title-link" name="entity_picture_template" href="#entity_picture_template"></a> entity_picture_template</dt>
+            <dd>
+              <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Optional)</span><span class="description">Defines a template for the entity picture of the sensor.</span></p>
             </dd>
             <dt><a class="title-link" name="delay_on" href="#delay_on"></a> delay_on</dt>
             <dd>
@@ -361,6 +373,9 @@ device tracking and Z-Wave multisensor presence sensors.</p>
         </li>
         <li>
             <a href='/components/binary_sensor.raincloud/'>Melnor Raincloud Binary Sensor</a>
+        </li>
+        <li>
+            <a href='/components/binary_sensor.mercedesme/'>Mercedes me Binary Sensor</a>
         </li>
         <li>
             <a href='/components/binary_sensor.modbus/'>Modbus Binary Sensor</a>

@@ -107,6 +107,10 @@ stop, position, and tilt commands of a cover.</p>
         <dd>
           <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Name to use in the frontend.</span></p>
         </dd>
+        <dt><a class="title-link" name="entity_id" href="#entity_id"></a> entity_id</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string list">string | list</span>)</span><span class="required">(Optional)</span><span class="description">A list of entity IDs so the cover only reacts to state changes of these entities. This can be used if the automatic analysis fails to find all relevant entities.</span></p>
+        </dd>
         <dt><a class="title-link" name="value_template" href="#value_template"></a> value_template</dt>
         <dd>
           <p class="desc"><span class="type">(<span class="template"><a href="/docs/configuration/templating/">template</a></span>)</span><span class="required">(Exclusive)</span><span class="description">Defines a template to get the state of the cover. Valid values are <code class="highlighter-rouge">open</code>/<code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">closed</code>/<code class="highlighter-rouge">false</code>. <a href="#value_template"><code class="highlighter-rouge">value_template</code></a> and <a href="#position_template"><code class="highlighter-rouge">position_template</code></a> cannot be specified concurrently.</span></p>
@@ -243,6 +247,9 @@ sensor into a cover.</p>
           <span class="no">{% else %}</span>
             <span class="no">mdi:window-closed</span>
           <span class="no">{% endif %}</span>
+        <span class="no">entity_id:</span>
+          <span class="no">- cover.bedroom</span>
+          <span class="no">- cover.livingroom</span>
 
 <span class="s">sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">template</span>

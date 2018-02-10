@@ -88,6 +88,7 @@
   <li><a href="/components/light.knx">Light</a></li>
   <li><a href="/components/climate.knx">Thermostat</a></li>
   <li><a href="/components/notify.knx">Notify</a></li>
+  <li><a href="/components/scene.knx">Scene</a></li>
 </ul>
 <h3><a class="title-link" name="configuration" href="#configuration"></a> Configuration</h3>
 <p>To use your KNX in your installation, add the following lines to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
@@ -134,7 +135,6 @@
   <li><strong>fire_event</strong> (<em>Optional</em>): If set to True, platform will write all received KNX messages to event bus</li>
   <li><strong>fire_event_filter</strong> (<em>Optional</em>): If <code class="highlighter-rouge">fire_event</code> is set <code class="highlighter-rouge">fire_event_filter</code> has to be specified. <code class="highlighter-rouge">fire_event_filter</code> defines a list of patterns for filtering KNX addresses. Only telegrams which match this pattern are sent to the HOme Assistant event bus.</li>
   <li><strong>state_updater</strong> (<em>Optional</em>): The component will collect the current state of each configured device from the KNX bus to display it correctly within Home-Assistant. Set this option to False to prevent this behavior.</li>
-  <li><strong>time_address</strong> (<em>Optional</em>): Broadcast current local time to KNX bus with configured group address.</li>
 </ul>
 <h3><a class="title-link" name="services" href="#services"></a> Services</h3>
 <p>In order to directly interact with the KNX bus, you can now use the following service:</p>
@@ -146,6 +146,25 @@ Service Data: {"address": "1/0/15", "payload": 0}
 <ul>
   <li><strong>address</strong>: KNX group address</li>
   <li><strong>payload</strong>: Payload, either an integer or an array of integers</li>
+</ul>
+<h3><a class="title-link" name="exposing-sensor-values-or-time-to-knx-bus" href="#exposing-sensor-values-or-time-to-knx-bus"></a> Exposing sensor values or time to knx bus</h3>
+<p>KNX component is able to expose time or sensor values to KNX bus. The component will broadcast any change of the exposed value to the KNX bus and answer read requests to the specified group address:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="s">knx</span><span class="pi">:</span>
+    <span class="s">expose:</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">temperature'</span>
+          <span class="s">entity_id</span><span class="pi">:</span> <span class="s1">'</span><span class="s">sensor.owm_temperature'</span>
+          <span class="s">address</span><span class="pi">:</span> <span class="s1">'</span><span class="s">0/0/2'</span>
+        <span class="pi">-</span> <span class="s">type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">time'</span>
+          <span class="s">address</span><span class="pi">:</span> <span class="s1">'</span><span class="s">0/0/1'</span>
+        <span class="pi">-</span> <span class="s">type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">datetime'</span>
+          <span class="s">address</span><span class="pi">:</span> <span class="s1">'</span><span class="s">0/0/23'</span>
+</code></pre>
+</div>
+<ul>
+  <li><strong>type</strong>: Type of the exposed value. Either time or datetime or any supported type of <a href="/components/sensor.knx/">KNX Sensor</a> (e.g. “temperature” or “humidity”).</li>
+  <li><strong>entity_id</strong>: Entity id of the HASS component to be exposed. Not necessarry for types time and datetime.</li>
+  <li><strong>address</strong>: KNX group address.</li>
 </ul>
 <h3><a class="title-link" name="known-issues" href="#known-issues"></a> Known issues</h3>
 <p>Due to lame multicast support the routing abstraction and the gateway scanner only work with Python &gt;=3.5.</p>
@@ -181,6 +200,9 @@ Service Data: {"address": "1/0/15", "payload": 0}
         </a></li>
         <li><a href='/components/notify.knx/'>
           KNX Notify
+        </a></li>
+        <li><a href='/components/scene.knx/'>
+          KNX Scene
         </a></li>
         <li><a href='/components/sensor.knx/'>
           KNX Sensor
@@ -311,7 +333,13 @@ Service Data: {"address": "1/0/15", "payload": 0}
             <a href='/components/mqtt/'>MQTT</a>
         </li>
         <li>
+            <a href='/components/melissa/'>Melissa Climate</a>
+        </li>
+        <li>
             <a href='/components/raincloud/'>Melnor Raincloud</a>
+        </li>
+        <li>
+            <a href='/components/mercedesme/'>Mercedes me</a>
         </li>
         <li>
             <a href='/components/microsoft_face/'>Microsoft Face</a>

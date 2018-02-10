@@ -74,8 +74,22 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">canary</code> camera platform allows you to view the latest camera image (triggered by motion) by your <a href="https://canary.is">Canary</a> device in Home Assistant.</p>
-<p>To add <code class="highlighter-rouge">canary</code> camera to your installation, follow instructions in <a href="/components/canary/">Canary component</a>.</p>
+  <p>The <code class="highlighter-rouge">canary</code> camera platform allows you to watch the live stream of your <a href="https://canary.is">Canary</a> camera in Home Assistant. This requires the <a href="/components/ffmpeg/"><code class="highlighter-rouge">ffmpeg</code> component</a> to be already configured.</p>
+<p>To add <code class="highlighter-rouge">canary</code> camera to your installation, follow instructions in <a href="/components/canary/">Canary component</a>. Once you have <a href="/components/canary/">Canary component</a> setup, your <a href="https://canary.is">Canary</a> camera(s) should show up automatically.</p>
+<p>You can add the following to your <code class="highlighter-rouge">configuration.yaml</code> file to configure <code class="highlighter-rouge">canary</code> camera with optional settings:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">camera</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">canary</span>
+</code></pre>
+</div>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="ffmpeg_arguments" href="#ffmpeg_arguments"></a> ffmpeg_arguments</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Extra options to pass to <code class="highlighter-rouge">ffmpeg</code>, e.g. image quality or video filter options. More details in <a href="/components/ffmpeg">FFmpeg component</a>.</span></p>
+    </dd>
+  </dl>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

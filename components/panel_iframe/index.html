@@ -85,18 +85,44 @@
   <span class="s">fridge</span><span class="pi">:</span>
     <span class="s">title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Fridge'</span>
     <span class="s">url</span><span class="pi">:</span> <span class="s1">'</span><span class="s">http://192.168.1.5'</span>
+  <span class="s">otherapp</span><span class="pi">:</span>
+    <span class="s">title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Other</span><span class="nv"> </span><span class="s">App'</span>
+    <span class="s">url</span><span class="pi">:</span> <span class="s1">'</span><span class="s">/otherapp'</span>
 </code></pre>
 </div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>[panel_name]</strong> (<em>Required</em>): Name of the panel.
-    <ul>
-      <li><strong>title</strong> (<em>Required</em>): Friendly title for the panel. Will be used in the sidebar.</li>
-      <li><strong>icon</strong> (<em>Optional</em>): Icon for entry. Pick an icon that you can find on <a href="https://materialdesignicons.com/">materialdesignicons.com</a> to use for your input and prefix the name with <code class="highlighter-rouge">mdi:</code>. For example <code class="highlighter-rouge">mdi:car</code>, <code class="highlighter-rouge">mdi:ambulance</code>, or  <code class="highlighter-rouge">mdi:motorbike</code>.</li>
-      <li><strong>url</strong> (<em>Required</em>): The URL to open.</li>
-    </ul>
-  </li>
-</ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="panel_iframe" href="#panel_iframe"></a> panel_iframe</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Required)</span><span class="description">Enables the panel_iframe component. Only allowed once.</span></p>
+    </dd>
+    <dd>
+      <dl class="nested">
+        <dt><a class="title-link" name="panel_name" href="#panel_name"></a> panel_name</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Required)</span><span class="description">Name of the panel. Only allowed once.</span></p>
+        </dd>
+        <dd>
+          <dl class="nested">
+            <dt><a class="title-link" name="title" href="#title"></a> title</dt>
+            <dd>
+              <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">Friendly title for the panel. Will be used in the sidebar.</span></p>
+            </dd>
+            <dt><a class="title-link" name="url" href="#url"></a> url</dt>
+            <dd>
+              <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The absolute URL or relative URL with an absolute path to open.</span></p>
+            </dd>
+            <dt><a class="title-link" name="icon" href="#icon"></a> icon</dt>
+            <dd>
+              <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Icon for entry. Pick an icon that you can find on <a href="https://materialdesignicons.com/">materialdesignicons.com</a> to use for your input and prefix the name with <code class="highlighter-rouge">mdi:</code>. For example <code class="highlighter-rouge">mdi:car</code>, <code class="highlighter-rouge">mdi:ambulance</code>, or  <code class="highlighter-rouge">mdi:motorbike</code>.</span></p>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </dd>
+  </dl>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

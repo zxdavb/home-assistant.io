@@ -77,9 +77,9 @@
   <p class="note warning">
 Be aware that <code class="highlighter-rouge">emulated_hue</code> doesn’t work for new <strong>Google Home</strong> users. If you’re a new user of Google Home, use the <a href="https://home-assistant.io/components/google_assistant/">Google Assistant component</a>.
 </p>
-<p>The <code class="highlighter-rouge">emulated_hue</code> component provides a virtual Philips Hue bridge, written entirely in software, that allows services that work with the Hue API to interact with Home Assistant
-entities. The driving use case behind this functionality is to allow Home Assistant to work with an Amazon Echo or Google Home with no set up cost outside of configuration changes.
-The virtual bridge has the ability to turn entities on or off, or change the brightness of dimmable lights. The volume level of media players can be controlled as brightness.</p>
+<p>The <code class="highlighter-rouge">emulated_hue</code> component provides a virtual Philips Hue bridge, written entirely in software, which allows services that work with the Hue API to interact with Home Assistant
+entities. The driving use case behind for functionality is to allow Home Assistant to work with an Amazon Echo or Google Home with no setup cost outside of configuration changes.
+The virtual bridge can turn entities on/off or change the brightness of dimmable lights. The volume level of media players can be controlled as brightness.</p>
 <p class="note">
 A physical Hue Bridge is required for Philips Hue lights to function - this virtual bridge will not replace a physical bridge. Instead, it allows Home Assistant to represent non-Philips Hue devices to Amazon Echo as Philips Hue devices, which Amazon Echo can control with built-in support.
 </p>
@@ -100,17 +100,17 @@ It is recommended to assign a static IP address to the computer running Home Ass
 </div>
 <p>Configuration variables:</p>
 <ul>
-  <li><strong>type</strong> (<em>Optional</em>): The type of assistant who we are emulated for. Either <code class="highlighter-rouge">alexa</code> or <code class="highlighter-rouge">google_home</code>, defaults to <code class="highlighter-rouge">google_home</code>. <strong>This configuration option is deprecated and will be removed in a future release. It is no longer necessary to define type.</strong></li>
+  <li><strong>type</strong> (<em>Optional</em>): The type of assistant which we are emulating. Either <code class="highlighter-rouge">alexa</code> or <code class="highlighter-rouge">google_home</code>, defaults to <code class="highlighter-rouge">google_home</code>. <strong>This configuration option is deprecated and will be removed in a future release. It is no longer necessary to define type.</strong></li>
   <li><strong>host_ip</strong> (<em>Optional</em>): The IP address that your Home Assistant installation is running on. If you do not specify this option, the component will attempt to determine the IP address on its own.</li>
   <li>
     <p><strong>listen_port</strong> (<em>Optional</em>): The port the Hue bridge API web server will run on. If not specified, this defaults to 8300. This can be any free port on your system.</p>
   </li>
-  <li><strong>advertise_ip</strong> (<em>Optional</em>): If you need to override the IP address used for UPNP discovery. (For example, using network isolation in Docker)</li>
+  <li><strong>advertise_ip</strong> (<em>Optional</em>): If you need to override the IP address used for UPnP discovery. (For example, using network isolation in Docker)</li>
   <li>
-    <p><strong>advertise_port</strong> (<em>Optional</em>): If you need to specifically override the advertised UPNP port.</p>
+    <p><strong>advertise_port</strong> (<em>Optional</em>): If you need to specifically override the advertised UPnP port.</p>
   </li>
   <li>
-    <p><strong>upnp_bind_multicast</strong> (<em>Optional</em>): Whether or not to bind the UPNP (SSDP) listener to the multicast address (239.255.255.250) or instead to the (unicast) host_ip address specified above (or automatically determined). The default is true, which will work for most situations.  In special circumstances, like running in a FreeBSD or FreeNAS jail, you may need to disable this.</p>
+    <p><strong>upnp_bind_multicast</strong> (<em>Optional</em>): Whether or not to bind the UPnP (SSDP) listener to the multicast address (239.255.255.250) or instead to the (unicast) host_ip address specified above (or automatically determined). The default is true, which will work for most situations.  In special circumstances, like running in a FreeBSD or FreeNAS jail, you may need to disable this.</p>
   </li>
   <li>
     <p><strong>off_maps_to_on_domains</strong> (<em>Optional</em>): The domains that maps an “off” command to an “on” command.</p>
@@ -134,6 +134,7 @@ It is recommended to assign a static IP address to the computer running Home Ass
       <li><code class="highlighter-rouge">fan</code></li>
     </ul>
   </li>
+  <li><strong>entities</strong> (<em>Optional</em>): Customization for entities.</li>
 </ul>
 <p>A full configuration sample looks like the one below.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
@@ -148,33 +149,29 @@ It is recommended to assign a static IP address to the computer running Home Ass
   <span class="s">expose_by_default</span><span class="pi">:</span> <span class="s">true</span>
   <span class="s">exposed_domains</span><span class="pi">:</span>
     <span class="pi">-</span> <span class="s">light</span>
-</code></pre>
-</div>
-<p>With additional customization you will be able to specify the behavior of the existing entities.</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example customization</span>
-<span class="s">homeassistant</span><span class="pi">:</span>
-  <span class="s">customize</span><span class="pi">:</span>
+  <span class="s">entities</span><span class="pi">:</span>
     <span class="s">light.bedroom_light</span><span class="pi">:</span>
-      <span class="c1"># Don't allow light.bedroom_light to be controlled by the emulated Hue bridge</span>
-      <span class="s">emulated_hue_hidden</span><span class="pi">:</span> <span class="s">true</span>
-    <span class="s">light.office_light</span><span class="pi">:</span>
-      <span class="c1"># Address light.office_light as "back office light"</span>
-      <span class="s">emulated_hue_name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">back</span><span class="nv"> </span><span class="s">office</span><span class="nv"> </span><span class="s">light"</span>
+      <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Bedside</span><span class="nv"> </span><span class="s">Lamp"</span>
+    <span class="s">light.ceiling_lights</span><span class="pi">:</span>
+      <span class="s">hidden</span><span class="pi">:</span> <span class="s">true</span>
 </code></pre>
 </div>
-<p>The following are attributes that can be applied in the <code class="highlighter-rouge">customize</code> section:</p>
+<p>The following are attributes that can be applied in the <code class="highlighter-rouge">entities</code> section:</p>
 <ul>
-  <li><strong>emulated_hue_hidden</strong> (<em>Optional</em>): Whether or not the entity should be exposed by the emulated Hue bridge. Adding <code class="highlighter-rouge">emulated_hue_hidden: false</code> will expose the entity to Alexa. The default value for this attribute is controlled by the <code class="highlighter-rouge">expose_by_default</code> option.</li>
-  <li><strong>emulated_hue_name</strong> (<em>Optional</em>): The name that the emulated Hue will use. The default for this is the entity’s friendly name.</li>
+  <li><strong>name</strong> (<em>Optional</em>): The name that the emulated Hue will use. The default for this is the entity’s friendly name.</li>
+  <li><strong>hidden</strong> (<em>Optional</em>): Whether or not the emulated Hue bridge should expose the entity. Adding <code class="highlighter-rouge">hidden: false</code> will expose the entity to Alexa. The default value for this attribute is controlled by the <code class="highlighter-rouge">expose_by_default</code> option.</li>
 </ul>
+<p class="note">
+These attributes used to be found under the <code class="highlighter-rouge">customize</code> section of <code class="highlighter-rouge">homeassistant</code>, however, they have now been moved to <code class="highlighter-rouge">entities</code>. Emulated Hue configuration under <code class="highlighter-rouge">homeassistant.customize</code> will be deprecated in the near future.
+</p>
 <h3><a class="title-link" name="troubleshooting" href="#troubleshooting"></a> Troubleshooting</h3>
 <p>You can verify that the <code class="highlighter-rouge">emulated_hue</code> component has been loaded and is responding by pointing a local browser to the following URL:</p>
 <ul>
   <li><code class="highlighter-rouge">http://&lt;HA IP Address&gt;:8300/description.xml</code> - This URL should return a descriptor file in the form of an XML file.</li>
   <li><code class="highlighter-rouge">http://&lt;HA IP Address&gt;:8300/api/pi/lights</code> - This will return a list of devices, lights, scenes, groups, etc.. that <code class="highlighter-rouge">emulated_hue</code> is exposing to Alexa.</li>
 </ul>
-<p>For Google Home, verify that the URLs above are using  port 80, rather than port 8300 (i.e. <code class="highlighter-rouge">http://&lt;HA IP Address&gt;:80/description.xml</code>).</p>
-<p>An additional step is required to run Home Assistant as non-root user and use port 80 when using the AiO script.  Execute the following command to allow <code class="highlighter-rouge">emulated_hue</code> to use port 80 as non-root user.</p>
+<p>For Google Home, verify that the URLs above are using port 80, rather than port 8300 (i.e. <code class="highlighter-rouge">http://&lt;HA IP Address&gt;:80/description.xml</code>).</p>
+<p>An additional step is required to run Home Assistant as a non-root user and use port 80 when using the AiO script.  Execute the following command to allow <code class="highlighter-rouge">emulated_hue</code> to use port 80 as a non-root user.</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo setcap <span class="s1">'cap_net_bind_service=+ep'</span> /srv/homeassistant/homeassistant_venv/bin/python3
 </code></pre>
 </div>
@@ -317,7 +314,13 @@ It is recommended to assign a static IP address to the computer running Home Ass
             <a href='/components/mqtt/'>MQTT</a>
         </li>
         <li>
+            <a href='/components/melissa/'>Melissa Climate</a>
+        </li>
+        <li>
             <a href='/components/raincloud/'>Melnor Raincloud</a>
+        </li>
+        <li>
+            <a href='/components/mercedesme/'>Mercedes me</a>
         </li>
         <li>
             <a href='/components/microsoft_face/'>Microsoft Face</a>

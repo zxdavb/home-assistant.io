@@ -74,7 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">system_log</code> component stores information about all logged errors and warnings in Home Assistant. All collected information is accessible directly in the frontend, just navigate to the <code class="highlighter-rouge">Info</code> section under <code class="highlighter-rouge">Developer Tools</code>. In order to not overload Home Assistant with log data, only the 50 last errors and warnings will be stored. Older entries are automatically discarded from the log. It is possible to change the amount of stored log entries using the parameter <code class="highlighter-rouge">max_entries</code>.</p>
+  <p>The <code class="highlighter-rouge">system_log</code> component stores information about all logged errors and warnings in Home Assistant. All collected information is accessible directly in the frontend, just navigate to the <code class="highlighter-rouge">Info</code> section under <code class="highlighter-rouge">Developer Tools</code>. In order to not overload Home Assistant with log data, only the 50 last errors and warnings will be stored. Older entries are automatically discarded from the log. It is possible to change the number of stored log entries using the parameter <code class="highlighter-rouge">max_entries</code>.</p>
 <p>This component is automatically loaded by the <code class="highlighter-rouge">frontend</code> (so no need to do anything if you are using the frontend). If you are not doing so, or if you wish to change a parameter, add the following section to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">system_log</span><span class="pi">:</span>
   <span class="s">max_entries</span><span class="pi">:</span> <span class="s">MAX_ENTRIES</span>
@@ -93,6 +93,79 @@
 <h2><a class="title-link" name="services" href="#services"></a> Services</h2>
 <h3><a class="title-link" name="service-clear" href="#service-clear"></a> Service <code class="highlighter-rouge">clear</code></h3>
 <p>To manually clear the system log, call this service.</p>
+<h2><a class="title-link" name="events" href="#events"></a> Events</h2>
+<p>Errors and warnings are posted as the event <code class="highlighter-rouge">system_log_event</code>, so it is possible to write automations that trigger whenever a warning or error occurs. The following information is included in each event:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">level</code></td>
+      <td>Either <code class="highlighter-rouge">WARNING</code> or <code class="highlighter-rouge">ERROR</code> depending on severity.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">source</code></td>
+      <td>File that triggered the error, e.g., <code class="highlighter-rouge">core.py</code> or <code class="highlighter-rouge">media_player/yamaha.py</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">exception</code></td>
+      <td>Full stack trace if available, otherwise empty string.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">message</code></td>
+      <td>Descriptive message of the error, e.g., “Error handling request”.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">timestamp</code></td>
+      <td>Unix timestamp with as a double, e.g., 1517241010.237416.</td>
+    </tr>
+  </tbody>
+</table>
+<p>Live examples of these events can be found in the Home Assistant log file or by just looking in the system log. An example could, for instance, look like this:</p>
+<p><img src="/images/components/system_log/system_log_entry.png" /></p>
+<p>The message (“Unable to find service…”), source (<code class="highlighter-rouge">core.py</code>) and level (<code class="highlighter-rouge">WARNING</code>) can easily be extracted from the image. Exact timestamp and stack trace is shown if the entry is selected.</p>
+<h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>
+<p>Here are some examples using the events posted by <code class="highlighter-rouge">system_log</code>.</p>
+<h3><a class="title-link" name="counting-number-of-warnings" href="#counting-number-of-warnings"></a> Counting Number of Warnings</h3>
+<p>This will create a <code class="highlighter-rouge">counter</code> that increases every time a warning is logged:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">counter</span><span class="pi">:</span>
+  <span class="s">warning_counter</span><span class="pi">:</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">Warnings</span>
+    <span class="s">icon</span><span class="pi">:</span> <span class="s">mdi:alert</span>
+
+<span class="s">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">alias</span><span class="pi">:</span> <span class="s">Count warnings</span>
+    <span class="s">trigger</span><span class="pi">:</span>
+      <span class="s">platform</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="s">event_type</span><span class="pi">:</span> <span class="s">system_log_event</span>
+      <span class="s">event_data</span><span class="pi">:</span>
+        <span class="s">level</span><span class="pi">:</span> <span class="s">WARNING</span>
+    <span class="s">action</span><span class="pi">:</span>
+      <span class="s">service</span><span class="pi">:</span> <span class="s">counter.increment</span>
+      <span class="s">entity_id</span><span class="pi">:</span> <span class="s">counter.warning_counter</span>
+</code></pre>
+</div>
+<h3><a class="title-link" name="conditional-messages" href="#conditional-messages"></a> Conditional Messages</h3>
+<p>This automation will create a persistent notification whenever an error or warning is logged that has the word “service” in the message:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">alias</span><span class="pi">:</span> <span class="s">Create notifications for "service" errors</span>
+    <span class="s">trigger</span><span class="pi">:</span>
+      <span class="s">platform</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="s">event_type</span><span class="pi">:</span> <span class="s">system_log_event</span>
+    <span class="s">condition</span><span class="pi">:</span>
+      <span class="s">condition</span><span class="pi">:</span> <span class="s">template</span>
+      <span class="s">value_template</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">"service"</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">trigger.event.data.message</span><span class="nv"> </span><span class="s">}}'</span>
+    <span class="s">action</span><span class="pi">:</span>
+      <span class="s">service</span><span class="pi">:</span> <span class="s">persistent_notification.create</span>
+      <span class="s">data_template</span><span class="pi">:</span>
+        <span class="s">title</span><span class="pi">:</span> <span class="s">Something bad happened</span>
+        <span class="s">message</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.event.data.message</span><span class="nv"> </span><span class="s">}}'</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -131,6 +204,9 @@
         </li>
         <li>
             <a href='/components/frontend/'>Frontend</a>
+        </li>
+        <li>
+            <a href='/components/goalfeed/'>Goalfeed</a>
         </li>
         <li>
             <a href='/components/http/'>HTTP</a>

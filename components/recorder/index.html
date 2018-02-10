@@ -95,13 +95,14 @@
         <dd>
           <p class="desc"><span class="type">(<span class="url">URL</span>)</span><span class="required">(Optional)</span><span class="description">The URL which points to your database.</span></p>
         </dd>
-        <dt><a class="title-link" name="purge_interval" href="#purge_interval"></a> purge_interval</dt>
-        <dd>
-          <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Inclusive)</span><span class="description">Enable scheduled purge of older events and states. The purge task runs every <code class="highlighter-rouge">purge_interval</code> days from when the <code class="highlighter-rouge">recorder component</code> is first enabled. If a scheduled purge is missed (e.g if Home Assistant was not running), the schedule will resume soon after Home Assistant restarts. You can use the <a href="#service-purge">service</a> call <code class="highlighter-rouge">purge</code> when required without impacting the purge schedule. If <code class="highlighter-rouge">purge_interval</code> is set, <code class="highlighter-rouge">purge_keep_days</code> needs to be set as well.</span></p>
-        </dd>
         <dt><a class="title-link" name="purge_keep_days" href="#purge_keep_days"></a> purge_keep_days</dt>
         <dd>
-          <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Inclusive)</span><span class="description">Specify the number of history days to keep in recorder database after purge. If <code class="highlighter-rouge">purge_interval</code> is set, <code class="highlighter-rouge">purge_keep_days</code> needs to be set as well.</span></p>
+          <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">Specify the number of history days to keep in recorder database after a purge.</span></p>
+        </dd>
+        <dt><a class="title-link" name="purge_interval" href="#purge_interval"></a> purge_interval</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">How often (in days) the purge task runs. If a scheduled purge is missed (e.g., if Home Assistant was not running), the schedule will resume soon after Home Assistant restarts. You can use the <a href="#service-purge">service</a> call <code class="highlighter-rouge">purge</code> when required without impacting the purge schedule.</span></p>
+          <p class="default">Default value: 1</p>
         </dd>
         <dt><a class="title-link" name="exclude" href="#exclude"></a> exclude</dt>
         <dd>
@@ -142,7 +143,6 @@
 <p>Define domains and entities to <code class="highlighter-rouge">exclude</code> (aka. blacklist). This is convenient when you are basically happy with the information recorded, but just want to remove some entities or domains. Usually these are entities/domains which do not change (like <code class="highlighter-rouge">weblink</code>) or rarely change (<code class="highlighter-rouge">updater</code> or <code class="highlighter-rouge">automation</code>).</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry with exclude</span>
 <span class="s">recorder</span><span class="pi">:</span>
-  <span class="s">purge_interval</span><span class="pi">:</span> <span class="s">2</span>
   <span class="s">purge_keep_days</span><span class="pi">:</span> <span class="s">5</span>
   <span class="s">db_url</span><span class="pi">:</span> <span class="s">sqlite:///home/user/.homeassistant/test</span>
   <span class="s">exclude</span><span class="pi">:</span>

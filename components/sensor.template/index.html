@@ -104,6 +104,10 @@ from other entities.</p>
         <dd>
           <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Name to use in the frontend.</span></p>
         </dd>
+        <dt><a class="title-link" name="entity_id" href="#entity_id"></a> entity_id</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string, list">string | list</span>)</span><span class="required">(Optional)</span><span class="description">A list of entity IDs so the sensor only reacts to state changes of these entities. This can be used if the automatic analysis fails to find all relevant entities.</span></p>
+        </dd>
         <dt><a class="title-link" name="unit_of_measurement" href="#unit_of_measurement"></a> unit_of_measurement</dt>
         <dd>
           <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Defines the units of measurement of the sensor, if any.</span></p>
@@ -480,7 +484,13 @@ unit of measurement doesn’t fit your needs.</p>
             <a href='/components/sensor.mqtt/'>MQTT Sensor</a>
         </li>
         <li>
+            <a href='/components/sensor.melissa/'>Melissa Sensor</a>
+        </li>
+        <li>
             <a href='/components/sensor.raincloud/'>Melnor Raincloud Sensor</a>
+        </li>
+        <li>
+            <a href='/components/sensor.mercedesme/'>Mercedes me Sensor</a>
         </li>
         <li>
             <a href='/components/sensor.min_max/'>Min/max Sensor</a>
@@ -544,6 +554,9 @@ unit of measurement doesn’t fit your needs.</p>
         </li>
         <li>
             <a href='/components/sensor.ring/'>Ring Sensor</a>
+        </li>
+        <li>
+            <a href='/components/sensor.sql/'>SQL Sensor</a>
         </li>
         <li>
             <a href='/components/sensor.scrape/'>Scrape Sensor</a>

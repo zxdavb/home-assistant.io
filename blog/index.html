@@ -70,6 +70,55 @@
   <article class="listing">
     <header>
   <h1 class="beta">
+    <a href="/blog/2018/02/10/release-63/">0.63: Entity Registry, SQL Sensor, Mercedes cars</a>
+  </h1>
+  <div class="meta clearfix">
+    <time datetime="2018-02-10T01:00:00+00:00" pubdate data-updated="true"><i class="icon-calendar"></i> February 10, 2018</time>
+    <span class="byline author vcard"><i class='icon-user'></i> Paulus Schoutsen</span>
+    <span><i class='icon-time'></i> 16 minutes reading time</span>
+    <span>
+    <i class="icon-tags"></i>
+    <ul class="tags unstyled">
+        <li>Release-Notes</li>
+    </ul>
+  </span>
+      <a class='comments'
+         href="/blog/2018/02/10/release-63/#post-comments"
+         >Comments</a>
+  </div>
+</header>
+  <div class="entry-content clearfix">
+    <p><a href="/components/#version/0.63"><img src="/images/blog/2018-02-0.63/components.png" style="border: 0;box-shadow: none;" /></a></p>
+<h2><a class="title-link" name="date-set-for-dropping-python-34-support" href="#date-set-for-dropping-python-34-support"></a> Date set for dropping Python 3.4 support</h2>
+<p>As <a href="https://home-assistant.io/blog/2017/10/06/deprecating-python-3.4-support/">announced in October</a>, we’re going to drop Python 3.4 support in 2018. We’ve now decided that in two releases, 0.65, the minimum Python version that will be supported is bumped to 3.5.3. This won’t impact most users. You are already fine if you’re using Hass.io, the latest Debian stable (Stretch) or a derivative of that (Raspbian, Ubuntu).</p>
+<h2><a class="title-link" name="entity-registry" href="#entity-registry"></a> Entity Registry</h2>
+<p>This release introduces the entity registry. The entity registry allows integrations to reserve entity IDs. This means that we’ll automatically grant an entity ID to a device. It’s reserved so that no other device will ever get that entity ID. It also means that as a user, you will be able to customize the entity IDs for these devices.</p>
+<p>For an integration to leverage the entity registry, it needs to define a unique ID for each of their entities. A unique ID is something that we can uniquely identify the device and that is not configurable. So a serial number and mac address are ok, IP addresses or names are not.</p>
+<p>Examples of integrations that have unique IDs defined in this release are Z-Wave, Hue, Nest, LIFX, Sonos, Apple TV.</p>
+<p>To update the entity ID that will be assigned to your device, update <code class="highlighter-rouge">&lt;config&gt;/entity_registry.yaml</code> and restart Home Assistant (reloading on the fly is planned for a future release).</p>
+<p>The entity registry will assign an entity ID the first time that a device is seen. This should be the same entity ID as it always was before. If this is not the case, update the registration entity to change it back to the old entity ID.</p>
+<p>We’re planning a lot of cool stuff around the entity registry. Stay tuned!</p>
+<h2><a class="title-link" name="new-platforms" href="#new-platforms"></a> New Platforms</h2>
+<ul>
+  <li>Adds allergy/disease sensor platform from Pollen.com (<a href="https://github.com/bachya">@bachya</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11573">#11573</a>) (<a href="https://home-assistant.io/components/sensor.pollen/">sensor.pollen docs</a>) (new-platform)</li>
+  <li>Add Goalfeed platform (<a href="https://github.com/wardcraigj">@wardcraigj</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11098">#11098</a>) (<a href="https://home-assistant.io/components/goalfeed/">goalfeed docs</a>) (new-platform)</li>
+  <li>Add Melissa (HVAC/climate) component (<a href="https://github.com/kennedyshead">@kennedyshead</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11503">#11503</a>) (<a href="https://home-assistant.io/components/melissa/">melissa docs</a>) (<a href="https://home-assistant.io/components/sensor.melissa/">sensor.melissa docs</a>) (new-platform)</li>
+  <li>Mediaroom (<a href="https://github.com/dgomes">@dgomes</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11864">#11864</a>) (<a href="https://home-assistant.io/components/media_player.mediaroom/">media_player.mediaroom docs</a>) (new-platform)</li>
+  <li>Add Xiaomi Universal IR Remote (Chuangmi IR) (<a href="https://github.com/cnrd">@cnrd</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11891">#11891</a>) (<a href="https://home-assistant.io/components/remote.xiaomi_miio/">remote.xiaomi_miio docs</a>) (new-platform)</li>
+  <li>SQL sensor (<a href="https://github.com/dgomes">@dgomes</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12142">#12142</a>) (<a href="https://home-assistant.io/components/sensor.sql/">sensor.sql docs</a>) (new-platform)</li>
+  <li>Add Mercedes me component (<a href="https://github.com/ReneNulschDE">@ReneNulschDE</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11743">#11743</a>) (new-platform)</li>
+</ul>
+<h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>
+<p>…don’t hesitate to use our very active <a href="https://community.home-assistant.io/">forums</a> or join us for a little <a href="https://discord.gg/c5DvZ4e">chat</a>. The release notes have comments enabled but it’s preferred if you use the former communication channels. Thanks.</p>
+<h2><a class="title-link" name="reporting-issues" href="#reporting-issues"></a> Reporting Issues</h2>
+<p>Experiencing issues introduced by this release? Please report them in our <a href="https://github.com/home-assistant/home-assistant/issues">issue tracker</a>. Make sure to fill in all fields of the issue template.</p>
+      <a class="btn pull-right" href="/blog/2018/02/10/release-63/#read-more">Read on &rarr;</a>
+  </div>
+  </article>
+  <hr>
+  <article class="listing">
+    <header>
+  <h1 class="beta">
     <a href="/blog/2018/02/09/disabling-disqus/">Disabling Disqus comments</a>
   </h1>
   <div class="meta clearfix">
@@ -543,79 +592,6 @@ broadlink.send_packet_192_168_0_107 -&gt; switch.broadlink_send_packet_192_168_0
   <div class="entry-content clearfix">
     <p>The images for the Raspberry Pi family and the Intel NUC are an easy way to get started with <a href="/hassio/">Hass.io</a>. For a test or if you have a system which is already hosting virtual machines then the <a href="/hassio/installation/#alternative-install-on-generic-linux-server"><strong>Hass.io installer</strong></a> is an option to use Hass.io in a virtualized environment. In this guide the host is a Fedora 27 system with <a href="https://libvirt.org/">libvirt</a> support and the guest will be running Debian 9. Hass.io will be installed on the guest.</p>
       <a class="btn pull-right" href="/blog/2017/11/29/hassio-virtual-machine/#read-more">Read on &rarr;</a>
-  </div>
-  </article>
-  <hr>
-  <article class="listing">
-    <header>
-  <h1 class="beta">
-    <a href="/blog/2017/11/18/release-58/">0.58: More translations, faster frontend, system log</a>
-  </h1>
-  <div class="meta clearfix">
-    <time datetime="2017-11-18T04:00:00+00:00" pubdate data-updated="true"><i class="icon-calendar"></i> November 18, 2017</time>
-    <span class="byline author vcard"><i class='icon-user'></i> Paulus Schoutsen</span>
-    <span><i class='icon-time'></i> 12 minutes reading time</span>
-    <span>
-    <i class="icon-tags"></i>
-    <ul class="tags unstyled">
-        <li>Release-Notes</li>
-    </ul>
-  </span>
-      <a class='comments'
-         href="/blog/2017/11/18/release-58/#post-comments"
-         >Comments</a>
-  </div>
-</header>
-  <div class="entry-content clearfix">
-    <p><a href="/components/#version/0.58"><img src="/images/blog/2017-11-0.58/components.png" style="border: 0;box-shadow: none;" /></a></p>
-<p class="note">
-The Hass.io release of 0.58 will be delayed by a couple of days because Pascal is moving this weekend.
-</p>
-<h2><a class="title-link" name="translation-update" href="#translation-update"></a> Translation update</h2>
-<p>Translations are up and running in full speed. Shortly after the last release we got our translation pipeline figured out. <a href="https://github.com/armills">@armills</a> and <a href="https://github.com/c727">@c727</a> are doing an amazing job managing this project. We’ve doubled the number of supported languages to 42 and the amount of keys to translate went from 8 to 130. Our translators are on top of their game and 79% is already translated.</p>
-<p>Talking about our translators, we now have 445 people with an account to help with translations. Not bad for 3 weeks!</p>
-<p>And because more translations is more better, <a href="https://github.com/robbiet480">@robbiet480</a> has added the iOS app to Lokalise, our translation management platform. The iOS app is currently supported in 7 different languages.</p>
-<p><a href="https://home-assistant.io/blog/2017/11/05/frontend-translations/">Learn more about how to help with translations</a></p>
-<h2><a class="title-link" name="frontend-improvements-continue" href="#frontend-improvements-continue"></a> Frontend improvements continue</h2>
-<p>Thanks to <a href="https://github.com/andrey-git">@Andrey-git</a> we now are able to serve the frontend in modern JavaScript. Leveraging modern JavaScript makes the frontend faster to load and run. For now it’s opt-in but we’re looking into making it opt-out in the future. The ES5 version of the frontend will remain available for older devices.</p>
-<p>To try it once, add <code class="highlighter-rouge">?latest</code> to your Home Assistant bookmark. To make it the default on your installation, update your config to look like this:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>frontend:
-  javascript_version: latest
-</code></pre>
-</div>
-<p class="note">
-For Custom UI users: your custom UI will need to be updated before it can work with the new version of the frontend.
-</p>
-<h3><a class="title-link" name="system-log-enhanced" href="#system-log-enhanced"></a> System log enhanced</h3>
-<p>Our about screen that shows the error logs has gained a nice upgrade by <a href="https://github.com/postlund">@postlund</a>. Now the 50 latest exceptions will be displayed with the option to get more information.</p>
-<p class="img">
-    <img src="/images/blog/2017-11-0.58/system_log.png" alt="Screenshot of the about screen showing the system log." />
-    Screenshot of the about screen showing the system log.
-</p>
-<h2><a class="title-link" name="new-platforms" href="#new-platforms"></a> New Platforms</h2>
-<ul>
-  <li>pyLoad download sensor (<a href="https://github.com/iMarkus">@iMarkus</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10089">#10089</a>) (<a href="https://home-assistant.io/components/sensor.pyload/">sensor.pyload docs</a>) (new-platform)</li>
-  <li>Add LaCrosse sensor platform (<a href="https://github.com/hthiery">@hthiery</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10195">#10195</a>) (<a href="https://home-assistant.io/components/sensor.lacrosse/">sensor.lacrosse docs</a>) (new-platform)</li>
-  <li>Refactor Neato botvac components as a vacuum (<a href="https://github.com/jabesq">@jabesq</a> - <a href="https://github.com/home-assistant/home-assistant/pull/9946">#9946</a>) (<a href="https://home-assistant.io/components/neato/">neato docs</a>) (<a href="https://home-assistant.io/components/sensor.neato/">sensor.neato docs</a>) (<a href="https://home-assistant.io/components/switch.neato/">switch.neato docs</a>) (<a href="https://home-assistant.io/components/vacuum.neato/">vacuum.neato docs</a>) (breaking change) (new-platform)</li>
-  <li>Add platform and sensors for Vultr VPS (<a href="https://github.com/GenericStudent">@GenericStudent</a> - <a href="https://github.com/home-assistant/home-assistant/pull/9928">#9928</a>) (<a href="https://home-assistant.io/components/vultr/">vultr docs</a>) (<a href="https://home-assistant.io/components/binary_sensor.vultr/">binary_sensor.vultr docs</a>) (<a href="https://home-assistant.io/components/sensor.vultr/">sensor.vultr docs</a>) (new-platform)</li>
-  <li>Adds support for Tile® Bluetooth trackers (<a href="https://github.com/bachya">@bachya</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10478">#10478</a>) (<a href="https://home-assistant.io/components/device_tracker.tile/">device_tracker.tile docs</a>) (new-platform)</li>
-  <li>Support presence detection using Hitron Coda router (<a href="https://github.com/arilotter">@arilotter</a> - <a href="https://github.com/home-assistant/home-assistant/pull/9682">#9682</a>) (<a href="https://home-assistant.io/components/device_tracker.hitron_coda/">device_tracker.hitron_coda docs</a>) (new-platform)</li>
-  <li>Add basic backend support for a system log (<a href="https://github.com/postlund">@postlund</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10492">#10492</a>) (<a href="https://home-assistant.io/components/system_log/">system_log docs</a>) (new-platform)</li>
-  <li>New sensor viaggiatreno. (<a href="https://github.com/fabfurnari">@fabfurnari</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10522">#10522</a>) (<a href="https://home-assistant.io/components/sensor.viaggiatreno/">sensor.viaggiatreno docs</a>) (new-platform)</li>
-</ul>
-<h2><a class="title-link" name="release-0581---november-21" href="#release-0581---november-21"></a> Release 0.58.1 - November 21</h2>
-<ul>
-  <li>Fix yweather (<a href="https://github.com/tinloaf">@tinloaf</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10661">#10661</a>) (<a href="https://home-assistant.io/components/weather.yweather/">weather.yweather docs</a>)</li>
-  <li>Properly initialize Harmony remote (<a href="https://github.com/amelchio">@amelchio</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10665">#10665</a>) (<a href="https://home-assistant.io/components/remote.harmony/">remote.harmony docs</a>)</li>
-  <li>Handle the new version of HydroQuebec website (<a href="https://github.com/titilambert">@titilambert</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10682">#10682</a>) (<a href="https://home-assistant.io/components/sensor.hydroquebec/">sensor.hydroquebec docs</a>)</li>
-  <li>Fix for time_date sensor (<a href="https://github.com/etsinko">@etsinko</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10694">#10694</a>) (<a href="https://home-assistant.io/components/sensor.time_date/">sensor.time_date docs</a>)</li>
-  <li>Frontend fixes (<a href="https://github.com/armills">@andrey-git</a> <a href="https://github.com/balloob">@balloob</a>)</li>
-</ul>
-<h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>
-<p>…don’t hesitate to use our very active <a href="https://community.home-assistant.io/">forums</a> or join us for a little <a href="https://discord.gg/c5DvZ4e">chat</a>. The release notes have comments enabled but it’s preferred if you use the former communication channels. Thanks.</p>
-<h2><a class="title-link" name="reporting-issues" href="#reporting-issues"></a> Reporting Issues</h2>
-<p>Experiencing issues introduced by this release? Please report them in our <a href="https://github.com/home-assistant/home-assistant/issues">issue tracker</a>. Make sure to fill in all fields of the issue template.</p>
-      <a class="btn pull-right" href="/blog/2017/11/18/release-58/#read-more">Read on &rarr;</a>
   </div>
   </article>
   <hr>

@@ -104,6 +104,29 @@
   <li><strong>mac</strong> (<em>Optional</em>): The MAC address of your Panasonic Viera TV, e.g. <code class="highlighter-rouge">AA:BB:CC:DD:99:1A</code>.</li>
   <li><strong>name</strong> (<em>Optional</em>): The name you would like to give to the Panasonic Viera TV.</li>
 </ul>
+<h3><a class="title-link" name="example-play_media-script" href="#example-play_media-script"></a> Example <code class="highlighter-rouge">play_media</code> script</h3>
+<p>The <code class="highlighter-rouge">play_media</code> function can be used to open web pages and other media types (images, movies) in the TV web browser.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example play_media script that can be triggered when someone is detected at the door</span>
+<span class="c1">#</span>
+<span class="s">script</span><span class="pi">:</span>
+  <span class="s">front_door_camera</span><span class="pi">:</span>
+    <span class="s">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Show</span><span class="nv"> </span><span class="s">who's</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">door"</span>
+    <span class="s">sequence</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">media_player.turn_on</span>
+        <span class="s">data</span><span class="pi">:</span>
+          <span class="s">entity_id</span><span class="pi">:</span> <span class="s">media_player.living_room_tv</span>
+      <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">media_player.play_media</span>
+        <span class="s">data</span><span class="pi">:</span>
+          <span class="s">entity_id</span><span class="pi">:</span> <span class="s">media_player.living_room_tv</span>
+          <span class="s">media_content_type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">url"</span>
+          <span class="s">media_content_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">http://google.com"</span>
+      <span class="pi">-</span> <span class="s">delay</span><span class="pi">:</span>
+        <span class="s">seconds</span><span class="pi">:</span> <span class="s">5</span>
+      <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">media_player.media_stop</span>
+        <span class="s">data</span><span class="pi">:</span>
+          <span class="s">entity_id</span><span class="pi">:</span> <span class="s">media_player.living_room_tv</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -195,6 +218,9 @@
         </li>
         <li>
             <a href='/components/media_extractor/'>Media Extractor</a>
+        </li>
+        <li>
+            <a href='/components/media_player.mediaroom/'>Mediaroom</a>
         </li>
         <li>
             <a href='/components/media_player.monoprice/'>Monoprice 6-Zone Amplifier</a>
