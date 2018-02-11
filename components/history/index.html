@@ -74,7 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">history</code> component will track everything that is going on within Home Assistant and allows the user to browse through it. It depends on the <code class="highlighter-rouge">recorder</code> component for storing the data and uses the same database setting. If any entities are excluded from being recorded, no history will be available for these entities as well.</p>
+  <p>The <code class="highlighter-rouge">history</code> component will track everything that is going on within Home Assistant and allows the user to browse through it. It depends on the <code class="highlighter-rouge">recorder</code> component for storing the data and uses the same database setting. If any entities are excluded from being recorded, no history will be available for these entities.</p>
 <p>To enable the history option in your installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Basic configuration.yaml entry</span>
 <span class="s">history</span><span class="pi">:</span>
@@ -103,8 +103,8 @@ Events are saved in a local database. Google Graphs is used to draw the graph. D
     </ul>
   </li>
 </ul>
-<p>Without any <code class="highlighter-rouge">include</code> or <code class="highlighter-rouge">exclude</code> configuration the history displays graphs for every entity (well that’s not exactly true - for instance <code class="highlighter-rouge">hidden</code> entities or <code class="highlighter-rouge">scenes</code> are never shown) on a given date. If you are only interested in some of the entities you several options:</p>
-<p>Define domains and entities to <code class="highlighter-rouge">exclude</code> (aka. blacklist). This is convenient when you are basically happy with the information displayed, but just want to remove some entities or domains. Usually these are entities/domains which do not change (like <code class="highlighter-rouge">weblink</code>) or rarely change (<code class="highlighter-rouge">updater</code> or <code class="highlighter-rouge">automation</code>).</p>
+<p>Without any <code class="highlighter-rouge">include</code> or <code class="highlighter-rouge">exclude</code> configuration the history displays graphs for every entity (well that’s not exactly true - for instance <code class="highlighter-rouge">hidden</code> entities or <code class="highlighter-rouge">scenes</code> are never shown) on a given date. If you are only interested in some of the entities you have several options:</p>
+<p>Define domains and entities to <code class="highlighter-rouge">exclude</code> (aka. blacklist). This is convenient when you are basically happy with the information displayed, but just want to remove some entities or domains. Usually these are entities/domains which do not change (like <code class="highlighter-rouge">weblink</code>) or rarely change (like <code class="highlighter-rouge">updater</code> or <code class="highlighter-rouge">automation</code>).</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry with exclude</span>
 <span class="s">history</span><span class="pi">:</span>
   <span class="s">exclude</span><span class="pi">:</span>
@@ -117,7 +117,7 @@ Events are saved in a local database. Google Graphs is used to draw the graph. D
       <span class="pi">-</span> <span class="s">sensor.date</span>
 </code></pre>
 </div>
-<p>Define domains and entities to display by using the <code class="highlighter-rouge">include</code> configuration (aka. whitelist). If you have a lot of entities in your system and your <code class="highlighter-rouge">exclude</code> lists possibly get very large, it might be better just to define the entities or domains to display.</p>
+<p>Define domains and entities to display by using the <code class="highlighter-rouge">include</code> configuration (aka. whitelist). If you have a lot of entities in your system and your <code class="highlighter-rouge">exclude</code> list is getting too large, it might be better just to define the entities or domains to <code class="highlighter-rouge">include</code>.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry with include</span>
 <span class="s">history</span><span class="pi">:</span>
   <span class="s">include</span><span class="pi">:</span>
@@ -154,7 +154,7 @@ they are listed in the included entity list, you can set the flag
 </code></pre>
 </div>
 <h4><a class="title-link" name="implementation-details" href="#implementation-details"></a> Implementation details</h4>
-<p>The history is stored in a SQLite database <code class="highlighter-rouge">home-assistant_v2.db</code> within your configuration directory if the <code class="highlighter-rouge">recorder</code> component is not set up differently.</p>
+<p>The history is stored in a SQLite database <code class="highlighter-rouge">home-assistant_v2.db</code> within your configuration directory unless the <code class="highlighter-rouge">recorder</code> component is set up differently.</p>
 <ul>
   <li>events table is all events except <code class="highlighter-rouge">time_changed</code> that happened while recorder component was running.</li>
   <li>states table contains all the <code class="highlighter-rouge">new_state</code> values of <code class="highlighter-rouge">state_changed</code> events.</li>
@@ -177,7 +177,7 @@ they are listed in the included entity list, you can set the flag
 </code></pre>
 </div>
 <h4><a class="title-link" name="api" href="#api"></a> API</h4>
-<p>The history information are also available through the <a href="/developers/rest_api/#get-apihistory">RESTful API</a>.</p>
+<p>The history information is also available through the <a href="/developers/rest_api/#get-apihistory">RESTful API</a>.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
