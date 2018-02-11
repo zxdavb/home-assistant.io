@@ -74,7 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">input_text</code> component allows the user to define values that can be controlled via the frontend and can be used within conditions of automation. Changes to the value stored in the text box generate state events. These state events can be utilized as <code class="highlighter-rouge">automation</code> triggers as well.</p>
+  <p>The <code class="highlighter-rouge">input_text</code> component allows the user to define values that can be controlled via the frontend and can be used within conditions of automation. Changes to the value stored in the text box generate state events. These state events can be utilized as <code class="highlighter-rouge">automation</code> triggers as well. It can also be configured in password mode (obscured text).</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entries</span>
 <span class="s">input_text</span><span class="pi">:</span>
   <span class="s">text1</span><span class="pi">:</span>
@@ -87,6 +87,9 @@
   <span class="s">text3</span><span class="pi">:</span>
     <span class="s">name</span><span class="pi">:</span> <span class="s">Text 3</span>
     <span class="s">pattern</span><span class="pi">:</span> <span class="s1">'</span><span class="s">[a-fA-F0-9]*'</span>
+  <span class="s">text4</span><span class="pi">:</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">Text 4</span>
+    <span class="s">mode</span><span class="pi">:</span> <span class="s">password</span>
 </code></pre>
 </div>
 <div class="config-vars">
@@ -121,6 +124,11 @@
         <dd>
           <p class="desc"><span class="type">(<span class="string">String</span>)</span><span class="required">(Optional)</span><span class="description">Regex pattern for client side validation.</span></p>
           <p class="default">Default value: empty</p>
+        </dd>
+        <dt><a class="title-link" name="mode" href="#mode"></a> mode</dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="string">String</span>)</span><span class="required">(Optional)</span><span class="description">Can specify <code class="highlighter-rouge">text</code> or <code class="highlighter-rouge">password</code>. Elements of type “password” provide a way for the user to securely enter a value.</span></p>
+          <p class="default">Default value: text</p>
         </dd>
       </dl>
     </dd>
