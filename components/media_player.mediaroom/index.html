@@ -104,8 +104,19 @@
 <p>Notice that all parameters are optional, and discovery should configure everything for you.</p>
 <h4><a class="title-link" name="using-the-mediaroom-component" href="#using-the-mediaroom-component"></a> Using the Mediaroom component</h4>
 <p>The component has been developed for Portuguese TV operators currently using the Mediaroom platform, but should also work in other deployments in which the STB can be controlled remotely through a socket on port 8082.</p>
-<p>In most cases (single STB) you just need to setup the <em>name</em> and discovery will do the rest. In case you have more than one STB you are required to set the <em>host</em> in each one of the entries.</p>
+<p>In most cases (single STB) you just need to setup the <em>platform</em> and discovery will do the rest. In case you have more than one STB you are required to set the <em>host</em> in each one of the entries.</p>
 <p>If the STB is on the same network segment as Home Assistant, it can determine whether the device is turned on or off. Without this, the component will fail to determine the Set-top box status, and you are required to add the <em>optimistic</em> configuration variable.</p>
+<h3><a class="title-link" name="example-configuration-with-2-stb" href="#example-configuration-with-2-stb"></a> Example configuration with 2 STB</h3>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry for 2 STB</span>
+<span class="s">media_player</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">mediaroom</span>
+    <span class="s">host</span><span class="pi">:</span> <span class="s">192.168.1.64</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">Living Room STB</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">mediaroom</span>
+    <span class="s">host</span><span class="pi">:</span> <span class="s">192.168.1.65</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">Bedroom STB</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
