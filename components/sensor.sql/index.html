@@ -141,7 +141,13 @@ This can be used to present statistics about Home Assistant sensors if used with
 </code></pre>
 </div>
 <h3><a class="title-link" name="database-size-in-postgres" href="#database-size-in-postgres"></a> Database size in Postgres</h3>
-<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">pg_size_pretty</span><span class="p">(</span><span class="n">pg_database_size</span><span class="p">(</span><span class="s1">'Database Name'</span><span class="p">));</span>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">sql</span>
+    <span class="s">db_url</span><span class="pi">:</span> <span class="s">postgresql://user:password@host/dbname</span>
+    <span class="s">queries</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s">db_size</span>
+      <span class="s">query</span><span class="pi">:</span> <span class="s2">"</span><span class="s">SELECT</span><span class="nv"> </span><span class="s">(pg_database_size('dsmrreader')/1024/1024)</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">db_size;"</span>
+      <span class="s">column</span><span class="pi">:</span> <span class="s2">"</span><span class="s">db_size"</span>
+      <span class="s">unit_of_measurement</span><span class="pi">:</span> <span class="s">MB</span> 
 </code></pre>
 </div>
 </article>
