@@ -193,33 +193,6 @@
     </tr>
   </tbody>
 </table>
-<p><strong>Note</strong>: Some <code class="highlighter-rouge">type:</code> names used in the <code class="highlighter-rouge">configuration.yaml</code> file differ from the entity names.</p>
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Sensor type</th>
-      <th style="text-align: left">Entity ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">memory_free</td>
-      <td style="text-align: left">sensor.ram_available</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">memory_use_percent</td>
-      <td style="text-align: left">sensor.ram_used</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">processor_use</td>
-      <td style="text-align: left">sensor.cpu_used</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">disk_use</td>
-      <td style="text-align: left">sensor.disk_used</td>
-    </tr>
-  </tbody>
-</table>
 <h2><a class="title-link" name="linux-specific" href="#linux-specific"></a> Linux specific</h2>
 <p>To retrieve all available network interfaces on a Linux System, execute the <code class="highlighter-rouge">ifconfig</code> command.</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ifconfig -a | sed <span class="s1">'s/[ \t].*//;/^$/d'</span>
