@@ -156,6 +156,15 @@ This allows you to mix several AND and OR conditions together.</p>
   <span class="s">after_offset</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-1:00:00"</span>
 </code></pre>
 </div>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">condition</span><span class="pi">:</span>
+    <span class="s">condition</span><span class="pi">:</span> <span class="s">or</span>  <span class="c1"># 'when dark' condition: either after sunset or before sunrise</span>
+    <span class="s">conditions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">condition</span><span class="pi">:</span> <span class="s">sun</span>
+        <span class="s">after</span><span class="pi">:</span> <span class="s">sunset</span>
+      <span class="pi">-</span> <span class="s">condition</span><span class="pi">:</span> <span class="s">sun</span>
+        <span class="s">before</span><span class="pi">:</span> <span class="s">sunrise</span>
+</code></pre>
+</div>
 <p>Here is a truth table to clarify the parameters with and without offset:</p>
 <table>
   <thead>
