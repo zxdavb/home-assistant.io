@@ -116,6 +116,14 @@
   <li>Always return lockState == LOCKED when handling Alexa.LockController (<a href="https://github.com/lucasweb78">@lucasweb78</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12328">#12328</a>) (<a href="https://home-assistant.io/components/alexa/">alexa docs</a>)</li>
   <li>Fix platform dependencies (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12330">#12330</a>)</li>
 </ul>
+<h2><a class="title-link" name="release-0632---february-14" href="#release-0632---february-14"></a> Release 0.63.2 - February 14</h2>
+<ul>
+  <li>Fix MercedesMe - add check for unsupported features (<a href="https://github.com/ReneNulschDE">@ReneNulschDE</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12342">#12342</a>) (<a href="https://home-assistant.io/components/mercedesme/">mercedesme docs</a>) (<a href="https://home-assistant.io/components/binary_sensor.mercedesme/">binary_sensor.mercedesme docs</a>) (<a href="https://home-assistant.io/components/device_tracker.mercedesme/">device_tracker.mercedesme docs</a>) (<a href="https://home-assistant.io/components/sensor.mercedesme/">sensor.mercedesme docs</a>)</li>
+  <li>Fix WUnderground names (<a href="https://github.com/OttoWinter">@OttoWinter</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12346">#12346</a>) (<a href="https://home-assistant.io/components/sensor.wunderground/">sensor.wunderground docs</a>)</li>
+  <li>Updated beacontools (<a href="https://github.com/citruz">@citruz</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12368">#12368</a>) (<a href="https://home-assistant.io/components/sensor.eddystone_temperature/">sensor.eddystone_temperature docs</a>)</li>
+  <li>Introduce zone_id to identify player+zone (<a href="https://github.com/sdague">@sdague</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12382">#12382</a>) (<a href="https://home-assistant.io/components/media_player.yamaha/">media_player.yamaha docs</a>)</li>
+  <li>Downgrade limitlessled to 1.0.8 (<a href="https://github.com/amelchio">@amelchio</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12403">#12403</a>) (<a href="https://home-assistant.io/components/light.limitlessled/">light.limitlessled docs</a>)</li>
+</ul>
 <h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>
 <p>…don’t hesitate to use our very active <a href="https://community.home-assistant.io/">forums</a> or join us for a little <a href="https://discord.gg/c5DvZ4e">chat</a>. The release notes have comments enabled but it’s preferred if you use the former communication channels. Thanks.</p>
 <h2><a class="title-link" name="reporting-issues" href="#reporting-issues"></a> Reporting Issues</h2>
@@ -163,6 +171,11 @@
           <td style="text-align: left">sensor.disk_use</td>
         </tr>
         <tr>
+          <td style="text-align: left">disk_use_percent</td>
+          <td style="text-align: left">sensor.disk_used</td>
+          <td style="text-align: left">sensor.disk_use_percent</td>
+        </tr>
+        <tr>
           <td style="text-align: left">load_15m</td>
           <td style="text-align: left">sensor.average_load_15m</td>
           <td style="text-align: left">sensor.load_15m</td>
@@ -186,6 +199,11 @@
           <td style="text-align: left">memory_use</td>
           <td style="text-align: left">sensor.ram_used</td>
           <td style="text-align: left">sensor.memory_use</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">memory_use_percent</td>
+          <td style="text-align: left">sensor.ram_used</td>
+          <td style="text-align: left">sensor.memory_use_percent</td>
         </tr>
         <tr>
           <td style="text-align: left">network_in</td>
@@ -216,6 +234,11 @@
           <td style="text-align: left">swap_use</td>
           <td style="text-align: left">sensor.swap_used</td>
           <td style="text-align: left">sensor.swap_use</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">swap_use_percent</td>
+          <td style="text-align: left">sensor.swap_used</td>
+          <td style="text-align: left">sensor.swap_use_percent</td>
         </tr>
       </tbody>
     </table>
