@@ -74,7 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">random</code> sensor platform is creating random sensor values (integers) out of a given range. This can be useful if you want to test automation rules. It generates a new value every time it is polled.</p>
+  <p>The <code class="highlighter-rouge">random</code> sensor platform is creating random sensor values (integers) out of a given range. Returned values form a <a href="https://en.wikipedia.org/wiki/Discrete_uniform_distribution">discrete uniform distribution</a>, meaning that each integer value in the range configured is equally likely to be drawn. This can be useful if you want to test automation rules. It generates a new value every time it is polled.</p>
 <p>To enable the random sensor, add the following lines to your <code class="highlighter-rouge">configuration.yaml</code>:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">sensor</span><span class="pi">:</span>
