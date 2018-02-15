@@ -180,6 +180,19 @@ Battery powered devices need to be awake before you can use the Z-Wave control p
 </div>
 <p>Some non compliant device like tag readers, have implemented to use raw hex code.
 Please refer to a hex ascii table to set your code. Example: http://www.asciitable.com/</p>
+<p>Here is a small Python program than will take numbers on the command line and print the correct sequence for compliant devices:</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#! /usr/bin/python3</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">translations</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">translations</span><span class="p">[</span><span class="s">"</span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="s">"</span><span class="se">\\</span><span class="s">x3</span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="n">x</span>
+
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">translations</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s">''</span><span class="p">)</span>
+</code></pre>
+</div>
 <h2><a class="title-link" name="ozw-log" href="#ozw-log"></a> OZW Log</h2>
 <p>If you want to only retrieve some lines at the end of the log, you can specify that with the selection field. Max is the last 1000 lines and minimum is 0 which equals the whole log. If this is not specified, you will retrieve the whole log.
 Select <strong>Refresh</strong> to display the log if you need it to check activities.</p>

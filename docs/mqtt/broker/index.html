@@ -176,13 +176,13 @@
     </dd>
     <dt><a class="title-link" name="tls_version" href="#tls_version"></a> tls_version</dt>
     <dd>
-      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">TLS/SSL protocol version to use. Available options are: <code class="highlighter-rouge">auto</code>, <code class="highlighter-rouge">1.0</code>, <code class="highlighter-rouge">1.1</code>, <code class="highlighter-rouge">1.2</code>. Defaults to <code class="highlighter-rouge">auto</code>.</span></p>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">TLS/SSL protocol version to use. Available options are: <code class="highlighter-rouge">'auto'</code>, <code class="highlighter-rouge">'1.0'</code>, <code class="highlighter-rouge">'1.1'</code>, <code class="highlighter-rouge">'1.2'</code>. Make sure to put quotes around the value. Defaults to <code class="highlighter-rouge">'auto'</code>.</span></p>
     </dd>
   </dl>
 </div>
 <p class="note warning">
 There is an issue with the Mosquitto package included in Ubuntu 14.04 LTS. Specify <code class="highlighter-rouge">protocol: 3.1</code> in your MQTT configuration to work around this issue.
-If you get this error <code class="highlighter-rouge">AttributeError: module 'ssl' has no attribute 'PROTOCOL_TLS'</code>  then you need to set <code class="highlighter-rouge">tls_version: 1.2</code>.
+If you get this error <code class="highlighter-rouge">AttributeError: module 'ssl' has no attribute 'PROTOCOL_TLS'</code> then you need to set <code class="highlighter-rouge">tls_version: '1.2'</code>.
 </p>
 <p class="note">
 If you are running a Mosquitto instance on a different server with proper SSL encryption using a service like Let’s Encrypt you may have to set the certificate to the operating systems own <code class="highlighter-rouge">.crt</code> certificates file. In the instance of Ubuntu this would be <code class="highlighter-rouge">certificate: /etc/ssl/certs/ca-certificates.crt</code>
