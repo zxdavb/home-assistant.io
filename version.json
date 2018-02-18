@@ -1,15 +1,15 @@
 {
-  "current_version": "0.63.2",
-  "release_date": "2018-02-14T00:00:00+00:00",
+  "current_version": "0.63.3",
+  "release_date": "2018-02-17T00:00:00+00:00",
   "release_notes": "https://home-assistant.io/blog/2018/02/10/release-63/",
   "release_notes_path": "/blog/2018/02/10/release-63/",
   "release_title": "0.63: Entity Registry, SQL Sensor, Mercedes cars",
   "release_description": "Reserve entity IDs for your devices with the new entity registry, show query results as a sensor and yet another car integrated.",
-  "patch_version_notes": "#release-0632---february-14",
+  "patch_version_notes": "#release-0633---february-17",
   "root_url": "https://home-assistant.io",
   "semantic_version": {
     "major": 0,
     "minor": 63,
-    "patch": 2
+    "patch": 3
   }
 }
