@@ -158,6 +158,56 @@
 </table>
 <h3><a class="title-link" name="restore-state" href="#restore-state"></a> Restore State</h3>
 <p>This component supports the <code class="highlighter-rouge">restore_state</code> function which restores the state after Home Assistant has started to the value it has been before Home Assistant stopped. To use this feature please make sure that the <a href="/components/recorder/"><code class="highlighter-rouge">recorder</code></a> component is enabled and your entity does not have a value set for <code class="highlighter-rouge">initial</code>. Additional information can be found in the <a href="/components/recorder/#restore-state">Restore state</a> section of the <a href="/components/recorder/"><code class="highlighter-rouge">recorder</code></a> component documentation.</p>
+<h3><a class="title-link" name="services" href="#services"></a> Services</h3>
+<p>This component provides a service to modify the state of the <code class="highlighter-rouge">input_datetime</code>.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Data</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">set_datetime</code></td>
+      <td><code class="highlighter-rouge">time</code></td>
+      <td>This can be used to dynamically set the time.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">set_datetime</code></td>
+      <td><code class="highlighter-rouge">date</code></td>
+      <td>This can be used to dynamically set the date.</td>
+    </tr>
+  </tbody>
+</table>
+<h2><a class="title-link" name="automation-examples" href="#automation-examples"></a> Automation Examples</h2>
+<p>The following example shows the usage of the <code class="highlighter-rouge">input_datetime</code> as a trigger in an automation (note that you will need a <a href="/components/sensor.time_date/">time sensor</a> elsewhere in your configuration):</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="c1"># Turns on bedroom light at the time specified.</span>
+  <span class="s">trigger</span><span class="pi">:</span>
+    <span class="s">platform</span><span class="pi">:</span> <span class="s">template</span>
+ <span class="s">   value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">states('sensor.time')</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">(states.input_datetime.bedroom_alarm_clock_time.attributes.timestamp</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">int</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">timestamp_custom('%H:%M',</span><span class="nv"> </span><span class="s">False))</span><span class="nv"> </span><span class="s">}}"</span>
+ <span class="s"> action</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+      <span class="s">entity_id</span><span class="pi">:</span> <span class="s">light.bedroom</span>
+</code></pre>
+</div>
+<p>To dynamically set the <code class="highlighter-rouge">input_datetime</code> you can call <code class="highlighter-rouge">input_datetime.set_datetime</code>. The following example can be used in an automation rule:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="c1"># Sets input_datetime to '05:30' when an input_boolean is turned on.</span>
+<span class="s">automation</span><span class="pi">:</span>
+  <span class="s">trigger</span><span class="pi">:</span>
+    <span class="s">platform</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="s">entity_id</span><span class="pi">:</span> <span class="s">input_boolean.example</span>
+    <span class="s">to</span><span class="pi">:</span> <span class="s1">'</span><span class="s">on'</span>
+  <span class="s">action</span><span class="pi">:</span>
+    <span class="s">service</span><span class="pi">:</span> <span class="s">input_datetime.set_datetime</span>
+    <span class="s">entity_id</span><span class="pi">:</span> <span class="s">input_datetime.bedroom_alarm_clock_time</span>
+    <span class="s">data</span><span class="pi">:</span>
+      <span class="s">time</span><span class="pi">:</span> <span class="s1">'</span><span class="s">05:30:00'</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
