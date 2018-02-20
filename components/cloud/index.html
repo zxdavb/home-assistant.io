@@ -74,19 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p class="note">The Home Assistant Cloud is currently in open beta and will become part of the upcoming Community Support Package. <a href="/blog/2017/12/17/introducing-home-assistant-cloud/">Learn more</a></p>
-<p>The Home Assistant Cloud allows you to quickly integrate your local Home Assistant with various cloud services like Amazon Alexa.</p>
-<p>The following integrations are currently available:</p>
-<ul>
-  <li><a href="/components/cloud.alexa/">Amazon Alexa (Amazon Echo)</a></li>
-</ul>
-<!-- - [Google Assistant (Google Home)](/components/cloud.google_assistant/) -->
-<h3><a class="title-link" name="how-does-it-work" href="#how-does-it-work"></a> How does it work?</h3>
-<p>The Home Assistant Cloud has been designed with security in mind. When you activate the Cloud component, your instance will create a secure connection to the Home Assistant Cloud. There is no need for any further configuration or to expose your instance to the internet.</p>
-<p>Integrations like Alexa will deliver messages to our cloud which we will forward to your local instance for processing. We just forward the response back to Alexa. This means that we do not have to store the state of your house in our cloud, we’re just the messenger!</p>
-<p>You can find a list of frequently asked questions (and their answers) in <a href="/blog/2017/12/17/introducing-home-assistant-cloud/#faq">this blog post</a>.</p>
-<h3><a class="title-link" name="enabling-the-cloud" href="#enabling-the-cloud"></a> Enabling the cloud</h3>
-<p>The Home Assistant Cloud is enabled by default. If not, add this to your configuration:</p>
+  <p>The Home Assistant Cloud allows you to quickly integrate your local Home Assistant with various cloud services like Amazon Alexa. <a href="/cloud">Learn more.</a></p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry to enable the cloud component</span>
 <span class="s">cloud</span><span class="pi">:</span>
 </code></pre>
@@ -110,12 +98,6 @@
     <div class='section'>
       Introduced in release: 0.60
     </div>
-            <h1 class='title delta'>Platforms</h1>
-            <ul class='divided'>
-          <li><a href='/components/cloud.alexa/'>
-            Alexa via Home Assistant Cloud
-          </a></li>
-      </ul>
     <div class='section'>
     <h1 class="title delta">Category Voice</h1>
     <ul class='divided'>

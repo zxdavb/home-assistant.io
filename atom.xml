@@ -4,7 +4,7 @@
   <title><![CDATA[Home Assistant]]></title>
   <link href="https://home-assistant.io/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-02-19T08:50:26+00:00</updated>
+  <updated>2018-02-20T00:10:30+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Cloud Update]]></title>
+    <link href="https://home-assistant.io/blog/2018/02/19/cloud-update/"/>
+    <updated>2018-02-19T01:00:00+00:00</updated>
+    <id>https://home-assistant.io/blog/2018/02/19/cloud-update</id>
+    <content type="html"><![CDATA[<p>We’re happy to announce that the Home Assistant skill is now available in Canada, UK, Germany, India and Australia! Check it out in the <a href="https://alexa.amazon.com/spa/index.html#skills/dp/B0772J1QKB/?ref=skill_dsk_skb_sr_2">Amazon Alexa Skill store</a>.</p>
+
+<p>In the meanwhile, we have also been working on the Google Assistant integration. We passed the first verification and are now working with Google to do the final verification. Stay tuned!</p>
+
+<p>In less than 2 weeks the open beta is about to expire. We’re still working on setting up the company and payment system so we can start accepting payments. Until we do, Home Assistant Cloud will remain free.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[0.63: Entity Registry, SQL Sensor, Mercedes cars]]></title>
@@ -2955,18 +2969,6 @@ Demo is running... -&gt; CTRL + C to shutdown
   <li>Moved siren to Wink from switch (<a href="https://github.com/w1ll1am23">@w1ll1am23</a> - <a href="https://github.com/home-assistant/home-assistant/pull/9879">#9879</a>) (<a href="https://home-assistant.io/components/wink/">wink docs</a>) (<a href="https://home-assistant.io/components/switch.wink/">switch.wink docs</a>) (breaking change)</li>
   <li>Remove async_update (<a href="https://github.com/pvizeli">@pvizeli</a> - <a href="https://github.com/home-assistant/home-assistant/pull/9997">#9997</a>)</li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Home Assistant Podcast #10]]></title>
-    <link href="https://home-assistant.io/blog/2017/10/18/hasspodcast-ep-10/"/>
-    <updated>2017-10-18T00:01:00+00:00</updated>
-    <id>https://home-assistant.io/blog/2017/10/18/hasspodcast-ep-10</id>
-    <content type="html"><![CDATA[<p>Show notes available on the <a href="https://hasspodcast.io/HA010/">Home Assistant Podcast Website</a></p>
-
-<p><a href="https://hasspodcast.io/ha010/">Listen online</a></p>
 
 ]]></content>
   </entry>
