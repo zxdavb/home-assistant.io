@@ -109,7 +109,7 @@
   Log to custom URL details
 </p>
 <p>The relevant endpoint is: <code class="highlighter-rouge">/api/gpslogger</code></p>
-<div class="language-text highlighter-rouge"><pre class="highlight"><code>http://[IP address Home Assistant]:[Port]/api/gpslogger?
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>https://[IP address Home Assistant]:[Port]/api/gpslogger?
    latitude=%LAT&amp;longitude=%LON&amp;device=%SER&amp;accuracy=%ACC
    &amp;battery=%BATT&amp;speed=%SPD&amp;direction=%DIR
    &amp;altitude=%ALT&amp;provider=%PROV&amp;activity=%ACT
@@ -118,8 +118,8 @@
 <p>Add the above URL after you modified it with your settings into the <strong>URL</strong> field. Remove the line breaks as they are only there to make the URL readable here.</p>
 <ul>
   <li>It’s HIGHLY recommended to use SSL/TLS.</li>
-  <li>Use the domain that Home Assistant is available on the internet or the public IP address. Can be a local IP address if you are using a VPN setup.</li>
-  <li>Only remove <code class="highlighter-rouge">[Port]</code> if your Home Assistant instance is using port 80. Otherwise set it to 8123.</li>
+  <li>Use the domain that Home Assistant is available on the internet or the public IP address. This can be a local IP address if you are using an always on VPN from your mobile device to your home network.</li>
+  <li>Only remove <code class="highlighter-rouge">[Port]</code> if your Home Assistant instance is using port 443. Otherwise set it to the port you’re using.</li>
   <li>For Home Assistant only the above URL, as written, will work - do not add or remove any parameters.</li>
   <li>Make sure to include your <a href="/components/http/">API password</a> if you have configured a password. Add <code class="highlighter-rouge">&amp;api_password=[Your password]</code> to the end of the URL.</li>
   <li>You can change the name of your device name by replacing <code class="highlighter-rouge">&amp;device=%SER</code> with <code class="highlighter-rouge">&amp;device=[Devicename]</code>.</li>
