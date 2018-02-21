@@ -459,13 +459,13 @@ In cases where, for whatever reason, apt-get installing is not appropriate for y
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">automation</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">alias</span><span class="pi">:</span> <span class="s1">'</span><span class="s">SSL</span><span class="nv"> </span><span class="s">expiry</span><span class="nv"> </span><span class="s">notification'</span>
     <span class="s">trigger</span><span class="pi">:</span>
-    <span class="s">platform</span><span class="pi">:</span> <span class="s">numeric_state</span>
-    <span class="s">entity_id</span><span class="pi">:</span> <span class="s">sensor.ssl_cert_expiry</span>
-    <span class="s">below</span><span class="pi">:</span> <span class="s">21</span>
-  <span class="s">action</span><span class="pi">:</span>
-    <span class="s">service</span><span class="pi">:</span> <span class="s">notify.[your_notification_preference]</span>
-    <span class="s">data</span><span class="pi">:</span>
-      <span class="s">message</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Warning</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">SSL</span><span class="nv"> </span><span class="s">certificate</span><span class="nv"> </span><span class="s">expires</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">21</span><span class="nv"> </span><span class="s">days</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">automatically</span><span class="nv"> </span><span class="s">renewed'</span>
+      <span class="s">platform</span><span class="pi">:</span> <span class="s">numeric_state</span>
+      <span class="s">entity_id</span><span class="pi">:</span> <span class="s">sensor.ssl_cert_expiry</span>
+      <span class="s">below</span><span class="pi">:</span> <span class="s">21</span>
+    <span class="s">action</span><span class="pi">:</span>
+      <span class="s">service</span><span class="pi">:</span> <span class="s">notify.[your_notification_preference]</span>
+      <span class="s">data</span><span class="pi">:</span>
+        <span class="s">message</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Warning</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">SSL</span><span class="nv"> </span><span class="s">certificate</span><span class="nv"> </span><span class="s">expires</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">21</span><span class="nv"> </span><span class="s">days</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">automatically</span><span class="nv"> </span><span class="s">renewed'</span>
 </code></pre>
 </div>
 <p>If you receive this warning notification, follow the steps for a manual update from step 8. Any error messages received at that point can be googled and resolved. If the manual update goes without a hitch there may be something wrong with your chosen method for automatic updates, and you can start troubleshooting from there.</p>

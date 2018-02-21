@@ -78,7 +78,7 @@
   <p class="note warning">
 The upgrade process differs depending on the installation you have, so please review the documentation that is specific to your install <a href="/hassio/">Hass.io</a>, <a href="/docs/hassbian/common-tasks/#update-home-assistant">HASSbian</a>, <a href="/docs/installation/vagrant/">Vagrant</a>, or <a href="/docs/installation/virtualenv/#upgrading-home-assistant">Virtualenv</a>.
 </p>
-<p>View what’s new in the latest version and potential impacts on your system <a href="https://github.com/home-assistant/home-assistant/releases">here</a>.</p>
+<p>Check what’s new in the latest version and potentially impacts your system in <a href="https://github.com/home-assistant/home-assistant/releases">Home Assistant release notes</a>. It is good practice to review these release notes and pay close attention to the <strong>Breaking Changes</strong> that are listed there. If you havn’t done an update for a while, you should also check previous release notes as they can also contain relevant <strong>Breaking Changes</strong>. <strong>Breaking Changes</strong> may require configuration updates for your components. If you missed this and Home Assistant refuses to start, check <code class="highlighter-rouge">&lt;config-dir&gt;/home-assistant.log</code> for details about broken components.</p>
 <p>The default way to update Home Assistant to the latest release, when available, is:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pip3 install --upgrade homeassistant
 </code></pre>
