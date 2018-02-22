@@ -435,7 +435,7 @@ broadlink.send_packet_192_168_0_107 -&gt; switch.broadlink_send_packet_192_168_0
 <p>Once you’re done, ask Alexa to discover devices (“Alexa, discover devices”) and you are all set to control them: “Alexa, turn on &lt;device name&gt;”.</p>
 <p>See the <a href="/components/cloud/">Cloud component configuration</a> to learn how to filter which devices get exposed to Alexa.</p>
 <h2><a class="title-link" name="faq" href="#faq"></a> FAQ</h2>
-<p><em>Last updated: December 26, 2017</em></p>
+<p><em>Last updated: February 22, 2018</em></p>
 <h4><a class="title-link" name="i-thought-the-home-assistant-crew-didnt-like-the-cloud" href="#i-thought-the-home-assistant-crew-didnt-like-the-cloud"></a> I thought the Home Assistant crew didn’t like the cloud?</h4>
 <p>You are right, <a href="https://home-assistant.io/blog/2016/01/19/perfect-home-automation/#your-system-should-run-at-home-not-in-the-cloud">we don’t</a>! The Home Assistant Cloud is not an alternative to running your local Home Assistant instance. All control and automations are still running locally.</p>
 <p>Instead, the Home Assistant Cloud is an extension of your local instance. It allows to communicate with companies that force us to communicate via a public available cloud endpoint like Amazon Alexa and Google Assistant.</p>
@@ -461,7 +461,7 @@ broadlink.send_packet_192_168_0_107 -&gt; switch.broadlink_send_packet_192_168_0
   <li>Alexa shopping list integration</li>
 </ul>
 <h4><a class="title-link" name="what-countries-are-supported-at-launch" href="#what-countries-are-supported-at-launch"></a> What countries are supported at launch?</h4>
-<p>Only US is currently supported. The reason for this limitation is that we need to do extra steps and certifications for each country’s Alexa skill. This is in progress but the timeline depends on Amazon.</p>
+<p>As of February 2018, we are live in all countries that have Alexa except for Japan (which is under certification).</p>
 <h4><a class="title-link" name="how-is-the-connection-made-to-the-cloud" href="#how-is-the-connection-made-to-the-cloud"></a> How is the connection made to the cloud?</h4>
 <p>The connection is made using a WebSocket connection over HTTPS. <a href="https://github.com/home-assistant/home-assistant/blob/dev/homeassistant/components/cloud/iot.py">See the source here</a>.</p>
 <h4><a class="title-link" name="i-think-that-the-price-is-too-high-for-what-i-get" href="#i-think-that-the-price-is-too-high-for-what-i-get"></a> I think that the price is too high for what I get.</h4>
