@@ -185,12 +185,13 @@
 <p>The following example shows the usage of the <code class="highlighter-rouge">input_datetime</code> as a trigger in an automation (note that you will need a <a href="/components/sensor.time_date/">time sensor</a> elsewhere in your configuration):</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="c1"># Turns on bedroom light at the time specified.</span>
+<span class="s">automation</span><span class="pi">:</span>
   <span class="s">trigger</span><span class="pi">:</span>
     <span class="s">platform</span><span class="pi">:</span> <span class="s">template</span>
  <span class="s">   value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">states('sensor.time')</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">(states.input_datetime.bedroom_alarm_clock_time.attributes.timestamp</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">int</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">timestamp_custom('%H:%M',</span><span class="nv"> </span><span class="s">False))</span><span class="nv"> </span><span class="s">}}"</span>
  <span class="s"> action</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">light.turn_on</span>
-      <span class="s">entity_id</span><span class="pi">:</span> <span class="s">light.bedroom</span>
+    <span class="s">service</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+    <span class="s">entity_id</span><span class="pi">:</span> <span class="s">light.bedroom</span>
 </code></pre>
 </div>
 <p>To dynamically set the <code class="highlighter-rouge">input_datetime</code> you can call <code class="highlighter-rouge">input_datetime.set_datetime</code>. The following example can be used in an automation rule:</p>
