@@ -98,10 +98,11 @@
         <dt><a class="title-link" name="purge_keep_days" href="#purge_keep_days"></a> purge_keep_days</dt>
         <dd>
           <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">Specify the number of history days to keep in recorder database after a purge.</span></p>
+          <p class="default">Default value: 10</p>
         </dd>
         <dt><a class="title-link" name="purge_interval" href="#purge_interval"></a> purge_interval</dt>
         <dd>
-          <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">How often (in days) the purge task runs. If a scheduled purge is missed (e.g., if Home Assistant was not running), the schedule will resume soon after Home Assistant restarts. You can use the <a href="#service-purge">service</a> call <code class="highlighter-rouge">purge</code> when required without impacting the purge schedule.</span></p>
+          <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">How often (in days) the purge task runs. If a scheduled purge is missed (e.g., if Home Assistant was not running), the schedule will resume soon after Home Assistant restarts. You can use the <a href="#service-purge">service</a> call <code class="highlighter-rouge">purge</code> when required without impacting the purge schedule. If this is set to <code class="highlighter-rouge">0</code> (zero), automatic purging is disabled.</span></p>
           <p class="default">Default value: 1</p>
         </dd>
         <dt><a class="title-link" name="exclude" href="#exclude"></a> exclude</dt>
@@ -182,14 +183,28 @@
 </div>
 <p>If you only want to hide events from e.g. your history, take a look at the <a href="/components/history/"><code class="highlighter-rouge">history</code> component</a>. Same goes for logbook. But if you have privacy concerns about certain events or neither want them in history or logbook, you should use the <code class="highlighter-rouge">exclude</code>/<code class="highlighter-rouge">include</code> options of the <code class="highlighter-rouge">recorder</code> component, that they aren’t even in your database. That way you can save storage and keep the database small by excluding certain often-logged events (like <code class="highlighter-rouge">sensor.last_boot</code>).</p>
 <h3><a class="title-link" name="service-purge" href="#service-purge"></a> Service <code class="highlighter-rouge">purge</code></h3>
-<p>Call the service <code class="highlighter-rouge">recorder.purge</code> to start purge task, which deletes events and states older than x days, according to <code class="highlighter-rouge">keep_days</code> service data (<em>Required</em>)</p>
-<p>Automation <a href="https://home-assistant.io/getting-started/automation-action/">action</a> example:</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">action</span><span class="pi">:</span>
-  <span class="s">service</span><span class="pi">:</span> <span class="s">recorder.purge</span>
-  <span class="s">data</span><span class="pi">:</span>
-    <span class="s">keep_days</span><span class="pi">:</span> <span class="s">5</span>
-</code></pre>
-</div>
+<p>Call the service <code class="highlighter-rouge">recorder.purge</code> to start a purge task which deletes events and states older than x days, according to <code class="highlighter-rouge">keep_days</code> service data.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">keep_days</code></td>
+      <td>yes</td>
+      <td>The number of history days to keep in recorder database (defaults to the component <code class="highlighter-rouge">purge_keep_days</code> configuration)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">repack</code></td>
+      <td>yes</td>
+      <td>Rewrite the entire database, possibly saving some disk space (only supported for SQLite)</td>
+    </tr>
+  </tbody>
+</table>
 <h3><a class="title-link" name="restore-state" href="#restore-state"></a> Restore State</h3>
 <p>If the <code class="highlighter-rouge">recorder</code> component is activated then some components support <code class="highlighter-rouge">restore_state</code> which will restore the state of the entity after Home Assistant is started to the state before Home Assistant was stopped. Please make sure that you do not exclude the entities for which you want the state to be restored from your recordings. An incomplete list of components that currently support <code class="highlighter-rouge">restore_state</code>:</p>
 <ul>

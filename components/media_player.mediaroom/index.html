@@ -106,8 +106,23 @@
 <p>The component has been developed for Portuguese TV operators currently using the Mediaroom platform, but should also work in other deployments in which the STB can be controlled remotely through a socket on port 8082.</p>
 <p>In most cases (single STB) you just need to setup the <em>platform</em> and discovery will do the rest. In case you have more than one STB you are required to set the <em>host</em> in each one of the entries.</p>
 <p>If the STB is on the same network segment as Home Assistant, it can determine whether the device is turned on or off. Without this, the component will fail to determine the Set-top box status, and you are required to add the <em>optimistic</em> configuration variable.</p>
-<h3><a class="title-link" name="example-configuration-with-2-stb" href="#example-configuration-with-2-stb"></a> Example configuration with 2 STB</h3>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry for 2 STB</span>
+<h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>
+<h3><a class="title-link" name="example-press_button-script" href="#example-press_button-script"></a> Example <code class="highlighter-rouge">press_button</code> script</h3>
+<p>The <code class="highlighter-rouge">play_media</code> function can be used in scripts to change channels.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example play_media script</span>
+<span class="c1">#</span>
+<span class="s">press_button</span><span class="pi">:</span>
+  <span class="s">sequence</span><span class="pi">:</span>
+    <span class="s">service</span><span class="pi">:</span> <span class="s">media_player.play_media</span>
+    <span class="s">data_template</span><span class="pi">:</span>
+      <span class="s">entity_id</span><span class="pi">:</span> <span class="s">media_player.mediaroom_stb</span>
+      <span class="s">media_content_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="s">media_content_type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">channel"</span>
+
+<span class="c1">### &lt;a class='title-link' name='example-configuration-with-2-stb' href='#example-configuration-with-2-stb'&gt;&lt;/a&gt; Example configuration with 2 STB </span>
+
+<span class="err">```</span><span class="s">yaml</span>
+<span class="c1"># Example configuration.yaml entry for 2 STB</span>
 <span class="s">media_player</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">mediaroom</span>
     <span class="s">host</span><span class="pi">:</span> <span class="s">192.168.1.64</span>
@@ -289,6 +304,9 @@
         </li>
         <li>
             <a href='/components/media_player.volumio/'>Volumio Media Player</a>
+        </li>
+        <li>
+            <a href='/components/media_player.xiaomi_tv/'>Xiaomi TV</a>
         </li>
         <li>
             <a href='/components/media_player.yamaha_musiccast/'>Yamaha MusicCast Receivers</a>

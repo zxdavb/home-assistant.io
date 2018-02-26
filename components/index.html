@@ -80,16 +80,16 @@ Support for these components is provided by the Home Assistant community.
 <div class="grid">
   <div class="grid__item one-sixth lap-one-whole palm-one-whole">
     <div class="filter-button-group">
-      <a href='#all' class="btn">All (987)</a>
+      <a href='#all' class="btn">All (1004)</a>
       <a href='#featured' class="btn featured">Featured</a>
-      <a href='#version/0.63' class="btn added_in_current_version">Added in 0.63 (12)</a>
-      <a href='#version/0.62' class="btn added_one_version_ago">Added in 0.62 (13)</a>
-      <a href='#version/0.61' class="btn added_two_versions_ago">Added in 0.61 (18)</a>
+      <a href='#version/0.64' class="btn added_in_current_version">Added in 0.64 (14)</a>
+      <a href='#version/0.63' class="btn added_one_version_ago">Added in 0.63 (12)</a>
+      <a href='#version/0.62' class="btn added_two_versions_ago">Added in 0.62 (16)</a>
     <a href='#alarm' class="btn">Alarm (20)</a>
     <a href='#automation' class="btn">Automation (20)</a>
-    <a href='#binary-sensor' class="btn">Binary Sensor (69)</a>
+    <a href='#binary-sensor' class="btn">Binary Sensor (70)</a>
     <a href='#calendar' class="btn">Calendar (6)</a>
-    <a href='#camera' class="btn">Camera (31)</a>
+    <a href='#camera' class="btn">Camera (32)</a>
     <a href='#climate' class="btn">Climate (33)</a>
     <a href='#cover' class="btn">Cover (23)</a>
     <a href='#diy' class="btn">DIY (15)</a>
@@ -100,27 +100,27 @@ Support for these components is provided by the Home Assistant community.
     <a href='#front-end' class="btn">Front end (5)</a>
     <a href='#health' class="btn">Health (6)</a>
     <a href='#history' class="btn">History (15)</a>
-    <a href='#hub' class="btn">Hub (93)</a>
+    <a href='#hub' class="btn">Hub (96)</a>
     <a href='#image-processing' class="btn">Image Processing (8)</a>
     <a href='#intent' class="btn">Intent (2)</a>
     <a href='#light' class="btn">Light (60)</a>
-    <a href='#lock' class="btn">Lock (12)</a>
+    <a href='#lock' class="btn">Lock (13)</a>
     <a href='#mailbox' class="btn">Mailbox (1)</a>
-    <a href='#media-player' class="btn">Media Player (54)</a>
+    <a href='#media-player' class="btn">Media Player (55)</a>
     <a href='#notifications' class="btn">Notifications (57)</a>
     <a href='#organization' class="btn">Organization (3)</a>
-    <a href='#presence-detection' class="btn">Presence Detection (49)</a>
+    <a href='#presence-detection' class="btn">Presence Detection (50)</a>
     <a href='#remote' class="btn">Remote (5)</a>
-    <a href='#scene' class="btn">Scene (9)</a>
-    <a href='#sensor' class="btn">Sensor (127)</a>
+    <a href='#scene' class="btn">Scene (10)</a>
+    <a href='#sensor' class="btn">Sensor (133)</a>
     <a href='#social' class="btn">Social (5)</a>
-    <a href='#switch' class="btn">Switch (75)</a>
+    <a href='#switch' class="btn">Switch (76)</a>
     <a href='#system-monitor' class="btn">System Monitor (29)</a>
     <a href='#text-to-speech' class="btn">Text-to-speech (8)</a>
     <a href='#transport' class="btn">Transport (16)</a>
     <a href='#utility' class="btn">Utility (7)</a>
     <a href='#vacuum' class="btn">Vacuum (5)</a>
-    <a href='#voice' class="btn">Voice (7)</a>
+    <a href='#voice' class="btn">Voice (8)</a>
     <a href='#weather' class="btn">Weather (25)</a>
       <a href='#other' class="btn">Other</a>
     </div>
@@ -213,6 +213,10 @@ var allComponents = [
 {url:"/components/device_tracker.aruba/", title:"Aruba", cat:"presence-detection", featured: false, v: "0.7", logo: "aruba.png"},
 {url:"/components/asterisk_mbox/", title:"Asterisk Voicemail", cat:"other", featured: false, v: "0.0", logo: ""},
 {url:"/components/mailbox.asterisk_mbox/", title:"Asterisk Voicemail Mailbox", cat:"mailbox", featured: false, v: "0.0", logo: ""},
+{url:"/components/august/", title:"August", cat:"hub", featured: false, v: "0.64", logo: "august.png"},
+{url:"/components/binary_sensor.august/", title:"August Binary Sensor", cat:"binary-sensor", featured: false, v: "0.64", logo: "august.png"},
+{url:"/components/camera.august/", title:"August Camera", cat:"camera", featured: false, v: "0.64", logo: "august.png"},
+{url:"/components/lock.august/", title:"August Lock", cat:"lock", featured: false, v: "0.64", logo: "august.png"},
 {url:"/components/binary_sensor.aurora/", title:"Aurora sensor", cat:"binary-sensor", featured: false, v: "0.39", logo: "noaa.png"},
 {url:"/components/device_tracker.automatic/", title:"Automatic", cat:"presence-detection", featured: false, v: "0.28", logo: "automatic.png"},
 {url:"/components/automation/", title:"Automation", cat:"automation", featured: false, v: "0.0", logo: "home-assistant.png"},
@@ -223,6 +227,9 @@ var allComponents = [
 {url:"/components/sensor.bh1750/", title:"BH1750 Light sensor", cat:"sensor", featured: false, v: "0.48", logo: "raspberry-pi.png"},
 {url:"/components/sensor.bme280/", title:"BME280 Sensor", cat:"sensor", featured: false, v: "0.48", logo: "raspberry-pi.png"},
 {url:"/components/sensor.bme680/", title:"BME680 Sensor", cat:"sensor", featured: false, v: "0.62", logo: "raspberry-pi.png"},
+{url:"/components/bmw_connected_drive/", title:"BMW connected drive", cat:"hub", featured: false, v: "0.64", logo: "bmw.png"},
+{url:"/components/device_tracker.bmw_connected_drive/", title:"BMW connected drive", cat:"presence-detection", featured: false, v: "0.64", logo: "bmw.png"},
+{url:"/components/sensor.bmw_connected_drive/", title:"BMW connected drive", cat:"sensor", featured: false, v: "0.64", logo: "bmw.png"},
 {url:"/components/weather.bom/", title:"BOM Australia", cat:"weather", featured: false, v: "0.36", logo: "bom.png"},
 {url:"/components/sensor.bom/", title:"BOM Australia Sensor", cat:"weather", featured: false, v: "0.29", logo: "bom.png"},
 {url:"/components/device_tracker.bt_home_hub_5/", title:"BT Home Hub 5", cat:"presence-detection", featured: false, v: "0.0", logo: "bt.png"},
@@ -381,6 +388,7 @@ var allComponents = [
 {url:"/components/sensor.fido/", title:"Fido", cat:"sensor", featured: false, v: "0.39", logo: "fido.png"},
 {url:"/components/notify.file/", title:"File", cat:"notifications", featured: false, v: "0.7", logo: "file.png"},
 {url:"/components/sensor.file/", title:"File Sensor", cat:"sensor", featured: false, v: "0.45", logo: "file.png"},
+{url:"/components/sensor.filesize/", title:"File size sensor", cat:"sensor", featured: false, v: "0.64", logo: "file.png"},
 {url:"/components/media_player.firetv/", title:"FireTV", cat:"media-player", featured: false, v: "0.7", logo: "firetv.png"},
 {url:"/components/sensor.fitbit/", title:"Fitbit", cat:"health", featured: false, v: "0.19", logo: "fitbit.png"},
 {url:"/components/sensor.fixer/", title:"Fixer.io", cat:"finance", featured: false, v: "0.23", logo: "fixer-io.png"},
@@ -388,6 +396,7 @@ var allComponents = [
 {url:"/components/binary_sensor.flic/", title:"Flic Smart Button", cat:"binary-sensor", featured: false, v: "0.35", logo: "flic.png"},
 {url:"/components/light.flux_led/", title:"Flux Led/MagicLight", cat:"light", featured: false, v: "0.25", logo: "magic_light.png"},
 {url:"/components/switch.flux/", title:"Flux Light Adjustment", cat:"automation", featured: false, v: "0.21", logo: "home-assistant.png"},
+{url:"/components/sensor.folder/", title:"Folder sensor", cat:"sensor", featured: false, v: "0.64", logo: "file.png"},
 {url:"/components/camera.foscam/", title:"Foscam IP Camera", cat:"camera", featured: false, v: "0.0", logo: "foscam.png"},
 {url:"/components/foursquare/", title:"Foursquare", cat:"social", featured: false, v: "0.26", logo: "foursquare.png"},
 {url:"/components/notify.free_mobile/", title:"Free Mobile", cat:"notifications", featured: false, v: "0.11", logo: "free_mobile.png"},
@@ -443,6 +452,7 @@ var allComponents = [
 {url:"/components/switch.hive/", title:"Hive Switch", cat:"switch", featured: false, v: "0.59", logo: "hive.png"},
 {url:"/components/climate.hive/", title:"Hive Thermostat", cat:"climate", featured: false, v: "0.59", logo: "hive.png"},
 {url:"/components/cloud/", title:"Home Assistant Cloud", cat:"voice", featured: false, v: "0.60", logo: "home-assistant.png"},
+{url:"/components/homekit/", title:"HomeKit", cat:"voice", featured: false, v: "0.64", logo: "apple-homekit.png"},
 {url:"/components/homematic/", title:"Homematic", cat:"hub", featured: false, v: "0.0", logo: "homematic.png"},
 {url:"/components/binary_sensor.homematic/", title:"Homematic Binary Sensor", cat:"binary-sensor", featured: false, v: "0.23", logo: "homematic.png"},
 {url:"/components/cover.homematic/", title:"Homematic Cover", cat:"cover", featured: false, v: "0.27", logo: "homematic.png"},
@@ -854,6 +864,9 @@ var allComponents = [
 {url:"/components/sleepiq/", title:"SleepIQ", cat:"hub", featured: false, v: "0.29", logo: "sleepiq.png"},
 {url:"/components/binary_sensor.sleepiq/", title:"SleepIQ Binary Sensor", cat:"binary-sensor", featured: false, v: "0.29", logo: "sleepiq.png"},
 {url:"/components/sensor.sleepiq/", title:"SleepIQ Sensor", cat:"sensor", featured: false, v: "0.29", logo: "sleepiq.png"},
+{url:"/components/smappee/", title:"Smappee", cat:"hub", featured: false, v: "0.62", logo: "smappee.png"},
+{url:"/components/sensor.smappee/", title:"Smappee Sensor", cat:"sensor", featured: false, v: "0.62", logo: "smappee.png"},
+{url:"/components/switch.smappee/", title:"Smappee Switch", cat:"switch", featured: false, v: "0.62", logo: "smappee.png"},
 {url:"/components/media_player.snapcast/", title:"Snapcast", cat:"media-player", featured: false, v: "0.13", logo: "snapcast.png"},
 {url:"/components/snips/", title:"Snips", cat:"voice", featured: false, v: "0.48", logo: "snips.png"},
 {url:"/components/sensor.sochain/", title:"SoChain", cat:"finance", featured: false, v: "0.61", logo: "sochain.png"},
@@ -863,7 +876,9 @@ var allComponents = [
 {url:"/components/media_player.soundtouch/", title:"Soundtouch", cat:"media-player", featured: false, v: "0.34", logo: "soundtouch.png"},
 {url:"/components/sensor.speedtest/", title:"Speedtest.net", cat:"system-monitor", featured: false, v: "0.13", logo: "speedtest.png"},
 {url:"/components/splunk/", title:"Splunk", cat:"history", featured: false, v: "0.13", logo: "splunk.png"},
+{url:"/components/sensor.spotcrime/", title:"Spot Crime", cat:"sensor", featured: false, v: "0.64", logo: ""},
 {url:"/components/media_player.spotify/", title:"Spotify", cat:"media-player", featured: false, v: "0.43", logo: "spotify.png"},
+{url:"/components/sensor.startca/", title:"Start.ca", cat:"sensor", featured: false, v: "0.64", logo: "startca.png"},
 {url:"/components/sensor.statistics/", title:"Statistics Sensor", cat:"sensor", featured: false, v: "0.30", logo: "home-assistant.png"},
 {url:"/components/statsd/", title:"StatsD", cat:"history", featured: false, v: "0.12", logo: "statsd.png"},
 {url:"/components/sensor.steam_online/", title:"Steam", cat:"social", featured: false, v: "0.14", logo: "steam.png"},
@@ -891,6 +906,7 @@ var allComponents = [
 {url:"/components/climate.tado/", title:"Tado Thermostat", cat:"climate", featured: false, v: "0.41", logo: "tado.png"},
 {url:"/components/tahoma/", title:"Tahoma", cat:"hub", featured: false, v: "0.59", logo: "tahoma.png"},
 {url:"/components/cover.tahoma/", title:"Tahoma Cover", cat:"cover", featured: false, v: "0.59", logo: "tahoma.png"},
+{url:"/components/scene.tahoma/", title:"Tahoma Scene", cat:"scene", featured: false, v: "0.64", logo: "tahoma.png"},
 {url:"/components/sensor.tahoma/", title:"Tahoma Sensor", cat:"sensor", featured: false, v: "0.59", logo: "tahoma.png"},
 {url:"/components/sensor.tank_utility/", title:"Tank Utility Sensor", cat:"sensor", featured: false, v: "0.53", logo: "tank_utility.png"},
 {url:"/components/binary_sensor.tapsaff/", title:"Taps Aff", cat:"weather", featured: false, v: "0.47", logo: "tapsaff.png"},
@@ -1044,6 +1060,7 @@ var allComponents = [
 {url:"/components/sensor.xiaomi_aqara/", title:"Xiaomi Sensor", cat:"sensor", featured: false, v: "0.50", logo: "xiaomi.png"},
 {url:"/components/switch.xiaomi_miio/", title:"Xiaomi Smart WiFi Socket and Smart Power Strip", cat:"switch", featured: false, v: "0.0", logo: "xiaomi.png"},
 {url:"/components/switch.xiaomi_aqara/", title:"Xiaomi Switch", cat:"switch", featured: false, v: "0.50", logo: "xiaomi.png"},
+{url:"/components/media_player.xiaomi_tv/", title:"Xiaomi TV", cat:"media-player", featured: false, v: "0.64", logo: "xiaomi.png"},
 {url:"/components/sensor.yr/", title:"YR", cat:"weather", featured: false, v: "0.11", logo: "yr.png"},
 {url:"/components/sensor.yahoo_finance/", title:"Yahoo Finance", cat:"finance", featured: false, v: "0.29", logo: "yahoo_finance.png"},
 {url:"/components/weather.yweather/", title:"Yahoo Weather", cat:"weather", featured: false, v: "0.47", logo: "yahooweather.png"},
@@ -1320,6 +1337,10 @@ allComponents.pop(); // remove placeholder element at the end
       <li><a href='/components/device_tracker.aruba/'>Aruba</a></li>
       <li><a href='/components/asterisk_mbox/'>Asterisk Voicemail</a></li>
       <li><a href='/components/mailbox.asterisk_mbox/'>Asterisk Voicemail Mailbox</a></li>
+      <li><a href='/components/august/'>August</a></li>
+      <li><a href='/components/binary_sensor.august/'>August Binary Sensor</a></li>
+      <li><a href='/components/camera.august/'>August Camera</a></li>
+      <li><a href='/components/lock.august/'>August Lock</a></li>
       <li><a href='/components/binary_sensor.aurora/'>Aurora sensor</a></li>
       <li><a href='/components/device_tracker.automatic/'>Automatic</a></li>
       <li><a href='/components/automation/'>Automation</a></li>
@@ -1330,6 +1351,9 @@ allComponents.pop(); // remove placeholder element at the end
       <li><a href='/components/sensor.bh1750/'>BH1750 Light sensor</a></li>
       <li><a href='/components/sensor.bme280/'>BME280 Sensor</a></li>
       <li><a href='/components/sensor.bme680/'>BME680 Sensor</a></li>
+      <li><a href='/components/bmw_connected_drive/'>BMW connected drive</a></li>
+      <li><a href='/components/device_tracker.bmw_connected_drive/'>BMW connected drive</a></li>
+      <li><a href='/components/sensor.bmw_connected_drive/'>BMW connected drive</a></li>
       <li><a href='/components/weather.bom/'>BOM Australia</a></li>
       <li><a href='/components/sensor.bom/'>BOM Australia Sensor</a></li>
       <li><a href='/components/device_tracker.bt_home_hub_5/'>BT Home Hub 5</a></li>
@@ -1488,6 +1512,7 @@ allComponents.pop(); // remove placeholder element at the end
       <li><a href='/components/sensor.fido/'>Fido</a></li>
       <li><a href='/components/notify.file/'>File</a></li>
       <li><a href='/components/sensor.file/'>File Sensor</a></li>
+      <li><a href='/components/sensor.filesize/'>File size sensor</a></li>
       <li><a href='/components/media_player.firetv/'>FireTV</a></li>
       <li><a href='/components/sensor.fitbit/'>Fitbit</a></li>
       <li><a href='/components/sensor.fixer/'>Fixer.io</a></li>
@@ -1495,6 +1520,7 @@ allComponents.pop(); // remove placeholder element at the end
       <li><a href='/components/binary_sensor.flic/'>Flic Smart Button</a></li>
       <li><a href='/components/light.flux_led/'>Flux Led/MagicLight</a></li>
       <li><a href='/components/switch.flux/'>Flux Light Adjustment</a></li>
+      <li><a href='/components/sensor.folder/'>Folder sensor</a></li>
       <li><a href='/components/camera.foscam/'>Foscam IP Camera</a></li>
       <li><a href='/components/foursquare/'>Foursquare</a></li>
       <li><a href='/components/notify.free_mobile/'>Free Mobile</a></li>
@@ -1550,6 +1576,7 @@ allComponents.pop(); // remove placeholder element at the end
       <li><a href='/components/switch.hive/'>Hive Switch</a></li>
       <li><a href='/components/climate.hive/'>Hive Thermostat</a></li>
       <li><a href='/components/cloud/'>Home Assistant Cloud</a></li>
+      <li><a href='/components/homekit/'>HomeKit</a></li>
       <li><a href='/components/homematic/'>Homematic</a></li>
       <li><a href='/components/binary_sensor.homematic/'>Homematic Binary Sensor</a></li>
       <li><a href='/components/cover.homematic/'>Homematic Cover</a></li>
@@ -1961,6 +1988,9 @@ allComponents.pop(); // remove placeholder element at the end
       <li><a href='/components/sleepiq/'>SleepIQ</a></li>
       <li><a href='/components/binary_sensor.sleepiq/'>SleepIQ Binary Sensor</a></li>
       <li><a href='/components/sensor.sleepiq/'>SleepIQ Sensor</a></li>
+      <li><a href='/components/smappee/'>Smappee</a></li>
+      <li><a href='/components/sensor.smappee/'>Smappee Sensor</a></li>
+      <li><a href='/components/switch.smappee/'>Smappee Switch</a></li>
       <li><a href='/components/media_player.snapcast/'>Snapcast</a></li>
       <li><a href='/components/snips/'>Snips</a></li>
       <li><a href='/components/sensor.sochain/'>SoChain</a></li>
@@ -1970,7 +2000,9 @@ allComponents.pop(); // remove placeholder element at the end
       <li><a href='/components/media_player.soundtouch/'>Soundtouch</a></li>
       <li><a href='/components/sensor.speedtest/'>Speedtest.net</a></li>
       <li><a href='/components/splunk/'>Splunk</a></li>
+      <li><a href='/components/sensor.spotcrime/'>Spot Crime</a></li>
       <li><a href='/components/media_player.spotify/'>Spotify</a></li>
+      <li><a href='/components/sensor.startca/'>Start.ca</a></li>
       <li><a href='/components/sensor.statistics/'>Statistics Sensor</a></li>
       <li><a href='/components/statsd/'>StatsD</a></li>
       <li><a href='/components/sensor.steam_online/'>Steam</a></li>
@@ -1998,6 +2030,7 @@ allComponents.pop(); // remove placeholder element at the end
       <li><a href='/components/climate.tado/'>Tado Thermostat</a></li>
       <li><a href='/components/tahoma/'>Tahoma</a></li>
       <li><a href='/components/cover.tahoma/'>Tahoma Cover</a></li>
+      <li><a href='/components/scene.tahoma/'>Tahoma Scene</a></li>
       <li><a href='/components/sensor.tahoma/'>Tahoma Sensor</a></li>
       <li><a href='/components/sensor.tank_utility/'>Tank Utility Sensor</a></li>
       <li><a href='/components/binary_sensor.tapsaff/'>Taps Aff</a></li>
@@ -2151,6 +2184,7 @@ allComponents.pop(); // remove placeholder element at the end
       <li><a href='/components/sensor.xiaomi_aqara/'>Xiaomi Sensor</a></li>
       <li><a href='/components/switch.xiaomi_miio/'>Xiaomi Smart WiFi Socket and Smart Power Strip</a></li>
       <li><a href='/components/switch.xiaomi_aqara/'>Xiaomi Switch</a></li>
+      <li><a href='/components/media_player.xiaomi_tv/'>Xiaomi TV</a></li>
       <li><a href='/components/sensor.yr/'>YR</a></li>
       <li><a href='/components/sensor.yahoo_finance/'>Yahoo Finance</a></li>
       <li><a href='/components/weather.yweather/'>Yahoo Weather</a></li>

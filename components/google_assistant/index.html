@@ -100,6 +100,7 @@ To use Google Assistant, your Home Assistant configuration has to be externally 
       <span class="s">type</span><span class="pi">:</span> <span class="s">light</span>
     <span class="s">light.living_room</span><span class="pi">:</span>
       <span class="s">expose</span><span class="pi">:</span> <span class="s">false</span>
+      <span class="s">room</span><span class="pi">:</span> <span class="s">living room</span>
 </code></pre>
 </div>
 <p>Configuration variables:</p>
@@ -162,6 +163,10 @@ To use Google Assistant, your Home Assistant configuration has to be externally 
             <dt><a class="title-link" name="type" href="#type"></a> type</dt>
             <dd>
               <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Override how Google Assistant interprets the domain of the entity. For example, set to <code class="highlighter-rouge">light</code> for a switch entity to have it be handled as a light.</span></p>
+            </dd>
+            <dt><a class="title-link" name="room" href="#room"></a> room</dt>
+            <dd>
+              <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Allows for associating this device to a Room in Google Assistant.  This is currently non-functional, but will be enabled in the near future.</span></p>
             </dd>
           </dl>
         </dd>
@@ -291,6 +296,9 @@ Note: This must be an HTTPS URL to work. Don’t forget to include the port numb
         </li>
         <li>
             <a href='/components/cloud/'>Home Assistant Cloud</a>
+        </li>
+        <li>
+            <a href='/components/homekit/'>HomeKit</a>
         </li>
         <li>
             <a href='/components/mycroft/'>Mycroft</a>

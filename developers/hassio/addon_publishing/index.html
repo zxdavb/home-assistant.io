@@ -104,6 +104,9 @@
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>docker run --rm --privileged -v ~/.docker:/root/.docker -v /my_addon:/data homeassistant/amd64-builder --all -t /data
 </code></pre>
 </div>
+<p class="note">
+If you are developing on macOS and using Docker for Mac, you may encounter an error message similar to the following: <code>error creating aufs mount to /var/lib/docker/aufs/mnt/<SOME_ID>-init: invalid argument&lt;/code&gt;. A proposed workaround is to add the following to the Advanced Daemon JSON configuration via Docker &gt; Preferences &gt; Daemon &gt; Advanced: <code>"storage-driver" : "aufs"</code>.
+</SOME_ID></code></p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

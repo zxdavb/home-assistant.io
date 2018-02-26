@@ -140,13 +140,20 @@
       <td>String representing a specific device in deCONZ.</td>
     </tr>
     <tr>
+      <td><code class="highlighter-rouge">entity</code></td>
+      <td>No</td>
+      <td>String representing a specific HASS entity of a device in deCONZ.</td>
+    </tr>
+    <tr>
       <td><code class="highlighter-rouge">data</code></td>
       <td>No</td>
       <td>Data is a JSON object with what data you want to alter.</td>
     </tr>
   </tbody>
 </table>
+<p>Field and entity are exclusive, i.e you can only use one in a request.</p>
 <p>{ “field”: “/lights/1”, “data”: {“name”: “light2”} }</p>
+<p>{ “entity”: “light.light1”, “data”: {“name”: “light2”} }</p>
 <p>{ “field”: “/config”, “data”: {“permitjoin”: 60} }</p>
 <h2><a class="title-link" name="remote-control-devices" href="#remote-control-devices"></a> Remote control devices</h2>
 <p>Remote controls (ZHASwitch category) will be not be exposed as a regular entity, but as events named ‘deconz_event’ with a payload of ‘id’ and ‘event’. Id will be the device name from deCONZ and Event will be the momentary state of the switch. However, a sensor entity will be created that shows the battery level of the switch as reported by deCONZ, named sensor.device_name_battery_level.</p>
@@ -286,7 +293,13 @@
             <a href='/components/arlo/'>Arlo</a>
         </li>
         <li>
+            <a href='/components/august/'>August</a>
+        </li>
+        <li>
             <a href='/components/axis/'>Axis</a>
+        </li>
+        <li>
+            <a href='/components/bmw_connected_drive/'>BMW connected drive</a>
         </li>
         <li>
             <a href='/components/wemo/'>Belkin WeMo</a>
@@ -461,6 +474,9 @@
         </li>
         <li>
             <a href='/components/sleepiq/'>SleepIQ</a>
+        </li>
+        <li>
+            <a href='/components/smappee/'>Smappee</a>
         </li>
         <li>
             <a href='/components/tado/'>Tado</a>

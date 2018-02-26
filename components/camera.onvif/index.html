@@ -91,6 +91,34 @@
   <li><strong>port</strong> (<em>Optional</em>): The port for the camera. This defaults to 5000</li>
   <li><strong>extra_arguments</strong> (<em>Optional</em>): Extra options to pass to <code class="highlighter-rouge">ffmpeg</code>, e.g. image quality or video filter options. More details in <a href="/components/ffmpeg">FFmpeg component</a>.</li>
 </ul>
+<h3><a class="title-link" name="service-cameraonvif_ptz" href="#service-cameraonvif_ptz"></a> Service <code class="highlighter-rouge">camera.onvif_ptz</code></h3>
+<p>If your ONVIF camera supports PTZ, you will be able to pan, tilt or zoom your camera.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">entity_id</code></td>
+      <td>String or list of strings that point at <code class="highlighter-rouge">entity_id</code>s of cameras. Else targets all.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">tilt</code></td>
+      <td>Tilt direction. Allowed values: <code class="highlighter-rouge">UP</code>, <code class="highlighter-rouge">DOWN</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">pan</code></td>
+      <td>Pan direction. Allowed values: <code class="highlighter-rouge">RIGHT</code>, <code class="highlighter-rouge">LEFT</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">zoom</code></td>
+      <td>Zoom. Allowed values: <code class="highlighter-rouge">ZOOM_IN</code>, <code class="highlighter-rouge">ZOOM_OUT</code></td>
+    </tr>
+  </tbody>
+</table>
 <p>If you are running into trouble with this sensor, please refer to the <a href="/components/ffmpeg/#troubleshooting">Troubleshooting section</a>.</p>
 </article>
         </div>
@@ -126,6 +154,9 @@
         </li>
         <li>
             <a href='/components/camera.arlo/'>Arlo Camera</a>
+        </li>
+        <li>
+            <a href='/components/camera.august/'>August Camera</a>
         </li>
         <li>
             <a href='/components/camera.axis/'>Axis Camera</a>

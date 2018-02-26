@@ -180,7 +180,7 @@
     </dd>
     <dt><a class="title-link" name="rgb_state_topic" href="#rgb_state_topic"></a> rgb_state_topic</dt>
     <dd>
-      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive RGB state updates.</span></p>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The MQTT topic subscribed to receive RGB state updates. The expected payload is the RGB values separated by commas, for example <code class="highlighter-rouge">255,0,127</code>.</span></p>
     </dd>
     <dt><a class="title-link" name="rgb_value_template" href="#rgb_value_template"></a> rgb_value_template</dt>
     <dd>
@@ -330,10 +330,10 @@
 <span class="s">light</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">mqtt</span>
     <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Office</span><span class="nv"> </span><span class="s">light"</span>
-    <span class="s">state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">office/rgb1/light/status"</span>
-    <span class="s">command_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">office/rgb1/light/switch"</span>
-    <span class="s">brightness_state_topic</span><span class="pi">:</span> <span class="s1">'</span><span class="s">office/rgb1/light/brightness'</span>
-    <span class="s">brightness_command_topic</span><span class="pi">:</span> <span class="s1">'</span><span class="s">office/rgb1/light/brightness/set'</span>
+    <span class="s">state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">office/light/status"</span>
+    <span class="s">command_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">office/light/switch"</span>
+    <span class="s">brightness_state_topic</span><span class="pi">:</span> <span class="s1">'</span><span class="s">office/light/brightness'</span>
+    <span class="s">brightness_command_topic</span><span class="pi">:</span> <span class="s1">'</span><span class="s">office/light/brightness/set'</span>
     <span class="s">qos</span><span class="pi">:</span> <span class="s">0</span>
     <span class="s">payload_on</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ON"</span>
     <span class="s">payload_off</span><span class="pi">:</span> <span class="s2">"</span><span class="s">OFF"</span>
@@ -349,8 +349,8 @@
     <span class="s">state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">office/light/status"</span>
     <span class="s">command_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">office/light/switch"</span>
     <span class="s">payload_off</span><span class="pi">:</span> <span class="s2">"</span><span class="s">OFF"</span>
-    <span class="s">brightness_state_topic</span><span class="pi">:</span> <span class="s1">'</span><span class="s">office/rgb1/light/brightness'</span>
-    <span class="s">brightness_command_topic</span><span class="pi">:</span> <span class="s1">'</span><span class="s">office/rgb1/light/brightness/set'</span>
+    <span class="s">brightness_state_topic</span><span class="pi">:</span> <span class="s1">'</span><span class="s">office/light/brightness'</span>
+    <span class="s">brightness_command_topic</span><span class="pi">:</span> <span class="s1">'</span><span class="s">office/light/brightness/set'</span>
     <span class="s">on_command_type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">brightness'</span>
 </code></pre>
 </div>

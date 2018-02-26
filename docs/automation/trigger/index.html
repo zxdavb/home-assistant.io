@@ -92,7 +92,7 @@
   Starting 0.42, it is no longer possible to listen for event <code class="highlighter-rouge">homeassistant_start</code>. Use the ‘homeassistant’ platform below instead.
 </p>
 <h3><a class="title-link" name="home-assistant-trigger" href="#home-assistant-trigger"></a> Home Assistant trigger</h3>
-<p>Use this platform to trigger when Home Assistant starts up and shuts down.</p>
+<p>Triggers when Home Assistant starts up or shuts down.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">automation</span><span class="pi">:</span>
   <span class="s">trigger</span><span class="pi">:</span>
     <span class="s">platform</span><span class="pi">:</span> <span class="s">homeassistant</span>
@@ -111,7 +111,7 @@
 </code></pre>
 </div>
 <h3><a class="title-link" name="numeric-state-trigger" href="#numeric-state-trigger"></a> Numeric state trigger</h3>
-<p>On state change of a specified entity, attempts to parse the state as a number and triggers once if value is changing from above to below a threshold, or from below to above the given threshold.</p>
+<p>Triggers when numeric value of an entity’s state crosses a given threshold. On state change of a specified entity, attempts to parse the state as a number and triggers once if value is changing from above to below or from below to above the given threshold.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">automation</span><span class="pi">:</span>
   <span class="s">trigger</span><span class="pi">:</span>
     <span class="s">platform</span><span class="pi">:</span> <span class="s">numeric_state</span>
@@ -134,7 +134,7 @@ Listing above and below together means the numeric_state has to be between the t
 In the example above, a numeric_state that is 17.1-24.9 would fire this trigger.
 </p>
 <h3><a class="title-link" name="state-trigger" href="#state-trigger"></a> State trigger</h3>
-<p>Triggers when the state of tracked entities change. If only entity_id given will match all state changes, even if only state attributes change.</p>
+<p>Triggers when the state of a given entity changes. If only entity_id is given trigger will activate for all state changes, even if only state attributes change.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">automation</span><span class="pi">:</span>
   <span class="s">trigger</span><span class="pi">:</span>
     <span class="s">platform</span><span class="pi">:</span> <span class="s">state</span>
@@ -155,7 +155,7 @@ In the example above, a numeric_state that is 17.1-24.9 would fire this trigger.
   Use quotes around your values for <code class="highlighter-rouge">from</code> and <code class="highlighter-rouge">to</code> to avoid the YAML parser interpreting values as booleans.
 </p>
 <h3><a class="title-link" name="sun-trigger" href="#sun-trigger"></a> Sun trigger</h3>
-<p>Trigger when the sun is setting or rising. An optional time offset can be given to have it trigger for example 45 minutes before sunset, when dusk is setting in.</p>
+<p>Triggers when the sun is setting or rising. An optional time offset can be given to have it trigger a set time before or after the sun event (i.e. 45 minutes before sunset, when dusk is setting in).</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">automation</span><span class="pi">:</span>
   <span class="s">trigger</span><span class="pi">:</span>
     <span class="s">platform</span><span class="pi">:</span> <span class="s">sun</span>

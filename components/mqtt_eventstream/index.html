@@ -93,6 +93,10 @@
     <dd>
       <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Topic to receive events from the remote server.</span></p>
     </dd>
+    <dt><a class="title-link" name="ignore_event" href="#ignore_event"></a> ignore_event</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="list">list</span>)</span><span class="required">(Optional)</span><span class="description">Ignore sending these <a href="/docs/configuration/events/">events</a> over mqtt.</span></p>
+    </dd>
   </dl>
 </div>
 <h2><a class="title-link" name="multiple-instances" href="#multiple-instances"></a> Multiple Instances</h2>
@@ -101,6 +105,9 @@
 <span class="s">mqtt_eventstream</span><span class="pi">:</span>
   <span class="s">publish_topic</span><span class="pi">:</span> <span class="s">master/topic</span>
   <span class="s">subscribe_topic</span><span class="pi">:</span> <span class="s">slaves/#</span>
+  <span class="s">ignore_event</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">call_service</span>
+    <span class="pi">-</span> <span class="s">state_changed</span>
 </code></pre>
 </div>
 <p>For a multiple instance setup, each slave would publish to their own topic.</p>

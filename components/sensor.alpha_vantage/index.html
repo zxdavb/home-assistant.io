@@ -74,14 +74,22 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">alpha_vantage</code> sensor platform uses <a href="https://www.alphavantage.co">Alpha Vantage</a> to monitor the stock market.</p>
+  <p>The <code class="highlighter-rouge">alpha_vantage</code> sensor platform uses <a href="https://www.alphavantage.co">Alpha Vantage</a> to monitor the stock market. This platform also provides detail about exchange rates.</p>
 <p>To enable the <code class="highlighter-rouge">alpha_vantage</code> platform, add the following lines to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">alpha_vantage</span>
     <span class="s">api_key</span><span class="pi">:</span> <span class="s">YOUR_API_KEY</span>
+    <span class="s">symbols</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">symbol</span><span class="pi">:</span> <span class="s">GOOGL</span>
+      <span class="s">name</span><span class="pi">:</span> <span class="s">Google</span>
+    <span class="s">foreign_exchange</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s">USD_EUR</span>
+      <span class="s">from</span><span class="pi">:</span> <span class="s">USD</span>
+      <span class="s">to</span><span class="pi">:</span> <span class="s">EUR</span>
 </code></pre>
 </div>
+<p>Either a symbol or a foreign exchange must be configured, otherwise you will not get any data.</p>
 <div class="config-vars">
   <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
   <dl class="">
@@ -92,7 +100,6 @@
     <dt><a class="title-link" name="symbols" href="#symbols"></a> symbols</dt>
     <dd>
       <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Optional)</span><span class="description">List of stock market symbols for given companies.</span></p>
-      <p class="default">Default value: GOOGL</p>
     </dd>
     <dd>
       <dl class="nested">

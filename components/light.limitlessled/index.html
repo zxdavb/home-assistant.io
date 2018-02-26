@@ -76,7 +76,7 @@
   <hr class="divider">
   <p><code class="highlighter-rouge">limitlessled</code> can control your <a href="http://www.limitlessled.com/">LimitlessLED</a> lights from within Home Assistant. The lights are also known as EasyBulb, AppLight, AppLamp, MiLight, LEDme, dekolight, or iLight.</p>
 <h3><a class="title-link" name="setup" href="#setup"></a> Setup</h3>
-<p>Before configuring Home Assistant, make sure you can control your bulbs or LEDs with the MiLight mobile application. Discover your bridge(s) IP address. You can do this via your router or a mobile application like Fing (<a href="https://play.google.com/store/apps/details?id=com.overlook.android.fing&amp;hl=en">android</a> or <a href="https://itunes.apple.com/us/app/fing-network-scanner/id430921107?mt=8">iTunes</a>). Keep in mind that LimitlessLED bulbs are controlled via groups. You can not control an individual bulb via the bridge, unless it is in a group by itself. Note that you can assign an <code class="highlighter-rouge">rgbw</code>, <code class="highlighter-rouge">rgbww</code> and <code class="highlighter-rouge">white</code> group to the same group number, effectively allowing 12 groups (4 <code class="highlighter-rouge">rgbww</code>, 4 <code class="highlighter-rouge">rgbw</code> and 4 <code class="highlighter-rouge">white</code>) per bridge.</p>
+<p>Before configuring Home Assistant, make sure you can control your bulbs or LEDs with the MiLight mobile application. Discover your bridge(s) IP address. You can do this via your router or a mobile application like Fing (<a href="https://play.google.com/store/apps/details?id=com.overlook.android.fing&amp;hl=en">android</a> or <a href="https://itunes.apple.com/us/app/fing-network-scanner/id430921107?mt=8">iTunes</a>). Keep in mind that LimitlessLED bulbs are controlled via groups. You can not control an individual bulb via the bridge, unless it is in a group by itself. Note that you can assign an <code class="highlighter-rouge">rgbw</code>, <code class="highlighter-rouge">rgbww</code>, <code class="highlighter-rouge">white</code> and <code class="highlighter-rouge">dimmer</code> group to the same group number, effectively allowing 16 groups (4 <code class="highlighter-rouge">rgbww</code>, 4 <code class="highlighter-rouge">rgbw</code>, 4 <code class="highlighter-rouge">white</code> and 4 <code class="highlighter-rouge">dimmer</code>) per bridge.</p>
 <p>To add <code class="highlighter-rouge">limitlessled</code> to your installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">light</span><span class="pi">:</span>
@@ -93,6 +93,9 @@
         <span class="s">type</span><span class="pi">:</span> <span class="s">rgbw</span>
         <span class="s">name</span><span class="pi">:</span> <span class="s">Kitchen</span>
         <span class="s">fade</span><span class="pi">:</span> <span class="s">on</span>
+      <span class="pi">-</span> <span class="s">number</span><span class="pi">:</span> <span class="s">4</span>
+        <span class="s">type</span><span class="pi">:</span> <span class="s">dimmer</span>
+        <span class="s">name</span><span class="pi">:</span> <span class="s">Livingroom</span>
     <span class="pi">-</span> <span class="s">host</span><span class="pi">:</span> <span class="s">192.168.1.11</span>
       <span class="s">groups</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">number</span><span class="pi">:</span> <span class="s">1</span>
@@ -113,7 +116,7 @@
         <ul>
           <li><strong>number</strong> (<em>Required</em>): Group number (<code class="highlighter-rouge">1</code>-<code class="highlighter-rouge">4</code>). Corresponds to the group number on the remote. These numbers may overlap only if the type is different.</li>
           <li><strong>name</strong> (<em>Required</em>): Any name you’d like. Must be unique among all configured groups.</li>
-          <li><strong>type</strong> (<em>Optional</em>): Type of group. Choose either <code class="highlighter-rouge">rgbww</code>, <code class="highlighter-rouge">rgbw</code>, <code class="highlighter-rouge">white</code>, or <code class="highlighter-rouge">bridge-led</code>. <code class="highlighter-rouge">rgbw</code> is the default if you don’t specify this entry. Use <code class="highlighter-rouge">bridge-led</code> to control the built-in LED of newer WiFi bridges.</li>
+          <li><strong>type</strong> (<em>Optional</em>): Type of group. Choose either <code class="highlighter-rouge">rgbww</code>, <code class="highlighter-rouge">rgbw</code>, <code class="highlighter-rouge">white</code>, <code class="highlighter-rouge">bridge-led</code> or <code class="highlighter-rouge">dimmer</code>. <code class="highlighter-rouge">rgbw</code> is the default if you don’t specify this entry. Use <code class="highlighter-rouge">bridge-led</code> to control the built-in LED of newer WiFi bridges.</li>
           <li><strong>fade</strong> (<em>Optional</em>): Fade behavior. Defaults to <code class="highlighter-rouge">off</code>. If turned on, the group is faded out before being turned off. This makes for a more pleasing transition at the expense of wall switch usability, since the light will turn back on at the lowest brightness if it is power cycled.</li>
         </ul>
       </li>
@@ -143,6 +146,12 @@
       <li><em>Brightness</em>: Wifi bridge v6 supports 101 brightness steps; older versions only 10.</li>
     </ul>
   </li>
+  <li><strong>Dimmer</strong> (Only supported on v6 bridges)
+    <ul>
+      <li>This type is for a single color LED dimmer like the 1CH MiLight dimmer module or similar. This type is only supported by the version 6 Wifi bridges.</li>
+      <li><em>Brightness</em>: Wifi bridge v6 supports 101 brightness steps.</li>
+    </ul>
+  </li>
   <li><strong>Transitions</strong>
     <ul>
       <li>If a transition time is set, the group will transition between the current settings and the target settings for the duration specified. Transitions from or to white are not possible - the color will change immediately.</li>
@@ -150,7 +159,9 @@
   </li>
 </ul>
 <h3><a class="title-link" name="initialization--synchronization" href="#initialization--synchronization"></a> Initialization &amp; Synchronization</h3>
-<p>When starting Home Assistant, your LimitlessLED bulbs will be set to known default values. This ensures a consistent user interface and uninterrupted turning on/off. If you control your LimitlessLED lights via the MiLight mobile application or other means while Home Assistant is running, Home Assistant can not track those changes and you may observe unexpected behavior. This is due to a LimitlessLED limitation.</p>
+<p>When starting Home Assistant, the last recorded state will be shown. This might no longer match the actual state of the bulbs.</p>
+<p>If you control your LimitlessLED lights via the MiLight mobile application or other means while Home Assistant is running, Home Assistant can not track those changes and you may observe obsolete information.</p>
+<p>This lack of synchronization is due to a LimitlessLED limitation.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

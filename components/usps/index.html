@@ -76,6 +76,25 @@
   <hr class="divider">
   <p>The <code class="highlighter-rouge">usps</code> platform allows one to track deliveries and inbound mail from the <a href="https://www.usps.com/">US Postal Service (USPS)</a>.
 In addition to having a USPS account, you will need to complete the “Opt-In” process for packages by clicking “Get Started Now” on <a href="https://my.usps.com/mobileWeb/pages/intro/start.action">this page</a>. You must also “Opt-In” to <a href="https://informeddelivery.usps.com/box/pages/intro/start.action">Informed Delivery</a> to see inbound mail.</p>
+<h2>Prerequisites</h2>
+<p>This component requires that a headless-capable web browser is installed on your system - either PhantomJS or Google Chrome. Preferably use Chrome if your operating system supports it, since PhantomJS is deprecated.</p>
+<p class="note warning">
+  If you are using a Raspberry Pi, you must use PhantomJS.
+</p>
+<h3>PhantomJS</h3>
+<p>Install the latest version of <a href="http://phantomjs.org/download.html">PhantomJS</a>. Ensure the executable is on your <code class="highlighter-rouge">PATH</code>. <code class="highlighter-rouge">phantomjs --version</code> should work and report the correct version. This is the default option and requires no further configuration.</p>
+<p class="note warning">
+  Don’t use apt-get to install PhantomJS. This version is not compatible.
+</p>
+<h3>Chrome</h3>
+<p>Install Chrome 59 or greater (preferably the most recent). Install the latest <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">Chromedriver</a>. Ensure both executables are on your <code class="highlighter-rouge">PATH</code>. <code class="highlighter-rouge">google-chrome --version</code> and <code class="highlighter-rouge">chromedriver --version</code> should work and report the correct version.</p>
+<p>OS-specific instructions:</p>
+<ul>
+  <li><a href="https://gist.github.com/ziadoz/3e8ab7e944d02fe872c3454d17af31a5">Ubuntu 16</a> (Selenium server portion <em>not</em> necessary)</li>
+  <li><a href="https://stackoverflow.com/a/46686621">RHEL/Centos 7</a></li>
+</ul>
+<p>If you use the Chrome option, specify <code class="highlighter-rouge">driver: chrome</code> in your <code class="highlighter-rouge">usps</code> configuration.</p>
+<h2>Configuration</h2>
 <p>To enable this component, add the following lines to your <code class="highlighter-rouge">configuration.yaml</code>:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">usps</span><span class="pi">:</span>
@@ -147,7 +166,13 @@ The USPS sensor logs into the MyUSPS website to scrape package data. It does not
             <a href='/components/arlo/'>Arlo</a>
         </li>
         <li>
+            <a href='/components/august/'>August</a>
+        </li>
+        <li>
             <a href='/components/axis/'>Axis</a>
+        </li>
+        <li>
+            <a href='/components/bmw_connected_drive/'>BMW connected drive</a>
         </li>
         <li>
             <a href='/components/wemo/'>Belkin WeMo</a>
@@ -322,6 +347,9 @@ The USPS sensor logs into the MyUSPS website to scrape package data. It does not
         </li>
         <li>
             <a href='/components/sleepiq/'>SleepIQ</a>
+        </li>
+        <li>
+            <a href='/components/smappee/'>Smappee</a>
         </li>
         <li>
             <a href='/components/tado/'>Tado</a>

@@ -79,8 +79,12 @@
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">device_tracker</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">unifi</span>
-    <span class="s">username</span><span class="pi">:</span> <span class="s">USERNAME</span>
-    <span class="s">password</span><span class="pi">:</span> <span class="s">PASSWORD</span>
+    <span class="s">host</span><span class="pi">:</span> <span class="s">unifi</span>
+    <span class="s">username</span><span class="pi">:</span> <span class="s">username</span>
+    <span class="s">password</span><span class="pi">:</span> <span class="s">password</span>
+    <span class="s">ssid_filter</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s1">'</span><span class="s">HomeSSID'</span>
+      <span class="pi">-</span> <span class="s1">'</span><span class="s">IoTSSID'</span>
 </code></pre>
 </div>
 <div class="config-vars">
@@ -118,6 +122,11 @@
     <dd>
       <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Optional)</span><span class="description">How long since the last seen time before the device is marked away, specified in seconds.</span></p>
       <p class="default">Default value: 300</p>
+    </dd>
+    <dt><a class="title-link" name="ssid_filter" href="#ssid_filter"></a> ssid_filter</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="list of strings">list of strings</span>)</span><span class="required">(Optional)</span><span class="description">Filter the SSIDs that tracking will occur on.</span></p>
+      <p class="default">Default value: None</p>
     </dd>
   </dl>
 </div>
@@ -165,6 +174,9 @@
         </li>
         <li>
             <a href='/components/device_tracker.automatic/'>Automatic</a>
+        </li>
+        <li>
+            <a href='/components/device_tracker.bmw_connected_drive/'>BMW connected drive</a>
         </li>
         <li>
             <a href='/components/device_tracker.bt_home_hub_5/'>BT Home Hub 5</a>

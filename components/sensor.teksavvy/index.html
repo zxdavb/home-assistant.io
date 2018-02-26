@@ -75,8 +75,7 @@
   </header>
   <hr class="divider">
   <p>Integrate your <a href="https://myaccount.teksavvy.com/">TekSavvy</a> account information into Home Assistant.</p>
-<p>You can get your API key from 
-https://myaccount.teksavvy.com/ApiKey/ApiKeyManagement</p>
+<p>You can get your API key from <a href="https://myaccount.teksavvy.com/ApiKey/ApiKeyManagement">TekSavvy My Account</a>.</p>
 <p>To use your TekSavvy sensor in your installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">sensor</span><span class="pi">:</span>
@@ -105,7 +104,7 @@ https://myaccount.teksavvy.com/ApiKey/ApiKeyManagement</p>
     </dd>
     <dt><a class="title-link" name="total_bandwidth" href="#total_bandwidth"></a> total_bandwidth</dt>
     <dd>
-      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">Your bandwidth limit in gigabytes.</span></p>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">Your bandwidth limit in gigabytes. Set to <code class="highlighter-rouge">0</code> for unlimited plans without a cap.</span></p>
     </dd>
     <dt><a class="title-link" name="monitored_conditions" href="#monitored_conditions"></a> monitored_conditions</dt>
     <dd>
@@ -213,6 +212,9 @@ https://myaccount.teksavvy.com/ApiKey/ApiKeyManagement</p>
             <a href='/components/sensor.bme680/'>BME680 Sensor</a>
         </li>
         <li>
+            <a href='/components/sensor.bmw_connected_drive/'>BMW connected drive</a>
+        </li>
+        <li>
             <a href='/components/sensor.bbox/'>Bbox Sensor</a>
         </li>
         <li>
@@ -286,6 +288,12 @@ https://myaccount.teksavvy.com/ApiKey/ApiKeyManagement</p>
         </li>
         <li>
             <a href='/components/sensor.file/'>File Sensor</a>
+        </li>
+        <li>
+            <a href='/components/sensor.filesize/'>File size sensor</a>
+        </li>
+        <li>
+            <a href='/components/sensor.folder/'>Folder sensor</a>
         </li>
         <li>
             <a href='/components/sensor.gpsd/'>GPSD</a>
@@ -453,7 +461,16 @@ https://myaccount.teksavvy.com/ApiKey/ApiKeyManagement</p>
             <a href='/components/sensor.sleepiq/'>SleepIQ Sensor</a>
         </li>
         <li>
+            <a href='/components/sensor.smappee/'>Smappee Sensor</a>
+        </li>
+        <li>
             <a href='/components/sensor.sonarr/'>Sonarr Sensor</a>
+        </li>
+        <li>
+            <a href='/components/sensor.spotcrime/'>Spot Crime</a>
+        </li>
+        <li>
+            <a href='/components/sensor.startca/'>Start.ca</a>
         </li>
         <li>
             <a href='/components/sensor.statistics/'>Statistics Sensor</a>
