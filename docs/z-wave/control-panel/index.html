@@ -110,6 +110,9 @@
   </li>
   <li><strong>Test Node</strong> sends no_op test messages to the node. This could in theory bring back a dead node.</li>
 </ul>
+<p class="note warning">
+Since 0.63 and the new experimental <a href="https://home-assistant.io/docs/configuration/entity-registry/">entity registry</a> <strong>Rename Node</strong> no longer changes the entity id for anything other than the <code class="highlighter-rouge">zwave.</code> entity for the node (it does change, the default <em>friendly_name</em> and <em>old_entity_id</em> and <em>new_entity_id</em> attributes for all the entities). See <a href="https://github.com/home-assistant/home-assistant/issues/12430">this issue</a>.
+</p>
 <p class="note">
 Battery powered devices need to be awake before you can use the Z-Wave control panel to update their settings. How to wake your device is device specific, and some devices will stay awake for only a couple of seconds. Please refer to the manual of your device for more details.
 </p>
