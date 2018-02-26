@@ -113,6 +113,15 @@
     <span class="s">platform</span><span class="pi">:</span> <span class="s">...</span>
 </code></pre>
 </div>
+<p>You can use the <code class="highlighter-rouge">automation:</code> and <code class="highlighter-rouge">automation old:</code> sections in the same time:</p>
+<ul>
+  <li><code class="highlighter-rouge">automation old:</code> to keep your manual designed automations</li>
+  <li><code class="highlighter-rouge">automation:</code> to save the automation created by the online editor</li>
+</ul>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">automation</span><span class="pi">:</span> <span class="kt">!include</span> <span class="s">automations.yaml</span>
+<span class="s">automation old</span><span class="pi">:</span> <span class="kt">!include_dir_merge_list</span> <span class="s">automations</span>
+</code></pre>
+</div>
 <h2><a class="title-link" name="migrating-your-automations-to-automationsyaml" href="#migrating-your-automations-to-automationsyaml"></a> Migrating your automations to <code class="highlighter-rouge">automations.yaml</code></h2>
 <p>If you want to migrate your old automations to use the editor, you’ll have to copy them to <code class="highlighter-rouge">automations.yaml</code>. Make sure that <code class="highlighter-rouge">automations.yaml</code> remains a list! For each automation that you copy over you’ll have to add an <code class="highlighter-rouge">id</code>. This can be any string as long as it’s unique.</p>
 <p>For example, the below automation will be triggered when the sun goes from below the horizon to above the horizon. Then, if the temperature is between 17 and 25 degrees, a light will be turned on.</p>
