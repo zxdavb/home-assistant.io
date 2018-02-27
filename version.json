@@ -5,7 +5,7 @@
   "release_notes_path": "/blog/2018/02/26/release-64/",
   "release_title": "0.64: Over 1000 integrations! New: HomeKit, BMW, August.",
   "release_description": "Some great new integrations, some great new fixes, oooooh yeah.",
-  "patch_version_notes": "#",
+  "patch_version_notes": "#release-0641---february-27",
   "root_url": "https://home-assistant.io",
   "semantic_version": {
     "major": 0,

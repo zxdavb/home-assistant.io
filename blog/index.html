@@ -75,7 +75,7 @@
   <div class="meta clearfix">
     <time datetime="2018-02-26T00:01:00+00:00" pubdate data-updated="true"><i class="icon-calendar"></i> February 26, 2018</time>
     <span class="byline author vcard"><i class='icon-user'></i> Paulus Schoutsen</span>
-    <span><i class='icon-time'></i> 16 minutes reading time</span>
+    <span><i class='icon-time'></i> 17 minutes reading time</span>
     <span>
     <i class="icon-tags"></i>
     <ul class="tags unstyled">
@@ -118,6 +118,28 @@
   <li>Adds folder sensor (<a href="https://github.com/robmarkcole">@robmarkcole</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12208">#12208</a>) (<a href="https://home-assistant.io/components/sensor.folder/">sensor.folder docs</a>) (new-platform)</li>
   <li>Spotcrime (<a href="https://github.com/jcconnell">@jcconnell</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12460">#12460</a>) (<a href="https://home-assistant.io/components/sensor.spotcrime/">sensor.spotcrime docs</a>) (new-platform)</li>
   <li>Add Tahoma scenes (<a href="https://github.com/bakedraccoon">@bakedraccoon</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12498">#12498</a>) (<a href="https://home-assistant.io/components/scene/">scene docs</a>) (<a href="https://home-assistant.io/components/tahoma/">tahoma docs</a>) (new-platform)</li>
+</ul>
+<h2><a class="title-link" name="release-0641---february-27" href="#release-0641---february-27"></a> Release 0.64.1 - February 27</h2>
+<ul>
+  <li>Frontend: Don’t put unit of sensor on new line (<a href="https://github.com/NovapaX">@NovapaX</a>)</li>
+  <li>Frontend: Fix display issues on iOS 9.3.5 (<a href="https://github.com/NovapaX">@NovapaX</a>)</li>
+  <li>Frontend: Fix chart legend not showing correctly when data has 1 serie (<a href="https://github.com/fanthos">@fanthos</a>)</li>
+  <li>Frontend: Fix cards not getting updated (<a href="https://github.com/balloob">@balloob</a>)</li>
+  <li>Cast automatically drop connection (<a href="https://github.com/OttoWinter">@OttoWinter</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12635">#12635</a>) (<a href="https://home-assistant.io/components/media_player.cast/">media_player.cast docs</a>)</li>
+  <li>Roomba timeout (<a href="https://github.com/kellerza">@kellerza</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12645">#12645</a>) (<a href="https://home-assistant.io/components/vacuum.roomba/">vacuum.roomba docs</a>)</li>
+  <li>Fix a problem with calling <code class="highlighter-rouge">deconz.close</code> (<a href="https://github.com/aronsky">@aronsky</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12657">#12657</a>) (<a href="https://home-assistant.io/components/deconz/">deconz docs</a>)</li>
+  <li>Harmony: make activity optional (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12679">#12679</a>) (<a href="https://home-assistant.io/components/remote.harmony/">remote.harmony docs</a>)</li>
+  <li>Fix getting state from iglo (<a href="https://github.com/jesserockz">@jesserockz</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12685">#12685</a>) (<a href="https://home-assistant.io/components/light.iglo/">light.iglo docs</a>)</li>
+  <li>Fix mysensor defaults (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12687">#12687</a>) (<a href="https://home-assistant.io/components/mysensors/">mysensors docs</a>)</li>
+  <li>Component deconz: Fix dark attribute on presence sensors (<a href="https://github.com/tumik">@tumik</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12691">#12691</a>) (<a href="https://home-assistant.io/components/binary_sensor.deconz/">binary_sensor.deconz docs</a>)</li>
+  <li>Bugfix: Update of sources for non AVR-X devices always fails (<a href="https://github.com/scarface-4711">@scarface-4711</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12711">#12711</a>) (<a href="https://home-assistant.io/components/media_player.denonavr/">media_player.denonavr docs</a>)</li>
+  <li>Don’t allow to use a old unsecure library (<a href="https://github.com/pvizeli">@pvizeli</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12715">#12715</a>)</li>
+  <li>Unbreak tahoma (<a href="https://github.com/bakedraccoon">@bakedraccoon</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12719">#12719</a>) (<a href="https://home-assistant.io/components/tahoma/">tahoma docs</a>)</li>
+  <li>fix for https://github.com/home-assistant/home-assistant/issues/12673 (<a href="https://github.com/ChristianKuehnel">@ChristianKuehnel</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12726">#12726</a>) (<a href="https://home-assistant.io/components/sensor.alpha_vantage/">sensor.alpha_vantage docs</a>)</li>
+  <li>Fix harmony duplicate detection (<a href="https://github.com/amelchio">@amelchio</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12729">#12729</a>) (<a href="https://home-assistant.io/components/remote.harmony/">remote.harmony docs</a>)</li>
+  <li>Update ZHA deps (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12737">#12737</a>) (<a href="https://home-assistant.io/components/zha/">zha docs</a>)</li>
+  <li>MQTT: Fix doing async inside sync context (<a href="https://github.com/OttoWinter">@OttoWinter</a>)</li>
+  <li>Fix DarSky humidity precision (<a href="https://github.com/PhilRW">@PhilRW</a>)</li>
 </ul>
 <h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>
 <p>…don’t hesitate to use our very active <a href="https://community.home-assistant.io/">forums</a> or join us for a little <a href="https://discord.gg/c5DvZ4e">chat</a>. The release notes have comments enabled but it’s preferred if you use the former communication channels. Thanks.</p>

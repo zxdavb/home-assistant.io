@@ -103,7 +103,7 @@
     <tr>
       <td><code class="highlighter-rouge">target</code></td>
       <td>yes</td>
-      <td>An array of pre-authorized chat_ids to send the notification to. Defaults to the first allowed chat_id.</td>
+      <td>An array of pre-authorized chat_ids or user_ids to send the notification to. Defaults to the first allowed chat_id.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">parse_mode</code></td>
@@ -176,7 +176,7 @@
     <tr>
       <td><code class="highlighter-rouge">target</code></td>
       <td>yes</td>
-      <td>An array of pre-authorized chat_ids to send the notification to. Defaults to the first allowed chat_id.</td>
+      <td>An array of pre-authorized chat_ids or user_ids to send the notification to. Defaults to the first allowed chat_id.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">disable_notification</code></td>
@@ -239,7 +239,7 @@
     <tr>
       <td><code class="highlighter-rouge">target</code></td>
       <td>yes</td>
-      <td>An array of pre-authorized chat_ids to send the notification to. Defaults to the first allowed chat_id.</td>
+      <td>An array of pre-authorized chat_ids or user_ids to send the notification to. Defaults to the first allowed chat_id.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">disable_notification</code></td>
@@ -302,7 +302,7 @@
     <tr>
       <td><code class="highlighter-rouge">target</code></td>
       <td>yes</td>
-      <td>An array of pre-authorized chat_ids to send the notification to. Defaults to the first allowed chat_id.</td>
+      <td>An array of pre-authorized chat_ids or user_ids to send the notification to. Defaults to the first allowed chat_id.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">disable_notification</code></td>
@@ -345,7 +345,7 @@
     <tr>
       <td><code class="highlighter-rouge">target</code></td>
       <td>yes</td>
-      <td>An array of pre-authorized chat_ids to send the notification to. Defaults to the first allowed chat_id.</td>
+      <td>An array of pre-authorized chat_ids or user_ids to send the notification to. Defaults to the first allowed chat_id.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">disable_notification</code></td>
@@ -677,7 +677,7 @@
     <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">telegram_bot.edit_message</span>
       <span class="s">data_template</span><span class="pi">:</span>
         <span class="s">message_id</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.event.data.message.message_id</span><span class="nv"> </span><span class="s">}}'</span>
-        <span class="s">chat_id</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.event.data.user_id</span><span class="nv"> </span><span class="s">}}'</span>
+        <span class="s">chat_id</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.event.data.chat_id</span><span class="nv"> </span><span class="s">}}'</span>
         <span class="s">title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">*Message</span><span class="nv"> </span><span class="s">edit*'</span>
         <span class="s">inline_keyboard</span><span class="pi">:</span>
           <span class="pi">-</span> <span class="s2">"</span><span class="s">Edit</span><span class="nv"> </span><span class="s">message:/edit_msg,</span><span class="nv"> </span><span class="s">Don't:/do_nothing"</span>
@@ -704,7 +704,7 @@
     <span class="pi">-</span> <span class="s">service</span><span class="pi">:</span> <span class="s">telegram_bot.edit_replymarkup</span>
       <span class="s">data_template</span><span class="pi">:</span>
         <span class="s">message_id</span><span class="pi">:</span> <span class="s1">'</span><span class="s">last'</span>
-        <span class="s">chat_id</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.event.data.user_id</span><span class="nv"> </span><span class="s">}}'</span>
+        <span class="s">chat_id</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.event.data.chat_id</span><span class="nv"> </span><span class="s">}}'</span>
         <span class="s">inline_keyboard</span><span class="pi">:</span>
           <span class="pi">-</span> <span class="s2">"</span><span class="s">Edit</span><span class="nv"> </span><span class="s">message:/edit_msg,</span><span class="nv"> </span><span class="s">Don't:/do_nothing"</span>
 </code></pre>
@@ -756,7 +756,7 @@
         <span class="k">assert</span> <span class="n">event_id</span> <span class="o">==</span> <span class="s">'telegram_callback'</span>
         <span class="n">data_callback</span> <span class="o">=</span> <span class="n">payload_event</span><span class="p">[</span><span class="s">'data'</span><span class="p">]</span>
         <span class="n">callback_id</span> <span class="o">=</span> <span class="n">payload_event</span><span class="p">[</span><span class="s">'id'</span><span class="p">]</span>
-        <span class="n">user_id</span> <span class="o">=</span> <span class="n">payload_event</span><span class="p">[</span><span class="s">'user_id'</span><span class="p">]</span>
+        <span class="n">chat_id</span> <span class="o">=</span> <span class="n">payload_event</span><span class="p">[</span><span class="s">'chat_id'</span><span class="p">]</span>
         <span class="c"># keyboard = ["Edit message:/edit_msg, Don't:/do_nothing",</span>
         <span class="c">#             "Remove this button:/remove button"]</span>
         <span class="n">keyboard</span> <span class="o">=</span> <span class="p">[[(</span><span class="s">"Edit message"</span><span class="p">,</span> <span class="s">"/edit_msg"</span><span class="p">),</span>
@@ -776,7 +776,7 @@
             <span class="n">title</span> <span class="o">=</span> <span class="s">'*Message edit*'</span>
             <span class="n">msg</span> <span class="o">=</span> <span class="s">'Callback received from </span><span class="si">%</span><span class="s">s. Message id: </span><span class="si">%</span><span class="s">s. Data: ``` </span><span class="si">%</span><span class="s">s ```'</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">call_service</span><span class="p">(</span><span class="s">'telegram_bot/edit_message'</span><span class="p">,</span>
-                              <span class="n">chat_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">,</span>
+                              <span class="n">chat_id</span><span class="o">=</span><span class="n">chat_id</span><span class="p">,</span>
                               <span class="n">message_id</span><span class="o">=</span><span class="n">msg_id</span><span class="p">,</span>
                               <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
                               <span class="n">message</span><span class="o">=</span><span class="n">msg</span> <span class="o">%</span> <span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">msg_id</span><span class="p">,</span> <span class="n">data_callback</span><span class="p">),</span>
@@ -792,7 +792,7 @@
             <span class="c"># Edit the keyboard</span>
             <span class="n">new_keyboard</span> <span class="o">=</span> <span class="n">keyboard</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">call_service</span><span class="p">(</span><span class="s">'telegram_bot/edit_replymarkup'</span><span class="p">,</span>
-                              <span class="n">chat_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">,</span>
+                              <span class="n">chat_id</span><span class="o">=</span><span class="n">chat_id</span><span class="p">,</span>
                               <span class="n">message_id</span><span class="o">=</span><span class="s">'last'</span><span class="p">,</span>
                               <span class="n">inline_keyboard</span><span class="o">=</span><span class="n">new_keyboard</span><span class="p">)</span>
 
