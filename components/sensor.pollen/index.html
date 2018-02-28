@@ -88,7 +88,7 @@ information (based on a U.S. ZIP code) from <a href="https://www.pollen.com/">Po
 liking):</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sensor</span><span class="pi">:</span>
   <span class="s">platform</span><span class="pi">:</span> <span class="s">pollen</span>
-  <span class="s">zip_code</span><span class="pi">:</span> <span class="s">ZIP_CODE</span>
+  <span class="s">zip_code</span><span class="pi">:</span> <span class="s2">"</span><span class="s">00544"</span>
   <span class="s">monitored_conditions</span><span class="pi">:</span>
     <span class="pi">-</span> <span class="s">allergy_average_forecasted</span>
     <span class="pi">-</span> <span class="s">allergy_average_historical</span>
@@ -103,7 +103,7 @@ liking):</p>
   <dl class="">
     <dt><a class="title-link" name="zip_code" href="#zip_code"></a> zip_code</dt>
     <dd>
-      <p class="desc"><span class="type">(<span class="int">int</span>)</span><span class="required">(Required)</span><span class="description">the U.S. ZIP code to gather data for</span></p>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">the U.S. ZIP code to gather data for (as a quoted string)</span></p>
     </dd>
     <dt><a class="title-link" name="monitored_conditions" href="#monitored_conditions"></a> monitored_conditions</dt>
     <dd>
@@ -111,6 +111,10 @@ liking):</p>
     </dd>
   </dl>
 </div>
+<p class="note warning">
+It is important to ensure the ZIP code is quoted if it starts with a 0. Unquoted
+ZIP codes that start with 0 will cause errors.
+</p>
 <h2><a class="title-link" name="available-metrics" href="#available-metrics"></a> Available Metrics</h2>
 <p>The following metrics can be monitored:</p>
 <ul>
