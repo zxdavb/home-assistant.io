@@ -101,6 +101,25 @@ Hass.io dashboard with upgrade notification (under the hamburger menu -&gt; Hass
 <img src="/images/hassio/screenshots/ssh-upgrade.png" />
 Hass.io upgrade process from the SSH command line
 </p>
+<h2><a class="title-link" name="hassio-command" href="#hassio-command"></a> hassio command</h2>
+<p>On the SSH command line tyou can use the <code class="highlighter-rouge">hassio</code> command to retrieve logs, check the details of connected hardware, and more.</p>
+<p>HomeAssistant:
+<code class="highlighter-rouge"> $ hassio homeassistant logs
+  $ hassio homeassistant restart
+  $ hassio homeassistant stop
+  $ hassio homeassistant start
+  $ hassio homeassistant update
+  $ hassio homeassistant check</code></p>
+<p>Host:
+<code class="highlighter-rouge"> $ hassio host hardware
+  $ hassio host reboot
+  $ hassio host shutdown
+  $ hassio host update</code></p>
+<p>Supervisor
+<code class="highlighter-rouge"> $ hassio supervisor logs
+  $ hassio supervisor info
+  $ hassio supervisor reload
+  $ hassio supervisor update</code></p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
