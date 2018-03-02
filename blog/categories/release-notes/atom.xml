@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Release-Notes | Home Assistant]]></title>
   <link href="https://home-assistant.io/blog/categories/release-notes/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-03-02T18:51:12+00:00</updated>
+  <updated>2018-03-02T20:09:52+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -100,6 +100,13 @@ Major new integration by [@snjoetw]: August locks and door bells! Lock and unloc
 - Fixed Pollen.com bugs with ZIP codes and invalid API responses ([@bachya] - [#12790]) ([sensor.pollen docs])
 - Fix dead Sonos web interface with some music sources ([@amelchio] - [#12796]) ([media_player.sonos docs])
 - Unique IDs for Plex Clients ([@ryanm101] - [#12799]) ([media_player.plex docs])
+
+## <a class='title-link' name='release-0643---march-2' href='#release-0643---march-2'></a> Release 0.64.3 - March 2 
+
+- is_allowed_path: Also test folder #12788 #12807 ([@kellerza] - [#12810])
+- Fix sensibo default IDs to be according to schema ([@andrey-git] - [#12837]) ([climate.sensibo docs])
+- Cloud: handle unauth better ([@balloob] - [#12840]) ([cloud docs])
+- Handle Hue errors better ([@balloob] - [#12845]) ([hue docs])
 
 ## <a class='title-link' name='if-you-need-help' href='#if-you-need-help'></a> If you need help... 
 
@@ -649,7 +656,16 @@ Experiencing issues introduced by this release? Please report them in our [issue
 [media_player.sonos docs]: https://home-assistant.io/components/media_player.sonos/
 [sensor.fedex docs]: https://home-assistant.io/components/sensor.fedex/
 [sensor.pollen docs]: https://home-assistant.io/components/sensor.pollen/
-]]></content>
+[#12810]: https://github.com/home-assistant/home-assistant/pull/12810
+[#12837]: https://github.com/home-assistant/home-assistant/pull/12837
+[#12840]: https://github.com/home-assistant/home-assistant/pull/12840
+[#12845]: https://github.com/home-assistant/home-assistant/pull/12845
+[@andrey-git]: https://github.com/andrey-git
+[@balloob]: https://github.com/balloob
+[@kellerza]: https://github.com/kellerza
+[climate.sensibo docs]: https://home-assistant.io/components/climate.sensibo/
+[cloud docs]: https://home-assistant.io/components/cloud/
+[hue docs]: https://home-assistant.io/components/hue/]]></content>
   </entry>
   
   <entry>

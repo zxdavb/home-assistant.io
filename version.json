@@ -1,15 +1,15 @@
 {
-  "current_version": "0.64.2",
-  "release_date": "2018-03-01T00:00:00+00:00",
+  "current_version": "0.64.3",
+  "release_date": "2018-03-02T00:00:00+00:00",
   "release_notes": "https://home-assistant.io/blog/2018/02/26/release-64/",
   "release_notes_path": "/blog/2018/02/26/release-64/",
   "release_title": "0.64: Over 1000 integrations! New: HomeKit, BMW, August.",
   "release_description": "Some great new integrations, some great new fixes, oooooh yeah.",
-  "patch_version_notes": "#release-0642---march-1",
+  "patch_version_notes": "#release-0643---march-2",
   "root_url": "https://home-assistant.io",
   "semantic_version": {
     "major": 0,
     "minor": 64,
-    "patch": 2
+    "patch": 3
   }
 }

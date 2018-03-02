@@ -125,7 +125,7 @@ To use Google Assistant, your Home Assistant configuration has to be externally 
     </dd>
     <dt><a class="title-link" name="api_key" href="#api_key"></a> api_key</dt>
     <dd>
-      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">An API Key generated for the project from <a href="https://console.cloud.google.com/apis/api/homegraph.googleapis.com/overview">Google Console</a> which allows you to update devices without unlinking and relinking an account (see setup below). If not provided then the request_sync service is not exposed.</span></p>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">An API Key generated for the project from <a href="https://console.cloud.google.com/apis/api/homegraph.googleapis.com/overview">Google Console</a> which allows you to update devices without unlinking and relinking an account (see step 9 below). If not provided then the <code class="highlighter-rouge">google_assistant.request_sync</code> service is not exposed.  It is recommended to set up this configuration key as it also allows the usage of the following command, “Ok Google, sync my devices”.  Once you have setup this componenet you will need to call this service (or command) each time you add a new device that you wish to control via the Google Assistant integration.</span></p>
     </dd>
     <dt><a class="title-link" name="expose_by_default" href="#expose_by_default"></a> expose_by_default</dt>
     <dd>
