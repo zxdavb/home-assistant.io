@@ -132,6 +132,14 @@ Since this account is only for running Home Assistant the extra arguments of <co
 When you run the <code class="highlighter-rouge">hass</code> command for the first time, it will download, install and cache the necessary libraries/dependencies. This procedure may take anywhere between 5 to 10 minutes. During that time, you may get “site cannot be reached” error when accessing the web interface. This will only happen for the first time, and subsequent restarts will be much faster.
 </p>
 <p>If you want setup <code class="highlighter-rouge">hass</code> as a daemon and autostart it on boot please refer to <a href="/docs/autostart/">Autostart Home Assistant</a>.</p>
+<h3><a class="title-link" name="updating" href="#updating"></a> Updating</h3>
+<p>To update to the latest version of Home Assistant follow these simple steps:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo su -s /bin/bash homeassistant
+<span class="gp">$ </span><span class="nb">source</span> /srv/homeassistant/bin/activate
+<span class="gp">$ </span>pip3 install --upgrade home assistant
+</code></pre>
+</div>
+<p>Once the last command executes restart the Home Assistant service to apply the latest updates.  Please keep in mind that some updates may take longer to boot up than others.  If Home Assistant fails to start make sure you check the <strong>Breaking Changes</strong> from the <a href="https://github.com/home-assistant/home-assistant/releases">Release Notes</a>.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
