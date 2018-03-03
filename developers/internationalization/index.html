@@ -6,22 +6,22 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>CLA Login - Home Assistant</title>
+    <title>Internationalization - Home Assistant</title>
     <meta name="author" content="Home Assistant">
-    <meta name="description" content="The Home Assistant contributor license agreement (CLA) signature page">
+    <meta name="description" content="Home Assistant internationalization summary">
     <meta name="viewport" content="width=device-width">
-    <link rel="canonical" href="https://home-assistant.io/developers/cla_sign_start/">
+    <link rel="canonical" href="https://home-assistant.io/developers/internationalization/">
     <meta property="fb:app_id" content="338291289691179">
-    <meta property="og:title" content="CLA Login">
+    <meta property="og:title" content="Internationalization">
     <meta property="og:site_name" content="Home Assistant">
-    <meta property="og:url" content="https://home-assistant.io/developers/cla_sign_start/">
+    <meta property="og:url" content="https://home-assistant.io/developers/internationalization/">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="The Home Assistant contributor license agreement (CLA) signature page">
+    <meta property="og:description" content="Home Assistant internationalization summary">
     <meta property="og:image" content="https://home-assistant.io/images/default-social.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@home_assistant">
-    <meta name="twitter:title" content="CLA Login">
-    <meta name="twitter:description" content="The Home Assistant contributor license agreement (CLA) signature page">
+    <meta name="twitter:title" content="Internationalization">
+    <meta name="twitter:description" content="Home Assistant internationalization summary">
     <meta name="twitter:image" content="https://home-assistant.io/images/default-social.png">
     <link href="/stylesheets/screen.css" media="screen, projection, print" rel="stylesheet">
     <link href="/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
@@ -70,31 +70,20 @@
           <article class="page">
   <header>
     <h1 class="title indent">
-      CLA Login
+      Internationalization
     </h1>
   </header>
   <hr class="divider">
-  <p style="text-align: center">Please wait while we begin the signature process...</p>
-<br>
-<div id="spinner"></div>
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js" integrity="sha256-PieqE0QdEDMppwXrTzSZQr6tWFX3W5KkyRVyF1zN3eg=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-  var spinner = new Spinner().spin(document.getElementById('spinner'));
-  var redirect = window.location.href.match(/\?pr=(.*)/);
-  if(redirect && redirect.length > 0) {
-    localStorage.setItem("pr", redirect[1]);
-  }
-  window.location = "https://github.com/login/oauth/authorize?client_id=44151bab2be25f885aa7&response_type=code&scope=user%3Aemail&redirect_uri=https%3A%2F%2Fhome-assistant.io%2Fdevelopers%2Fcla_sign%2F"
-});
-</script>
+  <p>The Home Assistant internationalization project includes preparing platforms and the frontend for localization, as well as the actual translation of localized strings.</p>
+<p>Some compmonents and platforms will have strings that need to be localized specifically for that platform. These strings are managed in the core <a href="https://github.com/home-assistant/home-assistant">home-assistant</a> repository. The Home Assistant backend will serve strings to the clients based on the loaded components in the running instance.</p>
+<p>There are also localizable strings that exist only on the frontend. These strings are managed in the <a href="https://github.com/home-assistant/home-assistant-polymer">home-assistant-polymer</a> repository. These strings are stored with the frontend and don’t depend on the backend configuration.</p>
+<p>Our strings are translated by the community using the online translation tool <a href="https://lokalise.co/">Lokalise</a>.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
           <div class="grid">
     <section class="aside-module grid__item one-whole lap-one-half">
-  <div class='edit-github'><a href='https://github.com/home-assistant/home-assistant.github.io/tree/current/source/developers/cla_sign_start.html'>Edit this page on GitHub</a></div>
+  <div class='edit-github'><a href='https://github.com/home-assistant/home-assistant.github.io/tree/current/source/developers/internationalization/index.markdown'>Edit this page on GitHub</a></div>
   <div class='section'>
     <h1 class="title delta">Development Guide</h1>
     <ul class='divided sidebar-menu'>
@@ -175,7 +164,7 @@ $(document).ready(function(){
         </ul>
       </li>
       <li>
-        <a  href='/developers/internationalization/'>Internationalization </a>
+        <a class='active' href='/developers/internationalization/'>Internationalization </a>
         <ul>
           <li><a  href='/developers/internationalization/backend_localization/'>Backend Localization </a></li>
           <li><a  href='/developers/internationalization/custom_component_localization/'>Custom Component Localization </a></li>

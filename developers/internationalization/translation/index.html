@@ -6,22 +6,22 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>CLA Login - Home Assistant</title>
+    <title>Translation - Home Assistant</title>
     <meta name="author" content="Home Assistant">
-    <meta name="description" content="The Home Assistant contributor license agreement (CLA) signature page">
+    <meta name="description" content="How to translate Home Assistant.">
     <meta name="viewport" content="width=device-width">
-    <link rel="canonical" href="https://home-assistant.io/developers/cla_sign_start/">
+    <link rel="canonical" href="https://home-assistant.io/developers/internationalization/translation/">
     <meta property="fb:app_id" content="338291289691179">
-    <meta property="og:title" content="CLA Login">
+    <meta property="og:title" content="Translation">
     <meta property="og:site_name" content="Home Assistant">
-    <meta property="og:url" content="https://home-assistant.io/developers/cla_sign_start/">
+    <meta property="og:url" content="https://home-assistant.io/developers/internationalization/translation/">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="The Home Assistant contributor license agreement (CLA) signature page">
+    <meta property="og:description" content="How to translate Home Assistant.">
     <meta property="og:image" content="https://home-assistant.io/images/default-social.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@home_assistant">
-    <meta name="twitter:title" content="CLA Login">
-    <meta name="twitter:description" content="The Home Assistant contributor license agreement (CLA) signature page">
+    <meta name="twitter:title" content="Translation">
+    <meta name="twitter:description" content="How to translate Home Assistant.">
     <meta name="twitter:image" content="https://home-assistant.io/images/default-social.png">
     <link href="/stylesheets/screen.css" media="screen, projection, print" rel="stylesheet">
     <link href="/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
@@ -70,31 +70,53 @@
           <article class="page">
   <header>
     <h1 class="title indent">
-      CLA Login
+      Translation
     </h1>
   </header>
   <hr class="divider">
-  <p style="text-align: center">Please wait while we begin the signature process...</p>
-<br>
-<div id="spinner"></div>
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js" integrity="sha256-PieqE0QdEDMppwXrTzSZQr6tWFX3W5KkyRVyF1zN3eg=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-  var spinner = new Spinner().spin(document.getElementById('spinner'));
-  var redirect = window.location.href.match(/\?pr=(.*)/);
-  if(redirect && redirect.length > 0) {
-    localStorage.setItem("pr", redirect[1]);
-  }
-  window.location = "https://github.com/login/oauth/authorize?client_id=44151bab2be25f885aa7&response_type=code&scope=user%3Aemail&redirect_uri=https%3A%2F%2Fhome-assistant.io%2Fdevelopers%2Fcla_sign%2F"
-});
-</script>
+  <h2><a class="title-link" name="how-to-start" href="#how-to-start"></a> How to start</h2>
+<p>Translations for Home Assistant are managed through Lokalise, an online translation management tool. Our translations are split between two projects, a backend project for platform-specific translations, and a frontend project for UI translations. Click the links below to join both projects! Even if your language is completely translated, extra proofreading is a big help! Please feel free to review the existing translations, and vote for alternatives that might be more appropriate.</p>
+<ul>
+  <li><a href="https://lokalise.co/signup/3420425759f6d6d241f598.13594006/all/">Join the frontend translation team</a></li>
+  <li><a href="https://lokalise.co/signup/130246255a974bd3b5e8a1.51616605/all/">Join the backend translation team</a></li>
+</ul>
+<p>For more information about the translation workflow, please see the <a href="https://docs.lokalise.co/category/iOzEuQPS53-for-team-leads-and-translators">Lokalise translation workflow documents</a>.</p>
+<p class="note">
+The translation of the Home Assistant frontend is still a work in progress. More phrases will be available for translation soon.
+</p>
+<h2><a class="title-link" name="translation-placeholders" href="#translation-placeholders"></a> Translation placeholders</h2>
+<p>Some translation strings will contain special placeholders that will be replaced later. Placeholders shown in square brackets <code class="highlighter-rouge">[]</code> are <a href="https://docs.lokalise.co/article/KO5SZWLLsy-key-referencing">Lokalise key references</a>. These are primarily used to link translation strings that will be duplicated. Different languages may not have the same duplicates as English, and are welcome to link duplicate translations that are not linked in English. Placeholders shown in curly brackets <code class="highlighter-rouge"><span class="p">{}</span></code> are <a href="https://formatjs.io/guides/message-syntax/">translation arguments</a> that will be replaced with a live value when Home Assistant is running. Any translation argument placeholders present in the original string must be included in the translated string. These may include special syntax for defining plurals or other replacement rules. The linked format.js guide explains the syntax for adding plural definitions and other rules.</p>
+<h2><a class="title-link" name="rules" href="#rules"></a> Rules</h2>
+<ol>
+  <li>Only native speakers should submit translations.</li>
+  <li>Stick to <a href="https://material.io/guidelines/style/writing.html">Material Design guidelines</a>.</li>
+  <li>Don’t translate or change proper nouns like <code class="highlighter-rouge">Home Assistant</code>, <code class="highlighter-rouge">Hass.io</code> or <code class="highlighter-rouge">Hue</code>.</li>
+  <li>For a region specific translation, keys that will be the same as the base translation should be filled with <code class="highlighter-rouge">[VOID]</code>. These will be replaced during our translation build process.</li>
+  <li>Translations under the <code class="highlighter-rouge">state_badge</code> keys will be used for the notification badge display. These translations should be short enough to fit in the badge label without overflowing. This can be tested in the Home Assistant UI either by editing the label text with your browsers development tools, or by using the States <img src="/images/screenshots/developer-tool-states-icon.png" alt="" class="no-shadow" height="38" /> developer tool in the Home Assistant UI. In the UI, enter a new entity ID (<code class="highlighter-rouge">device_tracker.test</code>), and enter the text you want to test in state.</li>
+  <li>If text will be duplicated across different translation keys, make use of the Lokalise key reference feature where possible. The base translation provides examples of this underneath the <code class="highlighter-rouge">states</code> translations. Please see the <a href="https://docs.lokalise.co/article/KO5SZWLLsy-key-referencing">Lokalise key referencing</a> documentation for more details.</li>
+</ol>
+<h2><a class="title-link" name="adding-a-new-language" href="#adding-a-new-language"></a> Adding a new language</h2>
+<p>If your language is not listed you can request it at <a href="https://github.com/home-assistant/home-assistant-polymer/issues/new">GitHub</a>. Please provide both the English name and the native name for your language. For example:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>English Name: German
+Native Name: Deutsch
+</code></pre>
+</div>
+<p class="note">
+Region specific translations (<code class="highlighter-rouge">en-US</code>, <code class="highlighter-rouge">fr-CA</code>) will only be included if translations for that region need to differ from the base language translation.
+</p>
+<h3><a class="title-link" name="maintainer-steps-to-add-a-new-language" href="#maintainer-steps-to-add-a-new-language"></a> Maintainer steps to add a new language</h3>
+<ol>
+  <li>Language tags  have to follow <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>. A list of most language tags can be found here: <a href="http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">IANA sutbtag registry</a>. Examples: <code class="highlighter-rouge">fr</code>, <code class="highlighter-rouge">fr-CA</code>, <code class="highlighter-rouge">zh-Hans</code>. Only include the country code if country specific overrides are being included, and the base language is already translated.</li>
+  <li>Add the language tag and native name in <code class="highlighter-rouge">src/translations/translationMetadata.json</code>.  Examples: “Français”, “Français (CA)”</li>
+  <li>Add the new language in Lokalize.
+Note: Sometimes you have to change the tag in Lokalise (Language -&gt; Language settings -&gt; custom ISO code).</li>
+</ol>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
           <div class="grid">
     <section class="aside-module grid__item one-whole lap-one-half">
-  <div class='edit-github'><a href='https://github.com/home-assistant/home-assistant.github.io/tree/current/source/developers/cla_sign_start.html'>Edit this page on GitHub</a></div>
+  <div class='edit-github'><a href='https://github.com/home-assistant/home-assistant.github.io/tree/current/source/developers/internationalization/translation.markdown'>Edit this page on GitHub</a></div>
   <div class='section'>
     <h1 class="title delta">Development Guide</h1>
     <ul class='divided sidebar-menu'>
@@ -179,7 +201,7 @@ $(document).ready(function(){
         <ul>
           <li><a  href='/developers/internationalization/backend_localization/'>Backend Localization </a></li>
           <li><a  href='/developers/internationalization/custom_component_localization/'>Custom Component Localization </a></li>
-          <li><a  href='/developers/internationalization/translation/'>Translation </a></li>
+          <li><a class='active' href='/developers/internationalization/translation/'>Translation </a></li>
         </ul>
       </li>
       <li>
