@@ -104,7 +104,7 @@
 <ul>
   <li><code class="highlighter-rouge">&lt;component&gt;</code>: One of the supported components, eg. <code class="highlighter-rouge">binary_sensor</code>.</li>
   <li><code class="highlighter-rouge">&lt;node_id&gt;</code>: (<em>Optional</em>) id of the node providing the topic.</li>
-  <li><code class="highlighter-rouge">&lt;object_id&gt;</code>: The ID of the device. This will become the <code class="highlighter-rouge">entity_id</code> in Home Assistant.</li>
+  <li><code class="highlighter-rouge">&lt;object_id&gt;</code>: “The ID of the device. This is only to allow for separate topics for each device and is not used for the <code class="highlighter-rouge">entity_id</code>.”</li>
   <li><code class="highlighter-rouge">&lt;&gt;</code>: The topic <code class="highlighter-rouge">config</code> or <code class="highlighter-rouge">state</code> which defines the current action.</li>
 </ul>
 <p>The payload will be checked like an entry in your <code class="highlighter-rouge">configuration.yaml</code> file if a new device is added. This means that missing variables will be filled with the platform’s default values. All configuration variables which are <em>required</em> must be present in the initial payload send to <code class="highlighter-rouge">/config</code>.</p>
