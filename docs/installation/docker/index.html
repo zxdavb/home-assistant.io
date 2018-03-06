@@ -142,7 +142,8 @@ If you want to use a USB Bluetooth adapter or Z-Wave USB Stick with Home Assista
 <p>As the docker command becomes more complex, switching to <code class="highlighter-rouge">docker-compose</code> can be preferable and support automatically restarting on failure or system restart. Create a <code class="highlighter-rouge">docker-compose.yml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code>  <span class="s">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
   <span class="s">services</span><span class="pi">:</span>
-    <span class="s">web</span><span class="pi">:</span>
+    <span class="s">homeassistant</span><span class="pi">:</span>
+      <span class="s">container_name</span><span class="pi">:</span> <span class="s">home-assistant</span>
       <span class="s">image</span><span class="pi">:</span> <span class="s">homeassistant/home-assistant</span>
       <span class="s">volumes</span><span class="pi">:</span>
         <span class="pi">-</span> <span class="s">/path/to/your/config:/config</span>
@@ -163,7 +164,8 @@ If you want to use a USB Bluetooth adapter or Z-Wave USB Stick with Home Assista
 <p>or in a <code class="highlighter-rouge">docker-compose.yml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code>  <span class="s">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
   <span class="s">services</span><span class="pi">:</span>
-    <span class="s">web</span><span class="pi">:</span>
+    <span class="s">homeassistant</span><span class="pi">:</span>
+      <span class="s">container_name</span><span class="pi">:</span> <span class="s">home-assistant</span>
       <span class="s">image</span><span class="pi">:</span> <span class="s">homeassistant/home-assistant</span>
       <span class="s">volumes</span><span class="pi">:</span>
         <span class="pi">-</span> <span class="s">/path/to/your/config:/config</span>
