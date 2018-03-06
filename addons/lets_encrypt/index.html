@@ -78,7 +78,7 @@
   <p class="note">
 You should not use this if you are also using the <a href="/addons/duckdns/">DuckDNS add-on</a>. The DuckDNS add-on has integrated Let’s Encrypt support.
 </p>
-<p>Setup and manage a <a href="https://letsencrypt.org/">Let’s Encrypt</a> certificate. This addon will create a certificate on the first run and will auto-renew if the certificate is within 30 days of expiration.</p>
+<p>Setup and manage a <a href="https://letsencrypt.org/">Let’s Encrypt</a> certificate. This addon will create a certificate on the first run and will auto-renew if the certificate is within 30 days of expiration. This add-on uses port 80 to verify the certificate request. You will need to stop all other add-ons that also use this port.</p>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example@example.com"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"domains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"example.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"mqtt.example.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"hass.example.com"</span><span class="p">]</span><span class="w">
