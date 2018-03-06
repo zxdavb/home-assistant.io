@@ -78,13 +78,23 @@
   <p>Setup an SSL proxy with NGINX and redirect port 80 to 443. Make sure you have generated a certificate before you start this add-on.</p>
 <p>In the <code class="highlighter-rouge">http</code> section of the <code class="highlighter-rouge">configuration.yaml</code> file remove <code class="highlighter-rouge">ssl_certificate</code> and <code class="highlighter-rouge">ssl_key</code> and don’t enter the port in the <code class="highlighter-rouge">base_url</code> to avoid a HTTP 502 error.</p>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home.example.com"</span><span class="w">
+  </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home.example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"certfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fullchain.pem"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"keyfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"privkey.pem"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx_proxy_default*.conf"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"servers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx_proxy/*.conf"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>
 <p>Configuration variables:</p>
 <ul>
   <li><strong>domain</strong> (<em>Required</em>): Domain they will proxy run with it.</li>
+  <li><strong>certfile</strong> (<em>Required</em>): Certificate file to use in the /ssl dir.</li>
+  <li><strong>keyfile</strong> (<em>Required</em>): Private key file to use in the /ssl dir.</li>
+  <li><strong>customize</strong> (<em>Optional</em>): If true, additional NGINX configuration files for the default server and additional servers are read from files in the /share dir specified by the <code class="highlighter-rouge">default</code> and <code class="highlighter-rouge">servers</code> variables.</li>
 </ul>
 <p class="note">
 It is possible to deactivate port 80 if you need this for things like <code class="highlighter-rouge">emulate_hue</code>. Remove the host port from Network option of this add-on.
