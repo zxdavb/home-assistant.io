@@ -266,11 +266,19 @@
   </tbody>
 </table>
 <p class="note">
-+If you are running a database server instance on the same server as Home Assistant then you must ensure that this service starts before Home Assistant. For a Linux instance running Systemd (Raspberry Pi, Debian, Ubuntu and others) then you should edit the file /etc/systemd/system/home-assistant@homeassistant.service as root (e.g. sudo nano /etc/systemd/system/home-assistant@homeassistant.service) and add the service - for PostgreSQL:
++If you are running a database server instance on the same server as Home Assistant then you must ensure that this service starts before Home Assistant. For a Linux instance running Systemd (Raspberry Pi, Debian, Ubuntu and others) then you should edit the service file.
+<code class="highlighter-rouge">bash
+$ sudo nano /etc/systemd/system/home-assistant@homeassistant.service
+</code>
+and add the service for PostgreSQL:
 <code class="highlighter-rouge">
 [Unit]
 Description=Home Assistant
 After=network.target postgresql.service
+</code>
+Save the file then reload <code class="highlighter-rouge">systemctl</code>:
+<code class="highlighter-rouge">bash
+$ sudo systemctl daemon-reload
 </code>
 </p>
 <h2><a class="title-link" name="installation-notes" href="#installation-notes"></a> Installation notes</h2>

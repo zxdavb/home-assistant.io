@@ -292,11 +292,34 @@ mode with <code class="highlighter-rouge">remote_control_start</code>.</p>
 </table>
 <h2><a class="title-link" name="retrieving-the-access-token" href="#retrieving-the-access-token"></a> Retrieving the Access Token</h2>
 <p class="note">
-This token (32 hexadecimal characters) is required for the Xiaomi Mi Robot
-Vacuum, Xiaomi Philips Lights and Xiaomi IR Remote. The Xiaomi Gateway uses another security
-method and requires a <code class="highlighter-rouge">key</code> (16 alphanumeric chars), which can be obtained
-easily via a hidden menu item at the Mi-Home app.
+This token (32 hexadecimal characters) is required for the Xiaomi Mi Robot Vacuum, Xiaomi Philips Lights and Xiaomi IR Remote. The Xiaomi Gateway uses another security method and requires a <code class="highlighter-rouge">key</code> (16 alphanumeric chars), which can be obtained
+easily via a hidden menu item at the Mi-Home app or using the <code class="highlighter-rouge">miio</code> command line tool.
 </p>
+<h4><a class="title-link" name="miio-command-line-tool" href="#miio-command-line-tool"></a> Miio command line tool</h4>
+<p>You can install the command line tool with:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -g miio
+</code></pre>
+</div>
+<p>Discovering devices on current network</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>miio discover
+</code></pre>
+</div>
+<p>This will list devices that are connected to the same network as your computer. Let it run for a while so it has a chance to reach all devices, as it might take a minute or two for all devices to answer.</p>
+<p>The commands outputs each device on this format:</p>
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>Device ID: 48765421
+Model info: zhimi.airpurifier.m1
+Address: 192.168.100.9
+Token: token-as-hex-here via auto-token
+Support: At least basic
+</code></pre>
+</div>
+<p>The information output is:</p>
+<ul>
+  <li><strong>Device ID</strong> - the unique identifier of the device, does not change if the device is reset.</li>
+  <li><strong>Model ID</strong> - the model id if it could be determined, this indicates what type of device it is</li>
+  <li><strong>Address</strong> - the IP that the device has on the network</li>
+  <li><strong>Token</strong> - the token of the device or ??? if it could not be automatically determined</li>
+</ul>
 <h4><a class="title-link" name="windows-and-android" href="#windows-and-android"></a> Windows and Android</h4>
 <p>To fetch the token follow these instructions depending on your mobile phone platform.</p>
 <ol>
