@@ -74,8 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">xiaomi miio</code> vacuum platform allows you to control the state of your
-<a href="http://www.mi.com/roomrobot/">Xiaomi Mi Robot Vacuum</a>.</p>
+  <p>The <code class="highlighter-rouge">xiaomi miio</code> vacuum platform allows you to control the state of your <a href="http://www.mi.com/roomrobot/">Xiaomi Mi Robot Vacuum</a>.</p>
 <p>Currently supported features are:</p>
 <ul>
   <li><code class="highlighter-rouge">turn_on</code></li>
@@ -105,10 +104,7 @@
   <li><strong>name</strong> (<em>Optional</em>): The name of your robot.</li>
 </ul>
 <h2><a class="title-link" name="platform-services" href="#platform-services"></a> Platform Services</h2>
-<p>In addition to [all of the services provided by the <code class="highlighter-rouge">vacuum</code> component]
-]) (<code class="highlighter-rouge">turn_on</code>, <code class="highlighter-rouge">turn_off</code>, <code class="highlighter-rouge">start_pause</code>, <code class="highlighter-rouge">stop</code>, <code class="highlighter-rouge">return_to_home</code>, <code class="highlighter-rouge">locate</code>,
-<code class="highlighter-rouge">set_fan_speed</code> and <code class="highlighter-rouge">send_command</code>), the <code class="highlighter-rouge">xiaomi</code> platform introduces specific
-services to access the remote control mode of the robot. These are:</p>
+<p>In addition to all of the services provided by the <code class="highlighter-rouge">vacuum</code> component (<code class="highlighter-rouge">turn_on</code>, <code class="highlighter-rouge">turn_off</code>, <code class="highlighter-rouge">start_pause</code>, <code class="highlighter-rouge">stop</code>, <code class="highlighter-rouge">return_to_home</code>, <code class="highlighter-rouge">locate</code>, <code class="highlighter-rouge">set_fan_speed</code> and <code class="highlighter-rouge">send_command</code>), the <code class="highlighter-rouge">xiaomi</code> platform introduces specific services to access the remote control mode of the robot. These are:</p>
 <ul>
   <li><code class="highlighter-rouge">xiaomi_remote_control_start</code></li>
   <li><code class="highlighter-rouge">xiaomi_remote_control_stop</code></li>
@@ -116,8 +112,7 @@ services to access the remote control mode of the robot. These are:</p>
   <li><code class="highlighter-rouge">xiaomi_remote_control_move_step</code></li>
 </ul>
 <h3><a class="title-link" name="service-vacuumxiaomi_remote_control_start" href="#service-vacuumxiaomi_remote_control_start"></a> Service <code class="highlighter-rouge">vacuum/xiaomi_remote_control_start</code></h3>
-<p>Start the remote control mode of the robot. You can then move it with
-<code class="highlighter-rouge">remote_control_move</code>; when done, call <code class="highlighter-rouge">remote_control_stop</code>.</p>
+<p>Start the remote control mode of the robot. You can then move it with <code class="highlighter-rouge">remote_control_move</code>; when done, call <code class="highlighter-rouge">remote_control_stop</code>.</p>
 <table>
   <thead>
     <tr>
@@ -153,8 +148,7 @@ services to access the remote control mode of the robot. These are:</p>
   </tbody>
 </table>
 <h3><a class="title-link" name="service-vacuumxiaomi_remote_control_move" href="#service-vacuumxiaomi_remote_control_move"></a> Service <code class="highlighter-rouge">vacuum/xiaomi_remote_control_move</code></h3>
-<p>Remote control the robot. Please ensure you first set it in remote control
-mode with <code class="highlighter-rouge">remote_control_start</code>.</p>
+<p>Remote control the robot. Please ensure you first set it in remote control mode with <code class="highlighter-rouge">remote_control_start</code>.</p>
 <table>
   <thead>
     <tr>
@@ -220,9 +214,8 @@ mode with <code class="highlighter-rouge">remote_control_start</code>.</p>
   </tbody>
 </table>
 <h2><a class="title-link" name="attributes" href="#attributes"></a> Attributes</h2>
-<p>In addition to <a href="https://home-assistant.io/components/vacuum/#attributes">all of the attributes provided by the <code class="highlighter-rouge">vacuum</code> component</a>,
-(<code class="highlighter-rouge">battery_icon</code>, <code class="highlighter-rouge">cleaned_area</code>, <code class="highlighter-rouge">fan_speed</code>, <code class="highlighter-rouge">fan_speed_list</code>, <code class="highlighter-rouge">status</code>, and
-<code class="highlighter-rouge">params</code>), the <code class="highlighter-rouge">xiaomi</code> platform introduces specific attributes. These are:</p>
+<p>In addition to <a href="/components/vacuum/#attributes">all of the attributes provided by the <code class="highlighter-rouge">vacuum</code> component</a>,
+(<code class="highlighter-rouge">battery_icon</code>, <code class="highlighter-rouge">cleaned_area</code>, <code class="highlighter-rouge">fan_speed</code>, <code class="highlighter-rouge">fan_speed_list</code>, <code class="highlighter-rouge">status</code>, and <code class="highlighter-rouge">params</code>), the <code class="highlighter-rouge">xiaomi</code> platform introduces specific attributes. These are:</p>
 <ul>
   <li><code class="highlighter-rouge">cleaning_time</code></li>
   <li><code class="highlighter-rouge">do_not_disturb</code></li>
@@ -372,7 +365,7 @@ Support: At least basic
   <li>Get ADB f.e. <code class="highlighter-rouge">apt-get install android-tools-adb</code></li>
   <li><code class="highlighter-rouge">adb devices</code> should list your device</li>
   <li><code class="highlighter-rouge">adb root</code> (does work for development builds only: ones with <code class="highlighter-rouge">ro.debuggable=1</code>)</li>
-  <li><code class="highlighter-rouge">adb shell</code></li>
+  <li><code class="highlighter-rouge">adb shell</code> (for those using Magisk based root the previous command won’t work. After entering a shell, type <code class="highlighter-rouge">su</code> to enter the root shell)</li>
   <li><code class="highlighter-rouge">echo "select name,localIP,token from devicerecord;" | sqlite3 /data/data/com.xiaomi.smarthome/databases/miio2.db</code> returns a list of all registered devices including IP address and token.</li>
 </ol>
 <h4><a class="title-link" name="ios" href="#ios"></a> iOS</h4>

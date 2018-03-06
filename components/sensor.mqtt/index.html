@@ -139,6 +139,27 @@
 </div>
 <h2><a class="title-link" name="examples" href="#examples"></a> Examples</h2>
 <p>In this section you find some real life examples of how to use this sensor.</p>
+<h3><a class="title-link" name="json-attributes-configuration" href="#json-attributes-configuration"></a> JSON attributes configuration</h3>
+<p>The example sensor below shows a configuration example which uses JSON in the state topic to add extra attributes. It also makes use of the availability topic. Attributes can then be extracted in <a href="configuration/templating/#attributes">Templates</a>; Example to extract data from the sensor below ‘{{ states.sensor.bs_client_name.attributes.ClientName }}’.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yml entry</span>
+<span class="s">sensor</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">mqtt</span>
+    <span class="s">state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">HUISHS/BunnyShed/NodeHealthJSON"</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">BS</span><span class="nv"> </span><span class="s">RSSI"</span>
+    <span class="s">unit_of_measurement</span><span class="pi">:</span> <span class="s2">"</span><span class="s">dBm"</span>
+    <span class="s">value_template</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">value_json.RSSI</span><span class="nv"> </span><span class="s">}}'</span>
+    <span class="s">availability_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">HUISHS/BunnyShed/status"</span>
+    <span class="s">payload_available</span><span class="pi">:</span> <span class="s2">"</span><span class="s">online"</span>
+    <span class="s">payload_not_available</span><span class="pi">:</span> <span class="s2">"</span><span class="s">offline"</span>
+    <span class="s">json_attributes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">ClientName</span>
+      <span class="pi">-</span> <span class="s">IP</span>
+      <span class="pi">-</span> <span class="s">MAC</span>
+      <span class="pi">-</span> <span class="s">RSSI</span>
+      <span class="pi">-</span> <span class="s">HostName</span>
+      <span class="pi">-</span> <span class="s">ConnectedSSID</span>  
+</code></pre>
+</div>
 <h3><a class="title-link" name="get-battery-level" href="#get-battery-level"></a> Get battery level</h3>
 <p>If you are using the <a href="/components/device_tracker.owntracks/">Owntracks</a> and enable the reporting of the battery level then you can use a MQTT sensor to keep track of your battery. A regular MQTT message from Owntracks looks like this:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>owntracks/tablet/tablet <span class="o">{</span><span class="s2">"_type"</span>:<span class="s2">"location"</span>,<span class="s2">"lon"</span>:7.21,<span class="s2">"t"</span>:<span class="s2">"u"</span>,<span class="s2">"batt"</span>:92,<span class="s2">"tst"</span>:144995643,<span class="s2">"tid"</span>:<span class="s2">"ta"</span>,<span class="s2">"acc"</span>:27,<span class="s2">"lat"</span>:46.12<span class="o">}</span>
