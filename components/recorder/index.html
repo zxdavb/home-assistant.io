@@ -266,6 +266,7 @@
   </tbody>
 </table>
 <p class="note">
+If you use MariaDB 10 you need to add port 3307 to the SERVER_IP, e.g., <code class="highlighter-rouge">mysql://user:password@SERVER_IP:3307/DB_NAME?charset=utf8</code>.
 +If you are running a database server instance on the same server as Home Assistant then you must ensure that this service starts before Home Assistant. For a Linux instance running Systemd (Raspberry Pi, Debian, Ubuntu and others) then you should edit the service file.
 <code class="highlighter-rouge">bash
 $ sudo nano /etc/systemd/system/home-assistant@homeassistant.service

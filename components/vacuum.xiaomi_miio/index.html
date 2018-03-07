@@ -285,6 +285,7 @@
 </table>
 <h2><a class="title-link" name="retrieving-the-access-token" href="#retrieving-the-access-token"></a> Retrieving the Access Token</h2>
 <p class="note">
+As per <a href="https://github.com/rytilahti/python-miio/issues/185">python-miio issue 185</a> the Mi-Home app no longer stores the token within the database (it’s retrieved from Xiaomi servers from version 5.0.31+). Currently the only known fix is to uninstall, then install a downgraded version of the apk. Apkmirror is a trusted source for older versions of the app. <a href="https://www.apkmirror.com/apk/xiaomi-inc/mihome/mihome-5-0-0-release/">Mi-Home version 5.0.0</a> is confirmed as working for the following Android methods.
 This token (32 hexadecimal characters) is required for the Xiaomi Mi Robot Vacuum, Xiaomi Philips Lights and Xiaomi IR Remote. The Xiaomi Gateway uses another security method and requires a <code class="highlighter-rouge">key</code> (16 alphanumeric chars), which can be obtained
 easily via a hidden menu item at the Mi-Home app or using the <code class="highlighter-rouge">miio</code> command line tool.
 </p>
