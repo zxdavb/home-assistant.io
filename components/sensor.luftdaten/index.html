@@ -134,8 +134,16 @@
         </dd>
       </dl>
     </dd>
+    <dt><a class="title-link" name="show_on_map" href="#show_on_map"></a> show_on_map</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="boolean">boolean</span>)</span><span class="required">(Optional)</span><span class="description">Option to show the position of the sensor on the map.</span></p>
+      <p class="default">Default value: false</p>
+    </dd>
   </dl>
 </div>
+<p class="note warning">
+If you set <code class="highlighter-rouge">show_on_map</code> to <code class="highlighter-rouge">True</code> then the location attributes are named <code class="highlighter-rouge">latitude</code> and <code class="highlighter-rouge">longitude</code>. The default name of the location attributes is <code class="highlighter-rouge">lat</code> and <code class="highlighter-rouge">long</code> to avoid showing them on the map.
+</p>
 <p>Not all sensors provide all conditions. Also, it’s possible that the sensor values are not available all the time. To check what a sensor is publishing use <code class="highlighter-rouge">curl</code>:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl https://api.luftdaten.info/v1/sensor/[sensorid]/
 </code></pre>

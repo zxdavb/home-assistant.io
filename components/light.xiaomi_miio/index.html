@@ -74,7 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">xiaomi_miio</code> platform allows you to control the state of your Xiaomi Philips LED Ball Lamp and Xiaomi Philips LED Ceiling Lamp.</p>
+  <p>The <code class="highlighter-rouge">xiaomi_miio</code> platform allows you to control the state of your Xiaomi Philips LED Ball Lamp, Xiaomi Philips LED Ceiling Lamp and Xiaomi Philips Eyecare Lamp 2.</p>
 <p>Currently, the supported features are <code class="highlighter-rouge">on</code>, <code class="highlighter-rouge">off</code>, <code class="highlighter-rouge">set_cct</code> (colortemp) , <code class="highlighter-rouge">set_bright</code> (brightness).</p>
 <p>Please follow the instructions on <a href="/components/vacuum.xiaomi_miio/#retrieving-the-access-token">Retrieving the Access Token</a> to get the API token to use in the <code class="highlighter-rouge">configuration.yaml</code> file.</p>
 <p>To add a Xiaomi Philips Light to your installation, add the following to your configuration.yaml file:</p>
@@ -84,6 +84,7 @@
     <span class="s">name</span><span class="pi">:</span> <span class="s">Xiaomi Philips Smart LED Ball</span>
     <span class="s">host</span><span class="pi">:</span> <span class="s">192.168.130.67</span>
     <span class="s">token</span><span class="pi">:</span> <span class="s">YOUR_TOKEN</span>
+    <span class="s">model</span><span class="pi">:</span> <span class="s">philips.light.bulb</span>
 </code></pre>
 </div>
 <p>Configuration variables:</p>
@@ -91,9 +92,32 @@
   <li><strong>host</strong> (<em>Required</em>): The IP of your light.</li>
   <li><strong>token</strong> (<em>Required</em>): The API token of your light.</li>
   <li><strong>name</strong> (<em>Optional</em>): The name of your light.</li>
+  <li><strong>model</strong> (<em>Optional</em>): The model of your light. Valid values are <code class="highlighter-rouge">philips.light.bulb</code>, <code class="highlighter-rouge">philips.light.sread1</code>, <code class="highlighter-rouge">philips.light.ceiling</code> and <code class="highlighter-rouge">philips.light.zyceiling</code>. This setting can be used to bypass the device model detection and is recommended if your device isn’t always available.</li>
 </ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="host" href="#host"></a> host</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The IP address of your device.</span></p>
+    </dd>
+    <dt><a class="title-link" name="token" href="#token"></a> token</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The API token of your device.</span></p>
+    </dd>
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of your device.</span></p>
+      <p class="default">Default value: Xiaomi Philips Light</p>
+    </dd>
+    <dt><a class="title-link" name="model" href="#model"></a> model</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The model of your device.</span></p>
+    </dd>
+  </dl>
+</div>
 <h2><a class="title-link" name="platform-services" href="#platform-services"></a> Platform Services</h2>
-<h3>Service fan/xiaomi_miio_set_scene</h3>
+<h3><a class="title-link" name="service-lightxiaomi_miio_set_scene" href="#service-lightxiaomi_miio_set_scene"></a> Service <code class="highlighter-rouge">light.xiaomi_miio_set_scene</code></h3>
 <p>Set one of the 4 available fixed scenes.</p>
 <table>
   <thead>
@@ -107,12 +131,35 @@
     <tr>
       <td><code class="highlighter-rouge">entity_id</code></td>
       <td>yes</td>
-      <td>Only act on specific light. Else targets all.</td>
+      <td>Only act on a specific light. Else targets all.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">scene</code></td>
       <td>no</td>
       <td>Scene, between 1 and 4.</td>
+    </tr>
+  </tbody>
+</table>
+<h3><a class="title-link" name="service-lightxiaomi_miio_set_delayed_turn_off" href="#service-lightxiaomi_miio_set_delayed_turn_off"></a> Service <code class="highlighter-rouge">light.xiaomi_miio_set_delayed_turn_off</code></h3>
+<p>Delayed turn off.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Service data attribute</th>
+      <th>Optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">entity_id</code></td>
+      <td>yes</td>
+      <td>Only act on a specific light. Else targets all.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">time_period</code></td>
+      <td>no</td>
+      <td>Time period for the delayed turn off.</td>
     </tr>
   </tbody>
 </table>
@@ -221,6 +268,9 @@
         </li>
         <li>
             <a href='/components/light.decora_wifi/'>Leviton Decora Wi-Fi</a>
+        </li>
+        <li>
+            <a href='/components/light.group/'>Light Group</a>
         </li>
         <li>
             <a href='/components/light.limitlessled/'>LimitlessLED</a>

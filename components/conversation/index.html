@@ -74,37 +74,78 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">conversation</code> component can process sentences into commands for Home Assistant. It currently has built in functionality to recognize <code class="highlighter-rouge">turn &lt;Friendly Name&gt; &lt;on/off&gt;</code>, but custom phrases can be added through configuration.</p>
-<p>To enable the conversation option in your installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
+  <p>The conversation component allows you to converse with Home Assistant. You can either converse by pressing the microphone in the frontend (supported browsers only (no iOS)) or by calling the <code class="highlighter-rouge">conversation/process</code> service with the transcribed text.</p>
+<p class="img">
+  <img src="/images/screenshots/voice-commands.png" />
+  Screenshot of the conversation interface in Home Assistant.
+</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example base configuration.yaml entry</span>
 <span class="s">conversation</span><span class="pi">:</span>
 </code></pre>
 </div>
-<p>To add custom phrases to be recognized:</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry with custom phrasesconversation</span>
-<span class="s">conversation</span><span class="pi">:</span>
-    <span class="s">boolean_test</span><span class="pi">:</span>
-        <span class="s">sentence</span><span class="pi">:</span> <span class="s">switch boolean</span> <span class="c1"># The phrase it will recognize</span>
-        <span class="s">action</span><span class="pi">:</span>
-            <span class="s">service</span><span class="pi">:</span> <span class="s">input_boolean.toggle</span>
-</code></pre>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="intents" href="#intents"></a> intents</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="map">map</span>)</span><span class="required">(Optional)</span><span class="description">Intents that the conversation component should understand.</span></p>
+    </dd>
+    <dd>
+      <dl class="nested">
+        <dt><a class="title-link" name="intent-name" href="#intent-name"></a> <code class="highlighter-rouge">&lt;INTENT NAME&gt;</code></dt>
+        <dd>
+          <p class="desc"><span class="type">(<span class="list">list</span>)</span><span class="required">(Required)</span><span class="description">Sentences that should trigger this intent.</span></p>
+        </dd>
+      </dl>
+    </dd>
+  </dl>
 </div>
-<p>The action keyword uses <a href="https://home-assistant.io/docs/scripts/">script syntax</a>.</p>
-<p>To use the <code class="highlighter-rouge">conversation</code> component with the <a href="/components/shopping_list/"><code class="highlighter-rouge">shopping list</code> component</a> add an intent.</p>
+<h2><a class="title-link" name="adding-custom-sentences" href="#adding-custom-sentences"></a> Adding custom sentences</h2>
+<p>By default, it will support turning devices on and off. You can say things like “turn on kitchen lights” or “turn the living room lights off”. You can also configure your own sentences to be processed. This works by mapping sentences to intents and then configure the <a href="/components/intent_script/">intent script component</a> to handle these intents.</p>
+<p>Here is a simple example to be able to ask what the temperature in the living room is.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">conversation</span><span class="pi">:</span>
   <span class="s">intents</span><span class="pi">:</span>
-    <span class="s">ShoppingListAddItem</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">Add {item} to my shopping list</span>
+    <span class="s">LivingRoomTemperature</span><span class="pi">:</span>
+     <span class="pi">-</span> <span class="s">What is the temperature in the living room</span>
+
+<span class="s">intent_script</span><span class="pi">:</span>
+  <span class="s">LivingRoomTemperature</span><span class="pi">:</span>
+    <span class="s">speech</span><span class="pi">:</span>
+      <span class="s">text</span><span class="pi">:</span> <span class="s">It is currently {{ states.sensor.temperature }} degrees in the living room.</span>
 </code></pre>
 </div>
-<p>When this component is active and you are using a supported browser voice commands will be activated in the frontend. Browse to <a href="/demo/">the demo</a> using Chrome or Chromium to see it in action.</p>
-<p class="img">
-  <img src="/images/screenshots/voice-commands.png" />
-</p>
-<p class="note">
-  Apple iPhones do not support this feature in any browser. 
-</p>
+<h2><a class="title-link" name="adding-advanced-custom-sentences" href="#adding-advanced-custom-sentences"></a> Adding advanced custom sentences</h2>
+<p>Sentences can contain slots (marked with curly braces: <code class="highlighter-rouge"><span class="p">{</span><span class="err">name</span><span class="p">}</span></code>) and optional words (marked with square brackets: <code class="highlighter-rouge">[the]</code>). The values of slots will be passed on to the intent and are available inside the templates.</p>
+<p>The following configuration can handle the following sentences:</p>
+<ul>
+  <li>Change the lights to red</li>
+  <li>Change the lights to green</li>
+  <li>Change the lights to blue</li>
+  <li>Change the lights to the color red</li>
+  <li>Change the lights to the color green</li>
+  <li>Change the lights to the color blue</li>
+</ul>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="s">conversation</span><span class="pi">:</span>
+  <span class="s">intents</span><span class="pi">:</span>
+    <span class="s">ColorLight</span><span class="pi">:</span>
+     <span class="pi">-</span> <span class="s">Change the lights to [the color] {color}</span>
+
+<span class="s">intent_script</span><span class="pi">:</span>
+  <span class="s">ColorLight</span><span class="pi">:</span>
+    <span class="s">speech</span><span class="pi">:</span>
+      <span class="s">text</span><span class="pi">:</span> <span class="s">Changed the lights to {{ color }}.</span>
+    <span class="s">action</span><span class="pi">:</span>
+      <span class="s">service</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+      <span class="s">data_template</span><span class="pi">:</span>
+        <span class="s">rgb_color</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">{%</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">color</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">'red'</span><span class="nv"> </span><span class="s">%}255{%</span><span class="nv"> </span><span class="s">else</span><span class="nv"> </span><span class="s">%}0{%</span><span class="nv"> </span><span class="s">endif</span><span class="nv"> </span><span class="s">%}"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">{%</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">color</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">'green'</span><span class="nv"> </span><span class="s">%}255{%</span><span class="nv"> </span><span class="s">else</span><span class="nv"> </span><span class="s">%}0{%</span><span class="nv"> </span><span class="s">endif</span><span class="nv"> </span><span class="s">%}"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">{%</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">color</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">'blue'</span><span class="nv"> </span><span class="s">%}255{%</span><span class="nv"> </span><span class="s">else</span><span class="nv"> </span><span class="s">%}0{%</span><span class="nv"> </span><span class="s">endif</span><span class="nv"> </span><span class="s">%}"</span>
+
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">

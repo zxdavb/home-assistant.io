@@ -88,9 +88,11 @@
   <li><strong>name</strong> (<em>Optional</em>): Override the name of your camera.</li>
   <li><strong>username</strong> (<em>Optional</em>): The username for the camera.</li>
   <li><strong>password</strong> (<em>Optional</em>): The password for the camera.</li>
-  <li><strong>port</strong> (<em>Optional</em>): The port for the camera. This defaults to 5000</li>
+  <li><strong>port</strong> (<em>Optional</em>): The port for the camera. This defaults to 5000.</li>
+  <li><strong>profile</strong> (<em>Optional</em>): Video profile that will be used to obtain the stream. This defaults to 0. More details below.</li>
   <li><strong>extra_arguments</strong> (<em>Optional</em>): Extra options to pass to <code class="highlighter-rouge">ffmpeg</code>, e.g. image quality or video filter options. More details in <a href="/components/ffmpeg">FFmpeg component</a>.</li>
 </ul>
+<p>Most of the Onvif cameras support more than one audio/video Profile. Each profile provides different image quality. Usually, the first profile has the highest quality, and it is the profile used by default. However, you may want to use a lower quality image. One of the reasons may be that your hardware isn’t able to render the highest quality image in real-time - especially when running on Raspberry Pi. Therefore you can choose which profile do you want to use by setting in config <code class="highlighter-rouge">profile</code> variable.</p>
 <h3><a class="title-link" name="service-cameraonvif_ptz" href="#service-cameraonvif_ptz"></a> Service <code class="highlighter-rouge">camera.onvif_ptz</code></h3>
 <p>If your ONVIF camera supports PTZ, you will be able to pan, tilt or zoom your camera.</p>
 <table>
@@ -166,6 +168,9 @@
         </li>
         <li>
             <a href='/components/camera.bloomsky/'>BloomSky Camera</a>
+        </li>
+        <li>
+            <a href='/components/camera.proxy/'>Camera Proxy</a>
         </li>
         <li>
             <a href='/components/camera.canary/'>Canary Camera</a>

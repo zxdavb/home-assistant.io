@@ -268,6 +268,20 @@ Using this service provides you direct access to the setValue-method of the prim
     <span class="s">value</span><span class="pi">:</span> <span class="s">23.0</span>
 </code></pre>
 </div>
+<p>Manually set lock on KeyMatic devices</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="nn">...</span>
+<span class="s">action</span><span class="pi">:</span>
+  <span class="s">service</span><span class="pi">:</span> <span class="s">lock.lock</span>
+  <span class="s">entity_id</span><span class="pi">:</span> <span class="s">lock.leq1234567</span>
+</code></pre>
+</div>
+<p>Manually set unlock on KeyMatic devices</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="nn">...</span>
+<span class="s">action</span><span class="pi">:</span>
+  <span class="s">service</span><span class="pi">:</span> <span class="s">lock.unlock</span>
+  <span class="s">entity_id</span><span class="pi">:</span> <span class="s">lock.leq1234567</span>
+</code></pre>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -362,6 +376,9 @@ Using this service provides you direct access to the setValue-method of the prim
         </li>
         <li>
             <a href='/components/dyson/'>Dyson</a>
+        </li>
+        <li>
+            <a href='/components/egardia/'>Egardia</a>
         </li>
         <li>
             <a href='/components/eight_sleep/'>Eight Sleep</a>
@@ -545,6 +562,9 @@ Using this service provides you direct access to the setValue-method of the prim
         </li>
         <li>
             <a href='/components/usps/'>USPS</a>
+        </li>
+        <li>
+            <a href='/components/upcloud/'>UpCloud</a>
         </li>
         <li>
             <a href='/components/velbus/'>Velbus</a>

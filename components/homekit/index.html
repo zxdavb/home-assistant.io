@@ -86,7 +86,7 @@
       <dl class="nested">
         <dt><a class="title-link" name="pincode" href="#pincode"></a> pincode</dt>
         <dd>
-          <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Pin code required during setup of HomeKit Home Assistant accessory. The format needs to be ‘XXX-XX-XXX’ where X is a number between 1 and 9.</span></p>
+          <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Pin code required during setup of HomeKit Home Assistant accessory. The format needs to be ‘XXX-XX-XXX’ where X is a number between 0 and 9.</span></p>
           <p class="default">Default value: “123-45-678”</p>
         </dd>
         <dt><a class="title-link" name="port" href="#port"></a> port</dt>
@@ -125,6 +125,16 @@
   </thead>
   <tbody>
     <tr>
+      <td>alarm_control_panel</td>
+      <td>SecuritySystem</td>
+      <td>All security systems.</td>
+    </tr>
+    <tr>
+      <td>climate</td>
+      <td>Thermostat</td>
+      <td>All climate devices.</td>
+    </tr>
+    <tr>
       <td>cover</td>
       <td>Window</td>
       <td>All covers that support <code class="highlighter-rouge">set_cover_position</code>.</td>
@@ -132,7 +142,12 @@
     <tr>
       <td>sensor</td>
       <td>TemperatureSensor</td>
-      <td>All sensors that have <code class="highlighter-rouge">Celsius</code> as their <code class="highlighter-rouge">unit_of_measurement</code>.</td>
+      <td>All sensors that have <code class="highlighter-rouge">Celsius</code> and <code class="highlighter-rouge">Fahrenheit</code> as their <code class="highlighter-rouge">unit_of_measurement</code>.</td>
+    </tr>
+    <tr>
+      <td>switch/remote</td>
+      <td>Switch</td>
+      <td>All switches or remotes (represented as switches).</td>
     </tr>
   </tbody>
 </table>

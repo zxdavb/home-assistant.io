@@ -77,22 +77,53 @@
   <p>This component adds “local push” support for INSTEON PowerLinc Modems allowing
 linked INSTEON devices to be used within Home Assistant as lights, switches,
 and binary sensors.  Device support is provided by the underlying <a href="https://github.com/nugget/python-insteonplm">insteonplm</a>
-package.  It is known to work with both the <a href="https://www.insteon.com/powerlinc-modem-usb">2413U</a> USB and <a href="https://www.insteon.com/powerlinc-modem-serial">2412S</a>
-RS242 flavors of PLM.  This component does not work with the IP-based hub
-products.  For that, you’ll want the “Insteon (Local)” component instead.</p>
+package.  It is known to work with the <a href="https://www.insteon.com/powerlinc-modem-usb">2413U</a> USB and <a href="https://www.insteon.com/powerlinc-modem-serial">2412S</a> RS242 flavors
+of PLM and the <a href="https://www.smarthome.com/insteon-2448a7-portable-usb-adapter.html">2448A7</a> USB stick.  This component does not work with the 
+IP-based hub products.  For that, you’ll want the “Insteon (Local)” component 
+instead.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># insteon_plm supported configuration variables</span>
 <span class="s">insteon_plm</span><span class="pi">:</span>
   <span class="s">port</span><span class="pi">:</span> <span class="s">SERIAL_PORT</span>
   <span class="s">device_override</span><span class="pi">:</span>
-     <span class="pi">-</span> <span class="s">address</span><span class="pi">:</span> <span class="s">INSTEON_ADDRESS</span>
-       <span class="s">platform</span><span class="pi">:</span> <span class="s">DEVICE_PLATFORM</span>
+     <span class="pi">-</span> <span class="s">address</span><span class="pi">:</span> <span class="s">ADDRESS</span>
+       <span class="s">cat</span><span class="pi">:</span> <span class="s">CATEGORY</span>
+       <span class="s">subcat</span><span class="pi">:</span> <span class="s">SUBCATEGORY</span>
+       <span class="s">firmware</span><span class="pi">:</span> <span class="s">FIRMWARE</span>
+       <span class="s">product_key</span><span class="pi">:</span> <span class="s">PRODUCT_KEY</span>
 </code></pre>
 </div>
 <p>Configuration variables:</p>
 <ul>
   <li><strong>port</strong> (<em>Required</em>): The port for your device, e.g. <code class="highlighter-rouge">/dev/ttyUSB0</code></li>
-  <li><strong>device_override</strong> (<em>Optional</em>): Override the default device platform</li>
+  <li><strong>device_override</strong> (<em>Optional</em>): Override the default device definition
+    <ul>
+      <li><em>ADDRESS</em> is found on the device itself in the form 1A.2B.3C or 1a2b3c</li>
+      <li><em>CATEGORY</em> is found in the back of the device’s User Guide in the form of
+0x00 - 0xff</li>
+      <li><em>SUBCATEGORY</em> is found in the back of the device’s User Guide in the form 
+of 0x00 - 0xff</li>
+      <li><em>FIRMWARE</em> and <em>PRODUCT_KEY</em> are more advanced options and will typically 
+not be used.</li>
+    </ul>
+  </li>
 </ul>
+<h3><a class="title-link" name="autodiscovery" href="#autodiscovery"></a> Autodiscovery</h3>
+<p>The first time autodiscovery runs, the duration may require up to 20 seconds 
+per device. Subsequent startups will occur much quicker using cached device
+information. If a device is not recognized during autodiscovery, you can add
+the device to the <strong>device_override</strong> configuration.</p>
+<p>In order for a device to be discovered it must be linked to the PLM as either
+a responder or a controller.</p>
+<h3><a class="title-link" name="linking-devices-to-the-plm" href="#linking-devices-to-the-plm"></a> Linking Devices to the PLM</h3>
+<p>In order for any two Insteon devices to talk with one another, they must be 
+linked. For an overview of device linking please read the Insteon page on
+<a href="http://www.insteon.com/support-knowledgebase/2015/1/28/understanding-linking">understanding linking</a>. Currently Insteon PLM does not support software
+linking of devices. If you need software that can link your devices (if you 
+are using a USB Stick PLM for example), you can download <a href="https://www.smarthome.com/houselinc.html">HouseLinc</a> which runs
+on any Windows PC, or you can use <a href="https://github.com/pfrommerd/insteon-terminal">Insteon Terminal</a> which is open source and 
+runs on most platforms. HouseLinc is no longer supported by SmartHome but it 
+still works. Insteon Terminal is a very useful tool but please read the 
+disclaimers carefully, they are important.</p>
 <h3><a class="title-link" name="customization" href="#customization"></a> Customization</h3>
 <p>The only configuration item that is absolutely necessary is the port so that
 Home Assistant can connect to the PLM.  This will expose all the supported INSTEON
@@ -106,14 +137,16 @@ is especially useful for setting device_class on your binary_sensor INSTEON
 devices.</p>
 <h3><a class="title-link" name="device-overrides" href="#device-overrides"></a> Device Overrides</h3>
 <p>INSTEON devices are added to Home Assistant using the platform(s) that make the
-most sense given the model and features of the hardware.  In most cases this is
-unambiguous, but sometimes the component will not be able to guess the actual
-usage of the device.  For example, there might be a table lamp plugged into an
-INSTEON appliance relay module.  By default, this will show as a ‘switch’
-device in Home Assistant, but it really should be a ‘light’ device.  For
-exceptions like this, the component supports a device platform override.  You
-can set any device (by address) to explicitly use a specific platform if the
-default is not correct.</p>
+most sense given the model and features of the hardware. The features of the 
+INSTEON device are built into the Home Assistant platform. Changing the 
+platform is not recommended. There are two primary uses for the 
+<strong>device_override</strong> feature.</p>
+<ul>
+  <li>Devices that do not respond during autodiscovery. This is common for battery
+operated devices.</li>
+  <li>Devices that have not been fully developed. This allows an unknown device to
+be mapped to a device that operates similarly to another device.</li>
+</ul>
 <h3><a class="title-link" name="example-configuration-with-options" href="#example-configuration-with-options"></a> Example Configuration with Options</h3>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Full example of insteon_plm configuration with customizations and overrides</span>
 
@@ -128,8 +161,19 @@ default is not correct.</p>
 <span class="s">insteon_plm</span><span class="pi">:</span>
   <span class="s">port</span><span class="pi">:</span> <span class="s">/dev/ttyUSB0</span>
   <span class="s">device_override</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">address</span><span class="pi">:</span> <span class="s">a1b2c3</span>  <span class="c1"># Icon Appliance Module for bedside lamp</span>
-      <span class="s">platform</span><span class="pi">:</span> <span class="s">light</span>  <span class="c1"># make it a light instead of a switch</span>
+    <span class="pi">-</span> <span class="s">address</span><span class="pi">:</span> <span class="s">a1b2c3</span>  <span class="c1"># Hidden Door Sensor [2845-222]</span>
+      <span class="s">cat</span><span class="pi">:</span> <span class="s">0x10</span>
+      <span class="s">subcat</span><span class="pi">:</span> <span class="s">0x11</span>     
+</code></pre>
+</div>
+<h3><a class="title-link" name="what-not-to-do" href="#what-not-to-do"></a> What NOT to do</h3>
+<p>Insteon PLM is a top level component and device discovery will identify 
+the Home Assistant platform the device belongs in. As such, do not 
+declare Insteon devices in other platforms. For example, this configuration
+will NOT work:</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">light</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">insteon_plm</span>
+    <span class="s">address</span><span class="pi">:</span> <span class="s">1a2b3c</span>
 </code></pre>
 </div>
 </article>
@@ -150,8 +194,14 @@ default is not correct.</p>
         <li><a href='/components/binary_sensor.insteon_plm/'>
           Insteon PLM Binary Sensor
         </a></li>
+        <li><a href='/components/fan.insteon_plm/'>
+          Insteon PLM Fan
+        </a></li>
         <li><a href='/components/light.insteon_plm/'>
           Insteon PLM Light
+        </a></li>
+        <li><a href='/components/sensor.insteon_plm/'>
+          Insteon PLM Sensor
         </a></li>
         <li><a href='/components/switch.insteon_plm/'>
           Insteon PLM Switch
@@ -217,6 +267,9 @@ default is not correct.</p>
         </li>
         <li>
             <a href='/components/dyson/'>Dyson</a>
+        </li>
+        <li>
+            <a href='/components/egardia/'>Egardia</a>
         </li>
         <li>
             <a href='/components/eight_sleep/'>Eight Sleep</a>
@@ -400,6 +453,9 @@ default is not correct.</p>
         </li>
         <li>
             <a href='/components/usps/'>USPS</a>
+        </li>
+        <li>
+            <a href='/components/upcloud/'>UpCloud</a>
         </li>
         <li>
             <a href='/components/velbus/'>Velbus</a>

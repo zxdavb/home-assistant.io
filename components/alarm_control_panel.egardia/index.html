@@ -74,58 +74,8 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>The <code class="highlighter-rouge">egardia</code> platform enables the ability to control an <a href="http://egardia.com/">Egardia</a>/<a href="http://woonveilig.nl">Woonveilig</a> control panel. These alarm panels are known under different brand names across the world, including Woonveilig in the Netherlands. This was tested on the GATE-01, GATE-02 and GATE-03 versions of the Egardia/Woonveilig platform.</p>
-<p>You will need to know the IP of your alarm panel on your local network. Test if you can login to the panel by browsing to the IP address and log in using your Egardia/Woonveilig account.</p>
-<p>To enable the integration with your alarm panel, add the following lines to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
-<span class="s">alarm_control_panel</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">egardia</span>
-    <span class="s">host</span><span class="pi">:</span> <span class="s">YOUR_HOST</span>
-    <span class="s">username</span><span class="pi">:</span> <span class="s">YOUR_USERNAME</span>
-    <span class="s">password</span><span class="pi">:</span> <span class="s">YOUR_PASSWORD</span>
-</code></pre>
-</div>
-<p>Configuration variables:</p>
-<ul>
-  <li><strong>host</strong> (<em>Required</em>): The local IP address of the Egardia/Woonveilig alarm panel.</li>
-  <li><strong>username</strong> (<em>Required</em>): Username for the Egardia/Woonveilig account.</li>
-  <li><strong>password</strong> (<em>Required</em>): Password for Egardia/Woonveilig account.</li>
-  <li><strong>version</strong> (<em>Optional</em>): The version of the Egardia system. <code class="highlighter-rouge">GATE-01</code>, <code class="highlighter-rouge">GATE-02</code> and <code class="highlighter-rouge">GATE-03</code> are currently supported. Defaults to <code class="highlighter-rouge">GATE-01</code>.</li>
-  <li><strong>port</strong> (<em>Optional</em>): The port of the alarm panel. Defaults to 80.</li>
-  <li><strong>name</strong> (<em>Optional</em>): Name to use for the alarm panel. Defaults to <code class="highlighter-rouge">Egardia</code>.</li>
-  <li><strong>report_server_enabled</strong> (<em>Optional</em>): Enable reporting by server. Defaults to <code class="highlighter-rouge">False</code>.</li>
-  <li><strong>report_server_port</strong> (<em>Optional</em>): Port of the Egardia server. Defaults to 52010.</li>
-  <li><strong>report_server_codes</strong> list (<em>Optional</em>): List of codes for the different states.</li>
-</ul>
-<p>Note that this basic configuration will only enable you to read the armed/armed away/disarmed status of your alarm and will <strong>not</strong> update the status if the alarm is triggered. This is because of how Egardia built their system. The alarm triggers normally go through their servers.
-You can change this, however, using the following procedure. This is a more advanced configuration.</p>
-<ol>
-  <li>Log in into your alarm system’s control panel. You will need to access http://[IP of your control panel]. You know this already since you need it in the basic configuration from above. Log in to the control panel with your Egardia/Woonveilig username and password.</li>
-  <li>Once logged in, go to <em>System Settings</em>, <em>Report</em> and change the Server Address for your primary server to the IP or hostname of your Home Assistant machine. You can leave the port number set to 52010 or change it to anything you like. <strong>Make sure to change the settings of the primary server otherwise the messages will not come through. Note that this will limit (or fully stop) the number of alarm messages you will get through Egardia’s / Woonveilig services.</strong> Maybe, that is just what you want. Make sure to save your settings by selecting ‘OK’.</li>
-  <li>On your Home Assistant machine run <code class="highlighter-rouge">$ sudo python3 egardiaserver.py</code>. Refer to the <a href="https://github.com/jeroenterheerdt/python-egardia">python-egardia repository</a> for detailed documentation on parameters. This will receive status codes from your alarm control panel and display them. You will need the codes to include in your configuration.yaml. Make sure to change the status of your alarm to all states (disarm, arm, home) by all means possible (all users, remotes, web login, app) as well as trigger the alarm in all ways possible to get 100% coverage. <strong>Before triggering the alarm it might be good to disable the siren temporarily (can be done in Panel Settings).</strong></li>
-  <li>Once you have the codes, update your <code class="highlighter-rouge">configuration.yaml</code>:
-    <div class="language-yaml highlighter-rouge"><pre class="highlight"><code> <span class="c1"># Example configuration.yaml entry</span>
- <span class="s">alarm_control_panel</span><span class="pi">:</span>
- <span class="s"> - platform</span><span class="pi">:</span> <span class="s">egardia</span>
- <span class="s">   host</span><span class="pi">:</span> <span class="s">YOUR_HOST</span>
- <span class="s">   username</span><span class="pi">:</span> <span class="s">YOUR_USERNAME</span>
- <span class="s">   password</span><span class="pi">:</span> <span class="s">YOUR_PASSWORD</span>
-     <span class="s">report_server_enabled</span><span class="pi">:</span> <span class="s">True</span>
-     <span class="s">report_server_port</span><span class="pi">:</span> <span class="s">PORT_OF_EGARDIASERVER (optional, defaults to 52010)</span>
-     <span class="s">report_server_codes</span><span class="pi">:</span>
-       <span class="s">arm</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXX</span>
-       <span class="s">disarm</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXX</span>
-       <span class="s">home</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX</span>
-       <span class="s">triggered</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXX</span>
-       <span class="s">ignore</span><span class="pi">:</span> <span class="s">XXXXXXXXXXXXXXXX</span>
-</code></pre>
-    </div>
-  </li>
-</ol>
-<p>Note that for <em>triggered</em>, <em>arm</em> and <em>disarm</em> multiple codes can be entered since each sensor triggers with a different code and each user of the system has its own arm and disarm codes. Also note that your system will do regular system checks which will be reported as well. Since Home Assistant provides no way of handling them properly, you can enter those codes as <em>ignore</em> (again, multiple codes can be used here). The egardia component will ignore these codes and continue returning the old status if it receives any of the codes that are listed as ignore. This is useful for example when you have armed your alarm at night: normally a system check will occur at least once during the night and if that code is not specified anywhere Home Assistant will set the status of the alarm to its default, which is unarmed. This is in fact wrong. Listing the code as ignore changes this behavior and Home Assistant will continue to show the status the alarm is in (disarm, arm, home, triggered) even when system checks occur.</p>
-<ol>
-  <li>Test your setup and enjoy. The component will update if the alarm status changes, including triggers. You can use this to build your own automations and send notifications as you wish. <em>Note</em>: previous versions required a separate egardiaserver to be set up. This is no longer necessary and corresponding system services can be removed (using systemctl).</li>
-</ol>
+  <p>The <code class="highlighter-rouge">egardia</code> platform allows you to integrate your <a href="http://www.egardia.com">Egardia</a>/<a href="http://www.woonveilig.nl">Woonveilig</a> alarm control panel in Home Assistant.
+You will need to set up your <a href="/components/egardia/">Egardia hub</a>.</p>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -145,6 +95,17 @@ You can change this, however, using the following procedure. This is a more adva
     <div class='section'>
       This is a platform for
       <a href='/components/alarm_control_panel/'>the Alarm Control Panels component</a>.
+    </div>
+          <div class='section'>
+          <h1 class='title delta'>Related components</h1>
+          <ul class='divided'>
+        <li><a href='/components/egardia/'>
+          Egardia
+        </a></li>
+        <li><a href='/components/binary_sensor.egardia/'>
+          Egardia Binary Sensor
+        </a></li>
+    </ul>
     </div>
     <div class='section'>
     <h1 class="title delta">Category Alarm</h1>

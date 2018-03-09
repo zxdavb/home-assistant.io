@@ -70,6 +70,112 @@
   <article class="listing">
     <header>
   <h1 class="beta">
+    <a href="/blog/2018/03/09/release-65/">0.65: Rename entities, new filter sensor, UpCloud and Channels</a>
+  </h1>
+  <div class="meta clearfix">
+    <time datetime="2018-03-09T00:01:00+00:00" pubdate data-updated="true"><i class="icon-calendar"></i> March 9, 2018</time>
+    <span class="byline author vcard"><i class='icon-user'></i> Paulus Schoutsen</span>
+    <span><i class='icon-time'></i> 18 minutes reading time</span>
+    <span>
+    <i class="icon-tags"></i>
+    <ul class="tags unstyled">
+        <li>Release-Notes</li>
+    </ul>
+  </span>
+      <a class='comments'
+         href="/blog/2018/03/09/release-65/#post-comments"
+         >Comments</a>
+  </div>
+</header>
+  <div class="entry-content clearfix">
+    <p><a href="/components/#version/0.65"><img src="/images/blog/2018-03-0.65/components.png" style="border: 0;box-shadow: none;" /></a></p>
+<p>Release 0.65 has arrived and oh boy, is it awesome. First off, in case you have missed the previous release notes and <a href="https://home-assistant.io/blog/2017/10/06/deprecating-python-3.4-support/">announcements</a>: <strong>Starting with this release, Home Assistant has dropped support for Python 3.4. The minimum supported version is now Python 3.5.3.</strong> If you are on Hass.io or Docker, you’ll automatically be running the latest and greatest. If you’re on an older Hassbian installation or did your own Linux setup you’ll need to upgrade to at least Python 3.5.3.</p>
+<h2><a class="title-link" name="naming-entities" href="#naming-entities"></a> Naming entities</h2>
+<p>With the introduction of the entity registry in 0.63, Home Assistant is making sure that the same devices always receive the same entity IDs. This release is taking it a step further by allowing users to change the name of a device from the frontend. Changing the name will be instantly applied and overrides whatever name the device is given by the integration. If you want to switch back to the name from the integration, set the name to blank.</p>
+<p><em>This feature is, just like the entity registry, only available for integrations that provide unique IDs for their entities. Adding this to each integration is still a work in progress.</em></p>
+<p class="img">
+  <img src="/images/blog/2018-03-0.65/entity-registry-name.gif" alt="Screencap of interaction with the UI to override the name of a light." />
+  The new entity registry settings page in action.
+</p>
+<h2><a class="title-link" name="filter-sensor" href="#filter-sensor"></a> Filter sensor</h2>
+<p>The <a href="https://home-assistant.io/components/sensor.filter/">filter sensor</a> is a new 2nd order sensor by <a href="https://github.com/dgomes">@dgomes</a>: it will consume data from a sensor entity and apply filters to it. For the initial implementation it comes with Low-pass, Outlier and Throttle filters. Expect more to be added in the future.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sensor</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">filter</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">filtered</span><span class="nv"> </span><span class="s">realistic</span><span class="nv"> </span><span class="s">humidity"</span>
+    <span class="s">entity_id</span><span class="pi">:</span> <span class="s">sensor.realistic_humidity</span>
+    <span class="s">filters</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">filter</span><span class="pi">:</span> <span class="s">outlier</span>
+        <span class="s">window_size</span><span class="pi">:</span> <span class="s">4</span>
+        <span class="s">radius</span><span class="pi">:</span> <span class="s">4.0</span>
+      <span class="pi">-</span> <span class="s">filter</span><span class="pi">:</span> <span class="s">lowpass</span>
+        <span class="s">time_constant</span><span class="pi">:</span> <span class="s">10</span>
+        <span class="s">precision</span><span class="pi">:</span> <span class="s">2</span>
+</code></pre>
+</div>
+<p class="img">
+  <img src="/images/blog/2018-03-0.65/filter-example.png" alt="Chart showing a humidity sensor with a lot of spikes and a smooth graph produced by the new filter sensor." />
+  Graph showing both the input sensor and the output of the filter sensor.
+</p>
+<h2><a class="title-link" name="light-group" href="#light-group"></a> Light Group</h2>
+<p>We have had some discussion lately and realized that our current group component is very limiting. Extending it would probably lead to more confusion so we’ve decided to take a new approach: groups that are designed to be part of a specific component. The first one in this series comes at the hand of <a href="https://github.com/OttoWinter">@OttoWinter</a>: the group light (<a href="https://home-assistant.io/components/light.group/">docs</a>).</p>
+<p>The group light creates a single light inside Home Assistant that is representing a group of lights. All commands will be forwarded and the state is a combination of all the lights.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">light</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">group</span>
+    <span class="s">name</span><span class="pi">:</span> <span class="s">Cool Light Group</span>
+    <span class="s">entities</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">light.amazing_light</span>
+      <span class="pi">-</span> <span class="s">light.foobar</span>
+      <span class="pi">-</span> <span class="s">light.sun</span>
+</code></pre>
+</div>
+<h2><a class="title-link" name="homekit" href="#homekit"></a> HomeKit</h2>
+<p>HomeKit got some more upgrades. We’ve added support for temperature sensors in Fahrenheit, alarm systems, switches and thermostats. Just a few releases more and we should be able to cover it all.</p>
+<h2><a class="title-link" name="optional-words-for-the-conversation-component" href="#optional-words-for-the-conversation-component"></a> Optional words for the Conversation component</h2>
+<p>The <a href="/components/conversation/">conversation component</a> has always been a great introduction to controlling your house by voice. There is no hotword detection or powerful language engine behind it, but it gives a great intro to what is possible. Starting with this release, it will get a little bit more powerful with the introduction of optional words. To mark a word optional, wrap it in square brackets: <code class="highlighter-rouge">Change the light to [the color] {color}</code>.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="s">conversation</span><span class="pi">:</span>
+  <span class="s">intents</span><span class="pi">:</span>
+    <span class="s">LivingRoomTemperature</span><span class="pi">:</span>
+     <span class="pi">-</span> <span class="s">What is the temperature in the living room</span>
+     <span class="pi">-</span> <span class="s">What is [the] living room temperature</span>
+
+<span class="s">intent_script</span><span class="pi">:</span>
+  <span class="s">LivingRoomTemperature</span><span class="pi">:</span>
+    <span class="s">speech</span><span class="pi">:</span>
+      <span class="s">text</span><span class="pi">:</span> <span class="s">It is currently  degrees in the living room.</span>
+</code></pre>
+</div>
+<p class="img">
+  <img src="/images/blog/2018-03-0.65/voice-commands.png" alt="Screenshot of the frontend with the conversation panel open." />
+  Have conversations with Home Assistant via the conversation component.
+</p>
+<h2><a class="title-link" name="new-platforms" href="#new-platforms"></a> New Platforms</h2>
+<ul>
+  <li>Synology Chat as a notification platform (<a href="https://github.com/cmsimike">@cmsimike</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12596">#12596</a>) (<a href="https://home-assistant.io/components/notify.synology_chat/">notify.synology_chat docs</a>) (new-platform)</li>
+  <li>KNX Component: Scene support and expose sensor values (<a href="https://github.com/Julius2342">@Julius2342</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11978">#11978</a>) (<a href="https://home-assistant.io/components/knx/">knx docs</a>) (<a href="https://home-assistant.io/components/scene/">scene docs</a>) (<a href="https://home-assistant.io/components/binary_sensor.knx/">binary_sensor.knx docs</a>) (new-platform)</li>
+  <li>Adds simulated sensor (<a href="https://github.com/robmarkcole">@robmarkcole</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12539">#12539</a>) (<a href="https://home-assistant.io/components/sensor.simulated/">sensor.simulated docs</a>) (new-platform)</li>
+  <li>Add Songpal (“Sony Audio Control API”) platform (<a href="https://github.com/rytilahti">@rytilahti</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12143">#12143</a>) (<a href="https://home-assistant.io/components/media_player.songpal/">media_player.songpal docs</a>) (new-platform)</li>
+  <li>Add UpCloud platform (<a href="https://github.com/scop">@scop</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12011">#12011</a>) (<a href="https://home-assistant.io/components/upcloud/">upcloud docs</a>) (<a href="https://home-assistant.io/components/binary_sensor.upcloud/">binary_sensor.upcloud docs</a>) (<a href="https://home-assistant.io/components/switch.upcloud/">switch.upcloud docs</a>) (new-platform)</li>
+  <li>Added Sense energy monitor sensor (<a href="https://github.com/kbickar">@kbickar</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11580">#11580</a>) (<a href="https://home-assistant.io/components/sensor.sense/">sensor.sense docs</a>) (new-platform)</li>
+  <li>Filter Sensor (<a href="https://github.com/dgomes">@dgomes</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12650">#12650</a>) (<a href="https://home-assistant.io/components/sensor.filter/">sensor.filter docs</a>) (new-platform)</li>
+  <li>Add light.group platform (<a href="https://github.com/OttoWinter">@OttoWinter</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12229">#12229</a>) (<a href="https://home-assistant.io/components/light.group/">light.group docs</a>) (new-platform)</li>
+  <li>Egardia redesign - generic component and sensor support (<a href="https://github.com/jeroenterheerdt">@jeroenterheerdt</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11994">#11994</a>) (<a href="https://home-assistant.io/components/egardia/">egardia docs</a>) (<a href="https://home-assistant.io/components/alarm_control_panel.egardia/">alarm_control_panel.egardia docs</a>) (<a href="https://home-assistant.io/components/binary_sensor.egardia/">binary_sensor.egardia docs</a>) (breaking change) (new-platform)</li>
+  <li>Add support for Zillow Zestimate sensor (<a href="https://github.com/jcconnell">@jcconnell</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12597">#12597</a>) (<a href="https://home-assistant.io/components/sensor.zestimate/">sensor.zestimate docs</a>) (new-platform)</li>
+  <li>Add a Media Player Component for Channels (<a href="https://github.com/maddox">@maddox</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12937">#12937</a>) (<a href="https://home-assistant.io/components/media_player.channels/">media_player.channels docs</a>) (new-platform)</li>
+  <li>Add support for alarm system, switch and thermostat to homekit (<a href="https://github.com/maxclaey">@maxclaey</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12819">#12819</a>) (<a href="https://home-assistant.io/components/homekit/">homekit docs</a>) (new-platform)</li>
+  <li>Add camera proxy (<a href="https://github.com/PhracturedBlue">@PhracturedBlue</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12006">#12006</a>) (<a href="https://home-assistant.io/components/camera.proxy/">camera.proxy docs</a>) (new-platform)</li>
+</ul>
+<h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>
+<p>…don’t hesitate to use our very active <a href="https://community.home-assistant.io/">forums</a> or join us for a little <a href="https://discord.gg/c5DvZ4e">chat</a>. The release notes have comments enabled but it’s preferred if you use the former communication channels. Thanks.</p>
+<h2><a class="title-link" name="reporting-issues" href="#reporting-issues"></a> Reporting Issues</h2>
+<p>Experiencing issues introduced by this release? Please report them in our <a href="https://github.com/home-assistant/home-assistant/issues">issue tracker</a>. Make sure to fill in all fields of the issue template.</p>
+      <a class="btn pull-right" href="/blog/2018/03/09/release-65/#read-more">Read on &rarr;</a>
+  </div>
+  </article>
+  <hr>
+  <article class="listing">
+    <header>
+  <h1 class="beta">
     <a href="/blog/2018/02/26/release-64/">0.64: Over 1000 integrations! New: HomeKit, BMW, August.</a>
   </h1>
   <div class="meta clearfix">
@@ -571,78 +677,6 @@ broadlink.send_packet_192_168_0_107 -&gt; switch.broadlink_send_packet_192_168_0
 <h4><a class="title-link" name="what-will-the-home-assistant-organization-do-with-the-funds-" href="#what-will-the-home-assistant-organization-do-with-the-funds-"></a> What will the Home Assistant organization do with the funds ?</h4>
 <p>The plan is to hire developers to work fulltime on Home Assistant. We have grown a lot in the last 4 years and the work load is pushing the limits of what our core developers can do. Open source burn out is very common (<a href="https://nolanlawson.com/2017/03/05/what-it-feels-like-to-be-an-open-source-maintainer/">1</a>, <a href="https://www.kennethreitz.org/essays/the-reality-of-developer-burnout">2</a>) and we want to avoid this by moving most organization and release chores to a paid position.</p>
 <p><em>For more background on these topics, check out <a href="https://hasspodcast.io/ha015/">HASS Podcast 15</a>.</em></p>
-  </div>
-  </article>
-  <hr>
-  <article class="listing">
-    <header>
-  <h1 class="beta">
-    <a href="/blog/2017/12/17/release-60/">0.60: Beckhoff/TwinCAT, WebDav, Gearbest, iAlarm</a>
-  </h1>
-  <div class="meta clearfix">
-    <time datetime="2017-12-17T02:00:00+00:00" pubdate data-updated="true"><i class="icon-calendar"></i> December 17, 2017</time>
-    <span class="byline author vcard"><i class='icon-user'></i> Fabian Affolter</span>
-    <span><i class='icon-time'></i> 10 minutes reading time</span>
-    <span>
-    <i class="icon-tags"></i>
-    <ul class="tags unstyled">
-        <li>Release-Notes</li>
-    </ul>
-  </span>
-      <a class='comments'
-         href="/blog/2017/12/17/release-60/#post-comments"
-         >Comments</a>
-  </div>
-</header>
-  <div class="entry-content clearfix">
-    <p><a href="/components/#version/0.60"><img src="/images/blog/2017-12-0.60/components.png" style="border: 0;box-shadow: none;" /></a></p>
-<p>The biggest change for 0.60 will be covered in a separate <a href="/blog/2017/12/17/introducing-home-assistant-cloud/">blog post</a>. Thus, we will keep it short here. Just one thing: This is the last release in 2017. We will be back to our bi-weekly release cycle in 2018.</p>
-<p>A big “Thank you” to all people who supported us to make this release possible.</p>
-<h2><a class="title-link" name="twincat" href="#twincat"></a> TwinCAT</h2>
-<p>With the brand-new <a href="https://home-assistant.io/components/ads/">ADS (automation device specification)</a> component by <a href="https://github.com/stlehmann">@stlehmann</a> allows you to hook Home Assistant into this fieldbus independent interface which is often used between Beckhoff devices running with TwinCAT.</p>
-<h2><a class="title-link" name="webdav-calendar" href="#webdav-calendar"></a> WebDav calendar</h2>
-<p>Thanks to <a href="https://github.com/maxlaverse">@maxlaverse</a> Home Assistant support now <a href="https://home-assistant.io/components/calendar.caldav/">WebDav calendars</a>.</p>
-<h2><a class="title-link" name="tracking-prices" href="#tracking-prices"></a> Tracking prices</h2>
-<p>With the new <a href="https://home-assistant.io/components/sensor.gearbest/"><code class="highlighter-rouge">gearbest</code> sensor</a> there is now an additional sensor available to track the price of a product.</p>
-<h2><a class="title-link" name="financial-details" href="#financial-details"></a> Financial details</h2>
-<p>Yahoo! has discontinued their financial service. To fill this gap we have now the <a href="https://home-assistant.io/components/sensor.alpha_vantage/"><code class="highlighter-rouge">alpha_vantage</code> sensor</a> which is intruded in this release and allows you to monitor the stock market.</p>
-<h2><a class="title-link" name="new-platforms" href="#new-platforms"></a> New Platforms</h2>
-<ul>
-  <li>Add iAlarm support (<a href="https://github.com/RyuzakiKK">@RyuzakiKK</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10878">#10878</a>) (<a href="https://home-assistant.io/components/alarm_control_panel.ialarm/">alarm_control_panel.ialarm docs</a>) (new-platform)</li>
-  <li>Add Alpha Vantage sensor (<a href="https://github.com/fabaff">@fabaff</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10873">#10873</a>) (<a href="https://home-assistant.io/components/sensor.alpha_vantage/">sensor.alpha_vantage docs</a>) (new-platform)</li>
-  <li>Add ADS component (<a href="https://github.com/stlehmann">@stlehmann</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10142">#10142</a>) (<a href="https://home-assistant.io/components/ads/">ads docs</a>) (<a href="https://home-assistant.io/components/binary_sensor.ads/">binary_sensor.ads docs</a>) (<a href="https://home-assistant.io/components/light.ads/">light.ads docs</a>) (<a href="https://home-assistant.io/components/sensor.ads/">sensor.ads docs</a>) (<a href="https://home-assistant.io/components/switch.ads/">switch.ads docs</a>) (new-platform)</li>
-  <li>Gearbest sensor (<a href="https://github.com/HerrHofrat">@HerrHofrat</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10556">#10556</a>) (<a href="https://home-assistant.io/components/sensor.gearbest/">sensor.gearbest docs</a>) (new-platform)</li>
-  <li>Add Ziggo Mediabox XL media_player (<a href="https://github.com/b10m">@b10m</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10514">#10514</a>) (<a href="https://home-assistant.io/components/media_player.ziggo_mediabox_xl/">media_player.ziggo_mediabox_xl docs</a>) (new-platform)</li>
-  <li>Meraki AP Device tracker (<a href="https://github.com/masarliev">@masarliev</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10971">#10971</a>) (<a href="https://home-assistant.io/components/device_tracker.meraki/">device_tracker.meraki docs</a>) (new-platform)</li>
-  <li>Added Vera scenes (<a href="https://github.com/alanfischer">@alanfischer</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10424">#10424</a>) (<a href="https://home-assistant.io/components/vera/">vera docs</a>) (<a href="https://home-assistant.io/components/scene.vera/">scene.vera docs</a>) (new-platform)</li>
-  <li>Add support for Canary component and platforms (<a href="https://github.com/snjoetw">@snjoetw</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10306">#10306</a>) (<a href="https://home-assistant.io/components/canary/">canary docs</a>) (<a href="https://home-assistant.io/components/camera.canary/">camera.canary docs</a>) (<a href="https://home-assistant.io/components/sensor.canary/">sensor.canary docs</a>) (new-platform)</li>
-  <li>Add support for Logitech UE Smart Radios. (<a href="https://github.com/GreenTurtwig">@GreenTurtwig</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10077">#10077</a>) (<a href="https://home-assistant.io/components/media_player.ue_smart_radio/">media_player.ue_smart_radio docs</a>) (new-platform)</li>
-  <li>Added support for cover in tellstick (<a href="https://github.com/perfalk">@perfalk</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10858">#10858</a>) (<a href="https://home-assistant.io/components/tellstick/">tellstick docs</a>) (<a href="https://home-assistant.io/components/cover.tellstick/">cover.tellstick docs</a>) (new-platform)</li>
-  <li>Add a caldav calendar component (<a href="https://github.com/maxlaverse">@maxlaverse</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10842">#10842</a>) (<a href="https://home-assistant.io/components/calendar.caldav/">calendar.caldav docs</a>) (new-platform)</li>
-  <li>Refactor hue to split bridge support from light platform (<a href="https://github.com/andreacampi">@andreacampi</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10691">#10691</a>) (<a href="https://home-assistant.io/components/hue/">hue docs</a>) (<a href="https://home-assistant.io/components/light.hue/">light.hue docs</a>) (breaking change) (new-platform)</li>
-</ul>
-<h2><a class="title-link" name="release-0601---january-6" href="#release-0601---january-6"></a> Release 0.60.1 - January 6</h2>
-<ul>
-  <li>Fix async IO in Sesame lock component. (<a href="https://github.com/veleek">@veleek</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11054">#11054</a>) (<a href="https://home-assistant.io/components/lock.sesame/">lock.sesame docs</a>)</li>
-  <li>Fix webdav calendar schema (<a href="https://github.com/maxlaverse">@maxlaverse</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11185">#11185</a>) (<a href="https://home-assistant.io/components/calendar.caldav/">calendar.caldav docs</a>)</li>
-  <li>homematic: add username and password to interface config schema (<a href="https://github.com/jannau">@jannau</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11214">#11214</a>) (<a href="https://home-assistant.io/components/homematic/">homematic docs</a>)</li>
-  <li>Fix webostv select source (<a href="https://github.com/OddBloke">@OddBloke</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11227">#11227</a>) (<a href="https://home-assistant.io/components/media_player.webostv/">media_player.webostv docs</a>)</li>
-  <li>Fix detection of if a negative node is in use (<a href="https://github.com/OverloadUT">@OverloadUT</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11255">#11255</a>) (<a href="https://home-assistant.io/components/binary_sensor.isy994/">binary_sensor.isy994 docs</a>)</li>
-  <li>Bugfix homematic available modus (<a href="https://github.com/pvizeli">@pvizeli</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11256">#11256</a>) (<a href="https://home-assistant.io/components/homematic/">homematic docs</a>)</li>
-  <li>Support multiple Hue bridges with lights of the same id (<a href="https://github.com/andreacampi">@andreacampi</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11259">#11259</a>) (<a href="https://home-assistant.io/components/light.hue/">light.hue docs</a>)</li>
-  <li>Fix inverted sensors on the concord232 binary sensor component (<a href="https://github.com/CTLS">@CTLS</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11261">#11261</a>) (<a href="https://home-assistant.io/components/binary_sensor.concord232/">binary_sensor.concord232 docs</a>)</li>
-  <li>Fix handling zero values for state_on/state_off (<a href="https://github.com/ziotibia81">@ziotibia81</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11264">#11264</a>) (<a href="https://home-assistant.io/components/switch.modbus/">switch.modbus docs</a>)</li>
-  <li>Fix allday events in custom_calendars (<a href="https://github.com/maxlaverse">@maxlaverse</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11272">#11272</a>) (<a href="https://home-assistant.io/components/calendar.caldav/">calendar.caldav docs</a>)</li>
-  <li>Fix unpredictable entity names in concord232 binary_sensor (<a href="https://github.com/rwa">@rwa</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11292">#11292</a>) (<a href="https://home-assistant.io/components/binary_sensor.concord232/">binary_sensor.concord232 docs</a>)</li>
-  <li>Fix leak sensors always showing Unknown until Wet (<a href="https://github.com/OverloadUT">@OverloadUT</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11313">#11313</a>) (<a href="https://home-assistant.io/components/binary_sensor.isy994/">binary_sensor.isy994 docs</a>)</li>
-  <li>Don’t block on sevice call for alexa (<a href="https://github.com/pvizeli">@pvizeli</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11358">#11358</a>) (<a href="https://home-assistant.io/components/alexa.smart_home/">alexa.smart_home docs</a>)</li>
-  <li>iOS 10 should be served javascript_version:es5 (<a href="https://github.com/mnoorenberghe">@mnoorenberghe</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11387">#11387</a>)</li>
-</ul>
-<h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>
-<p>…don’t hesitate to use our very active <a href="https://community.home-assistant.io/">forums</a> or join us for a little <a href="https://discord.gg/c5DvZ4e">chat</a>. The release notes have comments enabled but it’s preferred if you use the former communication channels. Thanks.</p>
-<h2><a class="title-link" name="reporting-issues" href="#reporting-issues"></a> Reporting Issues</h2>
-<p>Experiencing issues introduced by this release? Please report them in our <a href="https://github.com/home-assistant/home-assistant/issues">issue tracker</a>. Make sure to fill in all fields of the issue template.</p>
-      <a class="btn pull-right" href="/blog/2017/12/17/release-60/#read-more">Read on &rarr;</a>
   </div>
   </article>
   <hr>

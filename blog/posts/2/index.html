@@ -70,6 +70,78 @@
   <article class="listing">
     <header>
   <h1 class="beta">
+    <a href="/blog/2017/12/17/release-60/">0.60: Beckhoff/TwinCAT, WebDav, Gearbest, iAlarm</a>
+  </h1>
+  <div class="meta clearfix">
+    <time datetime="2017-12-17T02:00:00+00:00" pubdate data-updated="true"><i class="icon-calendar"></i> December 17, 2017</time>
+    <span class="byline author vcard"><i class='icon-user'></i> Fabian Affolter</span>
+    <span><i class='icon-time'></i> 10 minutes reading time</span>
+    <span>
+    <i class="icon-tags"></i>
+    <ul class="tags unstyled">
+        <li>Release-Notes</li>
+    </ul>
+  </span>
+      <a class='comments'
+         href="/blog/2017/12/17/release-60/#post-comments"
+         >Comments</a>
+  </div>
+</header>
+  <div class="entry-content clearfix">
+    <p><a href="/components/#version/0.60"><img src="/images/blog/2017-12-0.60/components.png" style="border: 0;box-shadow: none;" /></a></p>
+<p>The biggest change for 0.60 will be covered in a separate <a href="/blog/2017/12/17/introducing-home-assistant-cloud/">blog post</a>. Thus, we will keep it short here. Just one thing: This is the last release in 2017. We will be back to our bi-weekly release cycle in 2018.</p>
+<p>A big “Thank you” to all people who supported us to make this release possible.</p>
+<h2><a class="title-link" name="twincat" href="#twincat"></a> TwinCAT</h2>
+<p>With the brand-new <a href="https://home-assistant.io/components/ads/">ADS (automation device specification)</a> component by <a href="https://github.com/stlehmann">@stlehmann</a> allows you to hook Home Assistant into this fieldbus independent interface which is often used between Beckhoff devices running with TwinCAT.</p>
+<h2><a class="title-link" name="webdav-calendar" href="#webdav-calendar"></a> WebDav calendar</h2>
+<p>Thanks to <a href="https://github.com/maxlaverse">@maxlaverse</a> Home Assistant support now <a href="https://home-assistant.io/components/calendar.caldav/">WebDav calendars</a>.</p>
+<h2><a class="title-link" name="tracking-prices" href="#tracking-prices"></a> Tracking prices</h2>
+<p>With the new <a href="https://home-assistant.io/components/sensor.gearbest/"><code class="highlighter-rouge">gearbest</code> sensor</a> there is now an additional sensor available to track the price of a product.</p>
+<h2><a class="title-link" name="financial-details" href="#financial-details"></a> Financial details</h2>
+<p>Yahoo! has discontinued their financial service. To fill this gap we have now the <a href="https://home-assistant.io/components/sensor.alpha_vantage/"><code class="highlighter-rouge">alpha_vantage</code> sensor</a> which is intruded in this release and allows you to monitor the stock market.</p>
+<h2><a class="title-link" name="new-platforms" href="#new-platforms"></a> New Platforms</h2>
+<ul>
+  <li>Add iAlarm support (<a href="https://github.com/RyuzakiKK">@RyuzakiKK</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10878">#10878</a>) (<a href="https://home-assistant.io/components/alarm_control_panel.ialarm/">alarm_control_panel.ialarm docs</a>) (new-platform)</li>
+  <li>Add Alpha Vantage sensor (<a href="https://github.com/fabaff">@fabaff</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10873">#10873</a>) (<a href="https://home-assistant.io/components/sensor.alpha_vantage/">sensor.alpha_vantage docs</a>) (new-platform)</li>
+  <li>Add ADS component (<a href="https://github.com/stlehmann">@stlehmann</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10142">#10142</a>) (<a href="https://home-assistant.io/components/ads/">ads docs</a>) (<a href="https://home-assistant.io/components/binary_sensor.ads/">binary_sensor.ads docs</a>) (<a href="https://home-assistant.io/components/light.ads/">light.ads docs</a>) (<a href="https://home-assistant.io/components/sensor.ads/">sensor.ads docs</a>) (<a href="https://home-assistant.io/components/switch.ads/">switch.ads docs</a>) (new-platform)</li>
+  <li>Gearbest sensor (<a href="https://github.com/HerrHofrat">@HerrHofrat</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10556">#10556</a>) (<a href="https://home-assistant.io/components/sensor.gearbest/">sensor.gearbest docs</a>) (new-platform)</li>
+  <li>Add Ziggo Mediabox XL media_player (<a href="https://github.com/b10m">@b10m</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10514">#10514</a>) (<a href="https://home-assistant.io/components/media_player.ziggo_mediabox_xl/">media_player.ziggo_mediabox_xl docs</a>) (new-platform)</li>
+  <li>Meraki AP Device tracker (<a href="https://github.com/masarliev">@masarliev</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10971">#10971</a>) (<a href="https://home-assistant.io/components/device_tracker.meraki/">device_tracker.meraki docs</a>) (new-platform)</li>
+  <li>Added Vera scenes (<a href="https://github.com/alanfischer">@alanfischer</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10424">#10424</a>) (<a href="https://home-assistant.io/components/vera/">vera docs</a>) (<a href="https://home-assistant.io/components/scene.vera/">scene.vera docs</a>) (new-platform)</li>
+  <li>Add support for Canary component and platforms (<a href="https://github.com/snjoetw">@snjoetw</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10306">#10306</a>) (<a href="https://home-assistant.io/components/canary/">canary docs</a>) (<a href="https://home-assistant.io/components/camera.canary/">camera.canary docs</a>) (<a href="https://home-assistant.io/components/sensor.canary/">sensor.canary docs</a>) (new-platform)</li>
+  <li>Add support for Logitech UE Smart Radios. (<a href="https://github.com/GreenTurtwig">@GreenTurtwig</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10077">#10077</a>) (<a href="https://home-assistant.io/components/media_player.ue_smart_radio/">media_player.ue_smart_radio docs</a>) (new-platform)</li>
+  <li>Added support for cover in tellstick (<a href="https://github.com/perfalk">@perfalk</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10858">#10858</a>) (<a href="https://home-assistant.io/components/tellstick/">tellstick docs</a>) (<a href="https://home-assistant.io/components/cover.tellstick/">cover.tellstick docs</a>) (new-platform)</li>
+  <li>Add a caldav calendar component (<a href="https://github.com/maxlaverse">@maxlaverse</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10842">#10842</a>) (<a href="https://home-assistant.io/components/calendar.caldav/">calendar.caldav docs</a>) (new-platform)</li>
+  <li>Refactor hue to split bridge support from light platform (<a href="https://github.com/andreacampi">@andreacampi</a> - <a href="https://github.com/home-assistant/home-assistant/pull/10691">#10691</a>) (<a href="https://home-assistant.io/components/hue/">hue docs</a>) (<a href="https://home-assistant.io/components/light.hue/">light.hue docs</a>) (breaking change) (new-platform)</li>
+</ul>
+<h2><a class="title-link" name="release-0601---january-6" href="#release-0601---january-6"></a> Release 0.60.1 - January 6</h2>
+<ul>
+  <li>Fix async IO in Sesame lock component. (<a href="https://github.com/veleek">@veleek</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11054">#11054</a>) (<a href="https://home-assistant.io/components/lock.sesame/">lock.sesame docs</a>)</li>
+  <li>Fix webdav calendar schema (<a href="https://github.com/maxlaverse">@maxlaverse</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11185">#11185</a>) (<a href="https://home-assistant.io/components/calendar.caldav/">calendar.caldav docs</a>)</li>
+  <li>homematic: add username and password to interface config schema (<a href="https://github.com/jannau">@jannau</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11214">#11214</a>) (<a href="https://home-assistant.io/components/homematic/">homematic docs</a>)</li>
+  <li>Fix webostv select source (<a href="https://github.com/OddBloke">@OddBloke</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11227">#11227</a>) (<a href="https://home-assistant.io/components/media_player.webostv/">media_player.webostv docs</a>)</li>
+  <li>Fix detection of if a negative node is in use (<a href="https://github.com/OverloadUT">@OverloadUT</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11255">#11255</a>) (<a href="https://home-assistant.io/components/binary_sensor.isy994/">binary_sensor.isy994 docs</a>)</li>
+  <li>Bugfix homematic available modus (<a href="https://github.com/pvizeli">@pvizeli</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11256">#11256</a>) (<a href="https://home-assistant.io/components/homematic/">homematic docs</a>)</li>
+  <li>Support multiple Hue bridges with lights of the same id (<a href="https://github.com/andreacampi">@andreacampi</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11259">#11259</a>) (<a href="https://home-assistant.io/components/light.hue/">light.hue docs</a>)</li>
+  <li>Fix inverted sensors on the concord232 binary sensor component (<a href="https://github.com/CTLS">@CTLS</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11261">#11261</a>) (<a href="https://home-assistant.io/components/binary_sensor.concord232/">binary_sensor.concord232 docs</a>)</li>
+  <li>Fix handling zero values for state_on/state_off (<a href="https://github.com/ziotibia81">@ziotibia81</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11264">#11264</a>) (<a href="https://home-assistant.io/components/switch.modbus/">switch.modbus docs</a>)</li>
+  <li>Fix allday events in custom_calendars (<a href="https://github.com/maxlaverse">@maxlaverse</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11272">#11272</a>) (<a href="https://home-assistant.io/components/calendar.caldav/">calendar.caldav docs</a>)</li>
+  <li>Fix unpredictable entity names in concord232 binary_sensor (<a href="https://github.com/rwa">@rwa</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11292">#11292</a>) (<a href="https://home-assistant.io/components/binary_sensor.concord232/">binary_sensor.concord232 docs</a>)</li>
+  <li>Fix leak sensors always showing Unknown until Wet (<a href="https://github.com/OverloadUT">@OverloadUT</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11313">#11313</a>) (<a href="https://home-assistant.io/components/binary_sensor.isy994/">binary_sensor.isy994 docs</a>)</li>
+  <li>Don’t block on sevice call for alexa (<a href="https://github.com/pvizeli">@pvizeli</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11358">#11358</a>) (<a href="https://home-assistant.io/components/alexa.smart_home/">alexa.smart_home docs</a>)</li>
+  <li>iOS 10 should be served javascript_version:es5 (<a href="https://github.com/mnoorenberghe">@mnoorenberghe</a> - <a href="https://github.com/home-assistant/home-assistant/pull/11387">#11387</a>)</li>
+</ul>
+<h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>
+<p>…don’t hesitate to use our very active <a href="https://community.home-assistant.io/">forums</a> or join us for a little <a href="https://discord.gg/c5DvZ4e">chat</a>. The release notes have comments enabled but it’s preferred if you use the former communication channels. Thanks.</p>
+<h2><a class="title-link" name="reporting-issues" href="#reporting-issues"></a> Reporting Issues</h2>
+<p>Experiencing issues introduced by this release? Please report them in our <a href="https://github.com/home-assistant/home-assistant/issues">issue tracker</a>. Make sure to fill in all fields of the issue template.</p>
+      <a class="btn pull-right" href="/blog/2017/12/17/release-60/#read-more">Read on &rarr;</a>
+  </div>
+  </article>
+  <hr>
+  <article class="listing">
+    <header>
+  <h1 class="beta">
     <a href="/blog/2017/12/03/release-59/">0.59: Order pizza, Entity Picker, Color Wheel</a>
   </h1>
   <div class="meta clearfix">
@@ -489,37 +561,6 @@ The Home Assistant sidebar in 12 different languages.
   Home Assistant’s online demo
 </p>
       <a class="btn pull-right" href="/blog/2017/10/28/demo/#read-more">Read on &rarr;</a>
-  </div>
-  </article>
-  <hr>
-  <article class="listing">
-    <header>
-  <h1 class="beta">
-    <a href="/blog/2017/10/23/simple-analog-sensor/">Serial analog sensor</a>
-  </h1>
-  <div class="meta clearfix">
-    <time datetime="2017-10-23T06:00:00+00:00" pubdate data-updated="true"><i class="icon-calendar"></i> October 23, 2017</time>
-    <span class="byline author vcard"><i class='icon-user'></i> Fabian Affolter</span>
-    <span><i class='icon-time'></i> three minutes reading time</span>
-    <span>
-    <i class="icon-tags"></i>
-    <ul class="tags unstyled">
-        <li>How-To</li>
-    </ul>
-  </span>
-      <a class='comments'
-         href="/blog/2017/10/23/simple-analog-sensor/#post-comments"
-         >Comments</a>
-  </div>
-</header>
-  <div class="entry-content clearfix">
-    <p>This blog post is about building a super simple analog sensor for Home Assistant. The physical sensor will send the data over its virtual serial port as it will be connected over USB. The concept is similar to the <a href="/components/sensor.temper/">TEMPer USB</a> devices. The attatched sensor type to the microcontroller can be any kind of sensor which gives you an analog signal from brightness over soil moisture to temperature.</p>
-<p>The microcontroller will only transfer the voltage of an analog input pin which will be between 0 and 1024. Home Assistant will use the new <a href="/components/sensor.serial/"><code class="highlighter-rouge">serial</code></a> sensor platform to read the data and perform actions to convert the raw reading into a real measurement. This means that you don’t have to adjust the code of your microcontroller if you change the attached sensor type.</p>
-<p class="img">
-  <img src="/images/blog/2017-10-analog-sensor/analog-sensor.png" />
-  The assembled sensor
-</p>
-      <a class="btn pull-right" href="/blog/2017/10/23/simple-analog-sensor/#read-more">Read on &rarr;</a>
   </div>
   </article>
   <hr>

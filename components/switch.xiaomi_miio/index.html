@@ -84,14 +84,38 @@
     <span class="s">name</span><span class="pi">:</span> <span class="s">Original Xiaomi Mi Smart WiFi Socket</span>
     <span class="s">host</span><span class="pi">:</span> <span class="s">192.168.130.59</span>
     <span class="s">token</span><span class="pi">:</span> <span class="s">YOUR_TOKEN</span>
+    <span class="s">model</span><span class="pi">:</span> <span class="s">chuangmi.plug.m1</span>
 </code></pre>
 </div>
 <p>Configuration variables:</p>
 <ul>
-  <li><strong>host</strong> (<em>Required</em>): The IP of your plug.</li>
-  <li><strong>token</strong> (<em>Required</em>): The API token of your plug.</li>
-  <li><strong>name</strong> (<em>Optional</em>): The name of your plug.</li>
+  <li><strong>host</strong> (<em>Required</em>): The IP of your miio device.</li>
+  <li><strong>token</strong> (<em>Required</em>): The API token of your miio device.</li>
+  <li><strong>name</strong> (<em>Optional</em>): The name of your miio device.</li>
+  <li><strong>model</strong> (<em>Optional</em>): The model of your miio device. Valid values are chuangmi.plug.v1<code class="highlighter-rouge">, </code>qmi.powerstrip.v1<code class="highlighter-rouge">, </code>zimi.powerstrip.v2<code class="highlighter-rouge">, </code>chuangmi.plug.m1<code class="highlighter-rouge"> and </code>chuangmi.plug.v2`. This setting can be used to bypass the device model detection and is recommended if your device isn’t always available.</li>
 </ul>
+<div class="config-vars">
+  <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
+  <dl class="">
+    <dt><a class="title-link" name="host" href="#host"></a> host</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The IP address of your device.</span></p>
+    </dd>
+    <dt><a class="title-link" name="token" href="#token"></a> token</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Required)</span><span class="description">The API token of your device.</span></p>
+    </dd>
+    <dt><a class="title-link" name="name" href="#name"></a> name</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The name of your device.</span></p>
+      <p class="default">Default value: Xiaomi Miio Switch</p>
+    </dd>
+    <dt><a class="title-link" name="model" href="#model"></a> model</dt>
+    <dd>
+      <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">The model of your device.</span></p>
+    </dd>
+  </dl>
+</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
@@ -311,6 +335,9 @@
         </li>
         <li>
             <a href='/components/switch.toon/'>Toon Smart Plugs</a>
+        </li>
+        <li>
+            <a href='/components/switch.upcloud/'>UpCloud Switch</a>
         </li>
         <li>
             <a href='/components/switch.velbus/'>Velbus Switches</a>
