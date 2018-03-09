@@ -97,7 +97,6 @@ To use Google Assistant, your Home Assistant configuration has to be externally 
       <span class="s">aliases</span><span class="pi">:</span>
         <span class="pi">-</span> <span class="s">bright lights</span>
         <span class="pi">-</span> <span class="s">entry lights</span>
-      <span class="s">type</span><span class="pi">:</span> <span class="s">light</span>
     <span class="s">light.living_room</span><span class="pi">:</span>
       <span class="s">expose</span><span class="pi">:</span> <span class="s">false</span>
       <span class="s">room</span><span class="pi">:</span> <span class="s">living room</span>
@@ -160,10 +159,6 @@ To use Google Assistant, your Home Assistant configuration has to be externally 
             <dd>
               <p class="desc"><span class="type">(<span class="list">list</span>)</span><span class="required">(Optional)</span><span class="description">Aliases that can also be used to refer to this entity</span></p>
             </dd>
-            <dt><a class="title-link" name="type" href="#type"></a> type</dt>
-            <dd>
-              <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Override how Google Assistant interprets the domain of the entity. For example, set to <code class="highlighter-rouge">light</code> for a switch entity to have it be handled as a light.</span></p>
-            </dd>
             <dt><a class="title-link" name="room" href="#room"></a> room</dt>
             <dd>
               <p class="desc"><span class="type">(<span class="string">string</span>)</span><span class="required">(Optional)</span><span class="description">Allows for associating this device to a Room in Google Assistant.  This is currently non-functional, but will be enabled in the near future.</span></p>
@@ -177,15 +172,15 @@ To use Google Assistant, your Home Assistant configuration has to be externally 
 <h3><a class="title-link" name="available-domains" href="#available-domains"></a> Available domains</h3>
 <p>Currently, the following domains are available to be used with Google Assistant, listed with their default types:</p>
 <ul>
-  <li>group = switch (on/off)</li>
-  <li>scene = scene (on)</li>
-  <li>script = scene (on)</li>
-  <li>switch = switch (on/off)</li>
-  <li>fan = switch (on/off)</li>
-  <li>light = light (on/off/brightness/rgb color/color temp)</li>
-  <li>cover = switch (on/off/set position (brightness) )</li>
-  <li>media_player = switch (on/off/set volume (brightness) )</li>
-  <li>climate = thermostat (temperature setting)</li>
+  <li>group (on/off)</li>
+  <li>scene (on)</li>
+  <li>script (on)</li>
+  <li>switch (on/off)</li>
+  <li>fan (on/off)</li>
+  <li>light (on/off/brightness/rgb color/color temp)</li>
+  <li>cover (on/off/set position (via set brightness))</li>
+  <li>media_player (on/off/set volume (via set brightness))</li>
+  <li>climate (temperature setting)</li>
 </ul>
 <p>It’s very important that you use very long strings for <code class="highlighter-rouge">client_id</code> and <code class="highlighter-rouge">access_token</code>. Those are essentially the credentials to your Home Assistant instance. You can generate them with the following command:</p>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cat /dev/urandom | fold -w 120 | head -n 1 | base64 -w 0 | tr -dc <span class="s1">'0-9A-Za-z'</span> | cut -c -80
