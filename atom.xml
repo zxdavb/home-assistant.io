@@ -4,7 +4,7 @@
   <title><![CDATA[Home Assistant]]></title>
   <link href="https://home-assistant.io/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-03-09T21:01:47+00:00</updated>
+  <updated>2018-03-10T04:23:43+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -115,6 +115,16 @@
   <li>Add a Media Player Component for Channels (<a href="https://github.com/maddox">@maddox</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12937">#12937</a>) (<a href="https://home-assistant.io/components/media_player.channels/">media_player.channels docs</a>) (new-platform)</li>
   <li>Add support for alarm system, switch and thermostat to homekit (<a href="https://github.com/maxclaey">@maxclaey</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12819">#12819</a>) (<a href="https://home-assistant.io/components/homekit/">homekit docs</a>) (new-platform)</li>
   <li>Add camera proxy (<a href="https://github.com/PhracturedBlue">@PhracturedBlue</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12006">#12006</a>) (<a href="https://home-assistant.io/components/camera.proxy/">camera.proxy docs</a>) (new-platform)</li>
+</ul>
+
+<h2><a class="title-link" name="release-0651---march-10" href="#release-0651---march-10"></a> Release 0.65.1 - March 10</h2>
+
+<ul>
+  <li>allow ios device tracker see calls to go through (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13020">#13020</a>) (<a href="https://home-assistant.io/components/device_tracker/">device_tracker docs</a>)</li>
+  <li>Fix config component loading YAML (<a href="https://github.com/kellerza">@kellerza</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13024">#13024</a>)</li>
+  <li>Make Throttle async aware (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13027">#13027</a>)</li>
+  <li>Add support for input boolean to Google Assistant (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13030">#13030</a>) (<a href="https://home-assistant.io/components/google_assistant/">google_assistant docs</a>)</li>
+  <li>HomeKit Bugfix: names (<a href="https://github.com/cdce8p">@cdce8p</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13031">#13031</a>) (<a href="https://home-assistant.io/components/homekit/">homekit docs</a>)</li>
 </ul>
 
 <h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Release-Notes | Home Assistant]]></title>
   <link href="https://home-assistant.io/blog/categories/release-notes/atom.xml" rel="self"/>
   <link href="https://home-assistant.io/"/>
-  <updated>2018-03-09T21:01:47+00:00</updated>
+  <updated>2018-03-10T04:23:43+00:00</updated>
   <id>https://home-assistant.io/</id>
   <author>
     <name><![CDATA[Home Assistant]]></name>
@@ -120,6 +120,14 @@ intent_script:
 - Add a Media Player Component for Channels ([@maddox] - [#12937]) ([media_player.channels docs]) (new-platform)
 - Add support for alarm system, switch and thermostat to homekit ([@maxclaey] - [#12819]) ([homekit docs]) (new-platform)
 - Add camera proxy ([@PhracturedBlue] - [#12006]) ([camera.proxy docs]) (new-platform)
+
+## <a class='title-link' name='release-0651---march-10' href='#release-0651---march-10'></a> Release 0.65.1 - March 10 
+
+- allow ios device tracker see calls to go through ([@balloob] - [#13020]) ([device_tracker docs])
+- Fix config component loading YAML ([@kellerza] - [#13024])
+- Make Throttle async aware ([@balloob] - [#13027])
+- Add support for input boolean to Google Assistant ([@balloob] - [#13030]) ([google_assistant docs])
+- HomeKit Bugfix: names ([@cdce8p] - [#13031]) ([homekit docs])
 
 ## <a class='title-link' name='if-you-need-help' href='#if-you-need-help'></a> If you need help... 
 
@@ -609,6 +617,17 @@ Experiencing issues introduced by this release? Please report them in our [issue
 [zabbix docs]: https://home-assistant.io/components/zabbix/
 [zha docs]: https://home-assistant.io/components/zha/
 [zwave docs]: https://home-assistant.io/components/zwave/
+[#13020]: https://github.com/home-assistant/home-assistant/pull/13020
+[#13024]: https://github.com/home-assistant/home-assistant/pull/13024
+[#13027]: https://github.com/home-assistant/home-assistant/pull/13027
+[#13030]: https://github.com/home-assistant/home-assistant/pull/13030
+[#13031]: https://github.com/home-assistant/home-assistant/pull/13031
+[@balloob]: https://github.com/balloob
+[@cdce8p]: https://github.com/cdce8p
+[@kellerza]: https://github.com/kellerza
+[device_tracker docs]: https://home-assistant.io/components/device_tracker/
+[google_assistant docs]: https://home-assistant.io/components/google_assistant/
+[homekit docs]: https://home-assistant.io/components/homekit/
 ]]></content>
   </entry>
   
