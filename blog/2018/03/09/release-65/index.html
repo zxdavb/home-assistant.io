@@ -74,7 +74,7 @@
   <div class="meta clearfix">
     <time datetime="2018-03-09T00:01:00+00:00" pubdate data-updated="true"><i class="icon-calendar"></i> March 9, 2018</time>
     <span class="byline author vcard"><i class='icon-user'></i> Paulus Schoutsen</span>
-    <span><i class='icon-time'></i> 19 minutes reading time</span>
+    <span><i class='icon-time'></i> 20 minutes reading time</span>
     <span>
     <i class="icon-tags"></i>
     <ul class="tags unstyled">
@@ -171,7 +171,7 @@
   <li>Add support for input boolean to Google Assistant (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13030">#13030</a>) (<a href="https://home-assistant.io/components/google_assistant/">google_assistant docs</a>)</li>
   <li>HomeKit Bugfix: names (<a href="https://github.com/cdce8p">@cdce8p</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13031">#13031</a>) (<a href="https://home-assistant.io/components/homekit/">homekit docs</a>)</li>
 </ul>
-<h2><a class="title-link" name="release-0652---march-11" href="#release-0652---march-11"></a> Release 0.65.2 - March 11</h2>
+<h2><a class="title-link" name="release-0652---march-10" href="#release-0652---march-10"></a> Release 0.65.2 - March 10</h2>
 <ul>
   <li>Fix translations sometimes not loading in the frontend (<a href="https://github.com/armills">@armills</a>)</li>
   <li>Fix sensibo’s min/max_temp properties (<a href="https://github.com/jra3">@jra3</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12996">#12996</a>) (<a href="https://home-assistant.io/components/climate.sensibo/">climate.sensibo docs</a>)</li>
@@ -182,6 +182,18 @@
   <li>Yeelight version bumped. (<a href="https://github.com/syssi">@syssi</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13056">#13056</a>) (<a href="https://home-assistant.io/components/light.yeelight/">light.yeelight docs</a>)</li>
   <li>Don’t call async from sync (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13057">#13057</a>) (<a href="https://home-assistant.io/components/xiaomi_aqara/">xiaomi_aqara docs</a>)</li>
   <li>Convert decimals from SQL results (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13059">#13059</a>) (<a href="https://home-assistant.io/components/sensor.sql/">sensor.sql docs</a>)</li>
+</ul>
+<h2><a class="title-link" name="release-0653---march-11" href="#release-0653---march-11"></a> Release 0.65.3 - March 11</h2>
+<ul>
+  <li>Implement Hue available property (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/12939">#12939</a>) (<a href="https://home-assistant.io/components/light.hue/">light.hue docs</a>)</li>
+  <li>Catch async from sync context by running asyncio event loop in debug mode during tests (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13058">#13058</a>) (<a href="https://home-assistant.io/components/camera.arlo/">camera.arlo docs</a>) (<a href="https://home-assistant.io/components/climate.generic_thermostat/">climate.generic_thermostat docs</a>)</li>
+  <li>Fixes KNX fire event problem, issue https://github.com/home-assistant/home-assistant/issues/13049 (<a href="https://github.com/Julius2342">@Julius2342</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13062">#13062</a>) (<a href="https://home-assistant.io/components/knx/">knx docs</a>)</li>
+  <li>Bump iGlo Version (<a href="https://github.com/jesserockz">@jesserockz</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13063">#13063</a>) (<a href="https://home-assistant.io/components/light.iglo/">light.iglo docs</a>)</li>
+  <li>Fix Tado doing async wrong (<a href="https://github.com/balloob">@balloob</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13078">#13078</a>) (<a href="https://home-assistant.io/components/device_tracker.tado/">device_tracker.tado docs</a>)</li>
+  <li>Synology Camera: auto-renew session when it’s expired (<a href="https://github.com/snjoetw">@snjoetw</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13079">#13079</a>) (<a href="https://home-assistant.io/components/camera.synology/">camera.synology docs</a>)</li>
+  <li>Revert “Cast automatically drop connection (#12635)” (<a href="https://github.com/OttoWinter">@OttoWinter</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13094">#13094</a>) (<a href="https://home-assistant.io/components/media_player.cast/">media_player.cast docs</a>)</li>
+  <li>Bump pyvera to 0.2.42. Improve event loop robustness. (<a href="https://github.com/pavoni">@pavoni</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13095">#13095</a>) (<a href="https://home-assistant.io/components/vera/">vera docs</a>)</li>
+  <li>Fix Kodi by updateding jsonrpc-websocket to 0.6 (<a href="https://github.com/Tadly">@Tadly</a> - <a href="https://github.com/home-assistant/home-assistant/pull/13096">#13096</a>) (<a href="https://home-assistant.io/components/media_player.kodi/">media_player.kodi docs</a>)</li>
 </ul>
 <h2><a class="title-link" name="if-you-need-help" href="#if-you-need-help"></a> If you need help…</h2>
 <p>…don’t hesitate to use our very active <a href="https://community.home-assistant.io/">forums</a> or join us for a little <a href="https://discord.gg/c5DvZ4e">chat</a>. The release notes have comments enabled but it’s preferred if you use the former communication channels. Thanks.</p>
