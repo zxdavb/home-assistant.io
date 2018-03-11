@@ -86,9 +86,31 @@
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
 <span class="s">calendar</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">caldav</span>
+    <span class="s">username</span><span class="pi">:</span> <span class="s">john.doe@test.com</span>
+    <span class="s">password</span><span class="pi">:</span> <span class="kt">!secret</span> <span class="s">caldav</span>
     <span class="s">url</span><span class="pi">:</span> <span class="s">https://baikal.my-server.net/cal.php/calendars/john.doe@test.com/default</span>
 </code></pre>
 </div>
+<p>This example will generate default binary sensors for each calendar you have in your account. Those calendars will be <code class="highlighter-rouge">on</code> when there is an ongoing event and <code class="highlighter-rouge">off</code> if not. Events that last a whole day are ignored in those calendars. You have to setup custom calendars in order to take them into account or for advanced event filtering.</p>
+<h3><a class="title-link" name="custom-calendars" href="#custom-calendars"></a> Custom calendars</h3>
+<p>You have the possibility to create multiple binary sensors for events that match certain conditions.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
+<span class="s">calendar</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">caldav</span>
+    <span class="s">username</span><span class="pi">:</span> <span class="s">john.doe@test.com</span>
+    <span class="s">password</span><span class="pi">:</span> <span class="kt">!secret</span> <span class="s">caldav</span>
+    <span class="s">url</span><span class="pi">:</span> <span class="s">https://baikal.my-server.net/cal.php/calendars/john.doe@test.com/default</span>
+    <span class="s">custom_calendars</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">HomeOffice'</span>
+        <span class="s">calendar</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Agenda'</span>
+        <span class="s">search</span><span class="pi">:</span> <span class="s1">'</span><span class="s">HomeOffice'</span>
+      <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">WarmupFlat'</span>
+        <span class="s">calendar</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Agenda'</span>
+        <span class="s">search</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Warmup'</span>
+</code></pre>
+</div>
+<p>This will create two binary sensors for the calendar name Agenda: “HomeOffice” and “WarmupFlat”. Those sensors will be <code class="highlighter-rouge">on</code> if there is an ongoing event matching the regular expression specified in <code class="highlighter-rouge">search</code>. In custom calendars, events that last a whole day are taken into account.</p>
+<p>Please note that when you configure custom calendars, the default ones are not created anymore.</p>
 <div class="config-vars">
   <h3><a class="title-link" name="configuration-variables" href="#configuration-variables"></a> Configuration Variables</h3>
   <dl class="">
@@ -140,19 +162,6 @@
   <li><strong>start_time</strong>: Start time of event.</li>
   <li><strong>end_time</strong>: End time of event.</li>
 </ul>
-<h3><a class="title-link" name="sensor-attributes" href="#sensor-attributes"></a> Sensor attributes</h3>
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Example configuration.yaml entry</span>
-<span class="s">calendar</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">caldav</span>
-    <span class="s">url</span><span class="pi">:</span> <span class="s">https://baikal.my-server.net/cal.php/calendars/john.doe@test.com/default</span>
-    <span class="s">username</span><span class="pi">:</span> <span class="s">john.doe@test.com</span>
-    <span class="s">password</span><span class="pi">:</span> <span class="kt">!secret</span> <span class="s">caldav</span>
-    <span class="s">custom_calendars</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">HomeOffice'</span>
-        <span class="s">calendar</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Agenda'</span>
-        <span class="s">search</span><span class="pi">:</span> <span class="s1">'</span><span class="s">HomeOffice'</span>
-</code></pre>
-</div>
 </article>
         </div>
         <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
