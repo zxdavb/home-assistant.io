@@ -74,7 +74,7 @@
     </h1>
   </header>
   <hr class="divider">
-  <p>Sensor for monitoring the contents of a folder. Note that folder paths must be added to <a href="https://home-assistant.io/docs/configuration/basic/">whitelist_external_dirs</a>. Optionally a <a href="(http://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm)">wildcard filter</a> can be applied to the files considered within the folder. The state of the sensor is the size in MB of files within the folder that meet the filter criteria. The number of filtered files in the folder and total size in bytes of those files are exposed as attributes.</p>
+  <p>Sensor for monitoring the contents of a folder. Note that folder paths must be added to <a href="https://home-assistant.io/docs/configuration/basic/">whitelist_external_dirs</a>. Optionally a <a href="(https://docs.python.org/3.6/library/fnmatch.html)">wildcard filter</a> can be applied to the files considered within the folder. The state of the sensor is the size in MB of files within the folder that meet the filter criteria. The number of filtered files in the folder and total size in bytes of those files are exposed as attributes.</p>
 <p>To enable the <code class="highlighter-rouge">folder</code> sensor in your installation, add the following to your <code class="highlighter-rouge">configuration.yaml</code> file:</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sensor</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">platform</span><span class="pi">:</span> <span class="s">folder</span>
