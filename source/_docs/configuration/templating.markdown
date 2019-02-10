@@ -30,7 +30,7 @@ Templating in Home Assistant is powered by the [Jinja2](http://jinja.pocoo.org/)
 - [Logic](http://jinja.pocoo.org/docs/dev/templates/#logic)
 
 We will not go over the basics of the syntax, as Jinja2 does a great job of this in their [templates documentation](http://jinja.pocoo.org/docs/dev/templates/).
-
+ 
 The frontend has a template editor tool to help develop and debug templates. Click on the <img src='/images/screenshots/developer-tool-templates-icon.png' alt='template developer tool icon' class="no-shadow" height="38" /> icon, create your template in the _Template editor_ and check the results on the right.
 
 
