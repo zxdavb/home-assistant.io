@@ -5,6 +5,7 @@ logo: honeywell.png
 ha_category:
   - Hub
   - Climate
+  - Water Heater
 ha_release: 0.80
 ha_iot_class: Cloud Polling
 redirect_from:
@@ -18,7 +19,7 @@ The `evohome` integration links Home Assistant with all _non-US_ [Honeywell Tota
 
 It does not support the home security functionality of TCC.
 
-It uses v2 of the [evohome-client](https://github.com/watchforstock/evohome-client) client library.
+It uses v2 of the [evohome-client](https://github.com/zxdavb/evohome-async) client library.
 
 Honeywell removed support for higher-precision temperatures from the v2 API, and thus reported temperatures are rounded up to the nearest 0.5C.
 
@@ -26,13 +27,13 @@ Honeywell removed support for higher-precision temperatures from the v2 API, and
 
 evohome is a multi-zone system. Each zone is represented as a **Climate** device: it will expose the zone's operating mode, temperature and setpoint.
 
-The controller/location is also represented as a **Climate** device: it will expose the location's operating mode (see below for details). Note that the controller's current temperature is calculated as an average of all the Zones.
+The controller/location is also represented as a **Climate** device: it will expose the location's operating mode (see below for details). Note that the controller's `current_temperature` is calculated as an average of all the Zones and it does not have a `target_temperature`.
 
 The DHW controller is represented as a **WaterHeater** device: It will report its current temperature (but not target temperature), and it can be turned on or off.
 
 ### Round Thermostat
 
-Although Round Thermostat is, strictly speaking, a Controller and a single zone, they are merged into a single **Climate** device.
+Although Round Thermostat is represented by the vendor API as a Controller and a single zone, they are merged into a single **Climate** device.
 
 ## Configuration
 
@@ -74,7 +75,7 @@ Zones support only three setpoint modes: **FollowSchedule**, **TemporaryOverride
 
 Mostly, the zone 'inherits' its functional operating mode from the controller (the actual algorithm for this is a little complicated).
 
-The evohome controller supports seven distinct system modes: **Auto**, **AutoWithEco**, **Away**, **DayOff**, **HeatingOff**, and **Custom**; **AutoWithReset** is a hidden mode that will revert all zones to **FollowSchedule** mode.
+The evohome controller supports seven distinct system modes: **Auto**, **AutoWithEco**, **Away**, **DayOff**, **HeatingOff** and **Custom**; **AutoWithReset** is a hidden mode that will revert all zones to **FollowSchedule** mode.
 
 If the zone is in **FollowSchedule** mode, its `temperature` (target temperature) is a function of its scheduled temperature and its functional mode - for example, **AutoWithEco** is scheduled temperature less 3C.
 
@@ -83,6 +84,8 @@ If the controller is set to **HeatingOff** (target temperature to a minimum) or 
 If the zone's temperature is changed, then it will be a **TemporaryOverride** that will revert to **FollowSchedule** at the next scheduled setpoint. Once this is done, the zone can be switched to **PermanentOverride** mode.
 
 In Home Assistant, all this is done via `HVAC_MODE` and `PRESET_MODE` (but also see `systemModeStatus`, `setpointStatus`, below).
+
+Round Thermostat functions as a subset of the above.  For example, it only supports four distinct system modes: **Auto**, **AutoWithEco**, **Away** and **HeatingOff**.
 
 ## Useful Jinja Templates
 
