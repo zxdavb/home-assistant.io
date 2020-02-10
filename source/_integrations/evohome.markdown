@@ -55,7 +55,7 @@ scan_interval:
   default: 300
 {% endconfiguration %}
 
-This is an IoT cloud-polling integration and the recommended minimum `scan_interval` is 180 seconds. Testing has indicated that this is a safe interval that - by itself - shouldn't cause you to be rate-limited by the vendor. There is little value in shorter intervals, as this integration will automatically force a refresh shortly after any configuration changes.
+This is an IoT cloud-polling integration and the recommended minimum `scan_interval` is 180 seconds. Testing has indicated that this is a safe interval that - by itself - shouldn't cause you to be rate-limited by the vendor. In addition, this integration will automatically force a refresh shortly after any changes that might change state. There is little value in using shorter intervals.
 
 ## Locations and Zones
 
@@ -154,7 +154,7 @@ This service call will immediately pull the latest state data from the vendor's 
 
 ### evohome.set_zone_override
 
-This service call will set the `setpoint` of a zone, as identified by its `entity_id`, for a specified period of time (**TemporaryOverride**). However, if no period of time is provided (c.f. a duration of 0, below), then the change is permanent (**PermanentOverride**).
+This service call will set the `setpoint` of a zone, as identified by its `entity_id`, for a specified period of time (**TemporaryOverride**). However, if no period of time is provided (c.f. a `duration` of 0, below), then the change is permanent (**PermanentOverride**).
 
 {% raw %}
 ```yaml
@@ -164,8 +164,9 @@ This service call will set the `setpoint` of a zone, as identified by its `entit
         entity_id: climate.loungeroom
         setpoint: 10
 ```
+{% endraw %}
 
-The `duration` can be up to 24 hours, after which the zone mode will revert to schedule (**FollowSchedule**). If the `duration` is 0 hours, then the change will be until the next setpoint.
+The `duration` can be up to 24 hours, after which the zone mode will revert to its schedule (**FollowSchedule**). If the `duration` is 0, then the change will be until the next setpoint.
 
 {% raw %}
 ```yaml
